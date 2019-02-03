@@ -1,0 +1,2 @@
+Contents of the ITProject2 should have been already finalized (Functional, Tested, etc.) and should be working as intended verified features of the system can be found in the folder "Functional-UI(tested)".
+System features that are yet to be tested/verified can be found in the folder "Functional-UI(Testing)".

@@ -1,0 +1,41 @@
+.container{
+	border: 10px grey;
+	border-style: dashed;
+	width: 300px;
+	height: 400px;
+	padding: 25px;
+	margin-left: 40%;
+	margin-right: 50%;
+	margin-top: 10%;
+}
+
+.form{
+	text-align: center;
+}
+
+.input{
+	width: 250px;
+	height: 25px;
+}
+
+#signin{
+	width: 250px;
+	height: 27px;
+	font-size: 15px;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}

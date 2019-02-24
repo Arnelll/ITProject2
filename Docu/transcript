@@ -1,0 +1,424 @@
+###################################
+###################################
+INTERVIEW TRANSCRIPT
+DATE: JANUARY 18, 2019 - FRIDAY
+###################################
+###################################
+
+So, first question po sir is yung sa purchase orders niyo po sir. Sir diba since yung puchase orders niyo is by tao nalang tapos hindi naman na kayo nag susulat ng-
+
+Oo. Hindi na wala na.
+
+-Sir, okay lang po ba na i-implement pa iyon doon sa system?
+
+Pwede rin, pero pwede naman kasi i-pass. Kumbaga pwedeng gawin natin iyan diba? For formality, or kunyari step 1, or pwedeng i-enter nalang na kahit huwag na?
+
+Yes sir.
+
+Oo, pwedeng ganon. Kumbaga iyon parin yung step 1 mo? Dahil kunyari kami naman ang nag-order, pwedeng iba. Kumbaga, i-skip mo nalang. Pero kunyari kung ibang tao, order mo, i-encode mo pupwedeng sila. Parang ganon. Diba parang manager lang ako pwedeng mag-ganon. Parang ganon.
+
+Okay lang na-
+
+Iyon yung step one mo. Oo, okay lang, okay lang.
+
+-pero masmaganda na merong skip option?
+
+Oo, tama. Gets mo yung ibig kong sabihin na, kung ikaw yung owner skip mo na kasi ikaw nag-order. Pero kunyari tinawag mo lang sa secretary mo na, "Paki-order nga ito sa supplier na ito", pwedeng siya ang mag-encode doon sa computer na ito yung inorder niya.
+
+*Still Interviewee: Meron ka rin bang gagawin yung parang sa resibo kung nag-encode kami ng sales, diba yung parang sinabi ko? May gagawin rin kayong ganun?
+
+Actually iyon yung mga questions dito sir-
+
+Mhmm, kasi parang sa na-isip ko na maganda, usually parang for example binili niya November, ay hinde, sabihin mo nang September niya binili, tatlong piraso parang yung isang issue namin, parang noong last week. So tatlong piraso yung binili niyang gulong diba, nakalimutan ko na iyong presyong binigay ko, syempre ngayon nag-order siya kahapon, syempre hindi ko naman pwedeng mag-isip nalang ako ng presyo, mamaya it's either mas-mataas yung bigay ko or mas-mura, mag-tataka siya-
+
+Kung bakit iba yung presyo?
+
+-magka-iba yung presyo, same size naman iyon. So ang-hirap namin na i-backtrack. Meron ba yung parang search engine na parang kunyari ikaw yung bumili? Kunyari lahat ng purchase mo lalabas na?
+
+Yes sir. Actually iyon yung kasama sa client record management.
+
+Gets mo yung gusto ko? Yung parang kunyari ikaw nag-purchase ka sa akin diba, pero last year pa, pero nag-oorder ka ulit, re-order ka pero same presyo, iyon nga lang hindi ko matandaan magkano pinatong ko sa-iyo.
+
+Yes sir. Kasama po iyon sa mga record.
+
+So lilitaw lahat doon kung ano yung mga purchase mo sa akin? Search engine, mag segregate na kaagad siya? Ako bumili, pangalan ko, lahat ng Ryan Cu na pinurchase ko, iyon na ang lalabas?
+
+Yes sir. Ganun po.
+
+Oo, ganun iyon.
+
+Iyon po yung gusto niyo doon sir?
+
+Oo, ganun, mas-madali. Diba kung ikaw rin yung may computer, kung may i-sesearch ka, parang sa photos diba?
+
+Sir yung ma-fifilter po sila?
+
+Oo, ma-fifilter niya kaagad yung name mo lang.
+
+Sir, okay lang naman na kahit hindi yung name lang? Kahit parang-
+
+Kunyari Nitto Tire yung pinurchase, so lahat ng bumili ng Nitto lalabas? Pwede rin ganon. Tapos i-sort out mo rin tapos yung name lang, pwede rin iyon. Parang ganon. Parang hashtag lang parang ganon.
+
+Yes sir, ganon. Para makita talaga yung mga similar.
+
+Oo yung similar, Oo. Actually alam mo naman na yung takbo eh, madali na sa-iyo eh. Nage-gets mo na rin yung trabaho namin sa baba diba?
+
+Sir yung iba po kasi dito kaya nag-interview po ulit is either for the record or confirmation or baka may nakaligtaan po kasi, kaya-
+
+Kasi ang gagawin ko lang, diba kumukuha ka sa-akin ng mga previous na mga files? Hindi na ako mag-bibigay kasi once software or something or kung papaano man gagawin ninyo, its all new lahat gagawin natin. Zero, zero para hindi magulo rin saamin. Parang kunyari, for example uumpisahan na natin iyan February or March, so March purchase lang namin uumpisahan rin iyan. Pero yung mga previous doon parin kami sa old na ginagamit namin para hindi lang magugulo kaya ayaw ko rin ipabukas kasi yung old. Gets mo? So once na na-ipatakbo na natin iyan, ang gusto ko once na pinagtakbo natin iyan, start rin that day kung sino man nag-purchase doon lang rin siya magre-record.
+
+Iyon talaga para hindi magulo sir?
+
+Hindi magulo kasi once na magpapasok tayo ng old, maguguluhan na.
+
+Sir kasi din yung mga records doon na, iyon nga parang yung sinabi mo kanina sir, baka iba yung ma-ibigay mo na price, iba-iba na rin yung-
+
+Oo, iyon nga. Syempre ang gagawin ko nalang atleast kung mag-start tayo this month, for example itong month na ito na ayos na pasimula, doon lang rin ako magsisimula. Hayaan ko na medyo problema yung iba pero atleast, in the future nagagamit na natin iyong ginagawa niyo.
+
+Sir para malinis po?
+
+Malinis lang, oo.
+
+Ayun sir. So ito, for the record ito po kasi yung listahan ng mga nakuha namin na requirements kasi doon sa mga interviews. So bale sa inventory management po tayo sir. So syempre, yung owner, si Sir Jeff, ikaw po, yung co-owner tapos yung secretary niyo. Sir pwede nilang makita yung-
+
+Actual inventory?
+
+-yes sir yung mga products na nandoon?
+
+Mhmm.
+
+Tapos, kayong tatlo po ulit sir, pwede silang makapagsearch gamit nung sinasabi niyong search engine.
+
+Oo.
+
+Tapos, sir kayong dalawa lang po ni Sir Jeff yung pwedeng makapag-add ng bagong product kung meron-
+
+Pwede yung secretary. Kasi minsan hindi namin maharap, siya na rin ang naga-add. So iyan, once na nag-add ka at may nag-purchase- *audio cut* -parang ganoon ba iyon?
+
+Parang ganoon po sir. Tapos, sir ganoon din po dito sa pagka may i-edit po kayong details, for example yung isang model ng Nitto Tires sir, tapos i-eedit niyo po yung-
+
+Tumaas yung presyo, kahit old stock mo nakuha pero gusto mo i-taas na rin ang presyo?
+
+Yes sir.
+
+Pupuwede.
+
+Pero kayong dalawa lang po ni Sir Jeff or-
+
+Pwede rin siya.
+
+-pero yung secretary sir?
+
+Pwede rin, pwede rin. Kasi usually pag wala nga kami siya eh. Tapos eto question lang, paano mo gagawin diyan, kunyari diba SRP ang ilalagay nating presyo, may nakanote doon na ito ang discounting?
+
+Ay sir pagka-
+
+Kunyari diba ito na yung windows mo diba, ito yung presyo, nakanote doon kung ano iyong percentage, less percent price-
+
+Ay sir kung ano yung parang patong ganoon sir?
+
+Hindi patong, yung discounting ng supplier saamin. Kasi ang nakalagay usually, kunyari may presyo ka dito diba, kunyari ito yung presyo, may 3 units, ito yung presyo, ito yung bentahan. Syempre dapat alam namin yung puhunan which is dapat meron kang isa parang supplier's discount, parang ganoon.
+
+Ay sir, diba isa lang yung supplier niyo sir?
+
+Kunyari sa gulong, kunyari sa Nitto, pero kunyari may Goodyear pa na gulong, ibang supplier din iyon.
+
+Ay sir, iba-iba per brand?
+
+Oo.
+
+So sir per brand, yung perc-
+
+Wala, iba-iba supplier ko, si Samsung iba ang supplier ko si i-Phone iba supplier ko. Iba-iba naman discounting niyan eh. Kunyari SRP, kunyari si i-Phone diba, yung X ngayon sabihin mo P50,000 pero ang discount-- nakalagay dito P50,000 SRP pero syempre ang bigay saakin is sabihin mo na less 20%, so magkano iyon, nakalagay lang dito na "Supplier's Discount" less 20% para alam namin ano i-leless namin doon.
+
+Pero sir per brand iyon, iba-iba din yung-
+
+Usually, oo, usually. Syempre meron naman yung ibang supplier na kunyari si Huawei, kunyari si Huawei tsaka Oppo isa lang ang importer parang ganoon.
+
+So, ayun sir. Idadagdag po namin sa requirements rin iyon sir. So ano pa po yung bukod sa brand and-
+
+Wala naman na, iyon nalang. Quantity meron ba diyan?- *audio cut* -iyon ang wala, quantity.
+
+So, i-reiterate ko lang sir. Product code, category, brand, supplier, tapos quantity sir?
+
+Quantity ang una palagi. Or product code tapos quantity.
+
+Tapos, sir pati rin yung secretary pwede niyang i-update yung inventory count.
+
+Walang problema.
+
+Sir tapos parang for example nag-bawas ka din ng product sir-
+
+May bumili sabihin mo na.
+
+-may bumili sir. Sir mano-notify po kayo pagka kailangan na mag-order sir?
+
+Ah kunyari less than 4 pieces?
+
+Yes sir.
+
+Oo, puwede, puwede iyon.
+
+Sir tapos sa supplier management. Meron po kasi kami yung supplier management ngay na, iyon, basically iyon nga sir, yung parang yung information ng supplier na-mamanage mo. So, sir yung secretary din naman po ano, pwede niyang ma-view yung-
+
+Mga supplier?
+
+-yes sir.
+
+Oo, puwede, puwede. Walang problema iyan.
+
+*audio cut*
+
+Interviewee: -example lumabas tayo sa Nitto, nandoon na yung supplier, yung supplier which is connected dapat dito, or kung hindi man lilitaw dito, supplier's name, double-click mo ito lilitaw kung saan niya i-oorder. Double-click, kunyari ito yung inventory, double-click mo ito, sources or something, hindi ko alam kung anong tawag na term doon, double-click mo ito, pupunta na dito, another window lalabas.
+
+Sir so para hindi mo na hanapin yung-
+
+Kunyari contact number, nawala mo yung contact number which is naka-save dito, diba ito yung inventory niya syempre i-tatype mo Nitto Tire, punta ka sa Nitto Tire lalabas lang inventory natin, tapos may bagong secretary, for example lang, "I-order mo nga", "Sir wala akong number", "Hindi double-click mo lang ito", lalabas na yung number nila. Parang itong inventory form mo which is another window niya na may pwede kang mag click kung san ka- *audio cut* -order.
+
+Sige, sige sir.
+
+Para kunyari may bagong number yung ahente, supplier, hindi mo sinave dito, i-save mo na kaagad sa computer. Para kumbaga ayaw mo madistorbo na ikaw mag-oorder, gusto mo yung secretary mo na mag-order, pero may nag-order sa iyo i-tatawag mo sa office, "I-order mo nga kay ganito yung ganitong gulong", "Osige sir i-order ko na", hahanapin niya lang yung brand ng name kasi syempre wala sa inventory ko, special order, pero hindi ko na i-sesend sakanya yung number which is i-dodouble click niya lang dito, lilitaw na yung supplier's details.
+
+So yung purchase order niyo, i-priprint niyo pa iyon diba?
+
+Kahit hindi naman na, iyon yung sinasabi ko na which is pwede naman ako. Diba pag kami tawag lang, iyon yung purchase order diba? Pag sakanila naman, kahit naman hindi na siguro i-print which is parang ang naka-details nalang doon pwede ka rin parang, kunyari may in-order kami, kunyari 8 pieces, diba syempre i-tatype mo diyan. Iyon na iyon, separate na, hindi man na-print o nag-print, atleast nandoon yung record nung January 1 nag-order siya kay ganitong supplier. So meron nalang isang less kailangan doon sa kinukuhanan namin ng purchase order bago nalang mai-print.
+
+So ayun sir, nasagot mo na rin.
+
+Okay na lahat iyan?
+
+Hindi po sir, meron pa po.
+
+Sige.
+
+For the record nalang po sir.
+
+Sige.
+
+Tapos sir diba nagkakaroon naman din naman kayo ng mga bagong suppliers?
+
+Meron, meron. Kaya siya rin yung sinasabi ko na add, pwede ka mag-add-
+
+Pati na rin yung secretary na rin?
+
+-Syempre hindi mo masabi, diba. Oo, puwede puwede, walang problema. Oo.
+
+Sir dito naman tayo sa pag-mamanage ng client records. Actually yung dito sa client record management puro secretary na po kasi yung gumagalaw dito.
+
+Oo. Actually, ito.
+
+Sir, okay lang naman yung secretary yung nag-hahandle ng mga product returns? Sir, for example defective tapos-
+
+For example, sabihin natin, yun nga doon kami nalilito actually rin. Kunyari, sa cellphone nalang, kunyari may product ka na cellphone diba, syempre sa inventory ko may 10, kunyari ito iyon diba, 10 pieces, ngayon may nagbabalik nito, syempre nakita namin factory defect so mag-miminus na kami, kumbaga papalitan na namin kaagad. So pag nai-minus namin dito dapat may mag-nonote sana, kumbaga may remarks rin siya, its either isang side na yung isa hindi considered sold pero parang pinalitan lang for warranty, parang ganoon. Hindi ko alam kung papaano niyo papatakbuhin iyon. Actually pati sa mga ibang mga ano-- diba pag pumunta ka SM ang tagal, magpalit ka lang ng kahit brand new sa brand new ang tagal nilang i-process. Kasi syempre babalik sa inventory, kunyari kahit hindi sira, kunyari mag-palit lang ng size ng damit, diba ang tagal. Kasi syempre babalik mo sa inventory, tapos ang mawawala-- so yung large nila magkakaroon ng plus one, tapos doon sa inventory ng medium, ma-minus ng isa, parang ganoon. Hindi ko alam kung paano niyo gagawin iyon.
+
+Sir dibale kung sakaling doable or parang mapapadali yung process-
+
+Iyon nalang. Hindi ko na rin alam. Hindi ko na rin alam iyan. Check mo nalang kung which is better or which is ano.
+
+Pero kung sakaling may ganoon na- *audio cut*
+
+-natatambakan ka na ng trabaho diba.
+
+Syempre sir, kailangan naman din na ma-record yung downpayment?
+
+Iyon naman sa resibo iyon. Hindi siya sa inventory, iba rin iyon diba? Iba yung inventory doon sa parang nag-dodownpayment sila. Yung purchase, iba rin iyon diba?
+
+Speaking of resibo sir, baka magkaroon po kasi ng problema doon sa pagka-implement kasi-
+
+Hindi naman, hindi naman. Ang sa-akin kasi- *audio cut* -not exactly resibo parang-- kasi saamin may nag-pupurchase, kunyari diba nag-purchase ka saakin.
+
+Sir parang proof of purchase lang, ganoon?
+
+Iyon nga yung sinasabi ko na, kunyari diba nag-purchase ka, so mamayang gabi i-tatype na namin sa computer, so siya na yung search engine mo, gets mo? Kunyari ikaw i-tatype lang namin, not exactly resibo pero format niya parang resibo na ang pinurchase mo, 4 pieces bla bla bla na gulong, so iyon yung parang sinasabi ko which is connected diyan na hindi siya exactly sa resibo. Iyon yung format mo na parang resibo lang na pinurchase mo saamin itong araw na ito, pero meron parin kasi kami na OR, iyon yung handwritten lang.
+
+So, sir talagang iyon parin, gagamit parin kayo ng OR.
+
+OR parin kami ang ano lang doon is iyon nga yung sinasabi ko kapag after 3 months, 4 months syempre imbis na kakalkalin namin, kaya namin ito i-tinatype iyong resibo dahil iyong resibo namin naubos itinatago na namin. Syempre alangan na kakalkalin mo iyon diba, doon kami napapatagal kapag kunyari titingin kami ng old price, kunyari ikaw nga nag-purchase ka saakin 4 months, 5 months ago e ilang resibo na yung na-ubos namin, kakalkalin namin sa karton. Yung sinasabi ko na nag-purchase ka ngayon, ito yung resibo, OR. Mamayang gabi lahat ng nag-purchase today, trinatransfer namin sa computer, type lang na, "Si ganito bumili ng 4 pieces, si ganito 4 pieces", so iyon na yung sinasabi ko which is connected dito na, kunyari bibili ka ulit saakin, i-type ko nga yung pangalan mo, lilitaw na lahat yung mga records mo.
+
+So for example iyon nga magpapacheck ng record-
+
+Oo, magpapacheck ng record. Parang resibo lang siya pero sa computer lang. Oo, parang resibo lang siya. Resibong format pwede mo gawin iyon. Not exactly na format ng resibo, kumbaga kung ano lang yung mga pinurchase, parang ganoon lang.
+
+Since iyon lang po yung kailangan niyo sir, ang gagawin nalang po siguro namin iyong, kahit hindi na format ng resibo sir.
+
+Hindi naman. Parang kunyari, name tapos yung details lang nung binili, pwede rin kasi napakadali. Ano ba ang nilagay natin sa resibo mo, kunyari pangalan ng driver, ano ba pangalan ng driver mo, iyan type mo pangalan ng driver, lilitaw na doon or iyon nga sabi mo, kunyari ano ba binili mo, Nitto Tire, type ko lang Nitto Tire lalabas na.
+
+Sir kasi yung naging issue po kasi namin kung ma-hahandle po kasi yung pag-print ng resibo.
+
+Hindi. Hindi ako mag-priprint noon. Hayaan mo na yung OR ko, talagang gagawa ako, pero lahat nung in-OR namin today trinatransfer namin.
+
+Yung information lang?
+
+Yung information lang, kunyari 10 tao na bumili, ano yung binili, tina-type rin namin. Si ganito bumili ng 10, type namin.
+
+Sir okay lang na magkaroon ng report generation doon?
+
+Papaano yung ibig mong sabihin?
+
+For example sir, gusto niyo malaman yung kung magkakaano yung kinita niyo sa isang buwan ganoon sir.
+
+Puwede naman, pero puwede din i-skip iyon, pero maganda yung may option na ganoon. Kasi minsan diba ito P50,000, gulong, syempre nandyan yung less niya-- kasi minsan pa-ibaiba benta mo sa tao minsan dalawang tao same product pero syempre yung isa barat, para lang mabenta mo babaan mo na kita mo. Yung isa medyo hindi naman alam, syempre magandang mark-up parang ganoon.
+
+So ito naman po, isang klase ng requirements po ulit sir. Sir paano niyo po gusto mag-function yung system, for example kailangan ba na madaling ma-maintain, mabilis, ganoon sir. Sir paano niyo po siya gusto mag-function, in terms of, parang mga ganoong klase?
+
+Kunyare pinakamadali? Ganoon ba? Anong ibig mo sabihin?
+
+Sir by pinakamadli, anong-
+
+For example, ganito nalang pinakamadali, kunyari nasa windows ka, pati pag-on mo ng software nadoon na. Client record, supplier, inventory, ganoon lang, pag bibili click, click, click, click mo nalang. Pero lahat dapat iyon connected sa isa. For example, may bumili, check mo yung inventory mo- *audio cut* -so hindi pa siya magma-minus, gabi pa siya magma-minus pag-ieencode na nung secretary, gets mo? Kunyari, for example itong araw na ito ang binili lang Nitto Tire 4 pieces, syempre nadoon 10 pieces, pag tinignan niya nabenta, hindi pa siya magma-minus kasi hindi naman siya connected sa resibo. Pero mamayang gabi, dito siya magta-type ng mga sales na for today. Kunyari bumalik siya sa main windows niyo, sales report, sales report siya papasok. Kunyari sales report, client, inventory. So pag pumasok siya sa sales report, diba nga 4 lang yung nabenta, so clinick niya ito, "Ang nabenta lang under Ryan Cu, 4 pieces Nitto Tire", so lumabas na yung 4 pieces Nitto Tire na kunyari size 1, 2, 3, 4, 5, pag in-enter niya iyon mag-isa nang magma-minus doon sa system naman nung inventory mo iyong size 1, 2, 3, 4, 5 na 4 pieces, ganoon lang.
+
+Sir so sa buong concept na iyon dapat connected?
+
+Oo, gets mo? Kunyari ito, nandito tayo sa window ng sales report at tinype mo dito, "4 pieces Nitto 1, 2, 3, 4, 5", syempre clinick mo sa window ng client report, hindi nakalitaw yung sa inventory, pero once na you entered this one, okay na iyon. Pero tomorrow or mamaya i-checheck mo na, later i-rerecheck mo na yung inventory, pag-check mo, automatically na-minus na kaagad doon, nabawas na.
+
+Hindi po kailangan na immediately na i-bawas na?
+
+Hindi, kasi kunyari ngayon mo nabili, sa inventory mula sa computer iyon, pero syempre i-reresibo mo. Hindi naman kasi porket may nag-purchase i-tatype kaagad ng secretary ngayon din, mamayang gabi nga. Parang ngayon nag-start na siya mag-type ng mga purchases ngayon. Once na nalagay na niya sa sales report, mag-isa nang nagma-minus doon sa inventory.
+
+So parang kailangan after na ma-finalize ganoon sir?
+
+Oo. Yung ibig ko sabihin, kunyari, "Okay, closed na tayo", mag-eencode na si secretary, for example ikaw nalang secretary ko mag-eencode ka na sa computer, ito na yung window for example ito na yung window natin. So ito nakatago ito, hindi mo makita kasi nandito sa sales report, kunyari OR number kasi in-OR mo diba, "OR number 123, Ryan Cu, ang binili niya 4 pieces Nitto Tire 1, 2, 3, 4, kunyari iyan yung model", pag-enter niya na ganoon mag-sasave na. Automatically sa Nitto Tire kahit hindi ko naman nakikita yung window, nag-minus na which is dapat si size 1, 2, 3, 4-- kasi ang size iisa lang, complete detail naman iyon kasi kunyari si 1, 2, 3, 4-- there are 3 tread patterns, syempre isusulat niya rin doon, kunyari ang tread pattern kasi ng Nitto is highway-terrain, mud-terrain, all-terrain, so i-tatype niya doon is 4 pieces, size 1, 2, 3, 4 na highway-terrain. Si highway-terrain which is same na same dapat ang i-tatype niya ang magma-minus doon, parang ganoon. Puwede iyon. Kahit hindi ko nakikita yung inventory shit, I mean yung inventory na window, pag-type ko dito mag-isang nag-maminus doon. Kinabukasan maraming customer, gusto mo na i-check yung 1, 2, 3, 4 kung ilan, pag dinouble check mo, nakaminus na kaagad doon, kumbaga automatically minus na kaagad. Kahit hindi ko makita, automatically na siya kasi alangan na pag mininus ko dito pupunta pa ako sa Nitto Tire na engine ulit para lang i-minus ko yung 4, diba di doble-doble. Ang use nga nun, kahit hindi ko na everyday i-check yung inventory one-shot-
+
+Automatic na.
+
+-Kasi mas-palagi kami importante sa sales report, syempre pag tinatakbuhan ka. Sales report type ka ng type, kunyari si Microtext may binili na wax, 1 piece wax na 500mL, so pag-pasok ko sa search-engine ni Microtex na-minus na kaagad iyon, parang ganoon.
+
+Sir tapos ito naman concerning security sir. Sa inyo sir, sa tingin niyo po kailangan po ba na bago magamit yung system, sir kailangan mag log-in muna sir? For example may username and password?
+
+Puwede, puwede naman, puwede. Kunyari ikaw, password mo 123. Pero same lahat ng nakikita namin.
+
+Sir tapos hindi naman po kayo magpapalit talaga anytime soon?
+
+Wala pa as of now, kasi mag-rerenovate kami. Parang wala kaming balak pa na mag-gastos sa computer. Kulang ba yung system namin?
+
+Hindi naman po sir.
+
+Baka malaki? Magkulang?
+
+Baka kasi pagkanainstall namin tapos hindi naman compatible or iyon nga bumagal dahil ganoon sir.
+
+Wala pa, wala pa. Pero kailan niyo ba target na subukan iyan i-run? Matagal pa ata eh?
+
+Within this year, siguro mga-
+
+Pang-finals niyo diba?
+
+-Yes sir, most likely April onwards ganoon sir.
+
+Pag ganoon baka bibili na rin kami, more or less.
+
+So kung sakaling kwan nalang sir-
+
+Mag-updatean tayo diyan. Oo, update update mo lang ako.
+
+So, dito sa requirements namin na-confirm naman na.
+
+Oo, tsaka masnaintindihan mo yung gusto ko na puwedeng mangyari sa ginagawa niyo?
+
+Yes sir. Sir importante po kasi baka mamaya pagka-inimplement namin-
+
+Hindi, okay lang naman. Paano niyo ginagawa yung barcode na iyon? Hindi ba yung iba may barcode parang sa supermarket?
+
+Meron po kasi na kwan iyon, parang kukuha po kami ng software din tapos yung code ng software na iyon gagamitin namin para maging compatible sa sarili namin na software.
+
+So may ganoon din talaga. Hindi ba yung iba kasi binabaril lang nila na ganoon, tapos papasok na sa inventory nila?
+
+Yes sir, kaso yung problema po kasi doon is depende rin po sa hardware kung willing po kayo na mag-purchase ganoon.
+
+Kasi iba yung ganoon?
+
+Actually pumasok din po sa isip namin yung gagawan namin kayo ng website para kunwari nasa bahay kayo sir tapos pwede niyong ma-access diyan sa phone niyo. Pero ang problema naman kasi doon marami kasi kailangan i-purchase doon, for example sa internet yung-
+
+Oo, bibili ka ng ano niya, anong tawag dito?
+
+Yung domain name mga ganoon.
+
+Oo, yung domain name. Meron kami domain name na binili, pero nakalimutan ko na kung anong ano eh. Hindi ba kailangan mo na yearly babayaran iyan.
+
+Yes sir.
+
+Syempre minsan hindi mo na naisip lalo na at uso yung Facebook ngayon, hindi mo na naiisip bumili ng domain.
+
+Sir tapos usually din kasi mga users, iyon Facebook na rin talaga sir.
+
+Tsaka ang hirap mag-upload ng photo sa ano diba?
+
+Depende rin sa plan niyo sa domain din sir.
+
+Diyan sa Facebook kapag picture mo upload mo agad, tapos na. Nasa album mo na.
+
+Tapos ayun, send nalang sa customer sir. Sir bale yung sa inventory system, sir yung mga sinabi niyo ngayon, wala na po kayong i-dadagdag doon?
+
+Puwede ba na for example ito yung, si Nitto Tire hindi ba, meron yung pwedeng lagyan ng photos doon?
+
+Yung nakikita niyo doon sir, sa computer doon, for example?
+
+Oo, parang for example kunyari si Nitto sabi ko nga mayroon siya na 3 kinds of gulong, I mean na tread patterns?
+
+Ay sir, parang for example yung-
+
+Parang si secretary-
+
+-Kung hindi niya sure yung-
+
+-kung hindi niya sure yung tread pattern-- I mean alam niya na all-terrain pero hindi niya alam yung itsura, andyan na siya.
+
+Sige sir.
+
+Puwede? Madali nalang iyan hindi ba? Parang may photos lang siya sa gilid, parang ganoon?
+
+Tapos syempre kapag mag-aadd na rin ng product ganoon, i-dagdag na rin yung photo.
+
+Oo, parang ganoon. Iyon lang naman. Actually nagkakaintindihan na tayo kung papaano papatakbuhin, naintindi, hindi ba?
+
+Kasi kailangan kasi pa-ulitulit talaga sir para hindi kami pa-balikbalik masyado sir. Sir doon ngay sa paghahandle ng client records, wala na po kayong i-dadagdag doon?
+
+Paghandle ng client records. Wala naman na basta ang importante ay iyon nga-- ang pinaka-importante kasi saamin is yung purchases nila saamin, wala naman nang ibang mas-importante doon kasi-- puwede naman doon, doon sa client record mo, meron na rin yung number nila doon, tapos anong sasakyan or unit ng sasakyan niya, parang ganoon.
+
+Sir tapos, ulitin ko para ma-clarify sir, sir ano yung importante talaga doon sa inventory system sir, para sainyo po?
+
+Anong ibig mo na sabihin na pinaka-importante iyan?
+
+Na parang function ng gagawin namin na system?
+
+Yung nasabi ko, once na nag-encode si ako, secretary, na automatic dapat nama-minus na kaagad kasi doon kami minsan yung parang last, "Alam ko may apat pa tayo", hindi lang pala na-minus doon sa inventory, kasi nga manual kami, nakalimutan lang i-minus. Hindi katulad doon pag chineck mo, sure na iyon, its either gusto mo nalang i-double check kung may nawawala talaga.
+
+So eventually sir, gusto niyo naman po makita yung system, hindi naman immediately?
+
+Hindi naman. Kasi parang mamaya nga sabi mo nga, in-install mo diyan tapos hindi pala puwede sa computer or magbabalik kami ng-- Hindi naman, gusto ko plantsado niyo rin. Para wala rin hassle sa inyo. Kasi papaano kung kunyari, for example natapos niyo na, in-install niyo tapos hindi ko pa pala magamit kasi may kulang pa. Basta yung gawin niyo lang wala naman rush diyan. Paano kayo gra-gradean niyan sa school?
+
+Actually hindi po namin sure.
+
+Kasi syempre install mo dito, alangan na pupunta yung instructor dito.
+
+Hindi naman po sa ganoon sir, syempre meron kami mga-
+
+Doon sa main niyo, doon niyo papatakbuhin?
+
+-testing din po kami doon sir. So ayun sir, ayun po nalang sir. So okay lang po na makita ko yung hardware niyo ngayon? Ay yung specs pala.
+
+Send ko nalang saiyo.
+
+Sir ako nalang po yung mag-pm mamaya.
+
+Oo. Kasi yung computer kasi namin, yung nasa baba, hindi na ino-off iyon, ayaw mag-restart. Ayaw, once na in-off ko it takes 3, 4 hours para bumalik sa windows kaya hindi namin pinapatay, kaya kalkalin ko nalang yung resibo niya kung ano yung specs. Kasi yun lang naman yung problema doon kaya balak namin mag-palit kasi once na in-off namin nasa MS-DOS, iyon ngay MS-DOS lang, yung ano lang-
+
+Talagang nandoon lang talaga siya doon sa boot-up phase, parang ganoon?
+
+-oo, boot up lang. Ewan ko kung anong problema niyan.
+
+Ayun, baka sakali na ma-solusyonan din namin kung paano.
+
+Iyon nga eh. Kailan ba nasira iyan, September, hanggang ngayon never pa na na-off iyan.
+
+Noong September lang din?
+
+Noong September, September yata. August, mga ganoon, August. Tagal na naka-on lang iyan.
+
+Na-chambahan namin sir.
+
+Oo, naka-on lang iyan hanggang ngayon. Nago-off lang iyan kapag kunyari nag-brownout. Iyon lang, pag-tiyagaan mo na mag-antay ng napakatagal. Mabilis naman yung computer, hindi naman siya na-virus.
+
+###################################
+END OF TRANSCRIPT
+###################################

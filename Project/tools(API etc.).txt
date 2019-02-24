@@ -1,1 +1,9 @@
+===========================
+admin template --> Admin LTE
+installation guide: https://adminlte.io/docs/2.4/installation
+===========================
 icons/fonts --> fontawesome
+installation guide: https://fontawesome.com/how-to-use/on-the-web/using-with/sass
+===========================
+javascript framework --> Vue JS
+installation guide: https://vuejs.org/v2/guide/installation.html

@@ -7,3 +7,4 @@ installation guide: https://fontawesome.com/how-to-use/on-the-web/using-with/sas
 ===========================
 javascript framework --> Vue JS
 installation guide: https://vuejs.org/v2/guide/installation.html
+===========================

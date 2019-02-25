@@ -4,7 +4,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Clients Table</h3>
+                <h3 class="card-title">Client Table</h3>
                 <div class="card-tools">
                     <button class="btn btn-success" data-toggle="modal" data-target="#addNewClient">
                         Add New
@@ -20,14 +20,16 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Type</th>
+                    <th>Role</th>
+                    <th>Creation Date</th>
                     <th>Modify</th>
-                  </tr>
-                  <tr>
-                    <td>183</td>
-                    <td>Captain Sum Ting Wong</td>
-                    <td>11-7-2014</td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  </tr> 
+                  <tr v-for="user in users" :key="user.id"> <!-- v-if="user.role == 'Customer' #For filtering-->
+                    <td>{{user.id}}</td>
+                    <td>{{user.name | upFirstLetter}}</td>
+                    <td>{{user.email | upFirstLetter}}</td>
+                    <td>{{user.role | upFirstLetter}}</td>
+                    <td>{{user.created_at | readableDate}}</td>
                     <td>
                         <a href="#">
                             <i class="fa fa-edit"></i>
@@ -59,40 +61,43 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <input v-model="form.name" type="text" name="name" placeholder="Name"
-                        class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
-                    <has-error :form="form" field="name"></has-error>
-                </div>
+            <form @submit.prevent="createUser">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input v-model="form.name" type="text" name="name" placeholder="Name"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
+                        <has-error :form="form" field="name"></has-error>
+                    </div>
 
-                <div class="form-group">
-                    <input v-model="form.email" type="text" name="email" placeholder="Email"
-                        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
-                    <has-error :form="form" field="email"></has-error>
-                </div>
+                    <div class="form-group">
+                        <input v-model="form.email" type="text" name="email" placeholder="Email"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
+                        <has-error :form="form" field="email"></has-error>
+                    </div>
 
-                <div class="form-group">
-                    <input v-model="form.password" type="password" name="password" placeholder="Password"
-                        class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
-                    <has-error :form="form" field="password"></has-error>
-                </div>
+                    <div class="form-group">
+                        <input v-model="form.password" type="password" name="password" placeholder="Password"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
+                        <has-error :form="form" field="password"></has-error>
+                    </div>
 
-                <div class="form-group">
-                    <select name="type" v-model="form.type" id="type" class="form-control" :class="{
-                    'is-invalid': form.errors.has('type') }">
-                        <option value="">Select User Role</option>
-                        <option value="Administrator">Administrator</option>
-                        <option value="Secretary">Secretary</option>
-                        <option value="Customer">Customer</option>
-                    </select>
-                    <has-error :form="form" field="type"></has-error>
+                    <div class="form-group">
+                        <select name="role" v-model="form.role" id="role" class="form-control" :class="{
+                        'is-invalid': form.errors.has('role') }">
+                            <option value="">Select User Role</option>
+                            <option value="Administrator">Administrator</option>
+                            <option value="Secretary">Secretary</option>
+                            <option value="Customer">Customer</option>
+                        </select>
+                        <has-error :form="form" field="role"></has-error>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Create</button>
-            </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+            </form>
             </div>
         </div>
         </div>
@@ -103,16 +108,26 @@
     export default {
         data(){
             return{
+                users : {},
                 form: new Form({
                     name : '',
                     email : '',
                     password : '',
-                    role: ''
+                    role : ''
                 })
             }
         },
+        methods: {
+            loadUsers(){
+                axios.get('api/user').then(({data}) => (this.users = data.data));
+            },
+            createUser(){
+                this.form.post('api/user');
+            }
+            
+        },
         mounted() {
-            console.log('Component mounted.')
+            this.loadUsers();
         }
     }
 </script>

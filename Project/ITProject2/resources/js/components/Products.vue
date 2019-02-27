@@ -17,23 +17,21 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
                   <tr>
-                    <th>ID</th>
+                    <th>Product ID</th>
                     <th>Product Name</th>
-                    <th>Brand</th>
-                    <th>Provider</th>
-                    <th>Category</th>
                     <th>Quantity</th>
-                    <th>Status</th>
+                    <th>Category</th>
+                    <th>Provider</th>
+                    <th>Brand</th>
                     <th>Action</th>
                   </tr>
-                  <tr>
-                    <td>69</td>
-                    <td>Shock Absorbers</td>
-                    <td>Bilstein</td>
-                    <td>Monroe Shocks</td>
-                    <td>Shocks</td>
-                    <td>500</td>
-                    <td>Available</td>
+                  <tr v-for="product in products" :key="product.product_code">
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.product_name | upFirstLetter}} </td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.category_id}}</td>
+                    <td>{{product.provider_id}}</td>
+                    <td>{{product.brand_id}}</td>
                     <td>
                         <a href="#">
                             <i class="fa fa-edit"></i>
@@ -100,10 +98,10 @@
     export default {
         data(){
             return{
-                products: {},
+                products : {},
                 form: new Form({
                     product_name : '',
-                    product_quantity : '',
+                    quantity : '',
                     product_category : '',
                     product_status : '',
                     product_provider: ''

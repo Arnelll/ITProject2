@@ -23,8 +23,6 @@ let routes = [
     { path: '/clients', component: require('./components/Clients.vue').default }
 ]
 
-
-
 const router = new VueRouter({
     mode: 'history',
     routes, // short for routes:routes'

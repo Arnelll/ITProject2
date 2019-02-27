@@ -6,10 +6,10 @@
               <div class="card-header">
                 <h3 class="card-title">Client Table</h3>
                 <div class="card-tools">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#addNewClient">
+                   <!-- <button class="btn btn-success" data-toggle="modal" data-target="#addNewClient">
                         Add New
                         <i class="fas fa-user-plus fa-fw"></i>
-                    </button>
+                    </button> -->
                     
                 </div>
               </div>
@@ -17,19 +17,15 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
                   <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Creation Date</th>
+                    <th>Client ID</th>
+                    <th>Name(Lastname, Firstname)</th>
+                    <th>Contact</th>
                     <th>Modify</th>
                   </tr> 
-                  <tr v-for="user in users" :key="user.id"> <!-- v-if="user.role == 'Customer' #For filtering-->
-                    <td>{{user.id}}</td>
-                    <td>{{user.name | upFirstLetter}}</td>
-                    <td>{{user.email | upFirstLetter}}</td>
-                    <td>{{user.role | upFirstLetter}}</td>
-                    <td>{{user.created_at | readableDate}}</td>
+                  <tr v-for="client in clients" :key="client.client_id"> <!-- v-if="client.something == 'Condition' #For filtering-->
+                    <td>{{client.client_id}}</td>
+                    <td>{{client.firstname | upFirstLetter}} {{client.lastname | upFirstLetter}} </td>
+                    <td>{{client.contact_no}}</td>
                     <td>
                         <a href="#">
                             <i class="fa fa-edit"></i>
@@ -51,7 +47,7 @@
             <!-- /.card -->
           </div>
         </div>
-        <!-- Modal -->
+        <!-- Modal 
         <div class="modal fade" id="addNewClient" tabindex="-1" role="dialog" aria-labelledby="addNewClientLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -100,7 +96,7 @@
             </form>
             </div>
         </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -108,21 +104,21 @@
     export default {
         data(){
             return{
-                users : {},
-                form: new Form({
+                clients : {}
+                /*form: new Form({
                     name : '',
                     email : '',
                     password : '',
                     role : ''
-                })
+                })*/
             }
         },
         methods: {
             loadUsers(){
-                axios.get('api/user').then(({data}) => (this.users = data.data));
+                axios.get('api/client').then(({data}) => (this.clients = data.data));
             },
             createUser(){
-                this.form.post('api/user');
+                this.form.post('api/client');
             }
             
         },

@@ -4,20 +4,19 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Product;
+use App\Clients;
 
-class ProductController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         //
-        return Product::latest()->paginate(10);
+        return Clients::latest()->paginate(10);
     }
 
     /**

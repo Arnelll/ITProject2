@@ -4,7 +4,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Client Table</h3>
+                <h3 class="card-title">Customers</h3>
                 <div class="card-tools">
                    <button class="btn btn-success" data-toggle="modal" data-target="#addNewClient">
                         New Customer Data
@@ -24,19 +24,19 @@
                   </tr> 
                   <tr v-for="client in clients" :key="client.client_id"> <!-- v-if="client.something == 'Condition' #For filtering-->
                     <td>{{client.client_id}}</td>
-                    <td>{{client.lastname | upFirstLetter}} {{client.firstname | upFirstLetter}} </td>
+                    <td>{{client.lastname | upFirstLetter}}, {{client.firstname | upFirstLetter}} </td>
                     <td>{{client.contact_no}}</td>
                     <td>
                         <a href="#">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-edit text-cyan"></i>
                         </a>
                         
                         <a href="#">
-                            <i class="fa fa-trash"></i>
+                            <i class="fa fa-trash text-red2"></i>
                         </a>
 
                         <a href="#">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-eye text-teal"></i>
                         </a>
                     </td>
                   </tr>
@@ -57,7 +57,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form @submit.prevent="createUser">
+            <form @submit.prevent="createCustomer">
                 <div class="modal-body">
                     <div class="form-group">
                         <input v-model="form.firstname" type="text" name="firstname" placeholder="Firstname"
@@ -102,15 +102,33 @@
             }
         },
         methods: {
-            loadUsers(){
+            loadCustomers(){
                 axios.get('api/client').then(({data}) => (this.clients = data.data));
             },
-            createUser(){
-                this.form.post('api/client');
+            createCustomer(){
+                this.$Progress.start();
+                this.form.post('api/client').then(()=>{
+                $('#addNewClient').modal('hide')
+                Fire.$emit('reloadAfter');
+                Toast.fire({
+                    type: 'success',
+                    title: 'suka blyat agik'
+                })
+
+                this.$Progress.finish();
+                })
+                .catch(()=>{
+
+                })
             }
         },
         mounted() {
-            this.loadUsers();
+            this.loadCustomers();
+            Fire.$on('reloadAfter',() => {
+                this.loadCustomers();
+            });
+            //setInterval(() => this.loadCustomers(), 3000); -> Auto request for resources to the server every 3seconds.
+
         }
     }
 </script>

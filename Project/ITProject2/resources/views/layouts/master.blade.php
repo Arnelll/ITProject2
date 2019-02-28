@@ -79,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/products" class="nav-link">
-              <i class="nav-icon fas fa-car text-orange"></i>
+              <i class="nav-icon fas fa-car product-color"></i>
               <p>
                 Products
                 <span class="right badge badge-danger">New</span>
@@ -89,16 +89,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item">
             <router-link to="/clients" class="nav-link">
-              <i class="nav-icon fas fa-atom text-yellow"></i>
+              <i class="nav-icon fas fa-atom client-color"></i>
               <p>
-                Client Records
+                Customer Record
+              </p>
+            </router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="#" class="nav-link">
+              <i class="nav-icon fas fa-briefcase trans-color"></i>
+              <p>
+                Transaction Logs
               </p>
             </router-link>
           </li>
 
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cogs text-green"></i>
+              <i class="nav-icon fas fa-cogs "></i>
               <p>
                 Options
                 <i class="right fa fa-angle-left"></i>
@@ -124,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                    <i class="nav-icon fas fa-sign-out-alt text-red"></i>
+                    <i class="nav-icon fas fa-sign-out-alt logout-color"></i>
                   {{ __('Logout') }}
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -144,6 +153,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
         <div class="container-fluid">
             <router-view></router-view>
+            <vue-progress-bar></vue-progress-bar>
         </div>
     </div>
     <!-- Main content -->

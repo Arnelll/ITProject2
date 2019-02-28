@@ -23,12 +23,13 @@ class ClientController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     
     public function create()
     {
-        //
+        
     }
 
+    */
     /**
      * Store a newly created resource in storage.
      *
@@ -45,9 +46,9 @@ class ClientController extends Controller
         ]);
 
         return Clients::create([
-            'firstname' => $request['name'],
-            'lastname' => $request['email'],
-            'contact_no' => $request['role']
+            'firstname' => $request['firstname'],
+            'lastname' => $request['lastname'],
+            'contact_no' => $request['contact_no']
         ]); 
     }
 

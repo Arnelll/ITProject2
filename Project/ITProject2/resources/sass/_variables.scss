@@ -18,6 +18,27 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+$red2: #c93838;
+$product-color: #b79d49;
+$client-color: #c4c43e;
+$trans-color: #2ba037;
+$logout-color: #990f0f;
+
+.product-color{
+    color:$product-color;
+}
+
+.client-color{
+    color:$client-color;
+}
+
+.trans-color{
+    color:$trans-color;
+}
+
+.logout-color{
+    color:$logout-color;
+}
 
 .text-blue{
     color:$blue;
@@ -37,4 +58,20 @@ $cyan: #6cb2eb;
 
 .text-yellow{
     color:$yellow;
+}
+
+.text-indigo{
+    color:$indigo;
+}
+
+.text-cyan{
+    color:$cyan;
+}
+
+.text-teal{
+    color:$teal;
+}
+
+.text-red2{
+    color:$red2;
 }

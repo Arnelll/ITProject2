@@ -13126,6 +13126,22 @@ a.text-muted:hover {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }@charset "UTF-8";
 
+.product-color {
+  color: #b79d49;
+}
+
+.client-color {
+  color: #c4c43e;
+}
+
+.trans-color {
+  color: #2ba037;
+}
+
+.logout-color {
+  color: #990f0f;
+}
+
 .text-blue {
   color: #3490dc;
 }
@@ -13144,6 +13160,22 @@ a.text-muted:hover {
 
 .text-yellow {
   color: #ffed4a;
+}
+
+.text-indigo {
+  color: #6574cd;
+}
+
+.text-cyan {
+  color: #6cb2eb;
+}
+
+.text-teal {
+  color: #4dc0b5;
+}
+
+.text-red2 {
+  color: #c93838;
 }
 
 /*!

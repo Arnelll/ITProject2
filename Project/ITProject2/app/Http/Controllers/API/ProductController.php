@@ -17,7 +17,11 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return Product::latest()->paginate(10);
+        return Product::latest()
+                  ->join('product_details','product_details.product_id','products.product_id')
+                  ->join('provider','provider.provider_id','product_details.provider_id')
+                  ->select('product_details.*','products.*','provider.*')
+                  ->paginate(10);  
     }
 
     /**

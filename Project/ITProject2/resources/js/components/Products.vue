@@ -21,17 +21,18 @@
                     <th>Product Name</th>
                     <th>Quantity</th>
                     <th>Category</th>
-                    <th>Provider</th>
                     <th>Brand</th>
+                    <th>Provider</th>
                     <th>Action</th>
                   </tr>
-                  <tr v-for="product in products" :key="product.product_code">
+                  <tr v-for="product in products" :key="product.product_id">
                     <td>{{product.product_id}}</td>
-                    <td>{{product.product_name | upFirstLetter}} </td>
+                    <td>{{product.product_name}}</td>
                     <td>{{product.quantity}}</td>
-                    <td>{{product.category_id}}</td>
-                    <td>{{product.provider_id}}</td>
-                    <td>{{product.brand_id}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.brand}}</td>
+                    <td>{{product.name}}</td>
+                    
                     <td>
                         <a href="#">
                             <i class="fa fa-edit"></i>

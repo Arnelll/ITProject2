@@ -38,6 +38,17 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'firstname' => 'required|string|max:191',
+            'lastname' => 'required|string|max:191',
+            'contact_no' => 'required'
+        ]);
+
+        return Clients::create([
+            'firstname' => $request['name'],
+            'lastname' => $request['email'],
+            'contact_no' => $request['role']
+        ]); 
     }
 
     /**

@@ -117,9 +117,7 @@
 
                 this.$Progress.finish();
                 })
-                .catch(()=>{
-
-                })
+                
             }
         },
         mounted() {

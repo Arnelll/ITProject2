@@ -97,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <router-link to="#" class="nav-link">
+            <router-link to="/transactions" class="nav-link">
               <i class="nav-icon fas fa-briefcase trans-color"></i>
               <p>
                 Transaction Logs

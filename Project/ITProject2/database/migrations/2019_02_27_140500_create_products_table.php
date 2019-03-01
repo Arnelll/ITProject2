@@ -14,12 +14,9 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('product_id');
+            $table->increments('product_id')->nullable(false);
             $table->string('product_name');
             $table->integer('quantity')->unique();
-            $table->integer('category_id')->nullable();
-            $table->integer('provider_id')->nullable();
-            $table->integer('brand_id')->nullable();
             $table->timestamps();
         });
     }

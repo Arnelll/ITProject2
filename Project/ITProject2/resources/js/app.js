@@ -41,7 +41,8 @@ window.Fire = new Vue(); //Custom Events
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/products', component: require('./components/Products.vue').default },
-    { path: '/clients', component: require('./components/Clients.vue').default }
+    { path: '/clients', component: require('./components/Clients.vue').default },
+    { path: '/transaction', component: require('./components/Transactions.vue').default }
 ]
 
 const router = new VueRouter({
@@ -71,7 +72,7 @@ Vue.filter('readableDate', function(det){
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('', require('./components/Products.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

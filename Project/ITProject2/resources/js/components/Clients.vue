@@ -31,7 +31,7 @@
                             <i class="fa fa-edit text-cyan"></i>
                         </a>
                         
-                        <a href="#">
+                        <a href="#" @click="deleteCustomer(client.client_id)">
                             <i class="fa fa-trash text-red2"></i>
                         </a>
 
@@ -102,6 +102,30 @@
             }
         },
         methods: {
+            deleteCustomer(id){
+                Swal.fire({
+                        title: 'Are you sure? SUKA BLYAT',
+                        text: "You won't be able to revert this! IDI NAHUI",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it! FOR MOTHER RUSSIA PUTTIIIN!!!'
+                    }).then((result) => {
+                    if(result.value){
+                        this.form.delete('/api/client/'+id).then(()=>{
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                            )
+                        Fire.$emit('reloadAfter');    
+                        }).catch(()=>{
+                            Swal.fire("Failed", "Something went wrong.", "warning");
+                        });
+                    }    
+                })        
+            },
             loadCustomers(){
                 axios.get('api/client').then(({data}) => (this.clients = data.data));
             },

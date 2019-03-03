@@ -25,6 +25,7 @@ Vue.use(VueProgressBar,{
 })
 
 import Swal from 'sweetalert2'
+
 window.Swal = Swal;
 
 const Toast = Swal.mixin({

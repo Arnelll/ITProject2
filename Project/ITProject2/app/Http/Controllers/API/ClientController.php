@@ -95,5 +95,10 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
+        $customers = Clients::findOrFail($id);
+
+        $customers->delete();
+
+        return ['message' => 'Customer successfully deleted.'];
     }
 }

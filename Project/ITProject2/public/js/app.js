@@ -1883,16 +1883,38 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    loadCustomers: function loadCustomers() {
+    deleteCustomer: function deleteCustomer(id) {
       var _this = this;
+
+      Swal.fire({
+        title: 'Are you sure? SUKA BLYAT',
+        text: "You won't be able to revert this! IDI NAHUI",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it! FOR MOTHER RUSSIA PUTTIIIN!!!'
+      }).then(function (result) {
+        if (result.value) {
+          _this.form.delete('/api/client/' + id).then(function () {
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Fire.$emit('reloadAfter');
+          }).catch(function () {
+            Swal.fire("Failed", "Something went wrong.", "warning");
+          });
+        }
+      });
+    },
+    loadCustomers: function loadCustomers() {
+      var _this2 = this;
 
       axios.get('api/client').then(function (_ref) {
         var data = _ref.data;
-        return _this.clients = data.data;
+        return _this2.clients = data.data;
       });
     },
     createCustomer: function createCustomer() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$Progress.start();
       this.form.post('api/client').then(function () {
@@ -1903,16 +1925,16 @@ __webpack_require__.r(__webpack_exports__);
           title: 'suka blyat agik'
         });
 
-        _this2.$Progress.finish();
+        _this3.$Progress.finish();
       });
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     this.loadCustomers();
     Fire.$on('reloadAfter', function () {
-      _this3.loadCustomers();
+      _this4.loadCustomers();
     }); //setInterval(() => this.loadCustomers(), 3000); -> Auto request for resources to the server every 3seconds.
   }
 });
@@ -58458,7 +58480,24 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(client.contact_no))]),
                     _vm._v(" "),
-                    _vm._m(2, true)
+                    _c("td", [
+                      _vm._m(2, true),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteCustomer(client.client_id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-trash text-red2" })]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(3, true)
+                    ])
                   ])
                 })
               ],
@@ -58490,7 +58529,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "form",
@@ -58637,7 +58676,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(5)
                 ]
               )
             ])
@@ -58690,18 +58729,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-edit text-cyan" })
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-trash text-red2" })
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-eye text-teal" })
-      ])
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "fa fa-edit text-cyan" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "fas fa-eye text-teal" })
     ])
   },
   function() {

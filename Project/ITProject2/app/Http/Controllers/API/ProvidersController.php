@@ -4,26 +4,19 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Product;
-use App\ProductDetails;
+use App\Provider;
 
-
-class ProductController extends Controller
+class ProvidersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         //
-        return Product::latest()
-                  ->join('product_details','product_details.product_id','products.product_id')
-                  ->join('provider','provider.provider_id','product_details.provider_id')
-                  ->select('product_details.*','products.*','provider.*')
-                  ->paginate(10);  
+        return Provider::paginate(10);
     }
 
     /**
@@ -45,32 +38,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[
-            'product_name' => 'required|string|max:191',
-            'quantity' => 'required|integer',
-            'category' => 'string|max:191',
-            'brand' => 'string|max:191',
-            'provider_id' => 'required'
-
-        ]);
-
-        $product = Product::create([
-            'product_name' => $request['product_name'],
-            'quantity' => $request['quantity']
-        ]); 
-
-        $product->save();
-        $product_id = $product->id;
-
-        $productDetails = ProductDetails::create([
-            'product_id' => $product_id,
-            'category' => $request['category'],
-            'brand' => $request['brand'],
-            'provider_id' => $request['provider_id']
-        ]);
-
-        return $product;
-        
     }
 
     /**

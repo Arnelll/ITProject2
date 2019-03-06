@@ -6,7 +6,7 @@
               <div class="card-header">
                 <h3 class="card-title">Customers</h3>
                 <div class="card-tools">
-                   <button class="btn btn-success" data-toggle="modal" data-target="#addNewClient">
+                   <button class="btn btn-success" @click="addModal()">
                         New Customer Data
                         <i class="fas fa-plus-circle fa-fw"></i>
                     </button>
@@ -27,7 +27,7 @@
                     <td>{{client.lastname | upFirstLetter}}, {{client.firstname | upFirstLetter}} </td>
                     <td>{{client.contact_no}}</td>
                     <td>
-                        <a href="#">
+                        <a href="#" @click="updateModal(client)">
                             <i class="fa fa-edit text-cyan"></i>
                         </a>
                         
@@ -52,12 +52,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addNewClientLabel">Add New Customer</h5>
+                <h5 v-show="!updateState" class="modal-title" id="addNewClientLabel">Add New Customer</h5>
+                <h5 v-show="updateState" class="modal-title" id="updateCustomer">Update Customer Data</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form @submit.prevent="createCustomer">
+            <form @submit.prevent="updateState ? updateCustomer() :createCustomer()">
                 <div class="modal-body">
                     <div class="form-group">
                         <input v-model="form.firstname" type="text" name="firstname" placeholder="Firstname"
@@ -80,7 +81,8 @@
                 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button v-show="updateState" type="submit" class="btn btn-success">Update</button>
+                        <button v-show="!updateState" type="submit" class="btn btn-primary">Create</button>
                     </div>
             </form>
             </div>
@@ -91,29 +93,57 @@
 
 <script>
     export default {
-        data(){
+        data(){   
             return{
+                updateState:false,
                 clients : {},
                 form: new Form({
-                    firstname : '',
+                    client_id: '',
+                    firstname: '',
                     lastname: '',
                     contact_no: ''
                 })
             }
         },
         methods: {
+            updateCustomer(){
+                this.$Progress.start();
+                this.form.put('/api/client/'+this.form.client_id).then(()=>{
+                    Swal.fire(
+                            'Updated!',
+                            'Customer has been updated.',
+                            'success'
+                            )
+                    this.$Progress.finish();
+                    Fire.$emit('reloadAfter');  
+                }).catch(()=>{
+                    
+                });
+            },
+            addModal(){
+                this.updateState=false;
+                this.form.reset();
+                $('#addNewClient').modal('show')
+            },
+            updateModal(client){
+                this.updateState=true;
+                this.form.reset();
+                $('#addNewClient').modal('show')
+                this.form.fill(client);
+            },
             deleteCustomer(id){
                 Swal.fire({
-                        title: 'Are you sure? SUKA BLYAT',
-                        text: "You won't be able to revert this! IDI NAHUI",
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
                         type: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it! FOR MOTHER RUSSIA PUTTIIIN!!!'
+                        confirmButtonText: 'Yes, delete it!'
                     }).then((result) => {
                     if(result.value){
                         this.form.delete('/api/client/'+id).then(()=>{
+                        
                         Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',
@@ -136,7 +166,7 @@
                 Fire.$emit('reloadAfter');
                 Toast.fire({
                     type: 'success',
-                    title: 'suka blyat agik'
+                    title: 'Successfully added customer'
                 })
 
                 this.$Progress.finish();

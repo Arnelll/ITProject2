@@ -1871,11 +1871,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      updateState: false,
       clients: {},
       form: new Form({
+        client_id: '',
         firstname: '',
         lastname: '',
         contact_no: ''
@@ -1883,20 +1887,43 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    deleteCustomer: function deleteCustomer(id) {
+    updateCustomer: function updateCustomer() {
       var _this = this;
 
+      this.$Progress.start();
+      this.form.put('/api/client/' + this.form.client_id).then(function () {
+        Swal.fire('Updated!', 'Customer has been updated.', 'success');
+
+        _this.$Progress.finish();
+
+        Fire.$emit('reloadAfter');
+      }).catch(function () {});
+    },
+    addModal: function addModal() {
+      this.updateState = false;
+      this.form.reset();
+      $('#addNewClient').modal('show');
+    },
+    updateModal: function updateModal(client) {
+      this.updateState = true;
+      this.form.reset();
+      $('#addNewClient').modal('show');
+      this.form.fill(client);
+    },
+    deleteCustomer: function deleteCustomer(id) {
+      var _this2 = this;
+
       Swal.fire({
-        title: 'Are you sure? SUKA BLYAT',
-        text: "You won't be able to revert this! IDI NAHUI",
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it! FOR MOTHER RUSSIA PUTTIIIN!!!'
+        confirmButtonText: 'Yes, delete it!'
       }).then(function (result) {
         if (result.value) {
-          _this.form.delete('/api/client/' + id).then(function () {
+          _this2.form.delete('/api/client/' + id).then(function () {
             Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             Fire.$emit('reloadAfter');
           }).catch(function () {
@@ -1906,15 +1933,15 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     loadCustomers: function loadCustomers() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get('api/client').then(function (_ref) {
         var data = _ref.data;
-        return _this2.clients = data.data;
+        return _this3.clients = data.data;
       });
     },
     createCustomer: function createCustomer() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.$Progress.start();
       this.form.post('api/client').then(function () {
@@ -1922,19 +1949,19 @@ __webpack_require__.r(__webpack_exports__);
         Fire.$emit('reloadAfter');
         Toast.fire({
           type: 'success',
-          title: 'suka blyat agik'
+          title: 'Successfully added customer'
         });
 
-        _this3.$Progress.finish();
+        _this4.$Progress.finish();
       });
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this5 = this;
 
     this.loadCustomers();
     Fire.$on('reloadAfter', function () {
-      _this4.loadCustomers();
+      _this5.loadCustomers();
     }); //setInterval(() => this.loadCustomers(), 3000); -> Auto request for resources to the server every 3seconds.
   }
 });
@@ -2168,31 +2195,85 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: {},
+      providers: {},
       form: new Form({
         product_name: '',
         quantity: '',
-        product_category: '',
-        product_status: '',
-        product_provider: ''
+        category: '',
+        brand: '',
+        provider_id: ''
       })
     };
   },
   methods: {
-    loadProducts: function loadProducts() {
+    createProduct: function createProduct() {
       var _this = this;
+
+      this.$Progress.start();
+      this.form.post('api/product').then(function () {
+        $('#addNewProduct').modal('hide');
+        Fire.$emit('reloadAfter');
+        Toast.fire({
+          type: 'success',
+          title: 'Successfully added product'
+        });
+
+        _this.$Progress.finish();
+      });
+    },
+    loadProducts: function loadProducts() {
+      var _this2 = this;
 
       axios.get('api/product').then(function (_ref) {
         var data = _ref.data;
-        return _this.products = data.data;
+        return _this2.products = data.data;
+      });
+    },
+    loadProviders: function loadProviders() {
+      var _this3 = this;
+
+      axios.get('api/provider').then(function (_ref2) {
+        var data = _ref2.data;
+        return _this3.providers = data.data;
       });
     }
   },
   mounted: function mounted() {
+    var _this4 = this;
+
     this.loadProducts();
+    this.loadProviders();
+    Fire.$on('reloadAfter', function () {
+      _this4.loadProducts();
+    });
   }
 });
 
@@ -58456,14 +58537,36 @@ var render = function() {
     _c("div", { staticClass: "row mt-5" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Customers")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: {
+                    click: function($event) {
+                      return _vm.addModal()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                    New Customer Data\n                    "
+                  ),
+                  _c("i", { staticClass: "fas fa-plus-circle fa-fw" })
+                ]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body table-responsive p-0" }, [
             _c(
               "table",
               { staticClass: "table table-hover" },
               [
-                _vm._m(1),
+                _vm._m(0),
                 _vm._v(" "),
                 _vm._l(_vm.clients, function(client) {
                   return _c("tr", { key: client.client_id }, [
@@ -58481,7 +58584,18 @@ var render = function() {
                     _c("td", [_vm._v(_vm._s(client.contact_no))]),
                     _vm._v(" "),
                     _c("td", [
-                      _vm._m(2, true),
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              return _vm.updateModal(client)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-edit text-cyan" })]
+                      ),
                       _vm._v(" "),
                       _c(
                         "a",
@@ -58496,7 +58610,7 @@ var render = function() {
                         [_c("i", { staticClass: "fa fa-trash text-red2" })]
                       ),
                       _vm._v(" "),
-                      _vm._m(3, true)
+                      _vm._m(1, true)
                     ])
                   ])
                 })
@@ -58529,7 +58643,43 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(4),
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updateState,
+                        expression: "!updateState"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "addNewClientLabel" }
+                  },
+                  [_vm._v("Add New Customer")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.updateState,
+                        expression: "updateState"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "updateCustomer" }
+                  },
+                  [_vm._v("Update Customer Data")]
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ]),
               _vm._v(" "),
               _c(
                 "form",
@@ -58537,7 +58687,9 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.createCustomer($event)
+                      _vm.updateState
+                        ? _vm.updateCustomer()
+                        : _vm.createCustomer()
                     }
                   }
                 },
@@ -58676,7 +58828,50 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(5)
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.updateState,
+                            expression: "updateState"
+                          }
+                        ],
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.updateState,
+                            expression: "!updateState"
+                          }
+                        ],
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Create")]
+                    )
+                  ])
                 ]
               )
             ])
@@ -58687,30 +58882,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Customers")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-tools" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNewClient" }
-          },
-          [
-            _vm._v(
-              "\n                    New Customer Data\n                    "
-            ),
-            _c("i", { staticClass: "fas fa-plus-circle fa-fw" })
-          ]
-        )
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -58730,14 +58901,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "#" } }, [
-      _c("i", { staticClass: "fa fa-edit text-cyan" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
       _c("i", { staticClass: "fas fa-eye text-teal" })
     ])
   },
@@ -58745,47 +58908,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "addNewClientLabel" } },
-        [_vm._v("Add New Customer")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Create")]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true
@@ -59006,10 +59140,10 @@ var render = function() {
       {
         staticClass: "modal fade",
         attrs: {
-          id: "addNewClient",
+          id: "addNewProduct",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "addNewClientLabel",
+          "aria-labelledby": "addNewProductLabel",
           "aria-hidden": "true"
         }
       },
@@ -59030,7 +59164,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.createUser($event)
+                      return _vm.createProduct($event)
                     }
                   }
                 },
@@ -59084,67 +59218,181 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.role,
-                                expression: "form.role"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.form.errors.has("role")
-                            },
-                            attrs: { name: "role", id: "role" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.form,
-                                  "role",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.quantity,
+                              expression: "form.quantity"
                             }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("quantity")
                           },
-                          [
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v("Template")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "#" } }, [
-                              _vm._v("#")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "#" } }, [
-                              _vm._v("#")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "#" } }, [
-                              _vm._v("#")
-                            ])
-                          ]
-                        ),
+                          attrs: {
+                            type: "text",
+                            name: "quantity",
+                            placeholder: "Quantity"
+                          },
+                          domProps: { value: _vm.form.quantity },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "quantity",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
                         _vm._v(" "),
                         _c("has-error", {
-                          attrs: { form: _vm.form, field: "role" }
+                          attrs: { form: _vm.form, field: "quantity" }
                         })
                       ],
                       1
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.category,
+                              expression: "form.category"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("category")
+                          },
+                          attrs: {
+                            type: "text",
+                            name: "category",
+                            placeholder: "Category"
+                          },
+                          domProps: { value: _vm.form.category },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "category",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "category" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.brand,
+                              expression: "form.brand"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: { "is-invalid": _vm.form.errors.has("brand") },
+                          attrs: {
+                            type: "text",
+                            name: "brand",
+                            placeholder: "Brand"
+                          },
+                          domProps: { value: _vm.form.brand },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "brand", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "brand" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.provider_id,
+                              expression: "form.provider_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("provider_id")
+                          },
+                          attrs: { name: "provider_id", id: "role" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "provider_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("Select Provider")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.providers, function(provider) {
+                            return _c(
+                              "option",
+                              { domProps: { value: provider.provider_id } },
+                              [_vm._v(_vm._s(provider.name))]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _vm._m(4)
@@ -59170,7 +59418,7 @@ var staticRenderFns = [
           "button",
           {
             staticClass: "btn btn-success",
-            attrs: { "data-toggle": "modal", "data-target": "#addNewClient" }
+            attrs: { "data-toggle": "modal", "data-target": "#addNewProduct" }
           },
           [
             _vm._v("\n                    Add New\n                    "),
@@ -59225,8 +59473,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h5",
-        { staticClass: "modal-title", attrs: { id: "addNewClientLabel" } },
-        [_vm._v("Modal title")]
+        { staticClass: "modal-title", attrs: { id: "addNewProductLabel" } },
+        [_vm._v("New Product")]
       ),
       _vm._v(" "),
       _c(

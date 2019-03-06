@@ -6,7 +6,7 @@
               <div class="card-header">
                 <h3 class="card-title">Product Table</h3>
                 <div class="card-tools">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#addNewClient">
+                    <button class="btn btn-success" data-toggle="modal" data-target="#addNewProduct">
                         Add New
                         <i class="fas fa-user-plus fa-fw"></i>
                     </button>
@@ -55,16 +55,16 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="addNewClient" tabindex="-1" role="dialog" aria-labelledby="addNewClientLabel" aria-hidden="true">
+        <div class="modal fade" id="addNewProduct" tabindex="-1" role="dialog" aria-labelledby="addNewProductLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addNewClientLabel">Modal title</h5>
+                <h5 class="modal-title" id="addNewProductLabel">New Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form @submit.prevent="createUser">
+            <form @submit.prevent="createProduct">
                 <div class="modal-body">
                     <div class="form-group">
                         <input v-model="form.product_name" type="text" name="product_name" placeholder="Product Name"
@@ -73,17 +73,41 @@
                     </div>
 
                     <div class="form-group">
-                        <select name="role" v-model="form.role" id="role" class="form-control" :class="{
-                        'is-invalid': form.errors.has('role') }">
-                            <option value="">Template</option>
-                            <option value="#">#</option>
-                            <option value="#">#</option>
-                            <option value="#">#</option>
-                        </select>
-                        <has-error :form="form" field="role"></has-error>
+                        <input v-model="form.quantity" type="text" name="quantity" placeholder="Quantity"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('quantity') }">
+                        <has-error :form="form" field="quantity"></has-error>
                     </div>
-                </div>
-                
+
+                    <div class="form-group">
+                        <input v-model="form.category" type="text" name="category" placeholder="Category"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('category') }">
+                        <has-error :form="form" field="category"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.brand" type="text" name="brand" placeholder="Brand"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('brand') }">
+                        <has-error :form="form" field="brand"></has-error>
+                    </div>
+                    
+                    <!--
+                    <div class="form-group">
+                        <input v-model="form.provider_id" type="text" name="provider_id" placeholder="Provider ID"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('provider_id') }">
+                        <has-error :form="form" field="provider_id"></has-error>
+                    </div>
+                    -->
+                    
+                    <div class="form-group">
+                        <select name="provider_id" v-model="form.provider_id" id="role" class="form-control" :class="{
+                        'is-invalid': form.errors.has('provider_id') }">
+                            <option value="0">Select Provider</option>
+                            <option v-for="provider in providers" :value="provider.provider_id">{{provider.name}}</option>
+                        </select>
+                    </div>
+                    
+                    
+                </div> 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Create</button>
@@ -100,22 +124,44 @@
         data(){
             return{
                 products : {},
+                providers : {},
                 form: new Form({
                     product_name : '',
                     quantity : '',
-                    product_category : '',
-                    product_status : '',
-                    product_provider: ''
+                    category : '',
+                    brand : '',
+                    provider_id: ''
                 })
+                    
             }
         },
         methods: {
+            createProduct(){
+                this.$Progress.start();
+                this.form.post('api/product').then(()=>{
+                $('#addNewProduct').modal('hide')
+                Fire.$emit('reloadAfter');
+                Toast.fire({
+                    type: 'success',
+                    title: 'Successfully added product'
+                })
+                this.$Progress.finish();
+                })
+            },
             loadProducts(){
                 axios.get('api/product').then(({data}) => (this.products = data.data));
+                
+            },
+            loadProviders(){
+                axios.get('api/provider').then(({data}) => (this.providers = data.data));
             }
         },
         mounted() {
             this.loadProducts();
+            this.loadProviders();
+            Fire.$on('reloadAfter',() => {
+                this.loadProducts();
+            });
         }
     }
 </script>

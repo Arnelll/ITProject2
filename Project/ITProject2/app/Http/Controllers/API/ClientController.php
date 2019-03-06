@@ -84,6 +84,16 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $customers = Clients::findOrFail($id);
+
+        $this->validate($request,[
+            'firstname' => 'required|string|max:191',
+            'lastname' => 'required|string|max:191',
+            'contact_no' => 'required'
+        ]);
+        
+        $customers->update($request->all());
+        return ['message' => 'hehe'];
     }
 
     /**

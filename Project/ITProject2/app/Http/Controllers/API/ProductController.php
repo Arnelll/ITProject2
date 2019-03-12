@@ -51,7 +51,6 @@ class ProductController extends Controller
             'category' => 'string|max:191',
             'brand' => 'string|max:191',
             'provider_id' => 'required'
-
         ]);
 
         $product = Product::create([
@@ -59,11 +58,8 @@ class ProductController extends Controller
             'quantity' => $request['quantity']
         ]); 
 
-        $product->save();
-        $product_id = $product->id;
-
         $productDetails = ProductDetails::create([
-            'product_id' => $product_id,
+            'product_id' => $product->product_id,
             'category' => $request['category'],
             'brand' => $request['brand'],
             'provider_id' => $request['provider_id']
@@ -105,6 +101,11 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $products = Product::findOrFail($id);
+        $productDetails = ProductDetails::findOrFail($id);
+        $products->update($request->all());
+        $productDetails->update($request->all());
+        return ['message' => 'hehe'];
     }
 
     /**

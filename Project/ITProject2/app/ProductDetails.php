@@ -8,6 +8,7 @@ class ProductDetails extends Model
 {
     //
     protected $table = 'product_details';
-    protected $fillable = ['category', 'brand','product_id','provider_id'];
+    protected $fillable = ['product_id', 'category', 'brand', 'provider_id'];
+    protected $primaryKey = 'product_id';
     public $timestamps = false;
 }

@@ -43,7 +43,9 @@ let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/products', component: require('./components/Products.vue').default },
     { path: '/clients', component: require('./components/Clients.vue').default },
-    { path: '/transaction', component: require('./components/Transactions.vue').default }
+    { path: '/transaction', component: require('./components/Transactions.vue').default },
+    { path: '/providers', component: require('./components/Providers.vue').default },
+    { path: '/transactions', component: require('./components/Transactions.vue').default }
 ]
 
 const router = new VueRouter({

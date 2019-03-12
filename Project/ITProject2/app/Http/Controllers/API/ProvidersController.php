@@ -38,6 +38,15 @@ class ProvidersController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'provider_name' => 'required|string|max:191',
+        ]);
+
+        $provider = Provider::create([
+            'name' => $request['provider_name']
+        ]); 
+
+        return $provider;
     }
 
     /**

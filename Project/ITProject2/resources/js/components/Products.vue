@@ -4,9 +4,9 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Product Table</h3>
+                <h3 class="card-title">Products</h3>
                 <div class="card-tools">
-                    <button class="btn btn-success" data-toggle="modal" data-target="#addNewProduct">
+                    <button class="btn btn-success" @click="addModal()">
                         Add New
                         <i class="fas fa-user-plus fa-fw"></i>
                     </button>
@@ -34,16 +34,12 @@
                     <td>{{product.name}}</td>
                     
                     <td>
-                        <a href="#">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        
-                        <a href="#">
-                            <i class="fa fa-trash"></i>
+                        <a href="#" @click="updateModal(product)">
+                            <i class="fa fa-edit text-cyan"></i>
                         </a>
 
                         <a href="#">
-                            <i class="fas fa-eye"></i>
+                            <i class="fas fa-eye text-teal"></i>
                         </a>
                     </td>
                   </tr>
@@ -64,7 +60,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form @submit.prevent="createProduct">
+            <form @submit.prevent="updateState ? updateProduct() : createProduct()">
                 <div class="modal-body">
                     <div class="form-group">
                         <input v-model="form.product_name" type="text" name="product_name" placeholder="Product Name"
@@ -90,14 +86,6 @@
                         <has-error :form="form" field="brand"></has-error>
                     </div>
                     
-                    <!--
-                    <div class="form-group">
-                        <input v-model="form.provider_id" type="text" name="provider_id" placeholder="Provider ID"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('provider_id') }">
-                        <has-error :form="form" field="provider_id"></has-error>
-                    </div>
-                    -->
-                    
                     <div class="form-group">
                         <select name="provider_id" v-model="form.provider_id" id="role" class="form-control" :class="{
                         'is-invalid': form.errors.has('provider_id') }">
@@ -110,7 +98,8 @@
                 </div> 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button v-show="!updateState" type="submit" class="btn btn-primary">Create</button>
+                        <button v-show="updateState" type="submit" class="btn btn-primary">Update</button>
                     </div>
             </form>
             </div>
@@ -123,9 +112,11 @@
     export default {
         data(){
             return{
+                updateState: false,
                 products : {},
                 providers : {},
                 form: new Form({
+                    product_id : '',
                     product_name : '',
                     quantity : '',
                     category : '',
@@ -136,6 +127,22 @@
             }
         },
         methods: {
+            updateProduct(){
+                this.$Progress.start();
+                this.form.put('/api/product/'+this.form.product_id).then(()=>{
+                    Swal.fire(
+                            'Updated!',
+                            'Product has been updated.',
+                            'success'
+                            )
+                    this.$Progress.finish();
+                    $('#addNewProduct').modal('hide')
+                    Fire.$emit('reloadAfter');  
+                }).catch(()=>{
+                    
+                });
+
+            },
             createProduct(){
                 this.$Progress.start();
                 this.form.post('api/product').then(()=>{
@@ -147,6 +154,17 @@
                 })
                 this.$Progress.finish();
                 })
+            },
+            addModal(){
+                this.updateState=false;
+                this.form.reset();
+                $('#addNewProduct').modal('show')
+            },
+            updateModal(product){
+                this.updateState=true;
+                this.form.reset();
+                $('#addNewProduct').modal('show')
+                this.form.fill(product);
             },
             loadProducts(){
                 axios.get('api/product').then(({data}) => (this.products = data.data));

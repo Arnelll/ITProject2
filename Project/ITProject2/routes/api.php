@@ -22,4 +22,5 @@ Route::apiResources(['product' => 'API\ProductController']);
 Route::apiResources(['client' => 'API\ClientController']);
 Route::apiResources(['productDetails' => 'API\ProductDetailsController']);
 Route::apiResources(['provider' => 'API\ProvidersController']);
+Route::apiResources(['transaction' => 'API\TransactionController']);
 

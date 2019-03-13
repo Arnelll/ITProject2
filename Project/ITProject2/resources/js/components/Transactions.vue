@@ -4,9 +4,9 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Providers</h3>
+                <h3 class="card-title">Transactions</h3>
                 <div class="card-tools">
-                    <button class="btn btn-success" @click="addProvider()">
+                    <button class="btn btn-success" @click="addTransaction()">
                         Add New
                         <i class="fas fa-user-plus fa-fw"></i>
                     </button>
@@ -17,12 +17,18 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
                   <tr>
+                    <th>Transaction ID</th>
+                    <th>Client ID</th>
                     <th>Product ID</th>
-                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
                   </tr>
-                  <tr v-for="provider in providers" :key="provider.provider_id">
-                    <td>{{provider.provider_id}}</td>
-                    <td>{{provider.name}}</td>
+                  <tr v-for="transaction in transactions" :key="transaction.tId">
+                    <td>{{transaction.tId}}</td>
+                    <td>{{transaction.client_id}}</td>
+                    <td>{{transaction.product_id}}</td>
+                    <td>{{transaction.quantity}}</td>
+                    <td>{{transaction.status}}</td>
                     
                     <td>
                         <a href="#">
@@ -42,23 +48,44 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="addNewProvider" tabindex="-1" role="dialog" aria-labelledby="addNewProviderLabel" aria-hidden="true">
+        <div class="modal fade" id="addNewTransaction" tabindex="-1" role="dialog" aria-labelledby="addNewTransactionLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addNewProviderLabel">New Provider</h5>
+                <h5 class="modal-title" id="addNewTransactionLabel">New Transaction</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form @submit.prevent='createProvider'>
+            <form @submit.prevent='createTransaction'>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input v-model="form.provider_name" type="text" name="provider_name" placeholder="Name"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('provider_name') }">
-                        <has-error :form="form" field="provider_name"></has-error>
+                        <input v-model="form.client_id" type="text" name="client_id" placeholder="Client ID"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('client_id') }">
+                        <has-error :form="form" field="client_id"></has-error>
                     </div>
-                </div> 
+                
+               
+                    <div class="form-group">
+                        <input v-model="form.product_id" type="text" name="product_id" placeholder="Product ID"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('product_id') }">
+                        <has-error :form="form" field="product_id"></has-error>
+                    </div>
+                
+                
+                    <div class="form-group">
+                        <input v-model="form.quantity" type="text" name="quantity" placeholder="Quantity"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('quantity') }">
+                        <has-error :form="form" field="quantity"></has-error>
+                    </div>
+                
+                
+                    <div class="form-group">
+                        <input v-model="form.status" type="text" name="status" placeholder="Status"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('status') }">
+                        <has-error :form="form" field="status"></has-error>
+                    </div>
+                </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Create</button>
@@ -76,29 +103,38 @@
         data(){
             return{
                 updateState: false,
-                providers : {},
+                transactions : {},
                 form: new Form({
-                    provider_name: ''
+                    client_id: '',
+                    product_id: '',
+                    quantity: '',
+                    status: ''
                 })      
             }
         },
         methods: {
-            addProvider(){
+            addTransaction(){
                 this.updateState=false;
                 this.form.reset();
-                $('#addNewProvider').modal('show')
+                $('#addNewTransaction').modal('show')
             },
-            loadProviders(){
-                axios.get('api/provider').then(({data}) => (this.providers = data.data));
+            loadTransactions(){
+                axios.get('api/transaction').then(({data}) => (this.transactions = data.data));
             },
-            createProvider(){
+            loadClients(){
+                axios.get('api/client').then(({data}) => (this.clients = data.data));
+            },
+            loadProducts(){
+                axios.get('api/product').then(({data}) => (this.transactions = data.data));
+            },
+            createTransaction(){
                 this.$Progress.start();
-                this.form.post('api/provider').then(()=>{
-                $('#addNewProvider').modal('hide')
+                this.form.post('api/transaction').then(()=>{
+                $('#addNewTransaction').modal('hide')
                 Fire.$emit('reloadAfter');
                 Toast.fire({
                     type: 'success',
-                    title: 'Successfully added provider'
+                    title: 'Successfully added Transaction'
                 })
                 this.$Progress.finish();
                 })
@@ -106,9 +142,9 @@
             }
         },
         mounted() {
-            this.loadProviders();
+            this.loadTransactions();
             Fire.$on('reloadAfter',() => {
-                this.loadProviders();
+                this.loadTransactions();
             });
         }
     }

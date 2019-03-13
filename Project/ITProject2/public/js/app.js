@@ -2510,52 +2510,98 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       updateState: false,
-      providers: {},
+      transactions: {},
       form: new Form({
-        provider_name: ''
+        client_id: '',
+        product_id: '',
+        quantity: '',
+        status: ''
       })
     };
   },
   methods: {
-    addProvider: function addProvider() {
+    addTransaction: function addTransaction() {
       this.updateState = false;
       this.form.reset();
-      $('#addNewProvider').modal('show');
+      $('#addNewTransaction').modal('show');
     },
-    loadProviders: function loadProviders() {
+    loadTransactions: function loadTransactions() {
       var _this = this;
 
-      axios.get('api/provider').then(function (_ref) {
+      axios.get('api/transaction').then(function (_ref) {
         var data = _ref.data;
-        return _this.providers = data.data;
+        return _this.transactions = data.data;
       });
     },
-    createProvider: function createProvider() {
+    loadClients: function loadClients() {
       var _this2 = this;
 
+      axios.get('api/client').then(function (_ref2) {
+        var data = _ref2.data;
+        return _this2.clients = data.data;
+      });
+    },
+    loadProducts: function loadProducts() {
+      var _this3 = this;
+
+      axios.get('api/product').then(function (_ref3) {
+        var data = _ref3.data;
+        return _this3.transactions = data.data;
+      });
+    },
+    createTransaction: function createTransaction() {
+      var _this4 = this;
+
       this.$Progress.start();
-      this.form.post('api/provider').then(function () {
-        $('#addNewProvider').modal('hide');
+      this.form.post('api/transaction').then(function () {
+        $('#addNewTransaction').modal('hide');
         Fire.$emit('reloadAfter');
         Toast.fire({
           type: 'success',
-          title: 'Successfully added provider'
+          title: 'Successfully added Transaction'
         });
 
-        _this2.$Progress.finish();
+        _this4.$Progress.finish();
       });
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this5 = this;
 
-    this.loadProviders();
+    this.loadTransactions();
     Fire.$on('reloadAfter', function () {
-      _this3.loadProviders();
+      _this5.loadTransactions();
     });
   }
 });
@@ -60049,7 +60095,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Providers")]),
+            _c("h3", { staticClass: "card-title" }, [_vm._v("Transactions")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
               _c(
@@ -60058,7 +60104,7 @@ var render = function() {
                   staticClass: "btn btn-success",
                   on: {
                     click: function($event) {
-                      return _vm.addProvider()
+                      return _vm.addTransaction()
                     }
                   }
                 },
@@ -60077,11 +60123,17 @@ var render = function() {
               [
                 _vm._m(0),
                 _vm._v(" "),
-                _vm._l(_vm.providers, function(provider) {
-                  return _c("tr", { key: provider.provider_id }, [
-                    _c("td", [_vm._v(_vm._s(provider.provider_id))]),
+                _vm._l(_vm.transactions, function(transaction) {
+                  return _c("tr", { key: transaction.tId }, [
+                    _c("td", [_vm._v(_vm._s(transaction.tId))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(provider.name))]),
+                    _c("td", [_vm._v(_vm._s(transaction.client_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(transaction.product_id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(transaction.quantity))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(transaction.status))]),
                     _vm._v(" "),
                     _vm._m(1, true)
                   ])
@@ -60099,10 +60151,10 @@ var render = function() {
       {
         staticClass: "modal fade",
         attrs: {
-          id: "addNewProvider",
+          id: "addNewTransaction",
           tabindex: "-1",
           role: "dialog",
-          "aria-labelledby": "addNewProviderLabel",
+          "aria-labelledby": "addNewTransactionLabel",
           "aria-hidden": "true"
         }
       },
@@ -60123,7 +60175,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.createProvider($event)
+                      return _vm.createTransaction($event)
                     }
                   }
                 },
@@ -60138,20 +60190,20 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.provider_name,
-                              expression: "form.provider_name"
+                              value: _vm.form.client_id,
+                              expression: "form.client_id"
                             }
                           ],
                           staticClass: "form-control",
                           class: {
-                            "is-invalid": _vm.form.errors.has("provider_name")
+                            "is-invalid": _vm.form.errors.has("client_id")
                           },
                           attrs: {
                             type: "text",
-                            name: "provider_name",
-                            placeholder: "Name"
+                            name: "client_id",
+                            placeholder: "Client ID"
                           },
-                          domProps: { value: _vm.form.provider_name },
+                          domProps: { value: _vm.form.client_id },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -60159,7 +60211,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.form,
-                                "provider_name",
+                                "client_id",
                                 $event.target.value
                               )
                             }
@@ -60167,7 +60219,135 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("has-error", {
-                          attrs: { form: _vm.form, field: "provider_name" }
+                          attrs: { form: _vm.form, field: "client_id" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.product_id,
+                              expression: "form.product_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("product_id")
+                          },
+                          attrs: {
+                            type: "text",
+                            name: "product_id",
+                            placeholder: "Product ID"
+                          },
+                          domProps: { value: _vm.form.product_id },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "product_id",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "product_id" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.quantity,
+                              expression: "form.quantity"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("quantity")
+                          },
+                          attrs: {
+                            type: "text",
+                            name: "quantity",
+                            placeholder: "Quantity"
+                          },
+                          domProps: { value: _vm.form.quantity },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "quantity",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "quantity" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.status,
+                              expression: "form.status"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("status")
+                          },
+                          attrs: {
+                            type: "text",
+                            name: "status",
+                            placeholder: "Status"
+                          },
+                          domProps: { value: _vm.form.status },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "status", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "status" }
                         })
                       ],
                       1
@@ -60190,9 +60370,15 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
+      _c("th", [_vm._v("Transaction ID")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Client ID")]),
+      _vm._v(" "),
       _c("th", [_vm._v("Product ID")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Product Name")])
+      _c("th", [_vm._v("Quantity")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Status")])
     ])
   },
   function() {
@@ -60216,8 +60402,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h5",
-        { staticClass: "modal-title", attrs: { id: "addNewProviderLabel" } },
-        [_vm._v("New Provider")]
+        { staticClass: "modal-title", attrs: { id: "addNewTransactionLabel" } },
+        [_vm._v("New Transaction")]
       ),
       _vm._v(" "),
       _c(

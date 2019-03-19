@@ -16,7 +16,11 @@ class TransactionController extends Controller
     public function index()
     {
         //
-        return Transactions::paginate(10);
+        return Transactions::latest()
+                  ->join('clients','clients.client_id','transactions.client_id')
+                  ->join('products','products.product_id','transactions.product_id')
+                  ->select('transactions.*','clients.*','products.*')
+                  ->paginate(10);  
     }
 
     /**

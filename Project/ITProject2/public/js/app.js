@@ -2372,10 +2372,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2537,11 +2533,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       updateState: false,
       transactions: {},
+      clients: {},
+      products: {},
       form: new Form({
         client_id: '',
         product_id: '',
@@ -2577,7 +2582,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/product').then(function (_ref3) {
         var data = _ref3.data;
-        return _this3.transactions = data.data;
+        return _this3.products = data.data;
       });
     },
     createTransaction: function createTransaction() {
@@ -2600,6 +2605,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this5 = this;
 
     this.loadTransactions();
+    this.loadClients();
+    this.loadProducts();
     Fire.$on('reloadAfter', function () {
       _this5.loadTransactions();
     });
@@ -58849,7 +58856,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                    New Customer Data\n                    "
+                    "\n                    New Customer\n                    "
                   ),
                   _c("i", { staticClass: "fas fa-plus-circle fa-fw" })
                 ]
@@ -59250,7 +59257,7 @@ var staticRenderFns = [
       _c("section", { staticClass: "content-header" }, [
         _c("h1", [
           _vm._v("\n            Dashboard\n            "),
-          _c("small", [_vm._v("1.1 (Update as of 1/03/2019)")])
+          _c("small", [_vm._v("1. (Update as of 03/18/2019)")])
         ])
       ]),
       _vm._v(" "),
@@ -59282,7 +59289,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "info-box-content" }, [
               _c("span", { staticClass: "info-box-text" }, [
-                _vm._v("Customers")
+                _vm._v("Products in-stock")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "info-box-number" }, [_vm._v("41,410")])
@@ -59291,20 +59298,6 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "clearfix visible-sm-block" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3 col-sm-6 col-xs-12" }, [
-          _c("div", { staticClass: "info-box" }, [
-            _c("span", { staticClass: "info-box-icon bg-green" }, [
-              _c("i", { staticClass: "fas fa-shopping-cart text-green" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "info-box-content" }, [
-              _c("span", { staticClass: "info-box-text" }, [_vm._v("Sales")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "info-box-number" }, [_vm._v("760")])
-            ])
-          ])
-        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-3 col-sm-6 col-xs-12" }, [
           _c("div", { staticClass: "info-box" }, [
@@ -59412,7 +59405,9 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("\n                    Add New\n                    "),
+                  _vm._v(
+                    "\n                    Add New Product\n                    "
+                  ),
                   _c("i", { staticClass: "fas fa-user-plus fa-fw" })
                 ]
               )
@@ -59876,7 +59871,9 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("\n                    Add New\n                    "),
+                  _vm._v(
+                    "\n                    New Provider\n                    "
+                  ),
                   _c("i", { staticClass: "fas fa-user-plus fa-fw" })
                 ]
               )
@@ -60003,9 +60000,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("th", [_vm._v("Product ID")]),
+      _c("th", [_vm._v("Provider ID")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Product Name")])
+      _c("th", [_vm._v("Provider Name")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Action")])
     ])
   },
   function() {
@@ -60013,10 +60012,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-edit text-cyan" })
-      ]),
-      _vm._v(" "),
       _c("a", { attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-eye text-teal" })
       ])
@@ -60109,7 +60104,9 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("\n                    Add New\n                    "),
+                  _vm._v(
+                    "\n                    New Transaction\n                    "
+                  ),
                   _c("i", { staticClass: "fas fa-user-plus fa-fw" })
                 ]
               )
@@ -60127,9 +60124,15 @@ var render = function() {
                   return _c("tr", { key: transaction.tId }, [
                     _c("td", [_vm._v(_vm._s(transaction.tId))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(transaction.client_id))]),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(transaction.lastname) +
+                          ", " +
+                          _vm._s(transaction.firstname)
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(transaction.product_id))]),
+                    _c("td", [_vm._v(_vm._s(transaction.product_name))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(transaction.quantity))]),
                     _vm._v(" "),
@@ -60181,11 +60184,10 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "modal-body" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("input", {
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
                           directives: [
                             {
                               name: "model",
@@ -60198,38 +60200,58 @@ var render = function() {
                           class: {
                             "is-invalid": _vm.form.errors.has("client_id")
                           },
-                          attrs: {
-                            type: "text",
-                            name: "client_id",
-                            placeholder: "Client ID"
-                          },
-                          domProps: { value: _vm.form.client_id },
+                          attrs: { name: "client_id", id: "client_id" },
                           on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
                               _vm.$set(
                                 _vm.form,
                                 "client_id",
-                                $event.target.value
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               )
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "client_id" }
-                        })
-                      ],
-                      1
-                    ),
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "", disabled: "", selected: "" }
+                            },
+                            [_vm._v("Select Client(lastname, firstname)")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.clients, function(client) {
+                            return _c(
+                              "option",
+                              { domProps: { value: client.client_id } },
+                              [
+                                _vm._v(
+                                  _vm._s(client.lastname) +
+                                    ", " +
+                                    _vm._s(client.firstname)
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("input", {
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
                           directives: [
                             {
                               name: "model",
@@ -60242,32 +60264,47 @@ var render = function() {
                           class: {
                             "is-invalid": _vm.form.errors.has("product_id")
                           },
-                          attrs: {
-                            type: "text",
-                            name: "product_id",
-                            placeholder: "Product ID"
-                          },
-                          domProps: { value: _vm.form.product_id },
+                          attrs: { name: "product_id", id: "product_id" },
                           on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
                               _vm.$set(
                                 _vm.form,
                                 "product_id",
-                                $event.target.value
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               )
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "product_id" }
-                        })
-                      ],
-                      1
-                    ),
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "", disabled: "", selected: "" }
+                            },
+                            [_vm._v("Select Product")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.products, function(product) {
+                            return _c(
+                              "option",
+                              { domProps: { value: product.product_id } },
+                              [_vm._v(_vm._s(product.product_name))]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -60313,11 +60350,10 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("input", {
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "select",
+                        {
                           directives: [
                             {
                               name: "model",
@@ -60330,28 +60366,54 @@ var render = function() {
                           class: {
                             "is-invalid": _vm.form.errors.has("status")
                           },
-                          attrs: {
-                            type: "text",
-                            name: "status",
-                            placeholder: "Status"
-                          },
-                          domProps: { value: _vm.form.status },
+                          attrs: { name: "status", id: "status" },
                           on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "status", $event.target.value)
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "status",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "status" }
-                        })
-                      ],
-                      1
-                    )
+                        },
+                        [
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "", disabled: "", selected: "" }
+                            },
+                            [_vm._v("Select Status")]
+                          ),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Pending" } }, [
+                            _vm._v("Pending")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Ongoing" } }, [
+                            _vm._v("Ongoing")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Rendered" } }, [
+                            _vm._v("Rendered")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Cancelled" } }, [
+                            _vm._v("Cancelled")
+                          ])
+                        ]
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _vm._m(3)
@@ -60372,13 +60434,15 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [_vm._v("Transaction ID")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Client ID")]),
+      _c("th", [_vm._v("Customer name")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Product ID")]),
+      _c("th", [_vm._v("Product name")]),
       _vm._v(" "),
       _c("th", [_vm._v("Quantity")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Status")])
+      _c("th", [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Action")])
     ])
   },
   function() {

@@ -3,7 +3,7 @@
         <section class="content-header">
             <h1>
                 Dashboard
-                <small>1.1 (Update as of 1/03/2019)</small>
+                <small>1. (Update as of 03/18/2019)</small>
             </h1>
             <!-- <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home/</a></li>
@@ -29,7 +29,7 @@
                 <span class="info-box-icon bg-red"><i class="fas fa-heart text-red"></i></span>
 
                 <div class="info-box-content">
-                <span class="info-box-text">Customers</span>
+                <span class="info-box-text">Products in-stock</span>
                 <span class="info-box-number">41,410</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -41,7 +41,7 @@
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
 
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <!-- <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="fas fa-shopping-cart text-green"></i></span>
 
@@ -49,11 +49,11 @@
                 <span class="info-box-text">Sales</span>
                 <span class="info-box-number">760</span>
                 </div>
-                <!-- /.info-box-content -->
+                
             </div>
-            <!-- /.info-box -->
+            
             </div>
-            <!-- /.col -->
+            /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="fas fa-child text-indigo"></i></span>

@@ -7,7 +7,7 @@
                 <h3 class="card-title">Providers</h3>
                 <div class="card-tools">
                     <button class="btn btn-success" @click="addProvider()">
-                        Add New
+                        New Provider
                         <i class="fas fa-user-plus fa-fw"></i>
                     </button>
                     
@@ -17,18 +17,14 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
                   <tr>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
+                    <th>Provider ID</th>
+                    <th>Provider Name</th>
+                    <th>Action</th>
                   </tr>
                   <tr v-for="provider in providers" :key="provider.provider_id">
                     <td>{{provider.provider_id}}</td>
                     <td>{{provider.name}}</td>
-                    
                     <td>
-                        <a href="#">
-                            <i class="fa fa-edit text-cyan"></i>
-                        </a>
-
                         <a href="#">
                             <i class="fas fa-eye text-teal"></i>
                         </a>

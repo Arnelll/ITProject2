@@ -7,7 +7,7 @@
                 <h3 class="card-title">Transactions</h3>
                 <div class="card-tools">
                     <button class="btn btn-success" @click="addTransaction()">
-                        Add New
+                        New Transaction
                         <i class="fas fa-user-plus fa-fw"></i>
                     </button>
                     
@@ -18,15 +18,16 @@
                 <table class="table table-hover">
                   <tr>
                     <th>Transaction ID</th>
-                    <th>Client ID</th>
-                    <th>Product ID</th>
+                    <th>Customer name</th>
+                    <th>Product name</th>
                     <th>Quantity</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                   <tr v-for="transaction in transactions" :key="transaction.tId">
                     <td>{{transaction.tId}}</td>
-                    <td>{{transaction.client_id}}</td>
-                    <td>{{transaction.product_id}}</td>
+                    <td>{{transaction.lastname}}, {{transaction.firstname}}</td>
+                    <td>{{transaction.product_name}}</td>
                     <td>{{transaction.quantity}}</td>
                     <td>{{transaction.status}}</td>
                     
@@ -60,18 +61,20 @@
             <form @submit.prevent='createTransaction'>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input v-model="form.client_id" type="text" name="client_id" placeholder="Client ID"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('client_id') }">
-                        <has-error :form="form" field="client_id"></has-error>
+                        <select name="client_id" v-model="form.client_id" id="client_id" class="form-control" :class="{
+                        'is-invalid': form.errors.has('client_id') }">
+                            <option value="" disabled selected>Select Client(lastname, firstname)</option>
+                            <option v-for="client in clients" :value="client.client_id">{{client.lastname}}, {{client.firstname}}</option>
+                        </select>
                     </div>
-                
-               
+         
                     <div class="form-group">
-                        <input v-model="form.product_id" type="text" name="product_id" placeholder="Product ID"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('product_id') }">
-                        <has-error :form="form" field="product_id"></has-error>
+                        <select name="product_id" v-model="form.product_id" id="product_id" class="form-control" :class="{
+                        'is-invalid': form.errors.has('product_id') }">
+                            <option value="" disabled selected>Select Product</option>
+                            <option v-for="product in products" :value="product.product_id">{{product.product_name}}</option>
+                        </select>
                     </div>
-                
                 
                     <div class="form-group">
                         <input v-model="form.quantity" type="text" name="quantity" placeholder="Quantity"
@@ -79,11 +82,15 @@
                         <has-error :form="form" field="quantity"></has-error>
                     </div>
                 
-                
                     <div class="form-group">
-                        <input v-model="form.status" type="text" name="status" placeholder="Status"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('status') }">
-                        <has-error :form="form" field="status"></has-error>
+                        <select name="status" v-model="form.status" id="status" class="form-control" :class="{
+                        'is-invalid': form.errors.has('status') }">
+                            <option value="" disabled selected>Select Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Rendered">Rendered</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -104,6 +111,8 @@
             return{
                 updateState: false,
                 transactions : {},
+                clients: {},
+                products: {},
                 form: new Form({
                     client_id: '',
                     product_id: '',
@@ -125,7 +134,7 @@
                 axios.get('api/client').then(({data}) => (this.clients = data.data));
             },
             loadProducts(){
-                axios.get('api/product').then(({data}) => (this.transactions = data.data));
+                axios.get('api/product').then(({data}) => (this.products = data.data));
             },
             createTransaction(){
                 this.$Progress.start();
@@ -143,6 +152,8 @@
         },
         mounted() {
             this.loadTransactions();
+            this.loadClients();
+            this.loadProducts();
             Fire.$on('reloadAfter',() => {
                 this.loadTransactions();
             });

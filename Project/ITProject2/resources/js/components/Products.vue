@@ -7,7 +7,7 @@
                 <h3 class="card-title">Products</h3>
                 <div class="card-tools">
                     <button class="btn btn-success" @click="addModal()">
-                        Add New
+                        Add New Product
                         <i class="fas fa-user-plus fa-fw"></i>
                     </button>
                     

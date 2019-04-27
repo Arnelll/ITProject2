@@ -24,7 +24,7 @@
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
-                  <tr v-for="transaction in transactions" :key="transaction.tId">
+                  <tr v-for="transaction in transactions.data" :key="transaction.tId">
                     <td>{{transaction.tId}}</td>
                     <td>{{transaction.lastname}}, {{transaction.firstname}}</td>
                     <td>{{transaction.product_name}}</td>
@@ -32,7 +32,7 @@
                     <td>{{transaction.status}}</td>
                     
                     <td>
-                        <a href="#">
+                        <a href="#" @click="updateModal(transaction)">
                             <i class="fa fa-edit text-cyan"></i>
                         </a>
 
@@ -44,6 +44,9 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+                  <pagination :data="transactions" @pagination-change-page="paginate"></pagination>
+              </div>
             </div>
             <!-- /.card -->
           </div>
@@ -53,33 +56,36 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addNewTransactionLabel">New Transaction</h5>
+                <h5 v-show="!updateState" class="modal-title" id="addNewTransactionLabel">New Transaction</h5>
+                <h5 v-show="updateState" class="modal-title" id="addNewTransactionLabel">Update</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form @submit.prevent='createTransaction'>
+            <form @submit.prevent="updateState ? updateTransaction() :createTransaction()">
                 <div class="modal-body">
                     <div class="form-group">
                         <select name="client_id" v-model="form.client_id" id="client_id" class="form-control" :class="{
                         'is-invalid': form.errors.has('client_id') }">
                             <option value="" disabled selected>Select Client(lastname, firstname)</option>
-                            <option v-for="client in clients" :value="client.client_id">{{client.lastname}}, {{client.firstname}}</option>
+                            <option v-for="client in clients.data" :value="client.client_id">{{client.lastname}}, {{client.firstname}}</option>
                         </select>
+                        <alert-error :form="form" message="Required."></alert-error>
                     </div>
          
                     <div class="form-group">
                         <select name="product_id" v-model="form.product_id" id="product_id" class="form-control" :class="{
                         'is-invalid': form.errors.has('product_id') }">
                             <option value="" disabled selected>Select Product</option>
-                            <option v-for="product in products" :value="product.product_id">{{product.product_name}}</option>
+                            <option v-for="product in products.data" :value="product.product_id">{{product.product_name}}</option>
                         </select>
+                        <alert-error :form="form" message="Required."></alert-error>
                     </div>
                 
                     <div class="form-group">
                         <input v-model="form.quantity" type="text" name="quantity" placeholder="Quantity"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('quantity') }">
-                        <has-error :form="form" field="quantity"></has-error>
+                        <alert-error :form="form" message="Required."></alert-error>
                     </div>
                 
                     <div class="form-group">
@@ -95,7 +101,8 @@
                 </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button v-show="!updateState" type="submit" class="btn btn-primary">Create</button>
+                        <button v-show="updateState" type="submit" class="btn btn-primary">Update</button>
                         <!--<button type="submit" class="btn btn-primary">Update</button>-->
                     </div>
                 </form>
@@ -114,6 +121,7 @@
                 clients: {},
                 products: {},
                 form: new Form({
+                    tId: '',
                     client_id: '',
                     product_id: '',
                     quantity: '',
@@ -122,19 +130,40 @@
             }
         },
         methods: {
+            updateTransaction(){
+                this.$Progress.start();
+                this.form.put('/api/transaction/'+this.form.tId).then(()=>{
+                    Swal.fire(
+                            'Updated!',
+                            'Transaction has been updated.',
+                            'success'
+                            )
+                    this.$Progress.finish();
+                    Fire.$emit('reloadAfter');  
+                    $('#addNewTransaction').modal('hide')
+                }).catch(()=>{
+                    
+                });
+            },
+            updateModal(transaction){
+                this.updateState=true;
+                this.form.reset();
+                $('#addNewTransaction').modal('show')
+                this.form.fill(transaction);
+            },
             addTransaction(){
                 this.updateState=false;
                 this.form.reset();
                 $('#addNewTransaction').modal('show')
             },
             loadTransactions(){
-                axios.get('api/transaction').then(({data}) => (this.transactions = data.data));
+                axios.get('api/transaction').then(({data}) => (this.transactions = data));
             },
             loadClients(){
-                axios.get('api/client').then(({data}) => (this.clients = data.data));
+                axios.get('api/client').then(({data}) => (this.clients = data));
             },
             loadProducts(){
-                axios.get('api/product').then(({data}) => (this.products = data.data));
+                axios.get('api/product').then(({data}) => (this.products = data));
             },
             createTransaction(){
                 this.$Progress.start();
@@ -146,9 +175,14 @@
                     title: 'Successfully added Transaction'
                 })
                 this.$Progress.finish();
-                })
-                
-            }
+                }) 
+            },
+            paginate(page = 1) {
+			axios.get('api/transaction?page=' + page)
+				.then(response => {
+					this.transactions = response.data;
+				});
+		    }
         },
         mounted() {
             this.loadTransactions();

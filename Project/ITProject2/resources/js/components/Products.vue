@@ -25,7 +25,7 @@
                     <th>Provider</th>
                     <th>Action</th>
                   </tr>
-                  <tr v-for="product in products" :key="product.product_id">
+                  <tr v-for="product in products.data" :key="product.product_id">
                     <td>{{product.product_id}}</td>
                     <td>{{product.product_name}}</td>
                     <td>{{product.quantity}}</td>
@@ -46,6 +46,9 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+                  <pagination :data="products" @pagination-change-page="paginate"></pagination>
+              </div>
             </div>
             <!-- /.card -->
           </div>
@@ -75,9 +78,11 @@
                     </div>
 
                     <div class="form-group">
-                        <input v-model="form.category" type="text" name="category" placeholder="Category"
-                            class="form-control" :class="{ 'is-invalid': form.errors.has('category') }">
-                        <has-error :form="form" field="category"></has-error>
+                        <select name="category" v-model="form.category" id="role" class="form-control" :class="{
+                        'is-invalid': form.errors.has('category') }">
+                            <option value="" selected disabled>Select Category</option>
+                            <option v-for="category in categories.data" :value="category.category_name">{{category.category_name}}</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -89,12 +94,11 @@
                     <div class="form-group">
                         <select name="provider_id" v-model="form.provider_id" id="role" class="form-control" :class="{
                         'is-invalid': form.errors.has('provider_id') }">
-                            <option value="0">Select Provider</option>
-                            <option v-for="provider in providers" :value="provider.provider_id">{{provider.name}}</option>
-                        </select>
-                    </div>
-                    
-                    
+                            <option value="" selected disabled>Select Provider</option>
+                            <option v-for="provider in providers.data" :value="provider.provider_id">{{provider.name}}</option>
+                        </select> 
+                    </div>  
+               
                 </div> 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -107,7 +111,8 @@
         </div>
     </div>
 </template>
-
+<script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script>
+<script type="text/javascript" src="node_modules/vue-simple-search-dropdown/dist/vue-simple-search-dropdown.min.js"></script>
 <script>
     export default {
         data(){
@@ -115,6 +120,8 @@
                 updateState: false,
                 products : {},
                 providers : {},
+                categories : {},
+                result : {},
                 form: new Form({
                     product_id : '',
                     product_name : '',
@@ -167,16 +174,35 @@
                 this.form.fill(product);
             },
             loadProducts(){
-                axios.get('api/product').then(({data}) => (this.products = data.data));
-                
+                axios.get('api/product').then(({data}) => (this.products = data)); 
             },
             loadProviders(){
-                axios.get('api/provider').then(({data}) => (this.providers = data.data));
-            }
+                axios.get('api/provider').then(({data}) => (this.providers = data));
+            },
+            loadCategory(){
+                axios.get('api/category').then(({data}) => (this.categories = data));
+            },
+            paginate(page = 1) {
+			axios.get('api/product?page=' + page)
+				.then(response => {
+					this.products = response.data;
+				});
+		    }
         },
         mounted() {
+            Fire.$on('search', () => {
+                let query = this.$parent.search;
+                axios.get('api/findMe?q=' + query)
+                .then((data)=>{
+                    this.products = data.data
+                })
+                .catch(()=>{
+
+                });
+            });
             this.loadProducts();
             this.loadProviders();
+            this.loadCategory();
             Fire.$on('reloadAfter',() => {
                 this.loadProducts();
             });

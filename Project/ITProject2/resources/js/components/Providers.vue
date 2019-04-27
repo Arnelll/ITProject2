@@ -21,7 +21,7 @@
                     <th>Provider Name</th>
                     <th>Action</th>
                   </tr>
-                  <tr v-for="provider in providers" :key="provider.provider_id">
+                  <tr v-for="provider in providers.data" :key="provider.provider_id">
                     <td>{{provider.provider_id}}</td>
                     <td>{{provider.name}}</td>
                     <td>
@@ -33,6 +33,9 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+                  <pagination :data="providers" @pagination-change-page="paginate"></pagination>
+              </div>
             </div>
             <!-- /.card -->
           </div>
@@ -85,7 +88,7 @@
                 $('#addNewProvider').modal('show')
             },
             loadProviders(){
-                axios.get('api/provider').then(({data}) => (this.providers = data.data));
+                axios.get('api/provider').then(({data}) => (this.providers = data));
             },
             createProvider(){
                 this.$Progress.start();
@@ -97,9 +100,14 @@
                     title: 'Successfully added provider'
                 })
                 this.$Progress.finish();
-                })
-                
-            }
+                })  
+            },
+            paginate(page = 1) {
+			axios.get('api/provider?page=' + page)
+				.then(response => {
+					this.providers = response.data;
+				});
+		    }
         },
         mounted() {
             this.loadProviders();

@@ -6,21 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Transactions;
 
-class TransactionController extends Controller
+class CustomerTrans extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
-        return Transactions::orderBy('transactions.tId','asc')
+        return Transactions::orderBy('tId', 'desc')
                   ->join('clients','clients.client_id','transactions.client_id')
-                  ->join('products','products.product_id','transactions.product_id')
-                  ->select('transactions.*','clients.*','products.*')
-                  ->paginate(1);  
+                  ->select('transactions.*','clients.*')
+                  ->where('transactions.client_id','=',$id)
+                  ->paginate(5);  
     }
 
     /**
@@ -31,7 +30,6 @@ class TransactionController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -43,21 +41,6 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[
-            'client_id' => 'required|integer',
-            'product_id' => 'required|integer',
-            'quantity' => 'required|integer',
-            'status' => 'string'
-        ]);
-
-        $transaction = Transactions::create([
-            'client_id' => $request['client_id'],
-            'product_id' => $request['product_id'],
-            'quantity' => $request['quantity'],
-            'status' => $request['status']
-        ]); 
-
-        return $transaction;
     }
 
     /**
@@ -69,6 +52,7 @@ class TransactionController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**

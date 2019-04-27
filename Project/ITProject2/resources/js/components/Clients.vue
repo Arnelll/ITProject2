@@ -22,7 +22,7 @@
                     <th>Contact</th>
                     <th>Modify</th>
                   </tr> 
-                  <tr v-for="client in clients" :key="client.client_id"> <!-- v-if="client.something == 'Condition' #For filtering-->
+                  <tr v-for="client in clients.data" :key="client.client_id"> <!-- v-if="client.something == 'Condition' #For filtering-->
                     <td>{{client.client_id}}</td>
                     <td>{{client.lastname | upFirstLetter}}, {{client.firstname | upFirstLetter}} </td>
                     <td>{{client.contact_no}}</td>
@@ -35,19 +35,27 @@
                             <i class="fa fa-trash text-red2"></i>
                         </a>
 
-                        <a href="#">
+                        <a href="#" @click="loadCustomerTrans(client.client_id)">
                             <i class="fas fa-eye text-teal"></i>
                         </a>
+
+                        <a href="#" @click="viewModal()">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        
                     </td>
                   </tr>
                 </table>
+              </div>
+              <div class="card-footer">
+                  <pagination :data="clients" @pagination-change-page="paginate"></pagination>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
         </div>
-        <!-- Modal -->
+        <!-- Update/Add Modal -->
         <div class="modal fade" id="addNewClient" tabindex="-1" role="dialog" aria-labelledby="addNewClientLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -88,6 +96,143 @@
             </div>
         </div>
         </div>
+        <!--Update/Add Modal end-->
+        <!--View Modal-->
+        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+                <div class="modal-c-tabs">
+                    <!--Body-->
+                    <div class="modal-body">
+                        <!--Header-->
+                        
+                        <hr>
+                        <div class="modal-dialog cascading-modal" role="document">
+                            <!--Content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p class="heading lead">Client Activities
+                                    </p>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">×</span>
+                                    </button>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fab fa-drupal fa-4x mb-3 animated rotateIn"></i> <!-- Profile Picture if available -->
+                                    <p>
+                                        <strong>Bambico Mark </strong><!--Client Name here-->
+                                    </p>
+                                    <p>Most
+                                        <strong>blyat</strong>
+                                    </p>
+                                </div>
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#transaction" role="tab"><i class="fas fa-money-check mr-1"></i>
+                                        Transactions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#about" role="tab"><i class="fas fa-info mr-1"></i>
+                                        About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#logs" role="tab"><i class="fas fa-book mr-1"></i>
+                                        Top Purchases</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panels -->
+                                <div class="tab-content">
+                                <!--Panel 7-->
+                                <div class="tab-pane fade in show active" id="transaction" role="tabpanel">
+
+                                    <!--Body-->
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-hover">
+                                        <tr>
+                                            <th>Table okinam</th>
+                                            <th>Table okinam</th>
+                                            <th>Table okinam</th>
+                                            <th>Table okinam</th>
+                                            <th>Table okinam</th>
+                                        </tr>
+                                        <tr v-for="clientrans in trans.data" :key="clientrans.client_id">
+                                            <td>{{clientrans.tId}}</td>
+                                            <td>asd</td>
+                                            <td>Karga na okinam</td>
+                                            <td>Karga na okinam</td>
+                                            <td>Karga na okinam</td>
+                                        </tr>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <!--/.Panel 7-->
+                                <!--Panel 8-->
+                                <div class="tab-pane fade" id="about" role="tabpanel">
+                                    <!--Body-->
+                                    <div class="col-md-6">
+                                    <br>
+                                    <strong>Client ID:</strong> 1
+                                    <br>
+                                    <strong>Email:</strong> x@x.xx 
+                                    <br>
+                                    <strong>Phone:</strong> 123456789
+                                    <br>
+                                    <strong>Age:</strong> 50
+                                    </div>
+                                    <!--Body end-->
+                                </div>
+                                <!--/.Panel 8-->
+                                <div class="tab-pane fade" id="logs" role="tabpanel">
+                                    <!--Body-->
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">No. of purchase</th>
+                                            <th scope="col">As of:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            <th scope="row">1</th>
+                                            <td>Titan Gel</td>
+                                            <td>526</td>
+                                            <td>1/5/2019</td>
+                                            </tr>
+                                            <tr>
+                                            <th scope="row">2</th>
+                                            <td>Sex Doll</td>
+                                            <td>123</td>
+                                            <td>1/4/2019</td>
+                                            </tr>
+                                            <tr>
+                                            <th scope="row">3</th>
+                                            <td>Dildog</td>
+                                            <td>155</td>
+                                            <td>1/3/2019</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--Body end-->
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+        <!--View modal end-->
     </div>
 </template>
 
@@ -97,6 +242,7 @@
             return{
                 updateState:false,
                 clients : {},
+                trans : {},
                 form: new Form({
                     client_id: '',
                     firstname: '',
@@ -143,7 +289,6 @@
                     }).then((result) => {
                     if(result.value){
                         this.form.delete('/api/client/'+id).then(()=>{
-                        
                         Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',
@@ -156,8 +301,14 @@
                     }    
                 })        
             },
+            viewModal(){
+                $('#viewModal').modal('show');
+            },
+            loadCustomerTrans(){
+                axios.get('/api/clientrans/'+this.form.client_id).then(({data}) => (this.trans = data));  
+            },
             loadCustomers(){
-                axios.get('api/client').then(({data}) => (this.clients = data.data));
+                axios.get('api/client').then(({data}) => (this.clients = data));
             },
             createCustomer(){
                 this.$Progress.start();
@@ -172,7 +323,13 @@
                 this.$Progress.finish();
                 })
                 
-            }
+            },
+            paginate(page = 1) {
+			axios.get('api/client?page=' + page)
+				.then(response => {
+					this.clients = response.data;
+				});
+		    }
         },
         mounted() {
             this.loadCustomers();

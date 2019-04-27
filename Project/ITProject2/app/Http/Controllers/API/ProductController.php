@@ -19,11 +19,13 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return Product::latest()
+        return Product::orderBy('products.product_id', 'asc')
                   ->join('product_details','product_details.product_id','products.product_id')
                   ->join('provider','provider.provider_id','product_details.provider_id')
                   ->select('product_details.*','products.*','provider.*')
-                  ->paginate(10);  
+                  ->paginate(5);  
+
+        
     }
 
     /**
@@ -48,7 +50,7 @@ class ProductController extends Controller
         $this->validate($request,[
             'product_name' => 'required|string|max:191',
             'quantity' => 'required|integer',
-            'category' => 'string|max:191',
+            'category' => 'required',
             'brand' => 'string|max:191',
             'provider_id' => 'required'
         ]);
@@ -117,5 +119,23 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(){
+
+        if($search = \Request::get('q')){
+            $products = Product::join('product_details','product_details.product_id','products.product_id')
+                ->join('provider','provider.provider_id','product_details.provider_id')
+                ->select('product_details.*','products.*','provider.*')
+                ->where(function($query) use ($search){
+            $query->where('product_name','LIKE',"%$search%")->orWhere('name','LIKE',"%$search%");
+            })->paginate(5);
+        }else if($search == null){
+            $products = Product::join('product_details','product_details.product_id','products.product_id')
+                ->join('provider','provider.provider_id','product_details.provider_id')
+                ->select('product_details.*','products.*','provider.*')
+                ->paginate(5);
+        }
+        return $products;
     }
 }

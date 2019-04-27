@@ -16,7 +16,7 @@ class ProvidersController extends Controller
     public function index()
     {
         //
-        return Provider::paginate(10);
+        return Provider::orderBy('provider_id', 'asc')->paginate(10);
     }
 
     /**

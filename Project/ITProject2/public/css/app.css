@@ -29530,3 +29530,7 @@ readers do not read off random characters that represent icons */
   color: white;
 }
 
+.modal-width {
+  max-width: 55% !important;
+}
+

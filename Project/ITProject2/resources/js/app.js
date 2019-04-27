@@ -26,6 +26,12 @@ Vue.use(VueProgressBar,{
 
 import Swal from 'sweetalert2'
 
+import Dropdown from 'vue-simple-search-dropdown';
+
+Vue.use(Dropdown);
+
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 window.Swal = Swal;
 
 const Toast = Swal.mixin({
@@ -43,10 +49,12 @@ let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/products', component: require('./components/Products.vue').default },
     { path: '/clients', component: require('./components/Clients.vue').default },
-    { path: '/transaction', component: require('./components/Transactions.vue').default },
     { path: '/providers', component: require('./components/Providers.vue').default },
-    { path: '/transactions', component: require('./components/Transactions.vue').default }
+    { path: '/transactions', component: require('./components/Transactions.vue').default },
+    { path: '/pl', component: require('./components/Providers.vue').default },
+    { path: '/po', component: require('./components/Orders.vue').default }
 ]
+
 
 const router = new VueRouter({
     mode: 'history',
@@ -84,5 +92,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    data: {
+        search: ''
+    },
+    methods: {
+        searchThis(){
+            Fire.$emit('search');
+        }
+    }
 });

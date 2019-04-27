@@ -4,9 +4,9 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Transactions;
+use App\Category;
 
-class TransactionController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,7 @@ class TransactionController extends Controller
     public function index()
     {
         //
-        return Transactions::orderBy('transactions.tId','asc')
-                  ->join('clients','clients.client_id','transactions.client_id')
-                  ->join('products','products.product_id','transactions.product_id')
-                  ->select('transactions.*','clients.*','products.*')
-                  ->paginate(1);  
+        return Category::orderBy('category_id', 'asc')->paginate(10);
     }
 
     /**
@@ -31,7 +27,6 @@ class TransactionController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -43,21 +38,6 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[
-            'client_id' => 'required|integer',
-            'product_id' => 'required|integer',
-            'quantity' => 'required|integer',
-            'status' => 'string'
-        ]);
-
-        $transaction = Transactions::create([
-            'client_id' => $request['client_id'],
-            'product_id' => $request['product_id'],
-            'quantity' => $request['quantity'],
-            'status' => $request['status']
-        ]); 
-
-        return $transaction;
     }
 
     /**

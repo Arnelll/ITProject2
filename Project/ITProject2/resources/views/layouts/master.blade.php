@@ -27,16 +27,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-navbar" @keyup='searchThis' v-model='search' type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
+          <button class="btn btn-navbar" @click='searchThis'>
             <i class="fa fa-search"></i>
           </button>
         </div>
       </div>
-    </form>
+
   </nav>
   <!-- /.navbar -->
 
@@ -74,6 +73,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </router-link>
           </li>
+
+          <!-- Inventory Section -->
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-box text-cyan"></i>
@@ -82,72 +83,72 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
+            <!-- Sub-Menu -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <router-link to="/products" class="nav-link">
                   <i class="nav-icon fas icon-here text-red"></i>
                   <p>Products</p>
-                </router-link>  
-              </li>
-              <li class="nav-item">
-                <router-link to="/providers" class="nav-link">
-                  <i class="nav-icon fas icon-here text-green"></i>
-                  <p>Providers</p>
                 </router-link>
               </li>
-              
+              <li class="nav-item">
+                <router-link to="/transactions" class="nav-link">
+                  <i class="nav-icon fas icon-here text-green"></i>
+                  <p>Transactions</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/po" class="nav-link">
+                  <i class="nav-icon fas icon-here text-red"></i>
+                  <p>Purchase Orders</p>
+                </router-link>
+              </li>
             </ul>
+            <!-- End of Sub-Menu -->
           </li>
 
+          <!-- Client Record Management Section -->
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-address-book text-teal"></i>
               <p>
-                Client Record Manager
+                Client Record Management
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
+            <!-- Sub-Menu -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <router-link to="/clients" class="nav-link">
                   <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Customer Lists</p>
-                </router-link>  
+                  <p>Customers Listing</p>
+                </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/transactions" class="nav-link">
+                <router-link to="/pl" class="nav-link">
                   <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Customer Transactions</p>
+                  <p>Provider Listing</p>
                 </router-link>
               </li>
-              <!-- <li class="nav-item">
-                <router-link to="/#" class="nav-link">
-                  <i class="nav-icon icon-here text-red"></i>
-                  <p>Template ;))</p>
-                </router-link>
-              </li> -->
             </ul>
+            <!-- End of Sub-Menu -->
           </li>
 
+          <!-- Tools Section -->
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart text-yellow"></i>
               <p>
-                Transactions
+                Tools
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
+            <!-- Sub-Menu -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <router-link to="/#" class="nav-link">
                   <i class="nav-icon fas icon-here text-red"></i>
                   <p>Logs</p>
-                </router-link>  
-              </li>
-              <li class="nav-item">
-                <router-link to="/##" class="nav-link">
-                  <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Purchase Order</p>
                 </router-link>
               </li>
               <li class="nav-item">
@@ -157,17 +158,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
               </li>
             </ul>
+            <!-- End of Sub-Menu -->
           </li>
-          <!--
-          <li class="nav-item">
-            <router-link to="/#" class="nav-link">
-              <i class="nav-icon fas # client-color"></i>
-              <p>
-                Template
-              </p>
-            </router-link>
-          </li>
-          -->
+
+          <!-- User Logout -->
           <li class="nav-item">
               <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();

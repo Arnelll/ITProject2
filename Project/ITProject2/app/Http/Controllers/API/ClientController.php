@@ -16,7 +16,7 @@ class ClientController extends Controller
     public function index()
     {
         //
-        return Clients::latest()->paginate(10);
+        return Clients::orderBy('client_id', 'asc')->paginate(1);
     }
 
     /**

@@ -20,6 +20,7 @@
                     <th>Product ID</th>
                     <th>Product Name</th>
                     <th>Quantity</th>
+                    <th>Price(per piece)</th>
                     <th>Category</th>
                     <th>Brand</th>
                     <th>Provider</th>
@@ -29,6 +30,7 @@
                     <td>{{product.product_id}}</td>
                     <td>{{product.product_name}}</td>
                     <td>{{product.quantity}}</td>
+                    <td>{{product.price}}</td>
                     <td>{{product.category}}</td>
                     <td>{{product.brand}}</td>
                     <td>{{product.name}}</td>
@@ -75,6 +77,12 @@
                         <input v-model="form.quantity" type="text" name="quantity" placeholder="Quantity"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('quantity') }">
                         <has-error :form="form" field="quantity"></has-error>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.price" type="text" name="price" placeholder="Price"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('price') }">
+                        <has-error :form="form" field="price"></has-error>
                     </div>
 
                     <div class="form-group">
@@ -126,6 +134,7 @@
                     product_id : '',
                     product_name : '',
                     quantity : '',
+                    price : '',
                     category : '',
                     brand : '',
                     provider_id: ''

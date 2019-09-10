@@ -21,6 +21,8 @@
                     <th>Customer name</th>
                     <th>Product name</th>
                     <th>Quantity</th>
+                    <th>Service Rendered (if any)</th>
+                    <th>Total Price</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -29,6 +31,8 @@
                     <td>{{transaction.lastname}}, {{transaction.firstname}}</td>
                     <td>{{transaction.product_name}}</td>
                     <td>{{transaction.quantity}}</td>
+                    <td>{{transaction.service}}</td>
+                    <td>{{transaction.price}}</td>
                     <td>{{transaction.status}}</td>
                     
                     <td>
@@ -65,12 +69,12 @@
             <form @submit.prevent="updateState ? updateTransaction() :createTransaction()">
                 <div class="modal-body">
                     <div class="form-group">
+                        <alert-error :form="form" message="Something went wrong."></alert-error>
                         <select name="client_id" v-model="form.client_id" id="client_id" class="form-control" :class="{
                         'is-invalid': form.errors.has('client_id') }">
                             <option value="" disabled selected>Select Client(lastname, firstname)</option>
                             <option v-for="client in clients.data" :value="client.client_id">{{client.lastname}}, {{client.firstname}}</option>
                         </select>
-                        <alert-error :form="form" message="Required."></alert-error>
                     </div>
          
                     <div class="form-group">
@@ -79,13 +83,22 @@
                             <option value="" disabled selected>Select Product</option>
                             <option v-for="product in products.data" :value="product.product_id">{{product.product_name}}</option>
                         </select>
-                        <alert-error :form="form" message="Required."></alert-error>
                     </div>
                 
                     <div class="form-group">
                         <input v-model="form.quantity" type="text" name="quantity" placeholder="Quantity"
                             class="form-control" :class="{ 'is-invalid': form.errors.has('quantity') }">
-                        <alert-error :form="form" message="Required."></alert-error>
+                    </div>
+
+                    <div class="form-group">
+                        <select name="service" v-model="form.service" id="service" class="form-control" :class="{
+                        'is-invalid': form.errors.has('service') }">
+                            <option value="N/A" selected>Select Service (if any)</option>
+                            <option value="Repair and Maintenance">Repair and Maintenance</option>
+                            <option value="Lifting">Lifting</option>
+                            <option value="Wheel Alignment">Wheel Alignment</option>
+                            <option value="Painting">Painting</option>
+                        </select>
                     </div>
                 
                     <div class="form-group">
@@ -97,6 +110,11 @@
                             <option value="Rendered">Rendered</option>
                             <option value="Cancelled">Cancelled</option>
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input v-model="form.price" type="text" name="price" placeholder="Total Price"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('price') }">
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -125,7 +143,9 @@
                     client_id: '',
                     product_id: '',
                     quantity: '',
-                    status: ''
+                    service: '',
+                    status: '',
+                    price: ''
                 })      
             }
         },
@@ -160,7 +180,7 @@
                 axios.get('api/transaction').then(({data}) => (this.transactions = data));
             },
             loadClients(){
-                axios.get('api/client').then(({data}) => (this.clients = data));
+                axios.get('api/clientOnly').then(({data}) => (this.clients = data));
             },
             loadProducts(){
                 axios.get('api/product').then(({data}) => (this.products = data));

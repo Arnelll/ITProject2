@@ -35,12 +35,8 @@
                             <i class="fa fa-trash text-red2"></i>
                         </a>
 
-                        <a href="#" @click="loadCustomerTrans(client.client_id)">
+                        <a href="#"  data-toggle="modal" data-target="#viewModal" @click="loadCustomerTrans(client)">
                             <i class="fas fa-eye text-teal"></i>
-                        </a>
-
-                        <a href="#" @click="viewModal()">
-                            <i class="fas fa-eye"></i>
                         </a>
                         
                     </td>
@@ -79,11 +75,23 @@
                             class="form-control" :class="{ 'is-invalid': form.errors.has('lastname') }">
                         <has-error :form="form" field="lastname"></has-error>
                     </div>
-
+                   
                     <div class="form-group">
                         <input v-model="form.contact_no" type="text" name="contact_no" placeholder="Contact No."
                             class="form-control" :class="{ 'is-invalid': form.errors.has('contact_no') }">
                         <has-error :form="form" field="contact_no"></has-error>
+                    </div> 
+
+                    <div class="form-group">
+                        <input v-model="form.email" type="text" name="email" placeholder="Email(optional)"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
+                        <has-error :form="form" field="email"></has-error>
+                    </div> 
+
+                     <div class="form-group">
+                        <input v-model="form.age" type="text" name="age" placeholder="Age(optional)"
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('age') }">
+                        <has-error :form="form" field="age"></has-error>
                     </div> 
                 </div>
                 
@@ -121,17 +129,17 @@
                                 <div class="text-center">
                                     <i class="fab fa-drupal fa-4x mb-3 animated rotateIn"></i> <!-- Profile Picture if available -->
                                     <p>
-                                        <strong>Bambico Mark </strong><!--Client Name here-->
+                                        <strong>{{selected.lastname}}, {{selected.firstname}}</strong><!--Client Name here-->
                                     </p>
-                                    <p>Most
-                                        <strong>blyat</strong>
+                                    <p>
+                                        Customer
                                     </p>
                                 </div>
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab" href="#transaction" role="tab"><i class="fas fa-money-check mr-1"></i>
-                                        Transactions</a>
+                                        Latest Transactions</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#about" role="tab"><i class="fas fa-info mr-1"></i>
@@ -152,18 +160,18 @@
                                     <div class="card-body table-responsive p-0">
                                         <table class="table table-hover">
                                         <tr>
-                                            <th>Table okinam</th>
-                                            <th>Table okinam</th>
-                                            <th>Table okinam</th>
-                                            <th>Table okinam</th>
-                                            <th>Table okinam</th>
+                                            <th>#</th>
+                                            <th>Product Name</th>
+                                            <th>Ordered Quantity</th>
+                                            <th>Product Price</th>
+                                            <th>Total Sum</th>
                                         </tr>
-                                        <tr v-for="clientrans in trans.data" :key="clientrans.client_id">
-                                            <td>{{clientrans.tId}}</td>
-                                            <td>asd</td>
-                                            <td>Karga na okinam</td>
-                                            <td>Karga na okinam</td>
-                                            <td>Karga na okinam</td>
+                                        <tr>
+                                            <td>{{selected.tId}}</td>
+                                            <td>{{selected.product_name}}</td>
+                                            <td>{{selected.quantity}}</td>
+                                            <td>{{selected.price}}</td>
+                                            <td>{{selected.price*selected.quantity}}</td>
                                         </tr>
                                         </table>
                                     </div>
@@ -175,11 +183,11 @@
                                     <!--Body-->
                                     <div class="col-md-6">
                                     <br>
-                                    <strong>Client ID:</strong> 1
+                                    <strong>Client ID:</strong> {{selected.client_id}}
                                     <br>
                                     <strong>Email:</strong> x@x.xx 
                                     <br>
-                                    <strong>Phone:</strong> 123456789
+                                    <strong>Phone:</strong> {{selected.contact_no}}
                                     <br>
                                     <strong>Age:</strong> 50
                                     </div>
@@ -200,20 +208,20 @@
                                         <tbody>
                                             <tr>
                                             <th scope="row">1</th>
-                                            <td>Titan Gel</td>
-                                            <td>526</td>
+                                            <td>Vehicle Seat Belts</td>
+                                            <td>1000</td>
                                             <td>1/5/2019</td>
                                             </tr>
                                             <tr>
                                             <th scope="row">2</th>
-                                            <td>Sex Doll</td>
-                                            <td>123</td>
+                                            <td>Electrical Supply System</td>
+                                            <td>5</td>
                                             <td>1/4/2019</td>
                                             </tr>
                                             <tr>
                                             <th scope="row">3</th>
-                                            <td>Dildog</td>
-                                            <td>155</td>
+                                            <td>Shock Absorbers</td>
+                                            <td>50</td>
                                             <td>1/3/2019</td>
                                             </tr>
                                         </tbody>
@@ -247,8 +255,11 @@
                     client_id: '',
                     firstname: '',
                     lastname: '',
-                    contact_no: ''
-                })
+                    contact_no: '',
+                    email : '',
+                    age : ''
+                }),
+                selected : ''
             }
         },
         methods: {
@@ -304,8 +315,9 @@
             viewModal(){
                 $('#viewModal').modal('show');
             },
-            loadCustomerTrans(){
-                axios.get('/api/clientrans/'+this.form.client_id).then(({data}) => (this.trans = data));  
+            loadCustomerTrans(client){
+                this.selected = client;
+                console.log(client.client_id);
             },
             loadCustomers(){
                 axios.get('api/client').then(({data}) => (this.clients = data));

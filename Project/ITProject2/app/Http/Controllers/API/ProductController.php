@@ -23,7 +23,7 @@ class ProductController extends Controller
                   ->join('product_details','product_details.product_id','products.product_id')
                   ->join('provider','provider.provider_id','product_details.provider_id')
                   ->select('product_details.*','products.*','provider.*')
-                  ->paginate(5);  
+                  ->paginate(10);  
 
         
     }
@@ -50,6 +50,7 @@ class ProductController extends Controller
         $this->validate($request,[
             'product_name' => 'required|string|max:191',
             'quantity' => 'required|integer',
+            'price' => 'required|integer',
             'category' => 'required',
             'brand' => 'string|max:191',
             'provider_id' => 'required'
@@ -57,7 +58,8 @@ class ProductController extends Controller
 
         $product = Product::create([
             'product_name' => $request['product_name'],
-            'quantity' => $request['quantity']
+            'quantity' => $request['quantity'],
+            'price' => $request['price']
         ]); 
 
         $productDetails = ProductDetails::create([

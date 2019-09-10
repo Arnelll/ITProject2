@@ -14,8 +14,7 @@
 Auth::routes();
 Route::get('{path}',"HomeController@index")->where('path', '([A-z\d-\/_.]+)?');
 Route::get('/home', 'HomeController@index')->name('home');
-
-
+Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 
 Auth::routes();
 

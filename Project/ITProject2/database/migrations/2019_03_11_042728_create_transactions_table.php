@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('client_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->integer('quantity');
+            $table->enum('service',['Repair and Maintenance', 'Lifting','Wheel Alignment','Painting', 'N/A'])->default('N/A');
             $table->enum('status',['Pending', 'Ongoing','Rendered','Cancelled'])->default('Pending');
             $table->foreign('client_id')
             ->references('client_id')
@@ -27,6 +28,8 @@ class CreateTransactionsTable extends Migration
             ->references('product_id')
             ->on('products')
             ->onDelete('cascade');
+            $table->integer('price');
+            $table->timestamps();
         });
     }
 

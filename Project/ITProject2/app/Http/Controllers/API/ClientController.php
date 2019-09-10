@@ -16,7 +16,12 @@ class ClientController extends Controller
     public function index()
     {
         //
-        return Clients::orderBy('client_id', 'asc')->paginate(1);
+        return Clients::orderBy('client_id', 'asc')
+            ->join('transactions','transactions.client_id','clients.client_id')
+            ->join('products','products.product_id','transactions.product_id')
+            ->select('clients.client_id','clients.contact_no','clients.created_at','clients.lastname','clients.firstname','clients.age','clients.email','transactions.quantity','transactions.status','transactions.tId','products.product_name','products.price')
+            ->paginate(10);
+
     }
 
     /**
@@ -42,13 +47,17 @@ class ClientController extends Controller
         $this->validate($request,[
             'firstname' => 'required|string|max:191',
             'lastname' => 'required|string|max:191',
-            'contact_no' => 'required'
+            'contact_no' => 'required',
+            'email' => 'string|max:191',
+            'age' => 'integer'
         ]);
 
         return Clients::create([
             'firstname' => $request['firstname'],
             'lastname' => $request['lastname'],
-            'contact_no' => $request['contact_no']
+            'contact_no' => $request['contact_no'],
+            'email' => $request['email'],
+            'age' => $request['age']
         ]); 
     }
 

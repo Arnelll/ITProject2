@@ -18,8 +18,9 @@ class CustomerTrans extends Controller
         return Transactions::orderBy('tId', 'desc')
                   ->join('clients','clients.client_id','transactions.client_id')
                   ->select('transactions.*','clients.*')
-                  ->where('transactions.client_id','=',$id)
-                  ->paginate(5);  
+                  ->where('transactions.client_id','=',1)
+                  ->paginate(10);  
+        
     }
 
     /**
@@ -87,5 +88,6 @@ class CustomerTrans extends Controller
     public function destroy($id)
     {
         //
+        
     }
 }

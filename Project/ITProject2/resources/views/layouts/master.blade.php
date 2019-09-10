@@ -59,6 +59,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="d-block">
             {{Auth::user()->name}}
           </a>
+          @if(Auth::user()->is_admin == 1)
+            <div class="panel-heading">Administrator</div>
+            @else
+            <div class="panel-heading">Secretary</div>
         </div>
       </div>
 
@@ -92,12 +96,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/transactions" class="nav-link">
-                  <i class="nav-icon fas icon-here text-green"></i>
-                  <p>Transactions</p>
-                </router-link>
-              </li>
-              <li class="nav-item">
                 <router-link to="/po" class="nav-link">
                   <i class="nav-icon fas icon-here text-red"></i>
                   <p>Purchase Orders</p>
@@ -125,6 +123,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </router-link>
               </li>
               <li class="nav-item">
+                <router-link to="/transactions" class="nav-link">
+                  <i class="nav-icon fas icon-here text-green"></i>
+                  <p>Customer Transactions</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
                 <router-link to="/pl" class="nav-link">
                   <i class="nav-icon fas icon-here text-red"></i>
                   <p>Provider Listing</p>
@@ -139,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart text-yellow"></i>
               <p>
-                Tools
+                Reports
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
@@ -149,12 +153,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <router-link to="/#" class="nav-link">
                   <i class="nav-icon fas icon-here text-red"></i>
                   <p>Logs</p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/###" class="nav-link">
-                  <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Reports</p>
                 </router-link>
               </li>
             </ul>

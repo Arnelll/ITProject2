@@ -10,7 +10,7 @@
                     <!-- Default form login -->
                     <form class="text-center border border-light p-5" method="POST" action="{{ route('login') }}">
                         @csrf
-                        <p class="h4 mb-4">Sign in</p>
+                        <p class="h4 mb-4">Sign in asdasdasd2</p>
 
                         <!-- Email -->
                         <div>

@@ -59,10 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="d-block">
             {{Auth::user()->name}}
           </a>
-          @if(Auth::user()->is_admin == 1)
-            <div class="panel-heading">Administrator</div>
-            @else
-            <div class="panel-heading">Secretary</div>
+
         </div>
       </div>
 
@@ -137,7 +134,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
             <!-- End of Sub-Menu -->
           </li>
-
+          <li class="nav-item has-treeview menu-close">
+            <router-link to="/mechanics" class="nav-link">
+              <i class="nav-icon fas fa-box text-cyan"></i>
+              <p>
+                Mechanics
+              </p>
+            </a>
+          </li>
           <!-- Tools Section -->
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">

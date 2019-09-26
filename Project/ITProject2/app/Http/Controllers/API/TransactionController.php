@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace Jeff\Http\Controllers\api;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Transactions;
+use Jeff\Http\Controllers\Controller;
+use Jeff\Transactions;
 
 class TransactionController extends Controller
 {

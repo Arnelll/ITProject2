@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Jeff\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -29,5 +29,9 @@ class HomeController extends Controller
     public function admin()
     {
         return view('admin');
+    }
+
+    public function login2(){
+        return view('auth.test.hehe');
     }
 }

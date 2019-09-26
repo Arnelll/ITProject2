@@ -1,11 +1,12 @@
 <?php
 
-namespace Jeff\Http\Controllers\api;
+namespace Jeff\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Jeff\Http\Controllers\Controller;
+use Jeff\Mechanic;
 
-class LoginController extends Controller
+class MechanicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +16,7 @@ class LoginController extends Controller
     public function index()
     {
         //
+        return Mechanic::orderBy('id','asc')->paginate(10);
     }
 
     /**

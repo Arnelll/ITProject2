@@ -52,7 +52,8 @@ let routes = [
     { path: '/providers', component: require('./components/Providers.vue').default },
     { path: '/transactions', component: require('./components/Transactions.vue').default },
     { path: '/pl', component: require('./components/Providers.vue').default },
-    { path: '/po', component: require('./components/Orders.vue').default }
+    { path: '/po', component: require('./components/Orders.vue').default },
+    { path: '/mechanics', component: require('./components/Mechanics.vue').default }
 ]
 
 

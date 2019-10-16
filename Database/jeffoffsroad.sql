@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2019 at 05:59 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: Oct 16, 2019 at 10:26 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -1068,6 +1068,57 @@ INSERT INTO `clients` (`client_id`, `firstname`, `lastname`, `contact_no`, `age`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `joborders`
+--
+
+CREATE TABLE `joborders` (
+  `jo_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `cust_id` int(11) NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `receipt_no.` varchar(255) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `soldquantity` int(11) NOT NULL,
+  `soldPrice` decimal(11,2) DEFAULT NULL,
+  `service_id` int(11) NOT NULL,
+  `mechanic_id` int(11) NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `joborders`
+--
+
+INSERT INTO `joborders` (`jo_id`, `employee_id`, `cust_id`, `customer_name`, `receipt_no.`, `product_id`, `soldquantity`, `soldPrice`, `service_id`, `mechanic_id`, `date_created`, `date_updated`) VALUES
+(1, 1, 1, 'Ben Lopez', '2019-0001', 25, 4, '5000.00', 0, 1, '0000-00-00 00:00:00', '2019-10-16 07:48:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mechanic`
+--
+
+CREATE TABLE `mechanic` (
+  `mechanic_id` int(11) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `age` int(2) NOT NULL,
+  `specialty` enum('Painter','Mechanic','','') NOT NULL,
+  `contactno` varchar(11) NOT NULL,
+  `address` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mechanic`
+--
+
+INSERT INTO `mechanic` (`mechanic_id`, `firstname`, `lastname`, `age`, `specialty`, `contactno`, `address`) VALUES
+(1, 'Jarnel', 'Agsudan', 23, 'Painter', '09123456789', 'Baguio City');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -1123,7 +1174,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `quantity`, `price`) VALUES
-(26, 'praesentium', 418, 22622),
+(26, 'wheels', 418, 22622),
 (27, 'nihil', 201, 7512),
 (28, 'atque', 194, 16194),
 (29, 'natus', 139, 17100),
@@ -1344,6 +1395,17 @@ CREATE TABLE `purchase_order_details` (
   `item_quantity` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('Pending','Ongoing','Delivered') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `service_id` int(11) NOT NULL,
+  `service_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1771,6 +1833,19 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `admin`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`, `is_admin`) VALUES
 (4, 'Owner', 1, 'owner@jeff.ph', NULL, '$2y$10$h1y41nzKMAtJdr1e6WI25O1wAQz3KwjJe.diBBZVcFDQ76Iw01AOW', 'XlHgwyE9gKZVpc1k4x1sBTexcwzk3tvrj2RZ2voqSMddUgG7fwfS7YCwu9Oh', '2019-09-10 07:21:26', '2019-09-10 07:21:26', 'Secretary', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicles`
+--
+
+CREATE TABLE `vehicles` (
+  `vehicle_id` int(11) NOT NULL,
+  `vehicletype` varchar(255) NOT NULL,
+  `plate_no` int(11) NOT NULL,
+  `cust_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -1786,6 +1861,20 @@ ALTER TABLE `category`
 --
 ALTER TABLE `clients`
   ADD PRIMARY KEY (`client_id`);
+
+--
+-- Indexes for table `joborders`
+--
+ALTER TABLE `joborders`
+  ADD PRIMARY KEY (`jo_id`),
+  ADD UNIQUE KEY `jo_id` (`jo_id`);
+
+--
+-- Indexes for table `mechanic`
+--
+ALTER TABLE `mechanic`
+  ADD PRIMARY KEY (`mechanic_id`),
+  ADD UNIQUE KEY `mechanic_id` (`mechanic_id`);
 
 --
 -- Indexes for table `migrations`
@@ -1846,6 +1935,14 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD PRIMARY KEY (`vehicle_id`),
+  ADD UNIQUE KEY `vehicle_id` (`vehicle_id`),
+  ADD UNIQUE KEY `plate_no` (`plate_no`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1860,6 +1957,18 @@ ALTER TABLE `category`
 --
 ALTER TABLE `clients`
   MODIFY `client_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+
+--
+-- AUTO_INCREMENT for table `joborders`
+--
+ALTER TABLE `joborders`
+  MODIFY `jo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `mechanic`
+--
+ALTER TABLE `mechanic`
+  MODIFY `mechanic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`

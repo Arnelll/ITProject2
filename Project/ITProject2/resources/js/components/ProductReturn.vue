@@ -102,8 +102,8 @@
                                         <div class="card height">
                                             <div class="card-header">Customer Info</div>
                                             <div class="card-block p-2">
-                                                <strong>Name:</strong> JC Ramos <br>
-                                                <strong>Address:</strong> Kangkongan <br>
+                                                <strong>Name:</strong> Jarnel Bagusdan <br>
+                                                <strong>Address:</strong> La Trinidad <br>
                                                 <strong>Contact No.:</strong> 09696969696 <br>
                                             </div>
                                         </div>
@@ -122,71 +122,8 @@
                                             <div class="card-block p-2">
                                             <strong>Model:</strong> Tricycle <br>
                                             <strong>Color:</strong> Rainbow <br>
-                                            <strong>Plate No.:</strong> c4Nzer69 <br>
+                                            <strong>Plate No.:</strong> SukaBlyat <br>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-3 col-lg-6">
-                                        <div class="card  height">
-                                            <div class="card-header">Services</div>
-                                            <div class="card-block p-2">
-                                            Lifting
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card ">
-                                    <div class="card-header">
-                                        <h3 class="text-xs-center"><strong>Parts & Materials</strong></h3>
-                                    </div>
-                                    <div class="card-block">
-                                        <div class="table-responsive">
-                                            <table class="table table-sm">
-                                                <thead>
-                                                    <tr>
-                                                        <td><strong>Product Name</strong></td>
-                                                        <td class="text-xs-center"><strong>Item Price</strong></td>
-                                                        <td class="text-xs-center"><strong>Product Quantity</strong></td>
-                                                        <td class="text-xs-right"><strong>Total</strong></td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Tires</td>
-                                                        <td class="text-xs-center">1000</td>
-                                                        <td class="text-xs-center">5</td>
-                                                        <td class="text-xs-right">5000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Rims</td>
-                                                        <td class="text-xs-center">300</td>
-                                                        <td class="text-xs-center">10</td>
-                                                        <td class="text-xs-right">3000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Brake Pad</td>
-                                                        <td class="text-xs-center">10</td>
-                                                        <td class="text-xs-center">4</td>
-                                                        <td class="text-xs-right">40</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="emptyrow"></td>
-                                                        <td class="emptyrow"></td>
-                                                        <td class="emptyrow text-xs-center"><strong>Grand Total</strong></td>
-                                                        <td class="emptyrow text-xs-right">8540</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="emptyrow"></td>
-                                                        <td class="emptyrow"></td>
-                                                        <td class="emptyrow text-xs-center"></td>
-                                                        <td class="emptyrow text-xs-right"><button class="btn btn-success">Update</button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -254,12 +191,16 @@
                                                     <tr>
                                                         <td><strong>Product Name</strong></td>
                                                         <td class="text-xs-right"><strong>Quantity</strong></td>
+                                                        <td class="text-xs-right"><strong>Provider</strong></td>
+                                                        <td class="text-xs-right"><strong>Status</strong></td>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
                                                         <td><input class="form-control form-control-md" name="product_name" type="text" placeholder="Product Name"></td>
                                                         <td><input class="form-control form-control-md col-xs-2" name="order_quantity" type="text" placeholder="Quantity"></td>
+                                                        <td><input class="form-control form-control-md col-xs-2" name="order_quantity" type="text" placeholder="Provider"></td>
+                                                        <td><input class="form-control form-control-md col-xs-2" name="order_quantity" type="text" placeholder="Status"></td>
                                                     </tr>
                                                     <tr>
                                                         <td><button class="btn btn-success fas fa-plus"></button></td>
@@ -267,11 +208,24 @@
                                                         <td></td>
                                                         <td></td>
                                                     </tr>
+                                                        <td></td>
+                                                    <tr>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">
+                                                                <td class="text-xs-center">Attachment(s)</td>
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                <span class="btn btn-default btn-file">
+                                                                    <td><input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="true" data-show-caption="true"></td>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </tr>
                                                     <tr>
                                                         <td class="emptyrow"></td>
                                                         <td class="emptyrow"></td>
-                                                        <td class="emptyrow text-xs-center"><button class="btn btn-success">Close</button></td>
-                                                        <td class="emptyrow text-xs-right"><button class="btn btn-success">Confirm</button></td>
+                                                        <td class="emptyrow text-xs-right"><button class="btn btn-success">Close</button></td>
+                                                        <button class="btn btn-success">Confirm</button>
                                                     </tr>
                                                 </tbody>
                                             </table>

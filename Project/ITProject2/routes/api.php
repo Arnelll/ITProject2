@@ -26,5 +26,5 @@ Route::apiResources(['transaction' => 'API\TransactionController']);
 Route::apiResources(['category' => 'API\CategoryController']);
 Route::apiResources(['clientrans' => 'API\CustomerTrans']);
 Route::apiResources(['clientOnly' => 'API\ClientsOnlyController']);
-Route::apiResources(['mechanic' => 'API\MechanicController']);
+Route::apiResources(['jo' => 'API\JobOrderController']);
 Route::get('findMe', 'API\ProductController@search');

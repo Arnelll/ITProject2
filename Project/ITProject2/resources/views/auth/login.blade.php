@@ -5,55 +5,57 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <i class="fas fa-truck-monster"></i> 
+                    Jeff's Off-Road Performance Center 
+                    <i class="fas fa-truck-monster"></i>
+                </div>
+
                 <div class="card-body">
 
-                    <!-- Default form login -->
-                    <form class="text-center border border-light p-5" method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <p class="h4 mb-4">Sign in</p>
+                    <div class="card-body-image" style="text-align: center;">
+                        <img src="./image/CompanyLogo.png" />
+                    </div>
 
-                        <!-- Email -->
-                        <div>
-                            <input type="email" id="email" class="mb-4 form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" name="email" value="{{ old('email') }}" required autofocus>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                        </div>
-                        <!-- Password -->
-                        <div>
-                            <input id="password" type="password" class="mb-4 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
-
-                                @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                @endif
-
-                        </div>
-
-                        <div class="d-flex justify-content-around">
-                            <div>
-                                <!-- Remember me -->
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-                                </div>
                             </div>
                         </div>
 
-                        <!-- Sign in button -->
-                        <button class="btn btn-info btn-block my-4 text-white" type="submit">Sign in</button>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                        <p>For inquiries contact the administrator:</p>
-                            <a href="#">joebemarkcachin@sapuso.mo</a>
-                        
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+                            </div>
+                        </div>
                     </form>
-                    <!-- Default form login -->
-
                 </div>
             </div>
         </div>

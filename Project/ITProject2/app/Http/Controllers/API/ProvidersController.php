@@ -1,10 +1,10 @@
 <?php
 
-namespace Jeff\Http\Controllers\api;
+namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
-use Jeff\Http\Controllers\Controller;
-use Jeff\Provider;
+use App\Http\Controllers\Controller;
+use App\Provider;
 
 class ProvidersController extends Controller
 {

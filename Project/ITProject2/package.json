@@ -30,6 +30,7 @@
         "moment": "^2.24.0",
         "sweetalert2": "^8.2.6",
         "vform": "^1.0.0",
+        "vue-multiselect": "^2.1.6",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.0.2",
         "vue-simple-search-dropdown": "^1.0.0"

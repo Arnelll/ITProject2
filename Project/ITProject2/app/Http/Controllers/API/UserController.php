@@ -1,10 +1,10 @@
 <?php
 
-namespace Jeff\Http\Controllers\API;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use Jeff\Http\Controllers\Controller;
-use Jeff\User;
+use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller

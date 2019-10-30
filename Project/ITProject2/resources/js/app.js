@@ -52,8 +52,10 @@ let routes = [
     { path: '/providers', component: require('./components/Providers.vue').default },
     { path: '/transactions', component: require('./components/Transactions.vue').default },
     { path: '/pl', component: require('./components/Providers.vue').default },
+    { path: '/productCheckout', component: require('./components/ProductCheckout.vue').default },
+    { path: '/productReturn', component: require('./components/ProductReturn.vue').default },
     { path: '/po', component: require('./components/Orders.vue').default },
-    { path: '/mechanics', component: require('./components/Mechanics.vue').default }
+    { path: '/jo', component: require('./components/JobOrders.vue').default }
 ]
 
 

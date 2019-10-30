@@ -59,7 +59,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="d-block">
             {{Auth::user()->name}}
           </a>
-
         </div>
       </div>
 
@@ -76,92 +75,112 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <!-- Inventory Section -->
-          <li class="nav-item has-treeview menu-close">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-box text-cyan"></i>
-              <p>
-                Inventory
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <!-- Sub-Menu -->
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/products" class="nav-link">
-                  <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Products</p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/po" class="nav-link">
-                  <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Purchase Orders</p>
-                </router-link>
-              </li>
-            </ul>
-            <!-- End of Sub-Menu -->
+          <!-- Sub-Menu -->
+          <li class="nav-item">
+            <router-link to="/products" class="nav-link">
+              <i class="nav-icon fas fa-box text-teal"></i>
+              <p>Products</p>
+            </router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="productCheckout" class="nav-link">
+              <i class="nav-icon fas fa-tasks text-teal"></i>
+              <p>Product Checkout</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="productReturn" class="nav-link">
+              <i class="nav-icon fas fa-wrench text-teal"></i>
+              <p>Product Returns</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/pl" class="nav-link">
+              <i class="nav-icon fas fa-address-card text-teal"></i>
+              <p>Suppliers</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/po" class="nav-link">
+              <i class="nav-icon fas fa-file-alt text-teal"></i>
+              <p>Purchase Orders</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="#" class="nav-link">
+              <i class="nav-icon fas fa-truck text-teal"></i>
+              <p>Deliveries</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-check text-teal"></i>
+              <p>Inventory Log</p>
+            </router-link>
+          </li>
+          <!-- End of Sub-Menu -->
 
-          <!-- Client Record Management Section -->
+          <!-- Inventory Section -->
+          <!-- Sub-Menu -->
+          <li class="nav-item">
+            <router-link to="/clients" class="nav-link">
+              <i class="nav-icon fas fa-users text-cyan"></i>
+              <p>Clients</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/transactions" class="nav-link">
+              <i class="nav-icon fas fa-balance-scale text-cyan"></i>
+              <p>Walk-In Transactions</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/jo" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list text-cyan"></i>
+              <p>Job Orders</p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="#" class="nav-link">
+              <i class="nav-icon fas fa-car text-cyan"></i>
+              <p>Vehicles</p>
+            </router-link>
+          </li>
+          <!-- End of Sub-Menu -->
+
+          <!-- Client Record Management Section >
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-address-book text-teal"></i>
+              <i class="nav-icon fas fa-address-book text-cyan"></i>
               <p>
                 Client Record Management
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
-            <!-- Sub-Menu -->
+            <-- Sub-Menu >
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <router-link to="/jo" class="nav-link">
+                  <i class="nav-icon fas fa-clipboard-list text-cyan"></i>
+                  <p>Job Orders</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
                 <router-link to="/clients" class="nav-link">
-                  <i class="nav-icon fas icon-here text-red"></i>
+                  <i class="nav-icon fas fa-users text-cyan"></i>
                   <p>Customers Listing</p>
                 </router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/transactions" class="nav-link">
-                  <i class="nav-icon fas icon-here text-green"></i>
+                  <i class="nav-icon fas fa-balance-scale text-cyan"></i>
                   <p>Customer Transactions</p>
                 </router-link>
               </li>
-              <li class="nav-item">
-                <router-link to="/pl" class="nav-link">
-                  <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Provider Listing</p>
-                </router-link>
-              </li>
             </ul>
-            <!-- End of Sub-Menu -->
+            <-- End of Sub-Menu >
           </li>
-          <li class="nav-item has-treeview menu-close">
-            <router-link to="/mechanics" class="nav-link">
-              <i class="nav-icon fas fa-box text-cyan"></i>
-              <p>
-                Mechanics
-              </p>
-            </a>
-          </li>
-          <!-- Tools Section -->
-          <li class="nav-item has-treeview menu-close">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart text-yellow"></i>
-              <p>
-                Reports
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <!-- Sub-Menu -->
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/#" class="nav-link">
-                  <i class="nav-icon fas icon-here text-red"></i>
-                  <p>Logs</p>
-                </router-link>
-              </li>
-            </ul>
-            <!-- End of Sub-Menu -->
-          </li>
+          -->
 
           <!-- User Logout -->
           <li class="nav-item">
@@ -203,7 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       IT Project 2
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="#">Boy Band</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="#">Jeff's Off-Road Performance Center</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

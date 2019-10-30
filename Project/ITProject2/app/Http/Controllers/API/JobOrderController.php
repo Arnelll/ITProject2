@@ -4,23 +4,29 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Transactions;
+use App\Jo;
 
-class TransactionController extends Controller
+
+class JobOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
-        return Transactions::orderBy('transactions.tId','asc')
-                  ->join('clients','clients.client_id','transactions.client_id')
-                  ->join('products','products.product_id','transactions.product_id')
-                  ->select('transactions.*','clients.*','products.*')
+        return Jo::orderBy('jo_id', 'asc')
+                  ->join('clients', 'clients.client_id', 'job_order.client_id')
+                  ->join('mechanic', 'mechanic.mechanic_id', 'job_order.mechanic_id')
+                  ->join('vehicle', 'vehicle.vehicle_id', 'job_order.vehicle_id')
+                  ->join('products', 'products.product_id', 'job_order.product_id')
+                  ->select('job_order.*','clients.*','mechanic.*','vehicle.*','products.*')
                   ->paginate(10);  
+
+        
     }
 
     /**
@@ -31,7 +37,6 @@ class TransactionController extends Controller
     public function create()
     {
         //
-        
     }
 
     /**
@@ -44,24 +49,23 @@ class TransactionController extends Controller
     {
         //
         $this->validate($request,[
-            'client_id' => 'required|integer',
-            'product_id' => 'required|integer',
-            'quantity' => 'required|integer',
-            'service' => 'string',
-            'status' => 'string',
-            'price' => 'required|integer'
+            'client_id' => 'required',
+            'mechanic_id' => 'required',
+            'vehicle_id' => 'required',
+            'services' => 'required',
+            'product_id' => 'required'
         ]);
 
-        $transaction = Transactions::create([
+        $product = Jo::create([
             'client_id' => $request['client_id'],
-            'product_id' => $request['product_id'],
-            'quantity' => $request['quantity'],
-            'service' => $request['service'],
-            'status' => $request['status'],
-            'price' => $request['price']
+            'mechanic_id' => $request['mechanic_id'],
+            'vehicle_id' => $request['vehicle_id'],
+            'services' => $request['services'],
+            'product_id' => $request['product_id']
         ]); 
 
-        return $transaction;
+        return $jo;
+        
     }
 
     /**
@@ -95,7 +99,6 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -107,5 +110,21 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(){
+
+        if($search = \Request::get('q')){
+            $job_order = Jo::join('job_order','job_order.client_id','clients.client_id')
+                ->select('job_order.*', 'clients.*')
+                ->where(function($query) use ($search){
+            $query->where('firstname','LIKE',"%$search%")->orWhere('name','LIKE',"%$search%");
+            })->paginate(5);
+        }else if($search == null){
+            $job_order = Jo::join('job_order','job_order.client_id','clients.client_id')
+                ->select('job_order.*', 'clients.*')
+                ->paginate(5);
+        }
+        return $job_order;
     }
 }

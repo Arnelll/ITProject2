@@ -2486,9 +2486,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      mechanics: {},
       form: new Form({
         first_name: '',
         last_name: '',
@@ -2499,11 +2504,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    displayMechanics: function displayMechanics() {
+      var _this = this;
+
+      axios.get('api/mechanic').then(function (_ref) {
+        var data = _ref.data;
+        return _this.mechanics = data.data;
+      });
+    },
     addMechanic: function addMechanic() {
       this.form.post('api/mechanic');
     }
   },
   mounted: function mounted() {
+    this.displayMechanics();
     console.log('Component mounted.');
   }
 });
@@ -3306,7 +3320,7 @@ __webpack_require__.r(__webpack_exports__);
     displayUsers: function displayUsers() {
       var _this = this;
 
-      axios.get("api/user").then(function (_ref) {
+      axios.get('api/user').then(function (_ref) {
         var data = _ref.data;
         return _this.users = data.data;
       });
@@ -40760,7 +40774,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.mechanics, function(mechanic) {
+                  return _c("tr", { key: mechanic.mechanic_id }, [
+                    _c("td", [_vm._v(_vm._s(mechanic.mechanic_id))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(mechanic.first_name) +
+                          " " +
+                          _vm._s(mechanic.middle_name) +
+                          " " +
+                          _vm._s(mechanic.last_name)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(mechanic.address))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(mechanic.contact_number))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(mechanic.created_at))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(mechanic.updated_at))]),
+                    _vm._v(" "),
+                    _vm._m(2, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -40783,7 +40839,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "form",
@@ -41023,7 +41079,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(4)
                 ]
               )
             ])
@@ -41038,70 +41094,56 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Mechanics")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-tools" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: {
-                    "data-toggle": "modal",
-                    "data-target": "#addMechanicModal"
-                  }
-                },
-                [
-                  _vm._v("Add New Mechanic "),
-                  _c("i", { staticClass: "fas fa-user-plus" })
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body table-responsive p-0" }, [
-            _c("table", { staticClass: "table table-hover" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", [_vm._v("ID")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Address")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Contact No.")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Date Registered")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Date Updated")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Action")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("000")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("FirstName MiddleName LastName")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Full Mechanic Address")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("09999999999")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Date Here")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Date Here")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Actions Here")])
-                ])
-              ])
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Mechanics")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            attrs: {
+              "data-toggle": "modal",
+              "data-target": "#addMechanicModal"
+            }
+          },
+          [
+            _vm._v("Add New Mechanic "),
+            _c("i", { staticClass: "fas fa-user-plus" })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Address")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Contact No.")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date Registered")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date Updated")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-file-alt" })
       ])
     ])
   },
@@ -41146,7 +41188,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        { staticClass: "btn btn-primary", attrs: { t1ype: "submit" } },
         [_vm._v("Add Mechanic")]
       )
     ])

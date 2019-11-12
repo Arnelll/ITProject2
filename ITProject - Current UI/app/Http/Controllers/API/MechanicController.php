@@ -16,6 +16,7 @@ class MechanicController extends Controller
     public function index()
     {
         //
+        return Mechanic::latest()->paginate(10);
     }
 
     /**

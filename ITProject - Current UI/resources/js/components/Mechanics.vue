@@ -32,14 +32,18 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>000</td>
-                                    <td>FirstName MiddleName LastName</td>
-                                    <td>Full Mechanic Address</td>
-                                    <td>09999999999</td>
-                                    <td>Date Here</td>
-                                    <td>Date Here</td>
-                                    <td>Actions Here</td>
+                                <tr v-for="mechanic in mechanics" :key="mechanic.mechanic_id">
+                                    <td>{{mechanic.mechanic_id}}</td>
+                                    <td>{{mechanic.first_name}} {{mechanic.middle_name}} {{mechanic.last_name}}</td>
+                                    <td>{{mechanic.address}}</td>
+                                    <td>{{mechanic.contact_number}}</td>
+                                    <td>{{mechanic.created_at}}</td>
+                                    <td>{{mechanic.updated_at}}</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-file-alt"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
 
@@ -97,7 +101,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add Mechanic</button>
+                            <button t1ype="submit" class="btn btn-primary">Add Mechanic</button>
                         </div>
 
                     </form>
@@ -119,6 +123,8 @@
             
             return {
 
+                mechanics: {},
+
                 form: new Form({
                     first_name: '',
                     last_name: '',
@@ -132,6 +138,10 @@
 
         methods: {
 
+            displayMechanics() {
+                axios.get('api/mechanic').then(({ data }) => (this.mechanics = data.data));
+            },
+
             addMechanic() {
                 this.form.post('api/mechanic');
             }
@@ -139,6 +149,7 @@
         },
 
         mounted() {
+            this.displayMechanics();
             console.log('Component mounted.')
         }
     }

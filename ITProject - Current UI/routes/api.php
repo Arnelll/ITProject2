@@ -19,3 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResources(['user' => 'API\UserController']);
 Route::apiResources(['mechanic' => 'API\MechanicController']);
+Route::apiResources(['client' => 'API\ClientController']);
+Route::apiResources(['product' => 'API\ProductController']);
+Route::apiResources(['walkintransaction' => 'API\WalkinTransactionController']);
+Route::apiResources(['vehicle' => 'API\VehicleController']);
+Route::apiResources(['supplier' => 'API\SupplierController']);

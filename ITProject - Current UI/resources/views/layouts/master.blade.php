@@ -78,6 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <i class="nav-icon fas fa-chart-bar"></i>
               <p>
               Dashboard
+              <span class="right badge badge-danger">!</span>
               </p>
             </router-link>
           </li>
@@ -103,14 +104,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <router-link to="/product_checkout" class="nav-link">
                   <i class="fa fa-clipboard-check nav-icon"></i>
-                  <p>Product Checkout</p>
+                  <p>Product Checkout <span class="right badge badge-danger">!</span></p>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link to="/product_returns" class="nav-link">
                   <i class="fa fa-tools nav-icon"></i>
-                  <p>Product Returns</p>
+                  <p>Product Returns <span class="right badge badge-danger">!</span></p>
                 </router-link>
               </li>
 
@@ -124,21 +125,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <router-link to="/purchase_orders" class="nav-link">
                   <i class="fa fa-receipt nav-icon"></i>
-                  <p>Purchase Orders</p>
+                  <p>Purchase Orders <span class="right badge badge-danger">!</span></p>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link to="/deliveries" class="nav-link">
                   <i class="fa fa-shipping-fast nav-icon"></i>
-                  <p>Deliveries</p>
+                  <p>Deliveries <span class="right badge badge-danger">!</span></p>
                 </router-link>
               </li>
 
               <li class="nav-item">
                 <router-link to="/inventory_log" class="nav-link">
                   <i class="fa fa-clipboard-list nav-icon"></i>
-                  <p>Inventory Log</p>
+                  <p>Inventory Log <span class="right badge badge-danger">!</span></p>
                 </router-link>
               </li>
 
@@ -175,7 +176,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <router-link to="/job_orders" class="nav-link">
                   <i class="fas fa-file-invoice nav-icon"></i>
-                  <p>Job Orders</p>
+                  <p>Job Orders <span class="right badge badge-danger">!</span></p>
                 </router-link>
               </li>
 
@@ -218,16 +219,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             </ul>
 
-          </li>
-
-          <li class="nav-item">
-            <router-link to="/example-component" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </router-link>
           </li>
           
           <li class="nav-item">

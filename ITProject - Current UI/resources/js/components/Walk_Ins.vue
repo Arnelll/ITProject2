@@ -23,18 +23,22 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Receipt No.</th>
-                                    <th>Client</th>
+                                    <th>Product Code</th>
+                                    <th>Client ID</th>
+                                    <th>Handler ID</th>
                                     <th>Date Encoded</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>0000XXX</td>
-                                    <td>000000XXXXXX</td>
-                                    <td>Client's Name</td>
-                                    <td>Date Here</td>
+                                <tr v-for="walkintransaction in walkintransactions" :key="walkintransaction.walkin_id">
+                                    <td>{{walkintransaction.walkin_id}}</td>
+                                    <td>{{walkintransaction.receipt_number}}</td>
+                                    <td>{{walkintransaction.product_code}}</td>
+                                    <td>{{walkintransaction.client_id}}</td>
+                                    <td>{{walkintransaction.handler_id}}</td>
+                                    <td>{{walkintransaction.created_at}}</td>
                                     <td>Actions Here</td>
                                 </tr>
                             </tbody>
@@ -60,11 +64,29 @@
                         </button>
                     </div>
 
-                    <form>
+                    <form @submit.prevent="addWalkinTransaction">
 
                         <div class="modal-body">
 
-                            MODAL BODY HERE...
+                            <div class="form-group">
+                                <input v-model="form.receipt_number" type="text" name="receipt-number" id="receipt-number" class="form-control" :class="{ 'is-invalid': form.errors.has('receipt_number') }" placeholder="Receipt Number" required>
+                                <has-error :form="form" field="receipt_number"></has-error>
+                            </div>
+
+                            <div class="form-group">
+                                <input v-model="form.product_code" type="text" name="product-code" id="product-code" class="form-control" :class="{ 'is-invalid': form.errors.has('product_code') }" placeholder="Product Code" required>
+                                <has-error :form="form" field="product_code"></has-error>
+                            </div>
+
+                            <div class="form-group">
+                                <input v-model="form.client_id" type="text" name="client-id" id="client-id" class="form-control" :class="{ 'is-invalid': form.errors.has('client_id') }" placeholder="Client ID" required>
+                                <has-error :form="form" field="client_id"></has-error>
+                            </div>
+
+                            <div class="form-group">
+                                <input v-model="form.handler_id" type="text" name="handler-id" id="handler-id" class="form-control" :class="{ 'is-invalid': form.errors.has('handler_id') }" placeholder="Handler ID" required>
+                                <has-error :form="form" field="handler_id"></has-error>
+                            </div>
 
                         </div>
 
@@ -87,7 +109,38 @@
 <script>
 
     export default {
+
+        data () {
+
+            return {
+
+                walkintransactions: {},
+
+                form: new Form({
+                    receipt_number: '',
+                    product_code: '',
+                    client_id: '',
+                    handler_id: ''
+                })
+
+            }
+
+        },
+
+        methods: {
+
+            displayWalkinTransactions() {
+                axios.get('api/walkintransaction').then(({ data }) => (this.walkintransactions = data.data));
+            },
+
+            addWalkinTransaction() {
+                this.form.post('api/walkintransaction');
+            }
+
+        },
+
         mounted() {
+            this.displayWalkinTransactions();
             console.log('Component mounted.')
         }
     }

@@ -31,12 +31,12 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>0000XXX</td>
-                                    <td>Supplier's Name</td>
-                                    <td>Supplier's Address Here</td>
-                                    <td>09999999999</td>
-                                    <td>supplierEmail@gmail.com</td>
+                                <tr v-for="supplier in suppliers" :key="supplier.supplier_id">
+                                    <td>{{supplier.supplier_id}}</td>
+                                    <td>{{supplier.name}}</td>
+                                    <td>{{supplier.address}}</td>
+                                    <td>{{supplier.contact_number}}</td>
+                                    <td>{{supplier.email}}</td>
                                     <td>Actions Here</td>
                                 </tr>
                             </tbody>
@@ -62,32 +62,38 @@
                         </button>
                     </div>
 
-                    <form>
+                    <form @submit.prevent="addSupplier">
 
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
+                                <input v-model="form.name" type="text" name="name" id="name" class="form-control" :class="{ 'is-invalid' : form.errors.has('name') }" placeholder="Name" required>
+                                <has-error :form="form" field="name"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <textarea name="address" id="address" class="form-control" placeholder="Address" required></textarea>
+                                <textarea v-model="form.address" name="address" id="address" class="form-control" :class="{ 'is-invalid' : form.errors.has('address') }" placeholder="Address" required></textarea>
+                                <has-error :form="form" field="address"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="contact-first-name" id="contact-first-name" class="form-control" placeholder="Contact First Name" required>
+                                <input v-model="form.contact_first_name" type="text" name="contact-first-name" id="contact-first-name" class="form-control" :class="{ 'is-invalid' : form.errors.has('contact_first_name') }" placeholder="Contact First Name" required>
+                                <has-error :form="form" field="contact_first_name"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="contact-last-name" id="contact-last-name" class="form-control" placeholder="Contact Last Name" required>
+                                <input v-model="form.contact_last_name" type="text" name="contact-last-name" id="contact-last-name" class="form-control" :class="{ 'is-invalid' : form.errors.has('contact_last_name') }" placeholder="Contact Last Name" required>
+                                <has-error :form="form" field="contact_last_name"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="tel" name="contact-number" id="contact-number" class="form-control" placeholder="Contact Number" required>
+                                <input v-model="form.contact_number" type="tel" name="contact-number" id="contact-number" class="form-control" :class="{ 'is-invalid' : form.errors.has('contact_number') }" placeholder="Contact Number" required>
+                                <has-error :form="form" field="contact_number"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                                <input v-model="form.email" type="email" name="email" id="email" class="form-control" :class="{ 'is-invalid' : form.errors.has('email') }" placeholder="Email" required>
+                                <has-error :form="form" field="email"></has-error>
                             </div>
 
                         </div>
@@ -111,7 +117,40 @@
 <script>
 
     export default {
+
+        data () {
+
+            return {
+
+                suppliers: {},
+
+                form: new Form({
+                    name: '',
+                    address: '',
+                    contact_first_name: '',
+                    contact_last_name: '',
+                    contact_number: '',
+                    email: '',
+                })
+
+            }
+
+        },
+
+        methods: {
+
+            displaySuppliers() {
+                axios.get('api/supplier').then(({ data }) => (this.suppliers = data.data));
+            },
+
+            addSupplier() {
+                this.form.post('api/supplier');
+            }
+
+        },
+
         mounted() {
+            this.displaySuppliers();
             console.log('Component mounted.')
         }
     }

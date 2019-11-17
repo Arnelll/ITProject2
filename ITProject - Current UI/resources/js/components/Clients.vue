@@ -33,14 +33,14 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>000</td>
-                                    <td>FirstName MiddleName LastName</td>
-                                    <td>Full Client Address</td>
-                                    <td>09999999999</td>
-                                    <td>client@email.com</td>
-                                    <td>Date Here</td>
-                                    <td>Date Here</td>
+                                <tr v-for="client in clients" :key="client.client_id">
+                                    <td>{{client.client_id}}</td>
+                                    <td>{{client.first_name}} {{client.middle_name}} {{client.last_name}}</td>
+                                    <td>{{client.address}}</td>
+                                    <td>{{client.contact_number}}</td>
+                                    <td>{{client.email}}</td>
+                                    <td>{{client.created_at}}</td>
+                                    <td>{{client.updated_at}}</td>
                                     <td>Actions</td>
                                 </tr>
                             </tbody>
@@ -66,32 +66,38 @@
                         </button>
                     </div>
 
-                    <form>
+                    <form @submit.prevent="addClient">
 
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <input type="text" name="first-name" id="first-name" class="form-control" placeholder="First Name" required>
+                                <input v-model="form.first_name" type="text" name="first-name" id="first-name" class="form-control" :class="{ 'is-invalid': form.errors.has('first_name') }" placeholder="First Name" required>
+                                <has-error :form="form" field="first_name"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Last Name" required>
+                                <input v-model="form.last_name" type="text" name="last-name" id="last-name" class="form-control" :class="{ 'is-invalid': form.errors.has('last_name') }" placeholder="Last Name" required>
+                                <has-error :form="form" field="last_name"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="middle-name" id="middle-name" class="form-control" placeholder="Middle Name" required>
+                                <input v-model="form.middle_name" type="text" name="middle-name" id="middle-name" class="form-control" :class="{ 'is-invalid': form.errors.has('middle_name') }" placeholder="Middle Name" required>
+                                <has-error :form="form" field="middle_name"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <textarea name="address" id="address" class="form-control" placeholder="Client Address" required></textarea>
+                                <textarea v-model="form.address" name="address" id="address" class="form-control" :class="{ 'is-invalid': form.errors.has('address') }" placeholder="Client Address" required></textarea>
+                                <has-error :form="form" field="address"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                                <input v-model="form.email" type="email" name="email" id="email" class="form-control" :class="{ 'is-invalid': form.errors.has('email') }" placeholder="Email" required>
+                                <has-error :form="form" field="email"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="tel" name="contact-number" id="contact-number" class="form-control" placeholder="Contact Number" required>
+                                <input v-model="form.contact_number" type="tel" name="contact-number" id="contact-number" class="form-control" :class="{ 'is-invalid': form.errors.has('contact_number') }" placeholder="Contact Number" required>
+                                <has-error :form="form" field="contact_number"></has-error>
                             </div>
 
                         </div>
@@ -115,7 +121,40 @@
 <script>
 
     export default {
+
+        data () {
+
+            return {
+
+                clients: {},
+
+                form: new Form({
+                    first_name: '',
+                    last_name: '',
+                    middle_name: '',
+                    address: '',
+                    email: '',
+                    contact_number: ''
+                })
+
+            }
+
+        },
+
+        methods: {
+
+            displayClients() {
+                axios.get('api/client').then(({ data }) => (this.clients = data.data));
+            },
+
+            addClient() {
+                this.form.post('api/client');
+            }
+
+        },
+
         mounted() {
+            this.displayClients();
             console.log('Component mounted.')
         }
     }

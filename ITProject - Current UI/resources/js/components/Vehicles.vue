@@ -31,13 +31,17 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>0000XXX</td>
-                                    <td>XXX-0000</td>
-                                    <td>Pickup Truck</td>
-                                    <td>Vehicle, brand, color, issues, and additional info here.</td>
-                                    <td>Client's Name</td>
-                                    <td>Actions Here</td>
+                                <tr v-for="vehicle in vehicles" :key="vehicle.vehicle_id">
+                                    <td>{{vehicle.vehicle_id}}</td>
+                                    <td>{{vehicle.plate_number}}</td>
+                                    <td>{{vehicle.type}}</td>
+                                    <td>{{vehicle.description}}</td>
+                                    <td>{{vehicle.client_id}}</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-file alt"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
 
@@ -62,16 +66,17 @@
                         </button>
                     </div>
 
-                    <form>
+                    <form @submit.prevent="addVehicle">
 
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <input type="text" name="plate-number" id="plate-number" class="form-control" placeholder="Plate Number" required>
+                                <input v-model="form.plate_number" type="text" name="plate-number" id="plate-number" class="form-control" :class="{ 'is-invalid':form.errors.has('plate_number') }" placeholder="Plate Number" required>
+                                <has-error :form="form" field="plate_number"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <select name="type" id="type" class="form-control">
+                                <select v-model="form.type" name="type" id="type" class="form-control" :class="{ 'is-invalid':form.errors.has('type') }">
                                     <option value="">- Select Type -</option>
                                     <option value="Compact">Compact</option>
                                     <option value="Coupe">Coupe</option>
@@ -82,14 +87,17 @@
                                     <option value="SUV">SUV</option>
                                     <option value="Van">Van</option>
                                 </select>
+                                <has-error :form="form" field="type"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <textarea name="description" id="description" class="form-control" placeholder="Description" required></textarea>
+                                <textarea v-model="form.description" name="description" id="description" class="form-control" :class="{ 'is-invalid':form.errors.has('description') }" placeholder="Description" required></textarea>
+                                <has-error :form="form" field="description"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="client-name" id="client-name" class="form-control" placeholder="Client Name" required>
+                                <input v-model="form.client_id" type="text" name="client-id" id="client-id" class="form-control" :class="{ 'is-invalid':form.errors.has('client_id') }" placeholder="Client ID" required>
+                                <has-error :form="form" field="client_id"></has-error>
                             </div>
 
                         </div>
@@ -113,7 +121,38 @@
 <script>
 
     export default {
+
+        data() {
+
+            return {
+
+                vehicles: {},
+
+                form: new Form({
+                    plate_number: '',
+                    type: '',
+                    description: '',
+                    client_id: ''
+                })
+
+            }
+
+        },
+
+        methods: {
+
+            displayVehicles() {
+                axios.get('api/vehicle').then(({ data }) => (this.vehicles = data.data));
+            },
+
+            addVehicle() {
+                this.form.post('api/vehicle');
+            }
+
+        },
+
         mounted() {
+            this.displayVehicles();
             console.log('Component mounted.')
         }
     }

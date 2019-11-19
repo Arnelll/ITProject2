@@ -2771,6 +2771,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -41936,6 +41947,39 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("form", [
                   _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [
+                        _c("input", {
+                          staticClass: "minimal",
+                          attrs: {
+                            type: "radio",
+                            name: "return-type",
+                            id: "return-type",
+                            value: "walkIn",
+                            checked: ""
+                          }
+                        }),
+                        _vm._v(
+                          "\n                                Walk-in\n                            "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("label", [
+                        _c("input", {
+                          staticClass: "minimal",
+                          attrs: {
+                            type: "radio",
+                            name: "return-type",
+                            id: "return-type",
+                            value: "jobOrder"
+                          }
+                        }),
+                        _vm._v(
+                          "\n                                Job Order\n                            "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
                       _c("input", {
                         staticClass: "form-control",

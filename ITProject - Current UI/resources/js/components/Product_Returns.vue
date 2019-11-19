@@ -71,6 +71,17 @@
                         <div class="modal-body">
 
                             <div class="form-group">
+                                <label>
+                                    <input type="radio" name="return-type" id="return-type" class="minimal" value="walkIn" checked>
+                                    Walk-in
+                                </label>
+                                <label>
+                                    <input type="radio" name="return-type" id="return-type" class="minimal" value="jobOrder">
+                                    Job Order
+                                </label>
+                            </div>
+
+                            <div class="form-group">
                                 <input type="text" name="product-code" id="product-code" class="form-control" placeholder="Product Code" required>
                             </div>
 

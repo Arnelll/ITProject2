@@ -37,11 +37,17 @@
                                     <td>{{mechanic.first_name}} {{mechanic.middle_name}} {{mechanic.last_name}}</td>
                                     <td>{{mechanic.address}}</td>
                                     <td>{{mechanic.contact_number}}</td>
-                                    <td>{{mechanic.created_at}}</td>
-                                    <td>{{mechanic.updated_at}}</td>
+                                    <td>{{mechanic.created_at | mainDateFormat}}</td>
+                                    <td>{{mechanic.updated_at | mainDateFormat}}</td>
                                     <td>
                                         <a href="#">
-                                            <i class="fas fa-file-alt"></i>
+                                            <i class="fa fa-file-alt"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" @click="deleteMechanic(mechanic.mechanic_id)">
+                                            <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -143,14 +149,72 @@
             },
 
             addMechanic() {
+                this.$Progress.start();
                 this.form.post('api/mechanic');
+                Fire.$emit('RefreshPage');
+
+                $('#addMechanicModal').modal('hide')
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Mechanic registered successfully'
+                });                
+
+                this.$Progress.finish();
+            },
+
+            deleteMechanic(mechanic_id) {
+
+                Swal.fire({
+
+                    title: "Are you sure you want to delete mechanic's record?",
+                    text: "You won't be able to revert this action",
+                    icon: 'warning',
+                    showCancelButton: 'true',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Delete'
+
+                }).then((result) => {
+
+                    if (result.value) {
+
+                        this.form.delete('api/mechanic/'+mechanic_id).then(() => {
+
+                            Swal.fire(
+                                'Delete Successful',
+                                "The mechanic's record has been deleted.",
+                                'success'
+                            )
+
+                            Fire.$emit('RefreshPage');
+
+                        }).catch(() => {
+
+                            Swal.fire(
+                                'Delete Failed',
+                                "The mechanic's record cannot be deleted.",
+                                'warning'
+                            )
+
+                        });
+
+                    }
+
+                });
+
             }
 
         },
 
         mounted() {
             this.displayMechanics();
-            console.log('Component mounted.')
+            Fire.$on('RefreshPage', () => {
+                this.displayMechanics();
+            });
+
+            // setInterval(() => this.displayMechanics(), 1000);
+            console.log('Component mounted.');
         }
     }
 

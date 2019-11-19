@@ -29,7 +29,7 @@ class WalkinTransactionController extends Controller
     {
         //
         $this->validate($request, [
-            'receipt_number' => ['required', 'string', 'max:65'],
+            'receipt_number' => ['required', 'string', 'max:65', 'unique:walk_in_transactions'],
             'client_id' => ['required', 'numeric', 'max:15'],
             'handler_id' => ['required', 'numeric', 'max:15'],
             'product_code' => ['required', 'string', 'max:63'],
@@ -74,6 +74,12 @@ class WalkinTransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $walkintransaction = WalkinTransaction::findOrFail($id);
+
+        $walkintransaction -> delete();
+
+        return ['message' => 'Transaction record deleted'];
+
     }
 }

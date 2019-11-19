@@ -39,7 +39,13 @@
                                     <td>{{vehicle.client_id}}</td>
                                     <td>
                                         <a href="#">
-                                            <i class="fas fa-file alt"></i>
+                                            <i class="fa fa-file-alt"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" @click="deleteVehicle(vehicle.vehicle_id)">
+                                            <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -146,14 +152,72 @@
             },
 
             addVehicle() {
+                this.$Progress.start();
                 this.form.post('api/vehicle');
+                Fire.$emit('RefreshPage');
+
+                $('#addVehicleModal').modal('hide')
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Vehicle registered successfully'
+                });
+
+                this.$Progress.finish();
+            },
+
+            deleteVehicle(vehicle_id) {
+
+                Swal.fire({
+
+                    title: 'Are you sure you want to delete vehicle record?',
+                    text: "You won't be able to revert this action",
+                    icon: 'warning',
+                    showCancelButton: 'true',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Delete'
+
+                }).then((result) => {
+
+                    if (result.value) {
+
+                        this.form.delete('api/vehicle/'+vehicle_id).then(() => {
+
+                            Swal.fire(
+                                'Delete Successful',
+                                'The vehicle has been deleted.',
+                                'success'
+                            )
+
+                            Fire.$emit('RefreshPage');
+
+                        }).catch(() => {
+
+                            Swal.fire(
+                                'Delete Failed',
+                                'The vehicle cannot be deleted.',
+                                'warning'
+                            )
+
+                        });
+
+                    }
+
+                });
+
             }
 
         },
 
         mounted() {
             this.displayVehicles();
-            console.log('Component mounted.')
+            Fire.$on('RefreshPage', () => {
+                this.displayVehicles();
+            })
+
+            // setInterval(() => this.displayVehicles(), 1000);
+            console.log('Component mounted.');
         }
     }
 

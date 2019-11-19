@@ -37,7 +37,17 @@
                                     <td>{{supplier.address}}</td>
                                     <td>{{supplier.contact_number}}</td>
                                     <td>{{supplier.email}}</td>
-                                    <td>Actions Here</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fa fa-file-alt"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" @click="deleteSupplier(supplier.supplier_id)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
 
@@ -144,14 +154,72 @@
             },
 
             addSupplier() {
+                this.$Progress.start();
                 this.form.post('api/supplier');
+                Fire.$emit('RefreshPage');
+
+                $('#addSupplierModal').modal('hide')
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Supplier registered successfully'
+                });
+
+                this.$Progress.finish();
+            },
+
+            deleteSupplier(supplier_id) {
+
+                Swal.fire({
+
+                    title: 'Are you sure you want to delete supplier record?',
+                    text: "You won't be able to revert this action",
+                    icon: 'warning',
+                    showCancelButton: 'true',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Delete'
+
+                }).then((result) => {
+
+                    if (result.value) {
+
+                        this.form.delete('api/supplier/'+supplier_id).then(() => {
+
+                            Swal.fire(
+                                'Delete Successful',
+                                'The supplier record has been deleted.',
+                                'success'
+                            )
+
+                            Fire.$emit('RefreshPage');
+
+                        }).catch(() => {
+
+                            Swal.fire(
+                                'Delete Failed',
+                                'The supplier record cannot be deleted.',
+                                'warning'
+                            )
+
+                        });
+
+                    }
+
+                });
+
             }
 
         },
 
         mounted() {
             this.displaySuppliers();
-            console.log('Component mounted.')
+            Fire.$on('RefreshPage', () => {
+                this.displaySuppliers();
+            })
+
+            // setInterval(() => this.displaySuppliers(), 1000);
+            console.log('Component mounted.');
         }
     }
 

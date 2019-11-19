@@ -79,6 +79,12 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $supplier = Supplier::findOrFail($id);
+
+        $supplier -> delete();
+
+        return ['message' => 'Supplier record deleted'];
+
     }
 }

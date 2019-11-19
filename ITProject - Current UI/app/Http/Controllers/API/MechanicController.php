@@ -77,6 +77,12 @@ class MechanicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $mechanic = Mechanic::findOrFail($id);
+
+        $mechanic -> delete();
+
+        return ['message' => 'Mechanic record deleted'];
+
     }
 }

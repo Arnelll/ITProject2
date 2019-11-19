@@ -73,6 +73,12 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $vehicle = Vehicle::findOrFail($id);
+
+        $vehicle -> delete();
+
+        return ['message' => 'Vehicle record deleted'];
+
     }
 }

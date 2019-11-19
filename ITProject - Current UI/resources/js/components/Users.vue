@@ -39,11 +39,17 @@
                                     <td>{{user.email}}</td>
                                     <td>{{user.first_name}} {{user.last_name}}</td>
                                     <td>{{user.user_type}}</td>
-                                    <td>{{user.created_at}}</td>
-                                    <td>{{user.updated_at}}</td>
+                                    <td>{{user.created_at | mainDateFormat}}</td>
+                                    <td>{{user.updated_at | mainDateFormat}}</td>
                                     <td>
                                         <a href="#">
-                                            <i class="fas fa-file-alt"></i>
+                                            <i class="fa fa-file-alt"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" @click="deleteUser(user.id)">
+                                            <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -156,13 +162,71 @@
             },
 
             addUser() {
+                this.$Progress.start();
                 this.form.post('api/user');
+                Fire.$emit('RefreshPage');
+
+                $('#addUserModal').modal('hide')
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'User registered successfully'
+                });
+
+                this.$Progress.finish();
+            },
+
+            deleteUser(id) {
+
+                Swal.fire({
+
+                    title: 'Are you sure you want to delete user record?',
+                    text: "You won't be able to revert this action",
+                    icon: 'warning',
+                    showCancelButton: 'true',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Delete'
+
+                }).then((result) => {
+
+                    if (result.value) {
+
+                        this.form.delete('api/user/'+id).then(() => {
+
+                            Swal.fire(
+                                'Delete Successful',
+                                'The user has been deleted.',
+                                'success'
+                            )
+
+                            Fire.$emit('RefreshPage');
+
+                        }).catch(() => {
+
+                            Swal.fire(
+                                'Delete Failed',
+                                'The user cannot be deleted.',
+                                'warning'
+                            )
+
+                        });
+
+                    }
+
+                });
+
             }
 
         },
 
         mounted() {
             this.displayUsers();
+            Fire.$on('RefreshPage', () => {
+                this.displayUsers();
+            })
+
+            // setInterval(this.displayUsers(), 3000);
             console.log('Component mounted.');
         }
     }

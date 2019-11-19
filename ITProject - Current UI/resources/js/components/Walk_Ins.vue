@@ -11,7 +11,7 @@
                         <h3 class="card-title">Walk-in Transactions</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addWalkinTransaction">New Walk-in Transaction <i class="fas fa-cart-plus"></i></button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#addWalkinTransactionModal">New Walk-in Transaction <i class="fas fa-cart-plus"></i></button>
                         </div>
                     </div>
 
@@ -38,8 +38,18 @@
                                     <td>{{walkintransaction.product_code}}</td>
                                     <td>{{walkintransaction.client_id}}</td>
                                     <td>{{walkintransaction.handler_id}}</td>
-                                    <td>{{walkintransaction.created_at}}</td>
-                                    <td>Actions Here</td>
+                                    <td>{{walkintransaction.created_at | mainDateFormat}}</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fa fa-file-alt"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" @click="deleteWalkinTransaction(walkintransaction.walkin_id)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
 
@@ -52,7 +62,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="addWalkinTransaction" tabindex="-1" role="dialog" aria-labelledby="addWalkinTransaction" aria-hidden="true">
+        <div class="modal fade" id="addWalkinTransactionModal" tabindex="-1" role="dialog" aria-labelledby="addWalkinTransactionModal" aria-hidden="true">
 
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -134,14 +144,73 @@
             },
 
             addWalkinTransaction() {
+                this.$Progress.start();
                 this.form.post('api/walkintransaction');
+                Fire.$emit('RefreshPage');
+
+                $('#addWalkinTransactionModal').modal('hide')
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Walk in transaction registered successfully'
+                });
+
+                this.$Progress.finish();
+
+            },
+
+            deleteWalkinTransaction(walkin_id) {
+
+                Swal.fire({
+
+                    title: 'Are you sure you want to delete transaction record?',
+                    text: "You won't be able to revert this action",
+                    icon: 'warning',
+                    showCancelButton: 'true',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Delete'
+
+                }).then((result) => {
+
+                    if (result.value) {
+
+                        this.form.delete('api/walkintransaction/'+walkin_id).then(() => {
+
+                            Swal.fire(
+                                'Delete Successful',
+                                'The transaction record has been deleted.',
+                                'success'
+                            )
+
+                            Fire.$emit('RefreshPage');
+
+                        }).catch(() => {
+
+                            Swal.fire(
+                                'Delete Failed',
+                                'The transaction record cannot be deleted.',
+                                'warning'
+                            )
+
+                        });
+
+                    }
+
+                });
+
             }
 
         },
 
         mounted() {
             this.displayWalkinTransactions();
-            console.log('Component mounted.')
+            Fire.$on('RefreshPage', () => {
+                this.displayWalkinTransactions();
+            });
+
+            // setInterval(() => this.displayWalkinTransactions(), 1000);
+            console.log('Component mounted.');
         }
     }
 

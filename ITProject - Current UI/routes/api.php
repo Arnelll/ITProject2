@@ -18,9 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources(['user' => 'API\UserController']);
-Route::apiResources(['mechanic' => 'API\MechanicController']);
-Route::apiResources(['client' => 'API\ClientController']);
 Route::apiResources(['product' => 'API\ProductController']);
-Route::apiResources(['walkintransaction' => 'API\WalkinTransactionController']);
-Route::apiResources(['vehicle' => 'API\VehicleController']);
-Route::apiResources(['supplier' => 'API\SupplierController']);
+Route::apiResources(['client' => 'API\ClientController']);
+Route::apiResources(['productDetails' => 'API\ProductDetailsController']);
+Route::apiResources(['provider' => 'API\ProvidersController']);
+Route::apiResources(['transaction' => 'API\TransactionController']);
+Route::apiResources(['category' => 'API\CategoryController']);
+Route::apiResources(['clientrans' => 'API\CustomerTrans']);
+Route::apiResources(['clientOnly' => 'API\ClientsOnlyController']);
+Route::apiResources(['jo' => 'API\JobOrderController']);
+Route::apiResources(['productCheckout' => 'API\ProductCheckoutController']);
+Route::get('findMe', 'API\ProductController@search');

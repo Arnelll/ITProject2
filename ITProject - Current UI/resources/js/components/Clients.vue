@@ -11,7 +11,7 @@
                         <h3 class="card-title">Clients</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addClientModal">Add New Client <i class="fas fa-user-plus"></i></button>
+                            <button class="btn btn-success" @click="addClientModal()">Add New Client <i class="fas fa-user-plus"></i></button>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                                         <a href="#">
                                             <i class="fa fa-file-alt"></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="#" @click="editClientModal(client)">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="#" @click="deleteClient(client.client_id)">
@@ -64,19 +64,20 @@
             </div>
         </div>
 
-        <div class="modal fade" id="addClientModal" tabindex="-1" role="dialog" aria-labelledby="addClientModal" aria-hidden="true">
+        <div class="modal fade" id="clientFormModal" tabindex="-1" role="dialog" aria-labelledby="clientFormModal" aria-hidden="true">
 
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addClientModal">Add New Client</h5>
+                        <h5 class="modal-title" v-show="!editmode" id="clientFormModal">Add New Client</h5>
+                        <h5 class="modal-title" v-show="editmode" id="clientFormModal">Edit Client Information</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
-                    <form @submit.prevent="addClient">
+                    <form @submit.prevent="editmode ? editClient() : addClient()">
 
                         <div class="modal-body">
 
@@ -114,7 +115,8 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add Client</button>
+                            <button v-show="!editmode" type="submit" class="btn btn-primary">Add Client</button>
+                            <button v-show="editmode" type="submit" class="btn btn-primary">Update</button>
                         </div>
 
                     </form>
@@ -139,19 +141,37 @@
                 clients: {},
 
                 form: new Form({
+                    client_id: '',
                     first_name: '',
                     last_name: '',
                     middle_name: '',
                     address: '',
                     email: '',
                     contact_number: ''
-                })
+                }),
+
+                editmode: false
 
             }
 
         },
 
         methods: {
+
+            addClientModal() {
+                this.editmode = false;
+                this.form.reset();
+                
+                $('#clientFormModal').modal('show');
+            },
+
+            editClientModal(client) {
+                this.editmode = true;
+                this.form.reset();
+                
+                $('#clientFormModal').modal('show');
+                this.form.fill(client);
+            },
 
             displayClients() {
                 axios.get('api/client').then(({ data }) => (this.clients = data.data));
@@ -162,7 +182,7 @@
                 this.form.post('api/client');
                 Fire.$emit('RefreshPage');
 
-                $('#addClientModal').modal('hide')
+                $('#clientFormModal').modal('hide')
 
                 Toast.fire({
                     icon: 'success',
@@ -170,6 +190,33 @@
                 });
 
                 this.$Progress.finish();
+            },
+
+            editClient() {
+                this.$Progress.start();
+
+                this.form.put('api/client/'+this.form.client_id)
+                .then(() => {
+
+                    Swal.fire(
+                        'Edit Successful',
+                        'Client information has been updated successfully',
+                        'success'
+                    )
+
+                    this.$Progress.finish();
+                    Fire.$emit('RefreshPage');
+
+                }).catch(() => {
+
+                    Swal.fire(
+                        'Edit Failed',
+                        'The client record cannot be updated.',
+                        'warning'
+                    )
+
+                    this.$Progress.fail();
+                });
             },
 
             deleteClient(client_id) {

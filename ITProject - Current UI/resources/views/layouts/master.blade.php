@@ -123,13 +123,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
 
               <li class="nav-item">
-                <router-link to="/purchase_orders" class="nav-link">
-                  <i class="fa fa-receipt nav-icon"></i>
-                  <p>Purchase Orders <span class="right badge badge-danger">!</span></p>
-                </router-link>
-              </li>
-
-              <li class="nav-item">
                 <router-link to="/deliveries" class="nav-link">
                   <i class="fa fa-shipping-fast nav-icon"></i>
                   <p>Deliveries <span class="right badge badge-danger">!</span></p>
@@ -191,34 +184,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           </li>
 
-          <li class="nav-item has-treeview">
-
-            <a href="#" class="nav-link">
+          <li class="nav-item">
+            <router-link to="/users" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>
-                Account Management
-                <i class="right fa fa-angle-left"></i>
+                User Account Management
               </p>
             </a>
-
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-                <router-link to="/users" class="nav-link">
-                  <i class="fa fa-user-friends nav-icon"></i>
-                  <p>Users</p>
-                </router-link>
-              </li>
-
-              <li class="nav-item">
-                <router-link to="/mechanics" class="nav-link">
-                  <i class="fa fa-user-cog nav-icon"></i>
-                  <p>Mechanics</p>
-                </router-link>
-              </li>
-
-            </ul>
-
           </li>
           
           <li class="nav-item">

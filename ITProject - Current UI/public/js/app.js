@@ -2120,6 +2120,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -3199,7 +3240,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -61303,12 +61343,87 @@ var staticRenderFns = [
       _c("div", { staticClass: "row justify-content-header" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Dashboard")]),
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("Stock Card for Product "),
+              _c("strong", [_vm._v("Tires")])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    Dashboard Component Body.\n                "
-              )
+              _c("table", { staticClass: "table" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Personnel")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Actions")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantity")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Total Quantity")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Unit Cost")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Date")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Jeff (Owner)")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Additional")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("15")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("100.00")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("12/12/2019")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Esmeralda (Secretary)")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Pull out")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("10")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("50.00")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("12/12/2019")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Lebron (Mechanic)")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Pull out")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("0")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("30.00")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("12/12/2019")])
+                  ])
+                ])
+              ])
             ])
           ])
         ])
@@ -63558,12 +63673,6 @@ var render = function() {
                     _c("td", [_vm._v(_vm._s(user.username))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.email))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _vm._v(
-                        _vm._s(user.first_name) + " " + _vm._s(user.last_name)
-                      )
-                    ]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.user_type))]),
                     _vm._v(" "),
@@ -81096,8 +81205,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\ITProject\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\ITProject\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Gigabyte\Desktop\thesis\ITProject2\ITProject - Current UI\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Gigabyte\Desktop\thesis\ITProject2\ITProject - Current UI\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

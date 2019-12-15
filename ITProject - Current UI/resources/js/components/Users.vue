@@ -37,7 +37,6 @@
                                     <td>{{user.id}}</td>
                                     <td>{{user.username}}</td>
                                     <td>{{user.email}}</td>
-                                    <td>{{user.first_name}} {{user.last_name}}</td>
                                     <td>{{user.user_type}}</td>
                                     <td>{{user.created_at | mainDateFormat}}</td>
                                     <td>{{user.updated_at | mainDateFormat}}</td>

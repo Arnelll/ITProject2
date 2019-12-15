@@ -9013,7 +9013,7 @@ body,
   .main-header {
     -webkit-transition: margin-left 0.3s ease-in-out;
     transition: margin-left 0.3s ease-in-out;
-    margin-left: 300px;
+    margin-left: 250px;
     z-index: 3000;
   }
 }
@@ -9063,7 +9063,7 @@ body,
 .main-sidebar, .main-sidebar:before {
   -webkit-transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
   transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
-  width: 300px;
+  width: 250px;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -9074,13 +9074,13 @@ body,
 }
 
 .sidebar-collapse .main-sidebar, .sidebar-collapse .main-sidebar:before {
-  margin-left: -300px;
+  margin-left: -250px;
 }
 
 @media (max-width: 991.98px) {
   .main-sidebar, .main-sidebar:before {
     box-shadow: none !important;
-    margin-left: -300px;
+    margin-left: -250px;
   }
   .sidebar-open .main-sidebar, .sidebar-open .main-sidebar:before {
     margin-left: 0;
@@ -10646,7 +10646,7 @@ body,
     float: none;
   }
   .sidebar-mini.sidebar-collapse .main-sidebar:hover {
-    width: 300px;
+    width: 250px;
   }
   .sidebar-mini.sidebar-collapse .main-sidebar:hover .user-panel {
     text-align: left;
@@ -10728,8 +10728,8 @@ body,
 }
 
 .control-sidebar, .control-sidebar:before {
-  width: 300px;
-  right: -300px;
+  width: 250px;
+  right: -250px;
   bottom: 0;
   -webkit-transition: right 0.3s ease-in-out;
   transition: right 0.3s ease-in-out;
@@ -10756,7 +10756,7 @@ body,
   }
   .control-sidebar-open .content-wrapper,
   .control-sidebar-open .main-footer {
-    margin-right: 300px;
+    margin-right: 250px;
   }
 }
 

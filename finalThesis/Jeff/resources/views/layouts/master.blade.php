@@ -47,9 +47,9 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/test">
               <i class="now-ui-icons location_map-big"></i>
-              <p>#</p>
+              <p>Debugger</p>
             </a>
           </li>
           <li>

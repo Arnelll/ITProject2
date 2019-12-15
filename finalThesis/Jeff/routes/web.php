@@ -11,19 +11,15 @@
 |
 */
 
+//Redirects
 Route::get('/', function () {
     return view('auth.login2');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
-});
-
-Route::get('/accounts', function () {
-    return view('dashboard.accounts');
-});
-
-
+//Auth
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+//Back-ends
+Route::get('/test',"api\debuggerController@index");
+Route::get('/accounts',"api\ClientsController@index");
+Route::get('/dashboard',"api\ProductController@index");

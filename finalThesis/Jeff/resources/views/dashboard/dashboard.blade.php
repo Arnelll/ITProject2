@@ -47,7 +47,7 @@
                   <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">asd else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a>
                   </div>
                 </div>

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login2');
 });
 
 Route::get('/dashboard', function () {
@@ -23,3 +23,7 @@ Route::get('/accounts', function () {
     return view('dashboard.accounts');
 });
 
+
+Auth::routes();
+
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');

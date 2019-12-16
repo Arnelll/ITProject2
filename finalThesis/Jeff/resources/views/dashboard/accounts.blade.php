@@ -37,6 +37,8 @@
                                     <td><a href='#' class="btn btn-primary">View Details</a></td>
                                 </tr>
                             @endforeach
+                            <nav aria-label="...">
+                        {{$result->links()}}
                         </tbody>
                     </table>
                 </div>

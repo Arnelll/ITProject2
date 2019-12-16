@@ -33,6 +33,35 @@ class ProductController extends Controller
         return view('dashboard.dashboard', compact('result', 'inv'));
     }
 
+    public function products(){
+        $result = Product::orderBy('products.product_id', 'asc')
+        ->join('product_details','product_details.product_id','products.product_id')
+        ->join('provider','provider.provider_id','product_details.provider_id')
+        ->select('product_details.*','products.*','provider.*')
+        ->paginate(10);
+
+        return view('dashboard.product', compact('result'));
+    }
+
+    public function product_profile($id){
+        $x['id'] = $id;
+
+        $result = Product::orderBy('products.product_id', 'desc')
+        ->join('product_details','product_details.product_id','products.product_id')
+        ->join('provider','provider.provider_id','product_details.provider_id')
+        ->join('transactions','products.product_id','transactions.product_id')
+        ->where('products.product_id', '=', $x)
+        ->select('product_details.*','products.*','provider.*','transactions.quantity as tQty', 'transactions.status')
+        ->paginate(10);
+
+        $name = Product::orderBy('products.product_id', 'desc')
+        ->where('products.product_id', '=', $x)
+        ->select('products.*')
+        ->paginate(10);
+
+        return view('dashboard.product_profile', compact('result', 'name'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

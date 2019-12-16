@@ -16,7 +16,8 @@ class ClientsController extends Controller
     public function index()
     {
         //
-        $result = Clients::all()->toArray();
+        $result = Clients::paginate(15);
+
         return view('dashboard.accounts', compact('result'));
     }
 

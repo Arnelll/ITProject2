@@ -47,15 +47,15 @@
             </a>
           </li>
           <li>
-            <a href="/test">
+            <a href="/products">
               <i class="now-ui-icons location_map-big"></i>
-              <p>Debugger</p>
+              <p>Products</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/test">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>#</p>
+              <p>Debugger</p>
             </a>
           </li>
           <li>

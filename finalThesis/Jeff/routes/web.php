@@ -23,3 +23,5 @@ Auth::routes();
 Route::get('/test',"api\debuggerController@index");
 Route::get('/accounts',"api\ClientsController@index");
 Route::get('/dashboard',"api\ProductController@index");
+Route::get('/products',"api\ProductController@products");
+Route::get('/product_profile/{id}',"api\ProductController@product_profile");

@@ -25,15 +25,15 @@ class VehicleController extends Controller
         
         $x['id'] = $id;
 
-        $result = Vehicle::orderBy('vehicle.vehicle_id', 'desc')
-        ->join('clients','clients.client_id','vehicle.client_id')
-        ->where('vehicle.vehicle_id', '=' , $x)
-        ->select('vehicle.*', 'clients.*')
+        $result = Vehicle::orderBy('vehicles.vehicle_id', 'desc')
+        ->join('clients','clients.client_id','vehicles.client_id')
+        ->where('vehicles.vehicle_id', '=' , $x)
+        ->select('vehicles.*', 'clients.*')
         ->paginate(10);
 
-        $name = Vehicle::orderBy('vehicle.vehicle_id', 'desc')
-        ->where('vehicle.vehicle_id', '=', $x)
-        ->select('vehicle.plate_no as plate')
+        $name = Vehicle::orderBy('vehicles.vehicle_id', 'desc')
+        ->where('vehicles.vehicle_id', '=', $x)
+        ->select('vehicles.plate_no as plate')
         ->paginate(10);
 
         return view('dashboard.vehicle_profile', compact('result', 'name'));

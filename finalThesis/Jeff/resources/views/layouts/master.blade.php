@@ -53,15 +53,15 @@
             </a>
           </li>
           <li>
-            <a href="/vehicle">
+            <a href="/test">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Vehicles</p>
+              <p>Debugger</p>
             </a>
           </li>
           <li>
-            <a href="/joborder">
+            <a href="#">
               <i class="now-ui-icons users_single-02"></i>
-              <p>Job Order(Create)</p>
+              <p>#</p>
             </a>
           </li>
           <li>

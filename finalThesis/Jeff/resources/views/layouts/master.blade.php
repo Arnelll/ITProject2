@@ -53,6 +53,18 @@
             </a>
           </li>
           <li>
+            <a href="/vehicle">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Vehicles</p>
+            </a>
+          </li>
+          <li>
+            <a href="/joborder">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Job Order</p>
+            </a>
+          </li>
+          <li>
             <a href="/test">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Debugger</p>

@@ -61,7 +61,7 @@
           <li>
             <a href="/joborder">
               <i class="now-ui-icons location_map-big"></i>
-              <p>Job Orders</p>
+              <p>Job Order</p>
             </a>
           </li>
           <li>

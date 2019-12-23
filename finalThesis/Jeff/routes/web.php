@@ -30,3 +30,4 @@ Route::get('/view_vehicle/{id}',"api\VehicleController@vehicle_profile");
 Route::get('/transactions',"api\TransactionController@index");
 Route::get('/product_profile/{id}',"api\ProductController@product_profile");
 Route::get('/walk-in',"api\TransactionController@walk_ins");
+Route::get('/joborder',"api\JobOrderController@index");

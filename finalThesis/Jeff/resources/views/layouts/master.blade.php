@@ -53,6 +53,29 @@
             </a>
           </li>
           <li>
+            <a href="/vehicle">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Vehicles</p>
+            </a>
+          </li>
+          <li>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Transactions(Fix this UI blyat)
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/service">Service</a>
+                <a class="dropdown-item" href="/walkin">Walk-in</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="/joborder">
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Job Order</p>
+            </a>
+          </li>
+          <li>
             <a href="/test">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Debugger</p>

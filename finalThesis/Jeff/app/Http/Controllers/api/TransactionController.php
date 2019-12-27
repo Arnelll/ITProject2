@@ -22,7 +22,7 @@ class TransactionController extends Controller
         ->select('clients.*', 'transactions.*')
         ->paginate(10);
 
-        return view('dashboard.transactions', compact('result'));
+        return view('dashboard.transactions_services', compact('result'));
     }
 
     public function walk_ins(){
@@ -32,7 +32,7 @@ class TransactionController extends Controller
         ->select('clients.*', 'transaction2.*')
         ->paginate(10);
 
-        return view('dashboard.walk-in', compact('result'));
+        return view('dashboard.transactions_walk-in', compact('result'));
     }
 
     /**

@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //Back-ends
-Route::get('/test',"api\debuggerController@index");
+Route::get('/test',"api\JobOrderController@index");
 Route::get('/accounts',"api\ClientsController@index");
 Route::get('/dashboard',"api\ProductController@index");
 Route::get('/products',"api\ProductController@products");
@@ -30,3 +30,5 @@ Route::get('/view_vehicle/{id}',"api\VehicleController@vehicle_profile");
 Route::get('/joborder',"api\JobOrderController@index");
 Route::get('/service',"api\TransactionController@index");
 Route::get('/walkin',"api\TransactionController@walk_ins");
+Route::post('/insert', array('as' => 'insert', 'uses' => 'api\JobOrderController@insert'));
+Route::get('/findPrice', array('as' => 'findPrice', 'uses' => 'api\JobOrderController@findPrice'));

@@ -27,7 +27,7 @@ class TransactionController extends Controller
 
     public function walk_ins(){
         
-        $result = Transactions2::orderBy('transaction2.transaction2_id', 'desc')
+        $result = Transactions2::orderBy('transaction2.transaction2_id', 'asc')
         ->join('clients', 'clients.client_id', 'transaction2.client_id')
         ->select('clients.*', 'transaction2.*')
         ->paginate(10);
@@ -35,6 +35,18 @@ class TransactionController extends Controller
         return view('dashboard.transactions_walk-in', compact('result'));
     }
 
+    public function view_walkin($id){
+        $x['id'] = $id;
+
+        $result = Transactions2::orderBy('transaction2.transaction2_id', 'asc')
+        ->join('clients', 'clients.client_id', 'transaction2.client_id')
+        ->join('products', 'products.product_id', 'transaction2.product_id')
+        ->where('transaction2.transaction2_id', '=', $x)
+        ->select('clients.*', 'transaction2.*', 'products.*')
+        ->paginate(10);
+
+        return view('dashboard.view_walkin', compact('result'));
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Transactions(Walk-ins)
+    Transactions(Walk-in)
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title"> @yield('title')</h4>
+            <h4 class="card-link"> @yield('title')<a href="/new_walkin" class="btn btn-primary">+ Transaction</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -26,7 +26,7 @@
                             @foreach($result as $row)
                                 <tr>
                                     <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
-                                    <td><a href='#' class="btn btn-primary">View Details</a></td>
+                                    <td><a href="/view_walkin/{{$row['transaction2_id']}}" class="btn btn-primary">View Details</a></td>
                                 </tr>
                             @endforeach
                             <nav aria-label="...">

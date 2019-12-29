@@ -19,12 +19,21 @@ class JobOrderController extends Controller
     public function add(){
         return view('dashboard.debugger');
     }
+
     public function index()
     {
         //$clients = Clients::paginate(15);
         $products = Product::pluck('product_name','product_id');
 
         return view('dashboard.debugger', compact('products'));
+    }
+
+    public function new_walkin()
+    {
+        //$clients = Clients::paginate(15);
+        $products = Product::pluck('product_name','product_id');
+
+        return view('dashboard.walkin_new', compact('products'));
     }
 
     public function insert(Request $request)

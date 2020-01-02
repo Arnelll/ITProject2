@@ -34,3 +34,4 @@ Route::post('/insert', array('as' => 'insert', 'uses' => 'api\JobOrderController
 Route::get('/findPrice', array('as' => 'findPrice', 'uses' => 'api\JobOrderController@findPrice'));
 Route::get('/new_walkin',"api\JobOrderController@new_walkin");
 Route::get('/view_walkin/{id}',"api\TransactionController@view_walkin");
+Route::get('/profile/{id}',"api\ProfileController@profile");

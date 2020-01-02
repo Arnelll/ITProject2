@@ -88,7 +88,7 @@
             <div class="card  card-tasks">
               <div class="card-header ">
                 <h5 class="card-category">Product</h5>
-                <h4 class="card-title">Product Quantity Notifier</h4>
+                <h4 class="card-title">Low Quantity Notifier</h4>
               </div>
               <div class="card-body ">
                 <div class="table-full-width table-responsive">

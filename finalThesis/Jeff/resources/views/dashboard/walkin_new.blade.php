@@ -26,6 +26,7 @@
                 <input type="text" name="ln" class="form-control" placeholder="Last Name">
                 </div>
             </div>
+            <!--
             <div class="col-lg-2 col-sm-2">
                 <div class="form-group">
                 <select name="sex" class="form-control">
@@ -34,7 +35,7 @@
                     <option value="2">Female</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
                 <input type="text" name="age" class="form-control" placeholder="Age">
@@ -50,11 +51,11 @@
                 <input type="text" name="phone" class="form-control" placeholder="Phone">
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-3">
+            <!-- <div class="col-lg-3 col-sm-3">
                 <div class="form-group">
                 <input type="text" name="address" class="form-control" placeholder="Address">
                 </div>
-            </div>
+            </div> -->
             <div class="col-lg-2 col-sm-2">
                 <div class="form-group">
                 {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}

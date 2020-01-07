@@ -26,7 +26,7 @@
                             @foreach($result as $row)
                                 <tr>
                                     <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
-                                    <td><a href="/view_walkin/{{$row['transaction2_id']}}" class="btn btn-primary">View Details</a></td>
+                                    <td><a href="/view_walkin/{{$row['client_id']}}" class="btn btn-primary">View Details</a></td>
                                 </tr>
                             @endforeach
                             <nav aria-label="...">

@@ -15,10 +15,34 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        //
-        $result = Clients::paginate(15);
+        $result = Clients::orderBy('clients.client_id', 'asc')
+        ->paginate(10);
 
         return view('dashboard.accounts', compact('result'));
+    }
+
+    public function acounts()
+    {
+        $result = Clients::orderBy('clients.client_id', 'asc')
+        ->join('transaction2', 'transaction2.client_id', 'clients.client_id')
+        ->select('clients.*', 'transaction2.*')
+        ->paginate(10);
+
+        return view('dashboard.accounts', compact('result'));
+    }
+
+
+    public function view_accounts($id){
+        $x['id'] = $id;
+
+        $result = Clients::orderBy('clients.client_id', 'asc')
+        ->join('transaction2', 'transaction2.client_id', 'clients.client_id')
+        ->join('products', 'products.product_id', 'transaction2.product_id')
+        ->where('clients.client_id', '=', $x)
+        ->select('clients.*', 'transaction2.*', 'products.*')
+        ->paginate(10);
+
+        return view('dashboard.view_accounts', compact('result'));
     }
 
     /**

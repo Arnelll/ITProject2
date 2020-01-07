@@ -46,9 +46,7 @@ class ServiceController extends Controller
     public function insert(Request $request)
     {
         //firstname, lastname, contact_no, age, email, created_at, updated_at
-        $customers = new Clients;
-        if ($customers -> save()) {
-            $id = $customers -> client_id;
+        $id = $request -> client_id;
             foreach ($request -> productname as $key => $v)
             {
                 $data = array('client_id'=>$id,
@@ -59,7 +57,6 @@ class ServiceController extends Controller
                               'date_created'=>date('Y-m-d H:i:s'));
                 Transactions2::insert($data);
             }
-        }
         return back();
     }
 

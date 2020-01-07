@@ -14,16 +14,16 @@
             </header>
             </div>
         <div class="panel panel-footer">
-        {!!Form::open(array('route'=>'insert','id'=>'formsave','method'=>'post'))!!}
+        {!!Form::open(array('route'=>'service_insert','id'=>'formsave','method'=>'post'))!!}
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <select name="fn" class="form-control">
-                                <option value="0" selected="true" disabled="true">Select Client</option>
-                                @foreach($clients as $key => $c)
-                                <option value="{!!$key!!}">{!!$c!!}</option>
-                                @endforeach
-                            </select>
+                    <select name="client_id" class="form-control">
+                        <option value="0" selected="true" disabled="true">Select Client</option>
+                        @foreach($clients as $key => $c)
+                        <option value="{!!$key!!}">{!!$c!!}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6">

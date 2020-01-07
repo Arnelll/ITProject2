@@ -36,4 +36,5 @@ Route::get('/new_walkin',"api\JobOrderController@new_walkin");
 Route::get('/view_walkin/{id}',"api\TransactionController@view_walkin");
 Route::get('/profile/{id}',"api\ProfileController@profile");
 Route::get('/new_service',"api\ServiceController@new_service");
+Route::post('/service_insert', array('as' => 'service_insert', 'uses' => 'api\ServiceController@insert'));
 Route::get('/view_accounts/{id}',"api\ClientsController@view_accounts");

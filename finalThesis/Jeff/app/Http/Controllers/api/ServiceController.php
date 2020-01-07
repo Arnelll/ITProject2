@@ -47,15 +47,20 @@ class ServiceController extends Controller
     {
         //firstname, lastname, contact_no, age, email, created_at, updated_at
         $id = $request -> client_id;
+        $mid = $request -> mech;
+        $vid = $request -> vcle;
             foreach ($request -> productname as $key => $v)
             {
                 $data = array('client_id'=>$id,
+                              'mechanic_id'=>$mid,
+                              'vehicle_id'=>$vid,
+                              'service'=>$request->svc [$key],
                               'product_id'=>$v,
                               'quantity'=>$request->qty [$key],
                               'discount'=>$request->dis [$key],
                               'total'=>$request->amount [$key],
                               'date_created'=>date('Y-m-d H:i:s'));
-                Transactions2::insert($data);
+                JobOrder::insert($data);
             }
         return back();
     }

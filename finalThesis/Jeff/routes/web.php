@@ -15,9 +15,6 @@
 Route::get('/', function () {
     return view('auth.login2');
 });
-Route::get('/new_product', function () {
-    return view('dashboard.product_new');
-});
 
 //Auth
 Auth::routes();
@@ -42,3 +39,8 @@ Route::get('/new_service',"api\ServiceController@new_service");
 Route::post('/service_insert', array('as' => 'service_insert', 'uses' => 'api\ServiceController@insert'));
 Route::get('/view_accounts/{id}',"api\ClientsController@view_accounts");
 Route::post('/product_insert', array('as' => 'product_insert', 'uses' => 'api\ProductController@insert'));
+Route::get('/new_vehicle',"api\VehicleController@new_vehicle");
+Route::post('/vehicle_insert', array('as' => 'vehicle_insert', 'uses' => 'api\VehicleController@insert'));
+Route::get('/new_product',"api\ProductController@new_product");
+Route::post('/account_insert', array('as' => 'account_insert', 'uses' => 'api\ClientsController@insert'));
+Route::get('/new_account',"api\ClientsController@new_account");

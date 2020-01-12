@@ -44,7 +44,7 @@
           <li>
             <a href="/accounts">
               <i class="now-ui-icons education_atom"></i>
-              <p>User Accounts</p>
+              <p>Clients</p>
             </a>
           </li>
           <li>

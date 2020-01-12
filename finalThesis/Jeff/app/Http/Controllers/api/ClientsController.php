@@ -54,8 +54,9 @@ class ClientsController extends Controller
         $service = Clients::orderBy('clients.client_id', 'asc')
         ->join('transactions', 'transactions.client_id', 'clients.client_id')
         ->join('products', 'products.product_id', 'transactions.product_id')
+        ->join('vehicles', 'vehicles.vehicle_id', 'transactions.vehicle_id')
         ->where('clients.client_id', '=', $x)
-        ->select('transactions.*', 'products.*')
+        ->select('transactions.*', 'products.product_name', 'vehicles.*')
         ->paginate(10);
         
         return view('dashboard.view_accounts', compact('result','transaction','service','vehicle'));

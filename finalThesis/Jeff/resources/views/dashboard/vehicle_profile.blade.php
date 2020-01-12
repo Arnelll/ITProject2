@@ -43,40 +43,6 @@
                 </form>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <h5 class="title">Vehicle Logs</h5>
-              </div>
-              <div class="card-body">
-                <form>
-                  <div class="row">
-                    @foreach($result as $n)
-                    <div class="col-md-5 pr-1">
-                      <div class="form-group">
-                        <label>Vehicle Type</label>
-                        
-                        <input type="text" class="form-control" disabled="" placeholder="vehicle_type" value="{{$n['type']}}(Model: {{$n['model']}})">
-                        
-                      </div>
-                    </div>
-                    <div class="col-md-3 px-1">
-                      <div class="form-group">
-                        <label>Plate No.</label>
-                        <input type="text" class="form-control" disabled="" placeholder="plate_no" value="{{$n['plate_no']}}">
-                      </div>
-                    </div>
-                    
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label>Color</label>
-                        <input type="email" class="form-control" disabled="" placeholder="color" value="{{$n['color']}}">
-                      </div>
-                    </div>
-                  </div>
-                  @endforeach
-                </form>
-              </div>
-            </div>
           </div>
           <div class="col-md-4">
             <div class="card card-user">

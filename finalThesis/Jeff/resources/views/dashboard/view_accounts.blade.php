@@ -69,14 +69,6 @@
                           </div>
                         </td>
                         <td class="text-left">Bought <strong>{{$row['product_name']}}</strong> with a quantity of <strong>{{$row['quantity']}}</strong>.</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-check"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-check"></i>
-                          </button>
-                        </td>
                       </tr>
                       @endforeach  
                     </tbody>
@@ -89,7 +81,7 @@
                 <div class="table-full-width table-responsive">
                   <table class="table">
                     <tbody>
-                    <!-- @foreach($transaction as $row)
+                    @forelse($service as $row)
                       <tr>
                         <td>
                           <div class="form-check">
@@ -97,16 +89,16 @@
                           </div>
                         </td>
                         <td class="text-left">Bought: <strong>{{$row['product_name']}}</strong> with a quantity of <strong>{{$row['quantity']}}</strong>.</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-check"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-check"></i>
-                          </button>
-                        </td>
                       </tr>
-                      @endforeach -->
+                      @empty
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                          </div>
+                        </td>
+                        <td class="text-left">No service(s) rendered to this client.</td>
+                      </tr>
+                      @endforelse
                     </tbody>
                   </table>
                 </div>

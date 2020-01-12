@@ -62,6 +62,25 @@ class ClientsController extends Controller
         return view('dashboard.view_accounts', compact('result','transaction','service','vehicle'));
     }
 
+    public function new_account()
+    {
+        return view('dashboard.account_new');
+
+    }
+
+    public function insert(Request $request)
+    {
+        //firstname, lastname, contact_no, age, email, created_at, updated_at
+                $data = array('firstname'=>$request->fn,
+                              'lastname'=>$request->ln,
+                              'contact_no'=>$request->phone, 
+                              'age'=>$request->age,
+                              'email'=>$request->email,
+                              'created_at'=>date('Y-m-d H:i:s'));
+                Clients::insert($data);
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

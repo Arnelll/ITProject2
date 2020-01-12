@@ -38,6 +38,12 @@ class ClientsController extends Controller
         $result = Clients::where('client_id','=',$x)
         ->first();
 
+        $vehicle = Clients::orderBy('clients.client_id', 'asc')
+        ->join('vehicles', 'vehicles.client_id', 'clients.client_id')
+        ->where('clients.client_id', '=', $x)
+        ->select('vehicles.*')
+        ->paginate(10);
+
         $transaction = Clients::orderBy('clients.client_id', 'asc')
         ->join('transaction2', 'transaction2.client_id', 'clients.client_id')
         ->join('products', 'products.product_id', 'transaction2.product_id')
@@ -52,7 +58,7 @@ class ClientsController extends Controller
         ->select('transactions.*', 'products.*')
         ->paginate(10);
         
-        return view('dashboard.view_accounts', compact('result','transaction','service'));
+        return view('dashboard.view_accounts', compact('result','transaction','service','vehicle'));
     }
 
     /**

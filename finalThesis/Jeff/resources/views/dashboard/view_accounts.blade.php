@@ -16,13 +16,19 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-body">
-          <div class="col-md-6 ml-auto mr-auto">
+          <div class="col-md-8 ml-auto mr-auto">
             <div class="profile-tabs">
               <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#about" role="tab" data-toggle="tab">
+                    <a class="nav-link" href="#about" role="tab" data-toggle="tab">
                       <i class="material-icons">camera</i>
                       About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#vehicle" role="tab" data-toggle="tab">
+                      <i class="material-icons">camera</i>
+                      Vehicle
                     </a>
                 </li>
                 <li class="nav-item">
@@ -56,6 +62,26 @@
                     </div>
                 </form>
   			      </div>
+              <div class="tab-pane text-center gallery" id="vehicle">
+                  <form>
+                    @forelse($vehicle as $i => $row)
+                    <h4><label for="exampleInputEmail1"><strong>{{$row['color']}} {{$row['type']}}</strong></label></h4>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Plate No.</label>
+                        <input type="text" class="form-control text-center" id="input2"  aria-describedby="input2Help" placeholder="{{$row['plate_no']}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Model</label>
+                        <input type="text" class="form-control text-center" id="input2"  aria-describedby="input2Help" placeholder="{{$row['model']}}" readonly>
+                    </div>
+                    @empty
+                    <div class="form-group">
+                        This client has no registered vehicle.
+                    </div>
+                    @endforelse
+                  </form>
+  			      </div>
+              <!---->
               <div class="tab-pane text-center gallery" id="walk-in">
                 <form>
                 <div class="table-full-width table-responsive">

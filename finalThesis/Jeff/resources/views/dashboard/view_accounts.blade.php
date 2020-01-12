@@ -5,41 +5,31 @@
 @endsection
 
 @section('content')
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet" href="../assets/css/material-min.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
 
-    <link href="../assets/css/profile.css" rel="stylesheet" />
-</head>
 <div class="row">
     <div class="col-md-8">
       <div class="card">
         <div class="card-body">
-          <div class="col-md-8 ml-auto mr-auto">
-            <div class="profile-tabs">
-              <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+          <div class="col-md-10 ml-auto mr-auto col-xl-6">
+            <div class="card-header">
+              <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link" href="#about" role="tab" data-toggle="tab">
-                      <i class="material-icons">camera</i>
                       About
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#vehicle" role="tab" data-toggle="tab">
-                      <i class="material-icons">camera</i>
                       Vehicle
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#walk-in" role="tab" data-toggle="tab">
-                      <i class="material-icons">palette</i>
                       Walk-in
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#services" role="tab" data-toggle="tab">
-                      <i class="material-icons">palette</i>
                       Services
                     </a>
                 </li>
@@ -47,6 +37,7 @@
             </div>
             <div class="tab-content tab-space">
               <div class="tab-pane active text-center gallery" id="about">
+              <br>  
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
@@ -75,6 +66,7 @@
                         <input type="text" class="form-control text-center" id="input2"  aria-describedby="input2Help" placeholder="{{$row['model']}}" readonly>
                     </div>
                     @empty
+                    <br>
                     <div class="form-group">
                         This client has no registered vehicle.
                     </div>
@@ -85,9 +77,10 @@
               <div class="tab-pane text-center gallery" id="walk-in">
                 <form>
                 <div class="table-full-width table-responsive">
+                  <br>
                   <table class="table">
                     <tbody>
-                    @foreach($transaction as $row)
+                    @forelse($transaction as $row)
                       <tr>
                         <td>
                           <div class="form-check">
@@ -96,7 +89,15 @@
                         </td>
                         <td class="text-left">Bought <strong>{{$row['product_name']}}</strong> with a quantity of <strong>{{$row['quantity']}}</strong>.</td>
                       </tr>
-                      @endforeach  
+                      @empty
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                          </div>
+                        </td>
+                        <td class="text-left">No walk-in(s) has been rendered to this client.</td>
+                      </tr>
+                    @endforelse  
                     </tbody>
                   </table>
                 </div>
@@ -105,7 +106,9 @@
               <div class="tab-pane text-center gallery" id="services">
                 <form>
                 <div class="table-full-width table-responsive">
+                  
                   <table class="table">
+                  <br>
                     <tbody>
                     @forelse($service as $row)
                       <tr>
@@ -122,7 +125,7 @@
                           <div class="form-check">
                           </div>
                         </td>
-                        <td class="text-left">No service(s) rendered to this client.</td>
+                        <td class="text-left">No service(s) has been rendered to this client.</td>
                       </tr>
                       @endforelse
                     </tbody>

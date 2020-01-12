@@ -125,7 +125,7 @@
                               X
                           </div>
                         </td>
-                        <td class="text-left">A service for <strong>{{$row['service']}}</strong> is cancelled.</td>
+                        <td class="text-left">A service for <strong>{{$row['service']}}</strong> for the vehicle <strong>{{$row['type']}}</strong> is cancelled.</td>
                         @endif
                       </tr>
                       @empty

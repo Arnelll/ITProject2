@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2020 at 02:27 PM
+-- Generation Time: Jan 12, 2020 at 04:09 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -1091,7 +1091,10 @@ INSERT INTO `clients` (`client_id`, `firstname`, `lastname`, `contact_no`, `age`
 (1011, 'Arnel', 'Agusdan', 9773267632, 21, 'arnel.brightside@gmail.com', '2019-12-29 04:21:59', '2019-12-29 04:21:59'),
 (1012, 'Arnel', 'Cabaling', 9773267632, 22, 'arnel.brightside@gmail.com', '2019-12-29 04:25:56', '2019-12-29 04:25:56'),
 (1013, 'Vladimir', 'Putin', 9193778945, 30, 'putin@somewhere.ru', '2019-12-29 05:29:20', '2019-12-29 05:29:20'),
-(1014, 'Arnel', 'Agusdan', 9773267632, 21, 'arnel.brightside@gmail.com', '2020-01-06 19:39:09', '2020-01-06 19:39:09');
+(1014, 'Arnel', 'Agusdan', 9773267632, 21, 'arnel.brightside@gmail.com', '2020-01-06 19:39:09', '2020-01-06 19:39:09'),
+(1015, 'Arnel', 'Pineda', 9773267632, 25, 'arnel@somewhere.ph', '2020-01-12 06:58:46', '2020-01-12 06:58:46'),
+(1016, 'Arnel', 'Pineda', 9773267632, 25, 'arnel@somewhere.ph', '2020-01-12 06:59:06', '2020-01-12 06:59:06'),
+(1017, 'Arnel', 'Agusdan', 9773267632, 21, 'arnel.brightside@gmail.com', '2020-01-12 06:59:24', '2020-01-12 06:59:24');
 
 -- --------------------------------------------------------
 
@@ -1159,10 +1162,10 @@ CREATE TABLE `job_order` (
   `mechanic_id` int(10) UNSIGNED NOT NULL,
   `vehicle_id` int(10) UNSIGNED NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
-  `service_id` int(10) NOT NULL,
+  `service` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
   `total` int(10) NOT NULL,
-  `status` int(11) NOT NULL,
   `date_created` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -1170,15 +1173,16 @@ CREATE TABLE `job_order` (
 -- Dumping data for table `job_order`
 --
 
-INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `product_id`, `service_id`, `quantity`, `total`, `status`, `date_created`) VALUES
-(1, 3, 1, 1, 26, 2, 3, 123, 1, '2019-09-30 16:00:00'),
-(2, 27, 3, 1, 35, 1, 3, 64671, 1, NULL),
-(3, 27, 2, 2, 30, 1, 12, 134724, 1, NULL),
-(4, 28, 1, 2, 30, 1, 34, 366962, 1, NULL),
-(5, 28, 1, 2, 34, 1, 5, 53965, 1, NULL),
-(6, 28, 2, 2, 29, 4, 69, 1179900, 1, NULL),
-(7, 27, 2, 2, 26, 6, 500, 3756000, 1, NULL),
-(8, 27, 2, 2, 27, 6, 1, 7512, 1, NULL);
+INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `product_id`, `service`, `quantity`, `discount`, `total`, `date_created`) VALUES
+(25, 3, 3, 1, 44, 'Wheel Alignment', 5, 5, 855, '2020-01-12 06:10:18'),
+(26, 3, 3, 1, 27, 'Restoration', 7, 10, 945, '2020-01-12 06:10:18'),
+(15, 10, 2, 1, 40, 'Lifting', 2, 5, 1140, '2020-01-06 20:35:47'),
+(16, 13, 2, 1, 42, 'Lifting', 5, 10, 945, '2020-01-06 20:36:13'),
+(17, 13, 2, 1, 42, 'Vehicle Painting', 8, 10, 1512, '2020-01-06 20:36:13'),
+(18, 4, 3, 1, 46, 'Repair and Maintenance', 5, 5, 1663, '2020-01-06 20:37:02'),
+(19, 4, 3, 1, 44, 'Others', 3, 2, 529, '2020-01-06 20:37:02'),
+(20, 12, 1, 1, 41, 'Lifting', 6, 4, 190, '2020-01-06 22:29:54'),
+(27, 3, 1, 1, 46, 'Lifting', 1, 0, 350, '2020-01-12 07:06:09');
 
 -- --------------------------------------------------------
 
@@ -1570,7 +1574,9 @@ INSERT INTO `transaction2` (`transaction2_id`, `client_id`, `product_id`, `quant
 (4, 1012, 44, 6, 540.00, '2019-12-29 12:25:56', '2019-12-29 12:25:56', 50),
 (5, 1013, 43, 25, 1625.00, '2019-12-29 13:29:20', '2019-12-29 13:29:20', 50),
 (6, 1014, 26, 2, 23.76, '2020-01-07 03:39:09', '2020-01-07 03:39:09', 1),
-(7, 4, 46, 1, 346.50, '2020-01-07 04:00:09', '2020-01-07 04:00:09', 1);
+(7, 4, 46, 1, 346.50, '2020-01-07 04:00:09', '2020-01-07 04:00:09', 1),
+(8, 1016, 26, 1, 12.00, '2020-01-12 14:59:06', '2020-01-12 14:59:06', 0),
+(9, 1017, 47, 1, 14687.00, '2020-01-12 14:59:24', '2020-01-12 14:59:24', 0);
 
 -- --------------------------------------------------------
 
@@ -1803,7 +1809,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `client_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1015;
+  MODIFY `client_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1018;
 
 --
 -- AUTO_INCREMENT for table `deliveries`
@@ -1821,7 +1827,7 @@ ALTER TABLE `joborders`
 -- AUTO_INCREMENT for table `job_order`
 --
 ALTER TABLE `job_order`
-  MODIFY `jo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `jo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `mechanic`
@@ -1869,7 +1875,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `transaction2`
 --
 ALTER TABLE `transaction2`
-  MODIFY `transaction2_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `transaction2_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `transactions`

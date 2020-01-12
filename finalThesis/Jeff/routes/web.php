@@ -15,6 +15,9 @@
 Route::get('/', function () {
     return view('auth.login2');
 });
+Route::get('/new_product', function () {
+    return view('dashboard.product_new');
+});
 
 //Auth
 Auth::routes();
@@ -38,3 +41,4 @@ Route::get('/profile/{id}',"api\ProfileController@profile");
 Route::get('/new_service',"api\ServiceController@new_service");
 Route::post('/service_insert', array('as' => 'service_insert', 'uses' => 'api\ServiceController@insert'));
 Route::get('/view_accounts/{id}',"api\ClientsController@view_accounts");
+Route::post('/product_insert', array('as' => 'product_insert', 'uses' => 'api\ProductController@insert'));

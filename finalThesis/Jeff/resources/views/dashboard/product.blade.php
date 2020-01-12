@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-link"> @yield('title')<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#newProduct">+ Product</a></h4> 
+            <h4 class="card-link"> @yield('title')<a href="/new_product" class="btn btn-primary">+ Product</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -43,26 +43,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="modal fade" id="newProduct" tabindex="-1" role="dialog" aria-labelledby="newProductLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newProductLabel">New Stock Card</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 @endsection

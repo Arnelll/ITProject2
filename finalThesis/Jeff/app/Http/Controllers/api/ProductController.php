@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\ProductDetails;
 use App\Transactions;
 
 class ProductController extends Controller
@@ -19,9 +20,8 @@ class ProductController extends Controller
         //
         $result = Product::orderBy('products.product_id', 'asc')
         ->join('product_details','product_details.product_id','products.product_id')
-        ->join('provider','provider.provider_id','product_details.provider_id')
         ->where("products.quantity", "<", "10")
-        ->select('product_details.*','products.*','provider.*')
+        ->select('product_details.*','products.*')
         ->paginate(10);
         
         $inv = Transactions::orderBy('transactions.updated_at', 'desc')
@@ -36,8 +36,7 @@ class ProductController extends Controller
     public function products(){
         $result = Product::orderBy('products.product_id', 'asc')
         ->join('product_details','product_details.product_id','products.product_id')
-        ->join('provider','provider.provider_id','product_details.provider_id')
-        ->select('product_details.*','products.*','provider.*')
+        ->select('product_details.*','products.*')
         ->paginate(10);
 
         return view('dashboard.product', compact('result'));
@@ -48,10 +47,9 @@ class ProductController extends Controller
 
         $result = Product::orderBy('products.product_id', 'desc')
         ->join('product_details','product_details.product_id','products.product_id')
-        ->join('provider','provider.provider_id','product_details.provider_id')
         ->join('transactions','products.product_id','transactions.product_id')
         ->where('products.product_id', '=', $x)
-        ->select('product_details.*','products.*','provider.*','transactions.quantity as tQty', 'transactions.status')
+        ->select('product_details.*','products.*','transactions.quantity as tQty', 'transactions.status')
         ->paginate(10);
 
         $name = Product::orderBy('products.product_id', 'desc')
@@ -60,6 +58,31 @@ class ProductController extends Controller
         ->paginate(10);
 
         return view('dashboard.product_profile', compact('result', 'name'));
+    }
+
+    public function new_product()
+    {
+        return view('dashboard.product_new');
+
+    }
+
+    public function insert(Request $request)
+    {
+        //firstname, lastname, contact_no, age, email, created_at, updated_at
+        $product = new Product;
+        $product -> product_name = $request -> productname;
+        $product -> quantity = $request -> qty;
+        $product -> price = $request -> price;
+        $product -> supplier_id = '1';
+        if ($product -> save()){
+            $id = $product -> product_id;
+                $data = array('product_id'=>$id,
+                              'category_id'=>'1',
+                              'brand'=>$request->brand,
+                              'provider_id'=>'1');
+                ProductDetails::insert($data);
+        }
+        return back();
     }
 
     /**

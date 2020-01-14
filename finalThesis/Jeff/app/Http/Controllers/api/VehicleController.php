@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Vehicle;
+use App\Clients;
 
 class VehicleController extends Controller
 {
@@ -37,6 +38,29 @@ class VehicleController extends Controller
         ->paginate(10);
 
         return view('dashboard.vehicle_profile', compact('result', 'name'));
+    }
+
+    public function new_vehicle()
+    {
+        //$clients = Clients::paginate(15);
+        $clients = Clients::all()->pluck('full_name', 'client_id');
+
+        return view('dashboard.vehicle_new', compact('clients'));
+    }
+
+    public function insert(Request $request)
+    {
+        //firstname, lastname, contact_no, age, email, created_at, updated_at
+        $id = $request -> client_id;
+                $data = array('client_id'=>$id,
+                              'plate_no'=>$request->plateno,
+                              'type'=>$request->type,
+                              'model'=>$request->model,
+                              'color'=>$request->color,
+                              'description'=>$request->desc,
+                              'date_created'=>date('Y-m-d H:i:s'));
+                Vehicle::insert($data);
+        return back();
     }
 
     /**

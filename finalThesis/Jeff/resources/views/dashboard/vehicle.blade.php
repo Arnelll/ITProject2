@@ -9,7 +9,11 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
+<<<<<<< HEAD
                 <h4 class="card-link"> @yield('title')<a href="#" class="btn-warning btn-sm btn-round" data-toggle="modal" data-target="#newProduct">+ Vehicle</a></h4> 
+=======
+            <h4 class="card-link"> @yield('title')<a href="/new_vehicle" class="btn btn-primary">+ Vehicle</a></h4>
+>>>>>>> 230420724aa8bc3749e3c0972819e8124427b7b6
             </div>
             <div class="card-body">
                 <div class="table-responsive">

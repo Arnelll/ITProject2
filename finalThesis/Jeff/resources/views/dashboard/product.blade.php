@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-            <h4 class="card-link"> @yield('title')<a href="/new_product" class="btn btn-primary">+ Product</a></h4>
+            <h4 class="card-link"> @yield('title')<a href="/new_product" class="btn btn-warning btn-sm btn-round">+ Product</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

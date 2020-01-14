@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-            <h4 class="card-link"> @yield('title')<a href="/new_service" class="btn btn-primary">+ Job Order</a></h4>
+            <h4 class="card-link"> @yield('title')<a href="/new_service" class="btn btn-warning btn-sm btn-round">+ Job Order</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -34,7 +34,7 @@
                                     <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
                                     <td>{{$row['service']}}</td>
                                     <td>{{$row['status']}}</td>
-                                    <td><a href='#' class="btn btn-primary">View Details</a></td>
+                                    <td><a href='#' class="btn btn-primary"><i class="now-ui-icons files_paper"></i></a></td>
                                 </tr>
                             @endforeach
                             <nav aria-label="...">

@@ -22,7 +22,7 @@
                             Quantity
                             </th>
                             <th>
-                            Email
+                            Price
                             </th>
                             <th>
                             Actions
@@ -34,7 +34,8 @@
                                     <td>{{$row['product_name']}}</td>
                                     <td>{{$row['quantity']}}</td>
                                     <td>{{$row['price']}}</td>
-                                    <td><a href="/product_profile/{{$row['product_id']}}"><i class="now-ui-icons files_paper"></i></a></td>
+                                    <td><a href="/product_profile/{{$row['product_id']}}"><i class="now-ui-icons files_paper"></i></a>
+                                        <a href="/edit_product/{{$row['product_id']}}"><i class="fas fa-edit"></i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

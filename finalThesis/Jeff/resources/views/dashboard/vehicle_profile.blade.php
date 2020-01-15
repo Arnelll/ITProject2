@@ -4,6 +4,9 @@
     @foreach($name as $n)
         Vehicle profile for Plate No. <strong style="color:red;">{{$n['plate']}}</strong>
     @endforeach
+    <p>
+	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
+    </p>
 @endsection
 
 @section('content')
@@ -19,7 +22,7 @@
                     @foreach($result as $n)
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
-                        <label>Vehicle Type</label>
+                        <label>Type</label>
                         
                         <input type="text" class="form-control" disabled="" placeholder="vehicle_type" value="{{$n['type']}}(Model: {{$n['model']}})">
                         

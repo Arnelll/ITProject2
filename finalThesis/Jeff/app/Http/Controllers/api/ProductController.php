@@ -66,6 +66,16 @@ class ProductController extends Controller
 
     }
 
+    public function edit_product($id)
+    {
+        $x['id'] = $id;
+
+        $result = Product::where('product_id','=',$x)
+        ->first();
+
+        return view('dashboard.edit_product', compact('result'));
+    }
+
     public function insert(Request $request)
     {
         //firstname, lastname, contact_no, age, email, created_at, updated_at
@@ -120,24 +130,20 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function product_update(Request $request)
     {
-        //
+        $s=new Product;
+        $data = array('product_name' =>$request->input('productname'),
+                      'quantity' =>$request->input('qty'),
+                      'price' =>$request->input('price'));
+        $s->where('product_id', $request->input('productid'))->update($data);
+        return back();
     }
 
     /**

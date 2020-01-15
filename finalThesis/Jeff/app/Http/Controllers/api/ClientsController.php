@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Clients;
+use DB;
 
 class ClientsController extends Controller
 {
@@ -68,6 +69,16 @@ class ClientsController extends Controller
 
     }
 
+    public function edit_account($id)
+    {
+        $x['id'] = $id;
+
+        $result = Clients::where('client_id','=',$x)
+        ->first();
+
+        return view('dashboard.edit_account', compact('result'));
+    }
+
     public function insert(Request $request)
     {
         //firstname, lastname, contact_no, age, email, created_at, updated_at
@@ -81,6 +92,17 @@ class ClientsController extends Controller
         return back();
     }
 
+    public function account_update(Request $request)
+    {
+        $s=new Clients;
+        $data = array('firstname' =>$request->input('fn'),
+                      'lastname' =>$request->input('ln'),
+                      'age' =>$request->input('age'),
+                      'email' =>$request->input('email'),
+                      'contact_no' =>$request->input('contactnum'));
+        $s->where('client_id', $request->input('clientid'))->update($data);
+        return back();
+    }
     /**
      * Show the form for creating a new resource.
      *

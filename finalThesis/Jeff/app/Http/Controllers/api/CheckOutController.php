@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Clients;
 use App\Product;
 use App\Mechanic;
 use App\JobOrder;
@@ -18,11 +19,12 @@ class CheckOutController extends Controller
     public function index()
     {
         //
+        $clients = Clients::all()->pluck('full_name', 'client_id');
         $products = Product::pluck('product_name','product_id');
         $mechanics = Mechanic::all()->pluck('fullname','mechanic_id');
         $joborder = JobOrder::all();
 
-        return view('dashboard.product_co', compact('products','mechanics','joborder'));
+        return view('dashboard.product_co', compact('clients','products','mechanics','joborder'));
     }
 
     /**

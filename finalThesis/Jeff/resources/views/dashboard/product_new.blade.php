@@ -2,10 +2,14 @@
 
 @section('title')
     + Product
+	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
 @endsection
 
+
 @section('content')
+
 <body>
+
         <div class="container">
         <section class="panel">
         <div class="panel panel-footer">
@@ -53,7 +57,6 @@
             </div>
             
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
       </div>
 </div>

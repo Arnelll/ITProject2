@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Accounts
+    Checkout
 @endsection
 
 @section('content')
@@ -10,30 +10,32 @@
         <section class="panel">
             <div class="panel panel-footer">
             <header class="panel panel-default">
-                <h3> Product Checkout Details </h3>
+                <h3> Checkout Details </h3>
             </header>
             </div>
         <div class="panel panel-footer">
-        {!!Form::open(array('route'=>'insert','id'=>'formsave','method'=>'post'))!!}
+        {!!Form::open(array('route'=>'service_insert','id'=>'formsave','method'=>'post'))!!}
         <div class="row">
-            <div class="col-lg-6 col-sm-4">
+            <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <select name="sex" class="form-control">
-                    <option value="0" selected="true" disabled="true">Job Order Number</option>
-                    @foreach($joborder as $p)
-                        <option value="{{$p['jo_id']}}">{{$p['jo_id']}}</option>
-                    @endforeach
+                    <select name="client_id" class="form-control">
+                        <option value="0" selected="true" disabled="true">Select Client</option>
+                        @foreach($clients as $key => $c)
+                        <option value="{!!$key!!}">{!!$c!!}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-4">
+            <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                    <select name="sex" class="form-control">
-                        <option value="0" selected="true" disabled="true">Mechanic</option>
-                        @foreach($mechanics as $key => $p)
-                        <option value="{!!$key!!}">{!!$p!!}</option>
-                        @endforeach
-                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="form-group">
+                </div>
+            </div>
+           <div class="col-lg-6 col-sm-6">
+                <div class="form-group">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-2">
@@ -41,11 +43,14 @@
                 {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
                 </div>
             </div>
-        <div class="col-lg-12 col-sm-12">
+            <div class="col-lg-12 col-sm-12">
             <table class="table table-bordered">
                 <thead>
                     <th>Product Name</th>
                     <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Discount(%)</th>
+                    <th>Amount</th>
                     <th style="text-align:center"><a href="#" class="addRow ">+<i class="glyphicon glyphicon-plus"></i></a></th>
                 </thead>
                 <tbody>
@@ -59,9 +64,22 @@
                             </select>
                         </td>
                         <td><input type="text" name="qty[]" class="form-control qty"></td>
+                        <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>
+                        <td><input type="text" name="dis[]" class="form-control dis"></td>
+                        <td><input type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white"></td>
                         <td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>
                     </tr>
-                </tbody>  
+                </tbody>
+            <tfoot>
+                <tr>
+                    <td style="border:none"></td>
+                    <td style="border:none"></td>
+                    <td style="border:none"></td>
+                    <td><b>Total</b></td>
+                    <td><b class="total"></b></td>
+                    <td></td>
+                </tr>
+            </tfoot>   
         </table>
     </div>
 </div>
@@ -143,6 +161,9 @@ function addRow()
                 '</select>'+
                 '</td>'+
                 '<td><input type="text" name="qty[]" class="form-control qty"></td>'+
+                '<td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>'+
+                '<td><input type="text" name="dis[]" class="form-control dis"></td>'+
+                '<td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>'+
                 '<td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>'+
                 '</tr>';
     $('tbody').append(tr);

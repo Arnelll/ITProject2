@@ -71,12 +71,6 @@
             </div>
           </li>
           <li>
-            <a href="/joborder">
-              <i class="now-ui-icons location_map-big"></i>
-              <p>Job Order</p>
-            </a>
-          </li>
-          <li>
             <a href="/product_co">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Product Checkout</p>
@@ -86,24 +80,6 @@
             <a href="/test">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Debugger</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>#</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>#</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>#</p>
             </a>
           </li>
         </ul>
@@ -145,9 +121,6 @@
                   <i class="now-ui-icons users_single-02"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}">
-                    Profile
-                  </a>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">

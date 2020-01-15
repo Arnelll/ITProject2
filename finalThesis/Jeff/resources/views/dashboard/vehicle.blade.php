@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-link"> @yield('title')<a href="#" class="btn-warning btn-sm btn-round" data-toggle="modal" data-target="#newProduct">+ Vehicle</a></h4> 
+            <h4 class="card-link"> @yield('title')<a href="/new_vehicle" class="btn btn-warning btn-sm btn-round">+ Vehicle</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -22,6 +22,9 @@
                             Type
                             </th>
                             <th>
+                            Color
+                            </th>
+                            <th>
                             Action
                             </th>
                         </thead>
@@ -29,7 +32,8 @@
                             @foreach($result as $row)
                                 <tr>
                                     <td>{{$row['plate_no']}}</td>
-                                    <td>{{$row['type']}}</td>
+                                    <td>{{$row['type']}}(Model: {{$row['model']}})</td>
+                                    <td>{{$row['color']}}</td>
                                     <td><a href="/view_vehicle/{{$row['vehicle_id']}}"><i class="now-ui-icons files_paper"></i></a></td>
                                 </tr>
                             @endforeach

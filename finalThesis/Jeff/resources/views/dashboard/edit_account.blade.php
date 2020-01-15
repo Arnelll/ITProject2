@@ -1,11 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    + Account
+    + Edit Account
     <p>
 	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
     </p>
 @endsection
+
 
 @section('content')
 <body>
@@ -13,20 +14,21 @@
         <section class="panel">
             <div class="panel panel-footer">
             <header class="panel panel-default">
-                <h3> Job Order Details </h3>
+                <h3> Account Details </h3>
             </header>
             </div>
         <div class="panel panel-footer">
-        {!!Form::open(array('route'=>'account_insert','id'=>'formsave','method'=>'post'))!!}
+        {!!Form::open(array('route'=>'account_update','id'=>'formupdate','method'=>'post'))!!}
         <div class="row">
+        <input type="hidden" value="{{$result->client_id}}" id="clientid" name="clientid">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="fn" class="form-control" placeholder="First Name">
+                <input type="text" id="fn" name="fn" class="form-control" value="{{$result->firstname}}">
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="ln" class="form-control" placeholder="Last Name">
+                <input type="text" id="ln" name="ln" class="form-control" value="{{$result->lastname}}">
                 </div>
             </div>
             <!--
@@ -41,17 +43,17 @@
             </div> -->
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="age" class="form-control" placeholder="Age">
+                <input type="text" id="age" name="age" class="form-control" value="{{$result->age}}">
                 </div>
             </div>
             <div class="col-lg-3 col-sm-4">
                 <div class="form-group">
-                <input type="text" name="email" class="form-control" placeholder="Email">
+                <input type="text" id="email" name="email" class="form-control" value="{{$result->email}}">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-3">
                 <div class="form-group">
-                <input type="text" name="phone" class="form-control" placeholder="Phone">
+                <input type="text" id="contactnum" name="contactnum" class="form-control" value="{{$result->contact_no}}">
                 </div>
             </div>
             <!-- <div class="col-lg-3 col-sm-3">
@@ -61,7 +63,7 @@
             </div> -->
             <div class="col-lg-2 col-sm-2">
                 <div class="form-group">
-                {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
+                {!!Form::submit('Update',array('class'=>'btn btn-primary'))!!}
                 </div>
             </div>
 </div>

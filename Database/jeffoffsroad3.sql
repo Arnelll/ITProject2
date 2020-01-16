@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2020 at 07:00 AM
+-- Generation Time: Jan 16, 2020 at 05:10 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -248,15 +248,16 @@ INSERT INTO `deliveries` (`id`, `deliveryNo`, `status`, `date_delivered`, `date_
 --
 
 CREATE TABLE `job_order` (
-  `jo_id` int(10) UNSIGNED NOT NULL,
-  `client_id` int(10) UNSIGNED NOT NULL,
-  `mechanic_id` int(10) UNSIGNED NOT NULL,
-  `vehicle_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `service_id` int(10) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `total` int(10) NOT NULL,
-  `status` int(11) NOT NULL,
+  `jo_id` int(11) UNSIGNED NOT NULL,
+  `client_id` int(11) UNSIGNED NOT NULL,
+  `mechanic_id` int(11) UNSIGNED NOT NULL,
+  `vehicle_id` int(11) UNSIGNED NOT NULL,
+  `product_id` int(11) UNSIGNED NOT NULL,
+  `service` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `otherservice` varchar(255) DEFAULT NULL,
+  `quantity` int(2) NOT NULL,
+  `discount` int(11) DEFAULT NULL,
+  `total` decimal(11,2) NOT NULL,
   `date_created` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -264,15 +265,15 @@ CREATE TABLE `job_order` (
 -- Dumping data for table `job_order`
 --
 
-INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `product_id`, `service_id`, `quantity`, `total`, `status`, `date_created`) VALUES
-(1, 3, 1, 1, 26, 2, 3, 123, 1, '2019-09-30 16:00:00'),
-(2, 27, 3, 1, 35, 1, 3, 64671, 1, NULL),
-(3, 27, 2, 2, 30, 1, 12, 134724, 1, NULL),
-(4, 28, 1, 2, 30, 1, 34, 366962, 1, NULL),
-(5, 28, 1, 2, 34, 1, 5, 53965, 1, NULL),
-(6, 28, 2, 2, 29, 4, 69, 1179900, 1, NULL),
-(7, 27, 2, 2, 26, 6, 500, 3756000, 1, NULL),
-(8, 27, 2, 2, 27, 6, 1, 7512, 1, NULL);
+INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `product_id`, `service`, `otherservice`, `quantity`, `discount`, `total`, `date_created`) VALUES
+(1, 3, 1, 1, 26, 'Wheel Alignment', NULL, 3, NULL, '123.00', '2019-09-30 16:00:00'),
+(2, 27, 3, 1, 35, 'Wheel Alignment', NULL, 3, NULL, '64671.00', NULL),
+(3, 27, 2, 2, 30, 'Vehicle Painting', NULL, 12, NULL, '134724.00', NULL),
+(4, 28, 1, 2, 30, 'Vehicle Painting', NULL, 34, NULL, '366962.00', NULL),
+(5, 28, 1, 2, 34, 'Product Installation', NULL, 5, NULL, '53965.00', NULL),
+(6, 28, 2, 2, 29, 'Restoration', NULL, 69, NULL, '1179900.00', NULL),
+(7, 27, 2, 2, 26, 'Wheel Alignment', NULL, 500, NULL, '3756000.00', NULL),
+(8, 27, 2, 2, 27, 'Wheel Alignment', NULL, 1, NULL, '7512.00', NULL);
 
 -- --------------------------------------------------------
 
@@ -285,34 +286,32 @@ CREATE TABLE `mechanic` (
   `firstname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `lastname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `contact_no` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `mechanic`
 --
 
-INSERT INTO `mechanic` (`mechanic_id`, `firstname`, `lastname`, `contact_no`, `address`, `date_created`, `date_updated`) VALUES
-(1, 'Justine', 'Dungan', '09362842650', 'Bakakeng', '2020-01-07 05:45:33', '2020-01-07 05:45:33'),
-(2, 'Jin', 'Woo', '09123456789', 'Baguio city', '0000-00-00 00:00:00', '2020-01-02 10:09:12'),
-(3, 'Steve', 'Fox', '09987654321', 'Baguio City', '2019-10-14 16:00:00', '2020-01-02 10:08:57'),
-(4, 'Ben', 'Doherty', '09330679448', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(5, 'Theodore', 'Matthams', '09380735524', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(6, 'Adrian', 'Mccall', '09202601871', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(7, 'Byron', 'Coffey', '09935337957', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(8, 'Leonardo', 'Mckay', '09650118024', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(9, 'Gregory', 'Mclaughlin', '09486422309', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(10, 'Carmen', 'James', '09782427484', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(11, 'Tia', 'Singh', '09463614108', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(12, 'Cole ', 'Booker', '09376859937', 'Baguio City', '0000-00-00 00:00:00', '2020-01-07 05:44:29'),
-(13, 'Wayn', 'Horne', '09873600610', 'Baguio City', '2020-01-06 16:00:00', '2020-01-07 05:44:29'),
-(14, 'Cheyenne', 'Gibson', '09093691532', 'Baguio City', '2020-01-07 05:48:51', '2020-01-07 05:48:51'),
-(15, 'Kalvin', 'Blair', '09497885538', 'Baguio City', '2020-01-07 05:48:51', '2020-01-07 05:48:51'),
-(16, 'Ansh', 'Wang ', '09316779755', 'Baguio City', '2020-01-07 05:48:51', '2020-01-07 05:48:51'),
-(17, 'Enya', 'Curry', '09097682298', 'Baguio City', '2020-01-07 05:48:51', '2020-01-07 05:48:51'),
-(18, 'Matteo', 'Gillard', '09103989563', 'Baguio City', '2020-01-07 05:48:51', '2020-01-07 05:48:51');
+INSERT INTO `mechanic` (`mechanic_id`, `firstname`, `lastname`, `contact_no`, `address`) VALUES
+(1, 'Justine', 'Dungan', '09362842650', 'Bakakeng'),
+(2, 'Jin', 'Woo', '09123456789', 'Baguio city'),
+(3, 'Steve', 'Fox', '09987654321', 'Baguio City'),
+(4, 'Ben', 'Doherty', '09330679448', 'Baguio City'),
+(5, 'Theodore', 'Matthams', '09380735524', 'Baguio City'),
+(6, 'Adrian', 'Mccall', '09202601871', 'Baguio City'),
+(7, 'Byron', 'Coffey', '09935337957', 'Baguio City'),
+(8, 'Leonardo', 'Mckay', '09650118024', 'Baguio City'),
+(9, 'Gregory', 'Mclaughlin', '09486422309', 'Baguio City'),
+(10, 'Carmen', 'James', '09782427484', 'Baguio City'),
+(11, 'Tia', 'Singh', '09463614108', 'Baguio City'),
+(12, 'Cole ', 'Booker', '09376859937', 'Baguio City'),
+(13, 'Wayn', 'Horne', '09873600610', 'Baguio City'),
+(14, 'Cheyenne', 'Gibson', '09093691532', 'Baguio City'),
+(15, 'Kalvin', 'Blair', '09497885538', 'Baguio City'),
+(16, 'Ansh', 'Wang ', '09316779755', 'Baguio City'),
+(17, 'Enya', 'Curry', '09097682298', 'Baguio City'),
+(18, 'Matteo', 'Gillard', '09103989563', 'Baguio City');
 
 -- --------------------------------------------------------
 
@@ -701,19 +700,19 @@ INSERT INTO `purchase_order` (`po_id`, `recipient`, `supplier_id`, `to_address`,
 
 CREATE TABLE `service` (
   `service_id` int(10) NOT NULL,
-  `service_name` varchar(255) CHARACTER SET latin1 NOT NULL
+  `name` varchar(255) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `service`
 --
 
-INSERT INTO `service` (`service_id`, `service_name`) VALUES
+INSERT INTO `service` (`service_id`, `name`) VALUES
 (1, 'Wheel Alignment'),
 (2, 'Lifting'),
 (3, 'Restoration'),
 (4, 'Vehicle Painting'),
-(5, 'Production Installation'),
+(5, 'Product Installation'),
 (6, 'Others');
 
 -- --------------------------------------------------------
@@ -1179,7 +1178,7 @@ ALTER TABLE `deliveries`
 -- AUTO_INCREMENT for table `job_order`
 --
 ALTER TABLE `job_order`
-  MODIFY `jo_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `jo_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `mechanic`

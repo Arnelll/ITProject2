@@ -3242,13 +3242,13 @@ Created using IcoMoon - icomoon.io
 .card-user .author {
   text-align: center;
   text-transform: none;
-  margin-top: -77px; }
+  margin-top: -55px; }
   .card-user .author a + p.description {
-    margin-top: -7px; }
+    margin-top: 5px; }
 
 .card-user .avatar {
-  width: 124px;
-  height: 124px;
+  width: 90px;
+  height: 90px;
   border: 1px solid #FFFFFF;
   position: relative; }
 

@@ -1,10 +1,20 @@
 @extends('layouts.master')
 
 @section('title')
-    + Job Order
+    + Transaction
+    <p>
+	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
+    </p>
 @endsection
 
 @section('content')
+
+<style>
+.hide {
+    display: none;
+}
+</style>
+
 <body>
         <div class="container">
         <section class="panel">
@@ -15,17 +25,12 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'service_insert','id'=>'formsave','method'=>'post'))!!}
+            <button type="button" id="show-btn" class="btn btn-danger justify-content-end">ADD JOB ORDER</button>
+            <h7 class="card-link"><a href="/new_account" class="btn btn-danger justify-content-end">ADD NEW CLIENT</a></h7>
+            <br>
+        <div id="hideJO" class="hide">
+            <h3><strong>Job Order</strong></h3>
         <div class="row">
-            <div class="col-lg-6 col-sm-6">
-                <div class="form-group">
-                    <select name="client_id" class="form-control">
-                        <option value="0" selected="true" disabled="true">Select Client</option>
-                        @foreach($clients as $key => $c)
-                        <option value="{!!$key!!}">{!!$c!!}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
                 <select name="mech" class="form-control">
@@ -46,24 +51,28 @@
                             </select>
                 </div>
             </div>
-           <div class="col-lg-6 col-sm-6">
-                <div class="form-group">
-                <input type="checkbox" name="svc[]" value="Repair and Maintenance"/> Repair and Maintenance <br>
-                <input type="checkbox" name="svc[]" value="Lifting"/> Lifting <br>
-                <input type="checkbox" name="svc[]" value="Wheel Alignment"/> Wheel Alignment <br>
-                <input type="checkbox" name="svc[]" value="Restoration"/> Restoration <br>
-                <input type="checkbox" name="svc[]" value="Vehicle Painting"/> Vehicle Painting <br>
-                <input type="checkbox" name="svc[]" value="Production Installation"/> Production Installation <br>
-                <input type="checkbox" name="svc[]" value="Others"/> Others
-                </div>
+            <br>
+        </div>
+        <br>
+            <div class="form-group">
+                <label>Service Details:</label>
+                <textarea type="text" name="svc" class="form-control" rows="5"></textarea>
+                <br>
             </div>
-            <div class="col-lg-2 col-sm-2">
-                <div class="form-group">
-                {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
-                </div>
-            </div>
+        </div>
         <div class="col-lg-12 col-sm-12">
-            <table class="table table-bordered">
+            <h3><strong>Sales</strong></h3>
+            <div class="col-lg-6 col-sm-6">
+                <div class="form-group">
+                    <select name="client_id" class="form-control">
+                        <option value="0" selected="true" disabled="true">Select Client</option>
+                        @foreach($clients as $key => $c)
+                        <option value="{!!$key!!}">{!!$c!!}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <table class="table table-bordered"><br>
                 <thead>
                     <th>Product Name</th>
                     <th>Quantity</th>
@@ -100,6 +109,13 @@
                 </tr>
             </tfoot>   
         </table>
+        <input type="hidden" value="Ongoing" id="status" name="status">
+        <div class="col-lg-3 col-sm-3">
+            <div class="form-group">
+            <br>
+            {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
+            </div>
+        </div>
     </div>
 </div>
         {!!Form::hidden('_token',csrf_token())!!}
@@ -238,6 +254,18 @@ $('.remove').on('click', function(){
         total();
     }
 });
+
+const showButton = document.getElementById('show-btn');
+const hider = document.getElementById('hideJO');
+
+showButton.addEventListener('click', showJO)
+
+function showJO() {
+    console.log('Started')
+    showButton.classList.add('hide');
+    hider.classList.remove('hide');
+}
+
 </script> 
 @endsection
     

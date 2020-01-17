@@ -54,11 +54,12 @@ class ServiceController extends Controller
                 $data = array('client_id'=>$id,
                               'mechanic_id'=>$mid,
                               'vehicle_id'=>$vid,
-                              'service'=>$request->svc [$key],
+                              'service'=>$request->svc,
                               'product_id'=>$v,
                               'quantity'=>$request->qty [$key],
                               'discount'=>$request->dis [$key],
                               'total'=>$request->amount [$key],
+                              'status'=>$request->status,
                               'date_created'=>date('Y-m-d H:i:s'));
                 JobOrder::insert($data);
             }

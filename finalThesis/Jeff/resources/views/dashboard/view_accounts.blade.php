@@ -8,12 +8,28 @@
 @endsection
 
 @section('content')
-
-<div class="row">
-    <div class="col-md-8">
+    <div class="row justify-content-center">
+    <div class="col-md-3">
+      <div class="card-body">
+        <div class="card">
+        <div class="card-user">
+          <div class="author">
+            <a href="#">
+              <img class="avatar border-gray" src="../assets/img/default-avatar.png" alt="...">
+              <h5 class="title">{{$result->lastname}}, {{$result->firstname}}</h5>
+            </a>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center">
+<div class="col-md-9">
       <div class="card">
-        <div class="card-body">
-          <div class="col-md-10 ml-auto mr-auto col-xl-6">
+        <div class="card card-body">
+          <div class="col-md-12 ml-auto mr-auto col-xl-12">
             <div class="card-header">
               <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item">
@@ -150,29 +166,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card card-user">
-        <div class="image">
-          <img src="../assets/img/bg5.jpg" alt="...">
-        </div>
-        <div class="card-body">
-          <div class="author">
-            <a href="#">
-              <img class="avatar border-gray" src="../assets/img/default-avatar.png" alt="...">
-              <h5 class="title">{{$result->lastname}}, {{$result->firstname}}</h5>
-            </a>
-            <p class="description">
-              <strong>Customer</strong>
-            </p>
-          </div>
-        </div>
-        <hr>
-        <div class="description-container text-center"> 
-        </div>
-      </div>
     </div>
-  </div>
-</div>
+    
 
 
 

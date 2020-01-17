@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Transactions;
 use App\Transactions2;
+use App\JobOrder;
 
 class TransactionController extends Controller
 {
@@ -17,9 +18,12 @@ class TransactionController extends Controller
     public function index()
     {
         //
-        $result = Transactions::orderBy('transactions.tId', 'desc')
-        ->join('clients', 'clients.client_id', 'transactions.client_id')
-        ->select('clients.*', 'transactions.*')
+        $result = JobOrder::orderBy('job_order.jo_id', 'desc')
+        ->join('clients', 'clients.client_id', 'job_order.client_id')
+        ->join('mechanic', 'mechanic.mechanic_id', 'job_order.mechanic_id')
+        ->join('vehicles', 'vehicles.vehicle_id', 'job_order.vehicle_id')
+        ->join('products', 'products.product_id', 'job_order.product_id')
+        ->select('clients.*','mechanic.*','vehicles.*','products.*', 'job_order.*')
         ->paginate(10);
 
         return view('dashboard.transactions_services', compact('result'));

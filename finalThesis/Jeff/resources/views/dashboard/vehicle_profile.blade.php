@@ -10,8 +10,28 @@
 @endsection
 
 @section('content')
-        <div class="row">
-            <div class="col-md-8">
+<div class="row justify-content-center">
+    <div class="col-md-3">
+      <div class="card-body">
+        <div class="card">
+        <div class="card-user">
+          <div class="author">
+          <a href="#">
+                    <img class="avatar border-gray" src="../assets/img/Arnel.jpg" alt="...">
+                    @foreach($result as $row)
+                    <h5 class="title">{{$row['lastname']}}, {{$row['firstname']}}</h5>
+                  </a>
+                </div>
+                <p class="description text-center"> Email: {{$row['email']}} </p>
+                @endforeach
+          </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="row justify-content-center">
+            <div class="col-md-9">
             <div class="card">
               <div class="card-header">
                 <h5 class="title">Vehicle</h5>
@@ -47,36 +67,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card card-user">
-              <div class="image">
-                <img src="../assets/img/bg5.jpg" alt="...">
-              </div>
-              <div class="card-body">
-                <div class="author">
-                  <a href="#">
-                    <img class="avatar border-gray" src="../assets/img/Arnel.jpg" alt="...">
-                    @foreach($result as $row)
-                    <h5 class="title">{{$row['lastname']}}, {{$row['firstname']}}</h5>
-                  </a>
-                  <p class="description">
-                    <strong>Owner of {{$row['type']}}</strong><br>Plate No. <strong style="color:red;">{{$row['plate_no']}}</strong>
-                  </p>
-                </div>
-                <p class="description text-center">
-                  "{{$row['description']}}"
-                </p>
-                <p class="description"> Email: {{$row['email']}} </p>
-              </div>
-              <hr>
-              <div class="description-container text-center">
-                  
-              </div>
-              @endforeach
-            </div>
           </div>
-        </div>
-</div>
 
 @endsection
     

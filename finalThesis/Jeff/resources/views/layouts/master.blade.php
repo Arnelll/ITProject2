@@ -43,43 +43,32 @@
           </li>
           <li>
             <a href="/accounts">
-              <i class="now-ui-icons education_atom"></i>
+              <i class="now-ui-icons users_single-02"></i>
               <p>Clients</p>
             </a>
           </li>
           <li>
             <a href="/products">
-              <i class="now-ui-icons location_map-big"></i>
+              <i class="now-ui-icons files_box"></i>
               <p>Products</p>
             </a>
           </li>
           <li>
             <a href="/vehicle">
-              <i class="now-ui-icons location_map-big"></i>
+              <i class="now-ui-icons transportation_bus-front-12"></i>
               <p>Vehicles</p>
             </a>
           </li>
           <li>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Transactions
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/service">Service</a>
-                <a class="dropdown-item" href="/walkin">Walk-in</a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <a href="/product_co">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Product Checkout</p>
+            <a href="/service">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Sales</p>
             </a>
           </li>
           <li>
-            <a href="/test">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Debugger</p>
+            <a href="/product_co">
+              <i class="now-ui-icons shopping_cart-simple"></i>
+              <p>Product Checkout</p>
             </a>
           </li>
         </ul>

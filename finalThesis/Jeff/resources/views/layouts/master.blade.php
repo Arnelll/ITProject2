@@ -23,7 +23,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="yellow">
+    <div class="sidebar" data-color="blue">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -60,6 +60,12 @@
             </a>
           </li>
           <li>
+            <a href="/mechanic">
+              <i class="now-ui-icons design-2_ruler-pencil"></i>
+              <p>Mechanics</p>
+            </a>
+          </li>
+          <li>
             <a href="/service">
               <i class="now-ui-icons education_paper"></i>
               <p>Sales</p>
@@ -86,13 +92,16 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">@yield('title')</a>
+            <a style="top:-10px;" class="navbar-brand" href="#">@yield('title')</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
+          <div style="text-align: center;display: block; width: 200px; height: 200px; float: left; margin-left: 320px; position: absolute; top: 18px;">
+                    <img src="../assets/img/CompanyLogo.png" />
+          </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form>
               <div class="input-group no-border">
@@ -104,6 +113,7 @@
                 </div>
               </div>
             </form>
+            
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -126,7 +136,6 @@
         </div>
       </nav>
       <!-- End Navbar -->
-
       <div class="panel-header panel-header-sm">
       </div>
       <div class="content">

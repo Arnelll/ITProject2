@@ -19,6 +19,7 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'product_insert','id'=>'formsave','method'=>'post'))!!}
+        <h4><strong>Enter Product Details</strong></h4>
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">

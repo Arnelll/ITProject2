@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Sales
+    Mechanics
 @endsection
 
 @section('content')
@@ -9,36 +9,30 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-            <h4 class="card-link"> @yield('title')</h4>
+            <h4 class="card-link"> @yield('title')<a href="/new_mechanic" class="btn btn-warning btn-sm btn-round">+ Mechanic</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
                             <th>
-                            Client Name
+                            Fullname
                             </th>
                             <th>
-                            Service
+                            Contact
                             </th>
                             <th>
-                            Status
-                            </th>
-                            <th>
-                            Actions
+                            Address
                             </th>
                         </thead>
                         <tbody>
-                            @foreach($result as $row)
+                        @foreach($result as $row)
                                 <tr>
-                                    <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
-                                    <td>{{$row['service']}}</td>
-                                    <td>{{$row['status']}}</td>
-                                    <td><a href="/view_walkin/{{$row['client_id']}}" class="btn-sm"><i class="now-ui-icons files_paper"></i></a></td>
+                                    <td>{{$row['last_name']}}, {{$row['first_name']}}</td>
+                                    <td>{{$row['contact_no']}}</td>
+                                    <td>{{$row['address']}}</td>
                                 </tr>
                             @endforeach
-                            <nav aria-label="...">
-                        {{$result->links()}}
                         </tbody>
                     </table>
                 </div>

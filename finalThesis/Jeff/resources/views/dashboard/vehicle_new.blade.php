@@ -18,6 +18,7 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'vehicle_insert','id'=>'formsave','method'=>'post'))!!}
+        <h4><strong>Enter Vehicle Details</strong></h4>
         <div class="row">
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">

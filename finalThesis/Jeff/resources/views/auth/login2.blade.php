@@ -5,7 +5,11 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h5 class="title">{{ __('Login') }}</h5>
+                <h5 class="title" style="text-align: center;" hidden>{!! __("Jeff's Off-Road Performance Center") !!}</h5>
+                
+                <div style="text-align: center;">
+                    <img src="../assets/img/CompanyLogo.png" />
+                </div>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">

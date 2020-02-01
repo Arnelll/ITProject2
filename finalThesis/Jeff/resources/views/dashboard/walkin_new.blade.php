@@ -2,6 +2,9 @@
 
 @section('title')
     + Walk-in
+    <p>
+	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
+    </p>
 @endsection
 
 @section('content')
@@ -15,6 +18,8 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'insert','id'=>'formsave','method'=>'post'))!!}
+        <h7 class="card-link"><a href="/new_service" class="btn btn-danger justify-content-end">ADD JOB ORDER</a></h7>
+        <h7 class="card-link"><a href="/new_account" class="btn btn-danger justify-content-end">ADD NEW CLIENT</a></h7>
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">

@@ -1,10 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    + Transaction
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
+    + Job Order
 @endsection
 
 @section('content')
@@ -25,8 +22,7 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'service_insert','id'=>'formsave','method'=>'post'))!!}
-            <button type="button" id="show-btn" class="btn btn-danger justify-content-end">ADD JOB ORDER</button>
-            <h7 class="card-link"><a href="/new_account" class="btn btn-danger justify-content-end">ADD NEW CLIENT</a></h7>
+            <button type="button" id="show-btn" class="btn btn-danger justify-content-end">Add Job Order</button>
             <br>
         <div id="hideJO" class="hide">
             <h3><strong>Job Order</strong></h3>
@@ -55,8 +51,8 @@
         </div>
         <br>
             <div class="form-group">
-                <label>Service Details:</label>
-                <textarea type="text" name="svc" class="form-control" rows="5"></textarea>
+                <label for="comment">Service Details:</label>
+                <textarea class="form-control" rows="5" id="comment" name="svc"></textarea>
                 <br>
             </div>
         </div>
@@ -109,7 +105,6 @@
                 </tr>
             </tfoot>   
         </table>
-        <input type="hidden" value="Ongoing" id="status" name="status">
         <div class="col-lg-3 col-sm-3">
             <div class="form-group">
             <br>

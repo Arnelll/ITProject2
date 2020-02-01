@@ -14,14 +14,14 @@
             </header>
             </div>
         <div class="panel panel-footer">
-        {!!Form::open(array('route'=>'service_insert','id'=>'formsave','method'=>'post'))!!}
+        {!!Form::open(array('route'=>'checkout_insert','id'=>'formsave','method'=>'post'))!!}
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                    <select name="client_id" class="form-control">
-                        <option value="0" selected="true" disabled="true">Select Client</option>
-                        @foreach($clients as $key => $c)
-                        <option value="{!!$key!!}">{!!$c!!}</option>
+                    <select name="joborder" id="joborder" class="form-control joborder">
+                        <option value="0" selected="true" disabled="true">Job Order No.</option>
+                        @foreach($joborder as $row)
+                        <option value="{{$row['jo_id']}}">{{$row['jo_id']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -83,13 +83,52 @@
         </table>
     </div>
 </div>
-        {!!Form::hidden('_token',csrf_token())!!}
-        {!!Form::close()!!}
             </div>
         </section>
     </div>
+    <br>
+    <br>
+    <table class="table">
+        <h3>Job Order Preview for <input type="text" name="jo" class="form-control" style="background:grey;color:white;width:200px" readonly> </h3>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="jo_pn" class="form-control jo_pn" readonly></td>
+                <td><input type="text" name="jo_qty" class="form-control jo_qty"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    {!!Form::hidden('_token',csrf_token())!!}
+        {!!Form::close()!!}
 </body>
+
 <script type="text/javascript">
+$('.joborder').change(function(){
+  if($(this).val() != '')
+    {
+        var tr = $(this).parent().parent();
+        var value = $(this).val();
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url:"{{ route('joborder.fetch') }}",
+            method:"POST",
+            data:{value:value, _token:_token},
+            success:function(result)
+            {
+                $("input[name='jo']").val('no.'+result[0].jo_id);
+                $("input[name='jo_pn']").val(result[0].product_name);
+                $("input[name='jo_qty']").val(result[0].quantity);
+            }
+        })
+    }
+});
+
 $('tbody').delegate('.productname', 'change', function(){
     var tr = $(this).parent().parent();
     var id = tr.find('.productname').val();

@@ -10,7 +10,7 @@ use App\Mechanic;
 use App\Vehicle;
 use App\Product;
 use App\Transactions2;
-
+use App\WalkIn;
 
 class ServiceController extends Controller
 {
@@ -50,18 +50,32 @@ class ServiceController extends Controller
         $mid = $request -> mech;
         $vid = $request -> vcle;
             foreach ($request -> productname as $key => $v)
+            $discount = $request->dis [$key];
+            if($discount==null){
+                $discount=0;
+            }
             {
-                $data = array('client_id'=>$id,
+                if($mid == null){
+                    $data = array('client_id'=>$id,
+                              'product_id'=>$v,
+                              'quantity'=>$request->qty [$key],
+                              'discount'=>$request->dis [$key],
+                              'total'=>$request->amount [$key],
+                              'date_created'=>date('Y-m-d H:i:s'));
+                    WalkIn::insert($data);         
+                }else{
+                    $data = array('client_id'=>$id,
                               'mechanic_id'=>$mid,
                               'vehicle_id'=>$vid,
                               'service'=>$request->svc,
                               'product_id'=>$v,
                               'quantity'=>$request->qty [$key],
-                              'discount'=>$request->dis [$key],
+                              'discount'=>$discount,
                               'total'=>$request->amount [$key],
-                              'status'=>$request->status,
                               'date_created'=>date('Y-m-d H:i:s'));
-                JobOrder::insert($data);
+                    JobOrder::insert($data);
+                }
+                
             }
         return back();
     }

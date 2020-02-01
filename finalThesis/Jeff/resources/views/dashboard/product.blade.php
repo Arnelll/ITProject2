@@ -38,6 +38,7 @@
                                         <a href="/edit_product/{{$row['product_id']}}"><i class="fas fa-edit"></i></a></td>
                                 </tr>
                             @endforeach
+                            {{$result->links()}}
                         </tbody>
                     </table>
                 </div>

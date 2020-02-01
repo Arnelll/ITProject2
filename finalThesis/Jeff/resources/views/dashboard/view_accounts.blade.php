@@ -1,10 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Account details
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
+  Account details
 @endsection
 
 @section('content')

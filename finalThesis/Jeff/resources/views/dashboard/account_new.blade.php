@@ -18,15 +18,16 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'account_insert','id'=>'formsave','method'=>'post'))!!}
+        <h4><strong>Enter Account Details</strong></h4>
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="fn" class="form-control" placeholder="First Name">
+                <input type="text" name="fn" class="form-control" placeholder="First Name" maxlength="30">
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="ln" class="form-control" placeholder="Last Name">
+                <input type="text" name="ln" class="form-control" placeholder="Last Name" maxlength="20">
                 </div>
             </div>
             <!--
@@ -41,17 +42,17 @@
             </div> -->
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="age" class="form-control" placeholder="Age">
+                <input type="text" name="age" class="form-control" placeholder="Age" maxlength="2">
                 </div>
             </div>
             <div class="col-lg-3 col-sm-4">
                 <div class="form-group">
-                <input type="text" name="email" class="form-control" placeholder="Email">
+                <input type="text" name="email" class="form-control" placeholder="Email" maxlength="30">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-3">
                 <div class="form-group">
-                <input type="text" name="phone" class="form-control" placeholder="Phone">
+                <input type="text" name="phone" class="form-control" placeholder="Phone" maxlength="11">
                 </div>
             </div>
             <!-- <div class="col-lg-3 col-sm-3">

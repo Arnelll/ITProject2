@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Transactions;
 use App\Transactions2;
 use App\JobOrder;
+use App\Product;
+use App\Clients;
 
 class TransactionController extends Controller
 {
@@ -42,14 +44,41 @@ class TransactionController extends Controller
     public function view_walkin($id){
         $x['id'] = $id;
 
-        $result = Transactions2::orderBy('transaction2.transaction2_id', 'asc')
-        ->join('clients', 'clients.client_id', 'transaction2.client_id')
-        ->join('products', 'products.product_id', 'transaction2.product_id')
-        ->where('transaction2.transaction2_id', '=', $x)
-        ->select('clients.*', 'transaction2.*', 'products.*')
+        $result = JobOrder::where('jo_id','=',$x)
+        ->first();
+
+        $clients = JobOrder::orderBy('job_order.jo_id', 'asc')
+        ->join('clients', 'clients.client_id', 'job_order.client_id')
+        ->where('job_order.client_id', '=', $x)
+        ->select('clients.*')
         ->paginate(10);
 
-        return view('dashboard.view_walkin', compact('result'));
+        $products= JobOrder::orderBy('job_order.jo_id', 'asc')
+        ->join('products', 'products.product_id', 'job_order.product_id')
+        ->where('job_order.product_id', '=', $x)
+        ->select('products.*')
+        ->paginate(10);
+        
+        return view('dashboard.view_walkin', compact('result','clients','products'));
+    }
+
+    public function transaction_update(Request $request)
+    {
+        $s=new JobOrder;
+        $data = array('product_id' =>$request->input('productid'),
+                      'quantity' =>$request->input('qty'),
+                      'price' =>$request->input('price'),
+                      'discount'=>$request->input('dis'),
+                      'total'=>$request->input('total'),
+                      'status'=>$request->input('stat'));
+        $s->where('jo_id', $request->input('joid'))->update($data);
+        return back();
+    }
+
+    public function findPrice(Request $request)
+    {
+        $data = Product::select('price')->where('product_id', $request->id)->first();
+        return response()->json($data);
     }
     /**
      * Show the form for creating a new resource.

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 04, 2020 at 08:56 AM
+-- Generation Time: Feb 04, 2020 at 10:38 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -227,6 +227,22 @@ CREATE TABLE IF NOT EXISTS `delivery` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `delivery_details`
+--
+
+DROP TABLE IF EXISTS `delivery_details`;
+CREATE TABLE IF NOT EXISTS `delivery_details` (
+  `delivery_id` int(11) NOT NULL,
+  `delivery_product_id` int(11) NOT NULL,
+  `delivery_quantity` int(3) NOT NULL,
+  `delivery_retail_price` decimal(11,2) NOT NULL,
+  `delivery_wholesale_price` decimal(11,2) NOT NULL,
+  `delivery_distributor_price` decimal(11,2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `job_order`
 --
 
@@ -236,9 +252,6 @@ CREATE TABLE IF NOT EXISTS `job_order` (
   `client_id` int(11) UNSIGNED NOT NULL,
   `mechanic_id` int(11) UNSIGNED NOT NULL,
   `vehicle_id` int(11) UNSIGNED NOT NULL,
-  `product_id` int(11) UNSIGNED NOT NULL,
-  `service` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
   `total` decimal(11,2) NOT NULL,
   `date_created` timestamp NULL DEFAULT NULL,
@@ -250,20 +263,34 @@ CREATE TABLE IF NOT EXISTS `job_order` (
 -- Dumping data for table `job_order`
 --
 
-INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `product_id`, `service`, `quantity`, `discount`, `total`, `date_created`, `status`) VALUES
-(15, 10, 2, 1, 40, '', 2, 5, '1140.00', '2020-01-06 20:35:47', 'Pending'),
-(16, 13, 2, 1, 42, '', 5, 10, '945.00', '2020-01-06 20:36:13', 'Pending'),
-(17, 13, 2, 1, 42, '', 8, 10, '1512.00', '2020-01-06 20:36:13', 'Pending'),
-(18, 4, 3, 1, 46, '', 5, 5, '1663.00', '2020-01-06 20:37:02', 'Pending'),
-(19, 4, 3, 1, 44, '', 3, 2, '529.00', '2020-01-06 20:37:02', 'Pending'),
-(20, 12, 1, 1, 41, '', 6, 4, '190.00', '2020-01-06 22:29:54', 'Pending'),
-(25, 3, 3, 1, 44, '', 5, 5, '855.00', '2020-01-12 06:10:18', 'Pending'),
-(26, 3, 3, 1, 27, '', 7, 10, '945.00', '2020-01-12 06:10:18', 'Pending'),
-(27, 3, 1, 1, 46, '', 1, 0, '350.00', '2020-01-12 07:06:09', 'Pending'),
-(28, 4, 1, 3, 47, 'Restoration and Painting', 2, 1, '29080.00', '2020-02-01 09:22:08', 'Pending'),
-(29, 3, 1, 1, 43, 'Lifting', 1, 1, '129.00', '2020-02-01 09:23:03', 'Pending'),
-(30, 21, 1, 3, 43, 'Product Installation', 1, 2, '127.00', '2020-02-01 09:24:13', 'Pending'),
-(31, 22, 1, 3, 46, 'Wheel Alignment', 1, 0, '350.00', '2020-02-01 09:25:04', 'Pending');
+INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `discount`, `total`, `date_created`, `status`) VALUES
+(15, 10, 2, 1, 5, '1140.00', '2020-01-06 20:35:47', 'Pending'),
+(16, 13, 2, 1, 10, '945.00', '2020-01-06 20:36:13', 'Pending'),
+(17, 13, 2, 1, 10, '1512.00', '2020-01-06 20:36:13', 'Pending'),
+(18, 4, 3, 1, 5, '1663.00', '2020-01-06 20:37:02', 'Pending'),
+(19, 4, 3, 1, 2, '529.00', '2020-01-06 20:37:02', 'Pending'),
+(20, 12, 1, 1, 4, '190.00', '2020-01-06 22:29:54', 'Pending'),
+(25, 3, 3, 1, 5, '855.00', '2020-01-12 06:10:18', 'Pending'),
+(26, 3, 3, 1, 10, '945.00', '2020-01-12 06:10:18', 'Pending'),
+(27, 3, 1, 1, 0, '350.00', '2020-01-12 07:06:09', 'Pending'),
+(28, 4, 1, 3, 1, '29080.00', '2020-02-01 09:22:08', 'Pending'),
+(29, 3, 1, 1, 1, '129.00', '2020-02-01 09:23:03', 'Pending'),
+(30, 21, 1, 3, 2, '127.00', '2020-02-01 09:24:13', 'Pending'),
+(31, 22, 1, 3, 0, '350.00', '2020-02-01 09:25:04', 'Pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_order_details`
+--
+
+DROP TABLE IF EXISTS `job_order_details`;
+CREATE TABLE IF NOT EXISTS `job_order_details` (
+  `jo_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `remarks` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -345,6 +372,22 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productcheckout_details`
+--
+
+DROP TABLE IF EXISTS `productcheckout_details`;
+CREATE TABLE IF NOT EXISTS `productcheckout_details` (
+  `productcheckout_details_id` int(11) NOT NULL AUTO_INCREMENT,
+  `productcheckout_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(3) NOT NULL,
+  `remarks` varchar(100) NOT NULL,
+  PRIMARY KEY (`productcheckout_details_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -498,6 +541,21 @@ INSERT INTO `products` (`product_id`, `product_name`, `quantity`, `retail_price`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_checkout`
+--
+
+DROP TABLE IF EXISTS `product_checkout`;
+CREATE TABLE IF NOT EXISTS `product_checkout` (
+  `product_checkout_id` int(11) NOT NULL AUTO_INCREMENT,
+  `jo_id` int(11) NOT NULL,
+  `total` decimal(11,2) NOT NULL,
+  `date_created` timestamp NOT NULL,
+  PRIMARY KEY (`product_checkout_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product_details`
 --
 
@@ -643,6 +701,35 @@ INSERT INTO `product_details` (`product_id`, `stocknumber`, `category_id`, `bran
 (192, NULL, 3, 15, 1, NULL),
 (193, NULL, 3, 16, 2, NULL),
 (194, NULL, 3, 17, 2, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales`
+--
+
+DROP TABLE IF EXISTS `sales`;
+CREATE TABLE IF NOT EXISTS `sales` (
+  `sales_id` int(11) NOT NULL AUTO_INCREMENT,
+  `discount` int(2) NOT NULL,
+  `total` decimal(11,2) NOT NULL,
+  `remarks` varchar(100) NOT NULL,
+  `date_created` int(11) NOT NULL,
+  PRIMARY KEY (`sales_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales_details`
+--
+
+DROP TABLE IF EXISTS `sales_details`;
+CREATE TABLE IF NOT EXISTS `sales_details` (
+  `sales_details_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(3) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

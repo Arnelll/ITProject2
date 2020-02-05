@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 04, 2020 at 10:38 AM
--- Server version: 5.7.26
--- PHP Version: 7.2.18
+-- Generation Time: Feb 05, 2020 at 09:17 AM
+-- Server version: 5.7.21
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -253,11 +253,11 @@ CREATE TABLE IF NOT EXISTS `job_order` (
   `mechanic_id` int(11) UNSIGNED NOT NULL,
   `vehicle_id` int(11) UNSIGNED NOT NULL,
   `discount` int(11) NOT NULL,
-  `total` decimal(11,2) NOT NULL,
+  `total` decimal(11,2) DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT NULL,
   `status` enum('Pending','Ongoing','Rendered','Cancelled') NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`jo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `job_order`
@@ -265,18 +265,20 @@ CREATE TABLE IF NOT EXISTS `job_order` (
 
 INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `discount`, `total`, `date_created`, `status`) VALUES
 (15, 10, 2, 1, 5, '1140.00', '2020-01-06 20:35:47', 'Pending'),
-(16, 13, 2, 1, 10, '945.00', '2020-01-06 20:36:13', 'Pending'),
-(17, 13, 2, 1, 10, '1512.00', '2020-01-06 20:36:13', 'Pending'),
-(18, 4, 3, 1, 5, '1663.00', '2020-01-06 20:37:02', 'Pending'),
-(19, 4, 3, 1, 2, '529.00', '2020-01-06 20:37:02', 'Pending'),
-(20, 12, 1, 1, 4, '190.00', '2020-01-06 22:29:54', 'Pending'),
-(25, 3, 3, 1, 5, '855.00', '2020-01-12 06:10:18', 'Pending'),
-(26, 3, 3, 1, 10, '945.00', '2020-01-12 06:10:18', 'Pending'),
-(27, 3, 1, 1, 0, '350.00', '2020-01-12 07:06:09', 'Pending'),
-(28, 4, 1, 3, 1, '29080.00', '2020-02-01 09:22:08', 'Pending'),
-(29, 3, 1, 1, 1, '129.00', '2020-02-01 09:23:03', 'Pending'),
-(30, 21, 1, 3, 2, '127.00', '2020-02-01 09:24:13', 'Pending'),
-(31, 22, 1, 3, 0, '350.00', '2020-02-01 09:25:04', 'Pending');
+(16, 39, 15, 2, 10, '945.00', '2020-01-06 20:36:13', 'Pending'),
+(17, 64, 11, 18, 10, '1512.00', '2020-01-06 20:36:13', 'Pending'),
+(18, 4, 3, 5, 5, '1663.00', '2020-01-06 20:37:02', 'Pending'),
+(19, 4, 3, 22, 2, '529.00', '2020-01-06 20:37:02', 'Pending'),
+(20, 12, 1, 19, 4, '190.00', '2020-01-06 22:29:54', 'Pending'),
+(25, 3, 14, 28, 5, '855.00', '2020-01-12 06:10:18', 'Pending'),
+(26, 79, 10, 84, 10, '945.00', '2020-01-12 06:10:18', 'Pending'),
+(27, 90, 5, 94, 0, '350.00', '2020-01-12 07:06:09', 'Pending'),
+(28, 53, 6, 8, 2, '29080.00', '2020-02-01 09:22:08', 'Pending'),
+(29, 62, 2, 69, 1, '129.00', '2020-02-01 09:23:03', 'Pending'),
+(30, 21, 8, 3, 10, '127.00', '2020-02-01 09:24:13', 'Pending'),
+(31, 5, 1, 15, 0, '350.00', '2020-02-01 09:25:04', 'Pending'),
+(32, 6, 18, 16, 5, '1100.00', '2020-02-04 16:00:00', 'Pending'),
+(33, 8, 2, 49, 3, '500.00', '2020-02-04 16:00:00', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -286,11 +288,38 @@ INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `dis
 
 DROP TABLE IF EXISTS `job_order_details`;
 CREATE TABLE IF NOT EXISTS `job_order_details` (
+  `jodetails_id` int(11) NOT NULL AUTO_INCREMENT,
   `jo_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `remarks` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `quantity` int(3) NOT NULL,
+  `remarks` varchar(100) NOT NULL,
+  PRIMARY KEY (`jodetails_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_order_details`
+--
+
+INSERT INTO `job_order_details` (`jodetails_id`, `jo_id`, `product_id`, `quantity`, `remarks`) VALUES
+(1, 1, 101, 4, 'Wheel Alignment'),
+(2, 1, 191, 4, 'Wheel Alignment'),
+(3, 1, 180, 4, 'Wheel Alignment'),
+(4, 2, 36, 3, 'Cleaning and Restoration '),
+(5, 2, 67, 3, 'Cleaning and Restoration'),
+(6, 2, 72, 5, 'Cleaning and Restoration'),
+(7, 3, 134, 4, 'Cleaning, Restoration and Lifting'),
+(8, 3, 147, 4, 'Cleaning, Restoration and Lifting'),
+(9, 3, 145, 4, 'Cleaning, Restoration and Lifting'),
+(10, 1, 101, 4, 'Wheel Alignment'),
+(11, 1, 191, 4, 'Wheel Alignment'),
+(12, 1, 180, 4, 'Wheel Alignment'),
+(13, 2, 36, 3, 'Cleaning and Restoration '),
+(14, 2, 67, 3, 'Cleaning and Restoration'),
+(15, 2, 72, 5, 'Cleaning and Restoration'),
+(16, 3, 134, 4, 'Cleaning, Restoration and Lifting'),
+(17, 3, 147, 4, 'Cleaning, Restoration and Lifting'),
+(18, 3, 145, 4, 'Cleaning, Restoration and Lifting'),
+(19, 3, 130, 4, 'Cleaning, Restoration and Lifting');
 
 -- --------------------------------------------------------
 
@@ -711,10 +740,10 @@ INSERT INTO `product_details` (`product_id`, `stocknumber`, `category_id`, `bran
 DROP TABLE IF EXISTS `sales`;
 CREATE TABLE IF NOT EXISTS `sales` (
   `sales_id` int(11) NOT NULL AUTO_INCREMENT,
-  `discount` int(2) NOT NULL,
+  `discount` int(2) DEFAULT NULL,
   `total` decimal(11,2) NOT NULL,
   `remarks` varchar(100) NOT NULL,
-  `date_created` int(11) NOT NULL,
+  `date_created` timestamp NOT NULL,
   PRIMARY KEY (`sales_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -918,25 +947,84 @@ DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE IF NOT EXISTS `vehicles` (
   `vehicle_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
-  `plate_no` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `model` varchar(255) NOT NULL,
-  `color` varchar(255) NOT NULL,
+  `plate_no` varchar(30) NOT NULL,
+  `type` enum('SUV/AUV','Pickup Truck','Customized Vehicle','') NOT NULL,
+  `model` varchar(30) NOT NULL,
+  `color` varchar(30) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL,
   `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`vehicle_id`),
   UNIQUE KEY `plate_no` (`plate_no`),
   UNIQUE KEY `vehicle_id` (`vehicle_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vehicles`
 --
 
 INSERT INTO `vehicles` (`vehicle_id`, `client_id`, `plate_no`, `type`, `model`, `color`, `description`, `date_created`, `date_updated`) VALUES
-(1, 3, 'ZXC-987', 'Jeepney', '2019', 'Red', '4 wheels', '2019-12-15 00:00:00', '2019-12-17 08:43:20'),
-(2, 3, 'ZXC-999', 'Ford', '2015', 'Black', '3 wheels', '0000-00-00 00:00:00', '2020-01-12 06:13:23');
+(1, 3, 'ZXC 987', 'SUV/AUV', '2019', 'Red', '4 wheels', '2019-12-15 00:00:00', '2020-02-05 06:34:46'),
+(2, 3, 'ZXC 999', 'SUV/AUV', '2015', 'Black', '4 wheels', '2020-02-05 04:26:14', '2020-02-05 06:34:46'),
+(4, 34, 'ABC 123', 'Pickup Truck', 'Raptor', 'Yellow ', 'outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:34:46'),
+(5, 21, 'DFT 490', 'SUV/AUV', 'Elf', 'Pink', 'outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:34:46'),
+(6, 7, 'DET 902', 'SUV/AUV', 'Innova', 'Silver', 'outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:34:46'),
+(7, 7, 'TRE 01', 'Pickup Truck', 'Chevrolet', 'Orange', 'outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:34:52'),
+(35, 5, 'DFO 341', 'SUV/AUV', 'Toyota Hiace', 'Black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 06:47:24'),
+(66, 6, 'XDT 405', 'SUV/AUV', 'Grand Starex', 'Yellow', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(67, 10, 'DFS 543', 'SUV/AUV', 'Isuzu D-Max', 'Green', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(68, 11, 'WPO 329', 'Pickup Truck', 'Foton Thunder', 'Black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(69, 12, 'OPP 569', 'SUV/AUV', 'JMC Hunter', 'White', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(70, 13, 'AAO 320', 'Pickup Truck', 'JMC Vigor', 'Navy blue ', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(71, 14, 'FDE 235', 'SUV/AUV', 'Dodge Ram', 'Matte black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(72, 4, 'GGD 228', 'Pickup Truck', 'Toyota Avanza', 'Brown', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(73, 17, 'TTT 324', 'Pickup Truck', 'Toyota Innova', 'Yellow', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(74, 18, 'PET 420', 'Pickup Truck', 'Mitsubishi Xpander', 'Maroon', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(75, 19, 'ZPS 325', 'SUV/AUV', 'Mazda 6 Sports Wagon', 'Pink', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:53:38'),
+(76, 20, 'HLW 676', 'SUV/AUV', 'Volkswagen Santana GTS', 'Orange', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(77, 21, 'POV 203', 'SUV/AUV', 'Peugeot 308', 'Red', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(78, 22, 'GFD 900', 'Pickup Truck', 'Kia Soluto', 'Blue', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(79, 23, 'VVS 293', 'Customized Vehicle', 'Hyundai Kona', 'Black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(80, 24, 'ERD 219', 'Pickup Truck', 'Suzuki Ertiga', 'Matte black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(81, 25, 'DFD 225', 'SUV/AUV', 'Volkswagen Santana', 'Matte black', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(82, 26, 'HLD 698', 'Pickup Truck', 'Volkswagen Santana GTS', 'Yellow', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(83, 27, 'KDR 555', 'SUV/AUV', 'Suzuki Vitara', 'Black', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(84, 28, 'RWY 653', 'SUV/AUV', 'Ford Everest', 'Maroon', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(85, 29, 'FOD 111', 'SUV/AUV', 'MG ZS', 'Pink', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(86, 30, 'DFS 2329', 'Pickup Truck', 'Ford Ranger', 'Navy blue ', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(87, 31, 'LKD 659', 'Pickup Truck', 'Toyota Hilux', 'Maroon', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(88, 33, 'ORI 5640', 'Pickup Truck', 'Ford Ranger', 'Maroon', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(89, 35, 'FGE 604', 'Pickup Truck', 'Ford Ranger ', 'Navy blue ', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(90, 36, 'ETO 777', 'SUV/AUV', 'JAC T6', 'Black', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(91, 37, 'SAS 557', 'SUV/AUV', 'Tata Xenon', 'Red', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:07:15'),
+(92, 38, 'HKD 540', 'SUV/AUV', 'Great Wall Wingle', 'White', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(93, 39, 'VBG 529', 'Pickup Truck', 'Great Wall Wingle', 'Yellow', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(94, 40, 'KDR 888', 'SUV/AUV', 'JMC Vigor', 'White', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(95, 41, 'ERT 347', 'Pickup Truck', 'Mazda BT-50', 'Red', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(96, 45, 'FHI 459', 'SUV/AUV', 'Toyota Hilux', 'Lowered vehicle', 'Toyota Hilux', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(97, 47, 'MNM 193', 'SUV/AUV', 'Mitsubishi Strada', 'Silver', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(98, 8, 'DSE 5632', 'SUV/AUV', 'Mitsubishi Strada', 'Matte black', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(99, 9, 'KHY 399', 'Pickup Truck', 'Chevrolet Colorado', 'Orange', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:20:13'),
+(150, 15, 'FLX 41', 'Pickup Truck', 'Nissan Frontier', 'White', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(151, 16, 'DFL 459', 'SUV/AUV', 'Nissan Frontier', 'White', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(152, 44, 'FDH 565', 'SUV/AUV', 'Dodge Ram 1500', 'Maroon', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(153, 46, 'GHH 44', 'Pickup Truck', 'Dodge Ram 1500', 'Blue', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(154, 48, 'DDN 345', '', 'Dodge Ram 1500', 'Red', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(155, 49, 'DFL 564', 'SUV/AUV', 'Toyota Tundra', 'Dark Red', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(156, 50, 'SDA 434', 'Pickup Truck', 'Toyota Tundra', 'Yellow', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(157, 51, 'FGH 567', 'Pickup Truck', 'Ford F-250', 'Black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(158, 52, 'YUI 437', 'SUV/AUV', 'Ford F-250', 'Blue', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(159, 53, 'XXC 451', 'SUV/AUV', 'Ford F-250', 'Blue', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(170, 54, 'FGB 679', 'Pickup Truck', 'Chevrolet Silverado 2500', 'White', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(171, 55, 'QQK 311', 'SUV/AUV', 'GMC Sierra 1500', 'Black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(172, 56, 'HGH 769', 'SUV/AUV', 'Chevrolet Silverado 2500', 'Yellow', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(173, 57, 'SOO 446', 'Pickup Truck', 'GMC Sierra 1500', 'Black', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(174, 58, 'KHJ 887', 'SUV/AUV', 'GMC Sierra 1500', 'White', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(175, 59, 'KBN 344', 'Pickup Truck', 'Nissan Frontier', 'Maroon', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(176, 60, 'XZY 123', 'Pickup Truck', 'Toyota RAV4', 'Yellow', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(177, 61, 'YOU 679', 'Pickup Truck', 'Ford F-250', 'Navy blue ', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(178, 62, 'LKJ 987', 'SUV/AUV', 'Nissan Rogue', 'Brown', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
+(179, 63, 'FHH 499', 'SUV/AUV', 'Honda CR-V', 'Yellow', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55');
 
 --
 -- Constraints for dumped tables

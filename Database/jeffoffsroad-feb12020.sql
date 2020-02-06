@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 06, 2020 at 05:59 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Host: 127.0.0.1:3306
+-- Generation Time: Feb 06, 2020 at 11:01 AM
+-- Server version: 5.7.21
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,10 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `brand`
 --
 
-CREATE TABLE `brand` (
-  `brand_id` int(10) NOT NULL,
-  `name` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `brand`;
+CREATE TABLE IF NOT EXISTS `brand` (
+  `brand_id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  PRIMARY KEY (`brand_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brand`
@@ -62,10 +64,13 @@ INSERT INTO `brand` (`brand_id`, `name`) VALUES
 -- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
-  `category_id` int(11) NOT NULL,
-  `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `category_id` (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `category`
@@ -85,16 +90,18 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 -- Table structure for table `clients`
 --
 
-CREATE TABLE `clients` (
-  `client_id` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE IF NOT EXISTS `clients` (
+  `client_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `firstname` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastname` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_no` bigint(11) NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1018 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `clients`
@@ -208,12 +215,66 @@ INSERT INTO `clients` (`client_id`, `firstname`, `lastname`, `contact_no`, `emai
 -- Table structure for table `delivery`
 --
 
-CREATE TABLE `delivery` (
-  `delivery_id` int(11) NOT NULL,
-  `delivery_productnumber` int(11) NOT NULL,
+DROP TABLE IF EXISTS `delivery`;
+CREATE TABLE IF NOT EXISTS `delivery` (
+  `delivery_id` int(11) NOT NULL AUTO_INCREMENT,
+  `delivery_product_id` int(11) NOT NULL,
   `delivery_quantity` int(2) NOT NULL,
-  `delivery_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `delivery_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`delivery_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `delivery`
+--
+
+INSERT INTO `delivery` (`delivery_id`, `delivery_product_id`, `delivery_quantity`, `delivery_date`) VALUES
+(1, 28, 14, '2020-02-06 08:01:38'),
+(2, 104, 4, '2020-02-06 08:01:38'),
+(3, 64, 8, '2020-02-06 08:01:38'),
+(4, 99, 12, '2020-02-06 08:01:38'),
+(5, 175, 8, '2020-02-06 08:01:38'),
+(6, 176, 8, '2020-02-06 08:01:38'),
+(7, 191, 4, '2020-02-06 08:01:38'),
+(8, 171, 8, '2020-02-06 08:01:38'),
+(9, 79, 6, '2020-02-06 08:01:38'),
+(10, 81, 20, '2020-02-06 08:01:38'),
+(11, 55, 24, '2020-02-06 08:01:38'),
+(12, 97, 16, '2020-02-06 08:01:38'),
+(13, 66, 8, '2020-02-06 08:01:38'),
+(14, 61, 4, '2020-02-06 08:01:38'),
+(15, 75, 8, '2020-02-06 08:01:38'),
+(16, 41, 12, '2020-02-06 08:01:38'),
+(17, 101, 4, '2020-02-06 08:01:38'),
+(18, 50, 12, '2020-02-06 08:01:38'),
+(19, 106, 8, '2020-02-06 08:01:38'),
+(30, 36, 4, '2020-02-06 08:43:07'),
+(31, 49, 12, '2020-02-06 08:43:07'),
+(32, 59, 8, '2020-02-06 08:43:07'),
+(33, 87, 12, '2020-02-06 08:43:07'),
+(34, 100, 24, '2020-02-06 08:43:07'),
+(35, 55, 20, '2020-02-06 08:43:07'),
+(36, 190, 48, '2020-02-06 08:43:07'),
+(37, 112, 36, '2020-02-06 08:43:07'),
+(38, 106, 12, '2020-02-06 08:43:07'),
+(39, 168, 36, '2020-02-06 08:43:07'),
+(40, 157, 48, '2020-02-06 08:53:23'),
+(41, 44, 12, '2020-02-06 08:53:23'),
+(42, 170, 28, '2020-02-06 08:53:23'),
+(43, 73, 20, '2020-02-06 08:53:23'),
+(44, 80, 12, '2020-02-06 08:53:23'),
+(45, 100, 8, '2020-02-06 08:53:23'),
+(46, 172, 40, '2020-02-06 08:53:23'),
+(47, 48, 12, '2020-02-06 09:05:59'),
+(48, 110, 44, '2020-02-06 09:05:59'),
+(49, 170, 20, '2020-02-06 09:05:59'),
+(50, 109, 24, '2020-02-06 09:05:59'),
+(51, 77, 20, '2020-02-06 09:05:59'),
+(52, 26, 40, '2020-02-06 09:05:59'),
+(53, 28, 10, '2020-02-06 09:05:59'),
+(54, 47, 20, '2020-02-06 09:05:59'),
+(55, 48, 20, '2020-02-06 09:05:59'),
+(56, 78, 20, '2020-02-06 09:05:59');
 
 -- --------------------------------------------------------
 
@@ -221,14 +282,16 @@ CREATE TABLE `delivery` (
 -- Table structure for table `delivery_details`
 --
 
-CREATE TABLE `delivery_details` (
-  `delivery_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `delivery_details`;
+CREATE TABLE IF NOT EXISTS `delivery_details` (
+  `delivery_details_id` int(11) NOT NULL AUTO_INCREMENT,
   `delivery_product_id` int(11) NOT NULL,
   `delivery_quantity` int(3) NOT NULL,
   `delivery_retail_price` decimal(11,2) NOT NULL,
   `delivery_wholesale_price` decimal(11,2) NOT NULL,
-  `delivery_distributor_price` decimal(11,2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `delivery_distributor_price` decimal(11,2) NOT NULL,
+  PRIMARY KEY (`delivery_details_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -236,37 +299,69 @@ CREATE TABLE `delivery_details` (
 -- Table structure for table `job_order`
 --
 
-CREATE TABLE `job_order` (
-  `jo_id` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `job_order`;
+CREATE TABLE IF NOT EXISTS `job_order` (
+  `jo_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `client_id` int(11) UNSIGNED NOT NULL,
   `mechanic_id` int(11) UNSIGNED NOT NULL,
   `vehicle_id` int(11) UNSIGNED NOT NULL,
-  `discount` int(11) NOT NULL,
+  `discount` int(3) DEFAULT NULL,
   `total` decimal(11,2) DEFAULT NULL,
+  `status` enum('Pending','Ongoing','Rendered','Cancelled') NOT NULL DEFAULT 'Pending',
   `date_created` timestamp NULL DEFAULT NULL,
-  `status` enum('Pending','Ongoing','Rendered','Cancelled') NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`jo_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `job_order`
 --
 
-INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `discount`, `total`, `date_created`, `status`) VALUES
-(15, 10, 2, 1, 5, '1140.00', '2020-01-06 20:35:47', 'Pending'),
-(16, 39, 15, 2, 10, '945.00', '2020-01-06 20:36:13', 'Pending'),
-(17, 64, 11, 18, 10, '1512.00', '2020-01-06 20:36:13', 'Pending'),
-(18, 4, 3, 5, 5, '1663.00', '2020-01-06 20:37:02', 'Pending'),
-(19, 4, 3, 22, 2, '529.00', '2020-01-06 20:37:02', 'Pending'),
-(20, 12, 1, 19, 4, '190.00', '2020-01-06 22:29:54', 'Pending'),
-(25, 3, 14, 28, 5, '855.00', '2020-01-12 06:10:18', 'Pending'),
-(26, 79, 10, 84, 10, '945.00', '2020-01-12 06:10:18', 'Pending'),
-(27, 90, 5, 94, 0, '350.00', '2020-01-12 07:06:09', 'Pending'),
-(28, 53, 6, 8, 2, '29080.00', '2020-02-01 09:22:08', 'Pending'),
-(29, 62, 2, 69, 1, '129.00', '2020-02-01 09:23:03', 'Pending'),
-(30, 21, 8, 3, 10, '127.00', '2020-02-01 09:24:13', 'Pending'),
-(31, 5, 1, 15, 0, '350.00', '2020-02-01 09:25:04', 'Pending'),
-(32, 6, 18, 16, 5, '1100.00', '2020-02-04 16:00:00', 'Pending'),
-(33, 8, 2, 49, 3, '500.00', '2020-02-04 16:00:00', 'Pending');
+INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `discount`, `total`, `status`, `date_created`) VALUES
+(15, 10, 2, 1, 5, '1140.00', 'Pending', '2020-01-06 20:35:47'),
+(16, 39, 15, 2, 10, '945.00', 'Pending', '2020-01-06 20:36:13'),
+(17, 64, 11, 18, 10, '1512.00', 'Pending', '2020-01-06 20:36:13'),
+(18, 4, 3, 5, 5, '1663.00', 'Pending', '2020-01-06 20:37:02'),
+(19, 4, 3, 22, 2, '529.00', 'Pending', '2020-01-06 20:37:02'),
+(20, 12, 1, 19, 4, '190.00', 'Pending', '2020-01-06 22:29:54'),
+(25, 3, 14, 28, 5, '855.00', 'Pending', '2020-01-12 06:10:18'),
+(26, 79, 10, 84, 10, '19405.00', 'Pending', '2020-01-12 06:10:18'),
+(27, 40, 5, 94, 0, '35000.00', 'Pending', '2020-01-12 07:06:09'),
+(28, 53, 6, 8, 2, '29080.00', 'Pending', '2020-02-01 09:22:08'),
+(29, 62, 2, 69, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(30, 21, 8, 3, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(31, 5, 1, 15, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(32, 6, 18, 16, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(33, 8, 2, 49, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(34, 29, 11, 85, 2, '5700.00', 'Rendered', '2020-02-05 16:00:00'),
+(35, 40, 4, 94, 5, '17200.00', 'Rendered', '2020-02-05 16:00:00'),
+(41, 46, 1, 153, 2, '53900.00', 'Rendered', '2020-02-05 16:00:00'),
+(42, 63, 5, 179, 3, '30500.50', 'Rendered', '2020-02-05 16:00:00'),
+(43, 3, 7, 1, 10, '25999.00', 'Rendered', '2020-02-05 16:00:00'),
+(44, 3, 6, 2, 10, '14290.00', 'Rendered', '2020-02-05 16:00:00'),
+(45, 27, 2, 83, 2, '12540.00', 'Rendered', '2020-02-05 16:00:00'),
+(46, 9, 1, 99, 10, '69000.00', 'Rendered', '2020-02-05 16:00:00'),
+(47, 33, 1, 88, NULL, '39400.00', 'Rendered', '2020-02-05 16:00:00'),
+(48, 52, 15, 2, NULL, '80000.00', 'Rendered', '2020-02-05 16:00:00'),
+(49, 63, 3, 179, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(50, 11, 2, 66, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(51, 7, 7, 7, 5, '34000.00', 'Pending', '2020-02-05 16:00:00'),
+(52, 7, 6, 7, 5, '19700.00', 'Pending', '2020-02-05 16:00:00'),
+(53, 18, 4, 74, NULL, '54767.00', 'Rendered', '2020-02-05 16:00:00'),
+(54, 27, 2, 83, NULL, '33400.00', 'Pending', '2020-02-05 16:00:00'),
+(55, 26, 4, 82, 10, '79540.00', 'Rendered', '2020-02-05 16:00:00'),
+(56, 27, 2, 83, 2, '18900.00', 'Pending', '2020-02-05 16:00:00'),
+(57, 40, 2, 94, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(58, 15, 8, 150, 10, '54300.00', 'Rendered', '2020-02-05 16:00:00'),
+(59, 52, 7, 158, NULL, NULL, 'Cancelled', '2020-02-05 16:00:00'),
+(60, 44, 3, 152, 3, '40500.00', 'Rendered', '2020-02-05 16:00:00'),
+(61, 53, 9, 159, 2, '75600.00', 'Rendered', '2020-02-05 16:00:00'),
+(62, 57, 4, 173, 3, '54380.00', 'Pending', '2020-02-05 16:00:00'),
+(110, 24, 17, 80, 3, '22200.00', 'Ongoing', '2020-02-05 16:00:00'),
+(111, 44, 19, 152, 2, '36000.00', 'Ongoing', '2020-02-05 16:00:00'),
+(112, 63, 1, 179, 2, '57000.00', 'Ongoing', '2020-02-05 16:00:00'),
+(113, 55, 9, 171, 5, '86700.00', 'Ongoing', '2020-02-05 16:00:00'),
+(114, 22, 5, 78, 2, '39000.50', 'Ongoing', '2020-02-05 16:00:00'),
+(115, 12, 2, 69, 5, '53100.00', 'Ongoing', '2020-02-05 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -274,13 +369,15 @@ INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `dis
 -- Table structure for table `job_order_details`
 --
 
-CREATE TABLE `job_order_details` (
-  `jodetails_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `job_order_details`;
+CREATE TABLE IF NOT EXISTS `job_order_details` (
+  `jodetails_id` int(11) NOT NULL AUTO_INCREMENT,
   `jo_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(3) NOT NULL,
-  `remarks` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `remarks` varchar(100) NOT NULL,
+  PRIMARY KEY (`jodetails_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `job_order_details`
@@ -296,7 +393,15 @@ INSERT INTO `job_order_details` (`jodetails_id`, `jo_id`, `product_id`, `quantit
 (25, 16, 72, 3, 'Cleaning and Restoration'),
 (26, 17, 56, 4, 'Restoration'),
 (27, 17, 137, 4, 'Restoration'),
-(28, 17, 147, 4, 'Restoration');
+(28, 17, 147, 4, 'Restoration'),
+(30, 18, 108, 4, 'Lifting and Cleaning'),
+(31, 18, 183, 4, 'Lifting and Cleaning'),
+(32, 18, 190, 4, 'Lifting and Cleaning'),
+(33, 18, 26, 6, 'Lifting and Cleaning'),
+(34, 19, 194, 4, 'Restoration'),
+(35, 19, 83, 4, 'Restoration'),
+(36, 19, 168, 4, 'Restoration'),
+(37, 19, 186, 4, 'Restoration');
 
 -- --------------------------------------------------------
 
@@ -304,13 +409,15 @@ INSERT INTO `job_order_details` (`jodetails_id`, `jo_id`, `product_id`, `quantit
 -- Table structure for table `mechanic`
 --
 
-CREATE TABLE `mechanic` (
-  `mechanic_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `mechanic`;
+CREATE TABLE IF NOT EXISTS `mechanic` (
+  `mechanic_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `contact_no` varchar(16) NOT NULL,
-  `address` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `address` varchar(100) NOT NULL,
+  PRIMARY KEY (`mechanic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mechanic`
@@ -331,7 +438,22 @@ INSERT INTO `mechanic` (`mechanic_id`, `first_name`, `last_name`, `contact_no`, 
 (12, 'Kalvin', 'Blair', '09497885538', 'Baguio City'),
 (13, 'Ansh', 'Wang', '09316779755', 'Baguio City'),
 (14, 'Enya', 'Curry', '09097682298', 'Baguio City'),
-(15, 'Matteo', 'Gillard', '09103989563', 'Baguio City');
+(15, 'Matteo', 'Gillard', '09103989563', 'Baguio City'),
+(16, 'Abul', 'Cantu', '09085553595', 'Baguio City'),
+(17, 'Kiya', 'Mccray', '09295553009', 'Baguio City'),
+(18, 'Kristopher ', 'Hendricks', '09325558799', 'Baguio City'),
+(19, 'Axl', 'Lindsey', '0985550782', 'Baguio City'),
+(20, 'Abida', 'Coleman', '09195558596', 'Baguio City'),
+(21, 'Manal', 'Phelps', '09325550638', 'Baguio City'),
+(22, 'Iain', 'Gilliam', '09195559160', 'Baguio City'),
+(23, 'Henley', 'Flores', '09325515302', 'Baguio City'),
+(24, 'Jaye', 'Forbes', '09012663601', 'Baguio City'),
+(25, 'Ricky', 'Cohen', '09801230634', 'Baguio City'),
+(27, 'Brendan', 'Salazar', '09295550157', 'Baguio City'),
+(28, 'Sullivan', 'Barber', '0932555900', 'Baguio City'),
+(29, 'Frankie', 'Mercer', '09295556487', 'Baguio City'),
+(30, 'Mac ', 'Vinson', '09325553138', 'Baguio City'),
+(31, 'Rudy ', 'Hamilton', '09280544375', 'Baguio City');
 
 -- --------------------------------------------------------
 
@@ -339,11 +461,13 @@ INSERT INTO `mechanic` (`mechanic_id`, `first_name`, `last_name`, `contact_no`, 
 -- Table structure for table `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -367,10 +491,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Table structure for table `password_resets`
 --
 
-CREATE TABLE `password_resets` (
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -379,12 +505,14 @@ CREATE TABLE `password_resets` (
 -- Table structure for table `productcheckout_details`
 --
 
-CREATE TABLE `productcheckout_details` (
-  `productcheckout_details_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `productcheckout_details`;
+CREATE TABLE IF NOT EXISTS `productcheckout_details` (
+  `productcheckout_details_id` int(11) NOT NULL AUTO_INCREMENT,
   `productcheckout_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(3) NOT NULL,
-  `remarks` varchar(100) NOT NULL
+  `remarks` varchar(100) NOT NULL,
+  PRIMARY KEY (`productcheckout_details_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -393,15 +521,18 @@ CREATE TABLE `productcheckout_details` (
 -- Table structure for table `products`
 --
 
-CREATE TABLE `products` (
-  `product_id` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `product_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `product_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(3) DEFAULT NULL,
   `retail_price` decimal(11,2) NOT NULL,
   `wholesale_price` decimal(11,2) NOT NULL,
   `distributor_price` decimal(11,2) NOT NULL,
-  `product_number` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `product_number` int(11) DEFAULT NULL,
+  PRIMARY KEY (`product_id`),
+  UNIQUE KEY `product_number` (`product_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
@@ -539,12 +670,60 @@ INSERT INTO `products` (`product_id`, `product_name`, `quantity`, `retail_price`
 -- Table structure for table `product_checkout`
 --
 
-CREATE TABLE `product_checkout` (
-  `product_checkout_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `product_checkout`;
+CREATE TABLE IF NOT EXISTS `product_checkout` (
+  `product_checkout_id` int(11) NOT NULL AUTO_INCREMENT,
   `jo_id` int(11) NOT NULL,
   `total` decimal(11,2) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`product_checkout_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product_checkout`
+--
+
+INSERT INTO `product_checkout` (`product_checkout_id`, `jo_id`, `total`, `date_created`) VALUES
+(1, 34, '5700.00', '2020-02-06 09:55:40'),
+(2, 35, '17200.00', '2020-02-06 09:55:40'),
+(3, 41, '53900.00', '2020-02-06 09:55:40'),
+(4, 42, '30500.50', '2020-02-06 09:55:40'),
+(5, 44, '14290.00', '2020-02-06 09:55:40'),
+(6, 45, '12540.00', '2020-02-06 09:55:40'),
+(7, 46, '69000.00', '2020-02-06 09:55:40'),
+(8, 47, '39400.00', '2020-02-06 09:55:40'),
+(9, 34, '5700.00', '2020-02-06 09:56:09'),
+(10, 35, '17200.00', '2020-02-06 09:56:09'),
+(11, 41, '53900.00', '2020-02-06 09:56:09'),
+(12, 42, '30500.50', '2020-02-06 09:56:09'),
+(13, 44, '14290.00', '2020-02-06 09:56:09'),
+(14, 45, '12540.00', '2020-02-06 09:56:09'),
+(15, 46, '69000.00', '2020-02-06 09:56:09'),
+(16, 47, '39400.00', '2020-02-06 09:56:09'),
+(17, 48, '80000.00', '2020-02-06 09:56:09'),
+(18, 53, '54767.00', '2020-02-06 09:56:09'),
+(19, 55, '33400.00', '2020-02-06 09:56:09'),
+(20, 58, '54300.00', '2020-02-06 09:56:09'),
+(21, 34, '5700.00', '2020-02-06 09:56:34'),
+(22, 35, '17200.00', '2020-02-06 09:56:34'),
+(23, 41, '53900.00', '2020-02-06 09:56:34'),
+(24, 42, '30500.50', '2020-02-06 09:56:34'),
+(25, 44, '14290.00', '2020-02-06 09:56:34'),
+(26, 45, '12540.00', '2020-02-06 09:56:34'),
+(27, 46, '69000.00', '2020-02-06 09:56:34'),
+(28, 47, '39400.00', '2020-02-06 09:56:34'),
+(29, 48, '80000.00', '2020-02-06 09:56:34'),
+(30, 53, '54767.00', '2020-02-06 09:56:34'),
+(31, 55, '33400.00', '2020-02-06 09:56:34'),
+(32, 58, '54300.00', '2020-02-06 09:56:34'),
+(33, 60, '40500.00', '2020-02-06 09:56:34'),
+(34, 61, '75600.00', '2020-02-06 09:56:34'),
+(35, 110, '22200.00', '2020-02-06 10:24:55'),
+(36, 111, '36000.00', '2020-02-06 10:24:55'),
+(37, 112, '57000.00', '2020-02-06 10:24:55'),
+(38, 113, '86700.00', '2020-02-06 10:24:55'),
+(39, 114, '39000.50', '2020-02-06 10:26:44'),
+(40, 115, '53100.00', '2020-02-06 10:26:44');
 
 -- --------------------------------------------------------
 
@@ -552,13 +731,20 @@ CREATE TABLE `product_checkout` (
 -- Table structure for table `product_details`
 --
 
-CREATE TABLE `product_details` (
+DROP TABLE IF EXISTS `product_details`;
+CREATE TABLE IF NOT EXISTS `product_details` (
   `product_id` int(11) UNSIGNED NOT NULL,
   `stocknumber` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `brand_id` int(11) DEFAULT NULL,
   `supplier_id` int(11) DEFAULT NULL,
-  `product_number` int(11) DEFAULT NULL
+  `product_number` int(11) DEFAULT NULL,
+  PRIMARY KEY (`product_id`),
+  UNIQUE KEY `product_id` (`product_id`),
+  UNIQUE KEY `stocknumber` (`stocknumber`,`category_id`,`brand_id`,`product_number`),
+  KEY `category_id` (`category_id`),
+  KEY `brand_id` (`brand_id`),
+  KEY `supplier_id` (`supplier_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -694,12 +880,13 @@ INSERT INTO `product_details` (`product_id`, `stocknumber`, `category_id`, `bran
 -- Table structure for table `sales`
 --
 
-CREATE TABLE `sales` (
-  `sales_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `sales`;
+CREATE TABLE IF NOT EXISTS `sales` (
+  `sales_id` int(11) NOT NULL AUTO_INCREMENT,
   `discount` int(2) DEFAULT NULL,
   `total` decimal(11,2) NOT NULL,
-  `remarks` varchar(100) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`sales_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -708,7 +895,8 @@ CREATE TABLE `sales` (
 -- Table structure for table `sales_details`
 --
 
-CREATE TABLE `sales_details` (
+DROP TABLE IF EXISTS `sales_details`;
+CREATE TABLE IF NOT EXISTS `sales_details` (
   `sales_details_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(3) NOT NULL
@@ -720,10 +908,12 @@ CREATE TABLE `sales_details` (
 -- Table structure for table `service`
 --
 
-CREATE TABLE `service` (
-  `service_id` int(10) NOT NULL,
-  `name` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `service`;
+CREATE TABLE IF NOT EXISTS `service` (
+  `service_id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  PRIMARY KEY (`service_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `service`
@@ -743,14 +933,17 @@ INSERT INTO `service` (`service_id`, `name`) VALUES
 -- Table structure for table `supplier`
 --
 
-CREATE TABLE `supplier` (
-  `supplier_id` int(10) NOT NULL,
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE IF NOT EXISTS `supplier` (
+  `supplier_id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
   `address` varchar(256) NOT NULL,
   `contact_no` varchar(16) NOT NULL,
   `date_created` datetime NOT NULL,
-  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`supplier_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `supplier`
@@ -766,16 +959,20 @@ INSERT INTO `supplier` (`supplier_id`, `name`, `address`, `contact_no`, `date_cr
 -- Table structure for table `transaction2`
 --
 
-CREATE TABLE `transaction2` (
-  `transaction2_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `transaction2`;
+CREATE TABLE IF NOT EXISTS `transaction2` (
+  `transaction2_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `Total` double(11,2) NOT NULL,
   `date_created` datetime NOT NULL,
   `update_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `discount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `discount` int(11) NOT NULL,
+  PRIMARY KEY (`transaction2_id`),
+  UNIQUE KEY `transaction2_id` (`transaction2_id`),
+  KEY `client_id` (`client_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction2`
@@ -799,8 +996,9 @@ INSERT INTO `transaction2` (`transaction2_id`, `client_id`, `product_id`, `quant
 -- Table structure for table `transactions`
 --
 
-CREATE TABLE `transactions` (
-  `tId` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `transactions`;
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `tId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `client_id` int(10) UNSIGNED NOT NULL,
   `vehicle_id` int(11) DEFAULT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
@@ -810,8 +1008,12 @@ CREATE TABLE `transactions` (
   `status` enum('Pending','Ongoing','Rendered','Cancelled') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
   `price` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`tId`),
+  KEY `transactions_client_id_foreign` (`client_id`),
+  KEY `transactions_product_id_foreign` (`product_id`),
+  KEY `vehicle_id` (`vehicle_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=503 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
@@ -827,15 +1029,17 @@ INSERT INTO `transactions` (`tId`, `client_id`, `vehicle_id`, `product_id`, `qua
 -- Table structure for table `transaction_walkin`
 --
 
-CREATE TABLE `transaction_walkin` (
-  `twId` int(11) NOT NULL,
+DROP TABLE IF EXISTS `transaction_walkin`;
+CREATE TABLE IF NOT EXISTS `transaction_walkin` (
+  `twId` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
   `total` int(11) NOT NULL,
-  `date_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_created` datetime NOT NULL,
+  PRIMARY KEY (`twId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction_walkin`
@@ -850,8 +1054,9 @@ INSERT INTO `transaction_walkin` (`twId`, `client_id`, `product_id`, `quantity`,
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
@@ -862,8 +1067,10 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `role` enum('Administrator','Secretary') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Secretary',
-  `is_admin` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `is_admin` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -878,8 +1085,9 @@ INSERT INTO `users` (`id`, `username`, `name`, `admin`, `email`, `email_verified
 -- Table structure for table `vehicles`
 --
 
-CREATE TABLE `vehicles` (
-  `vehicle_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `vehicles`;
+CREATE TABLE IF NOT EXISTS `vehicles` (
+  `vehicle_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
   `plate_no` varchar(30) NOT NULL,
   `type` enum('SUV/AUV','Pickup Truck','Customized Vehicle','') NOT NULL,
@@ -887,8 +1095,11 @@ CREATE TABLE `vehicles` (
   `color` varchar(30) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL,
-  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`vehicle_id`),
+  UNIQUE KEY `plate_no` (`plate_no`),
+  UNIQUE KEY `vehicle_id` (`vehicle_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vehicles`
@@ -940,7 +1151,7 @@ INSERT INTO `vehicles` (`vehicle_id`, `client_id`, `plate_no`, `type`, `model`, 
 (151, 16, 'DFL 459', 'SUV/AUV', 'Nissan Frontier', 'White', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
 (152, 44, 'FDH 565', 'SUV/AUV', 'Dodge Ram 1500', 'Maroon', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
 (153, 46, 'GHH 44', 'Pickup Truck', 'Dodge Ram 1500', 'Blue', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
-(154, 48, 'DDN 345', '', 'Dodge Ram 1500', 'Red', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
+(154, 48, 'DDN 345', 'Pickup Truck', 'Dodge Ram 1500', 'Red', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-06 07:31:19'),
 (155, 49, 'DFL 564', 'SUV/AUV', 'Toyota Tundra', 'Dark Red', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
 (156, 50, 'SDA 434', 'Pickup Truck', 'Toyota Tundra', 'Yellow', 'Outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
 (157, 51, 'FGH 567', 'Pickup Truck', 'Ford F-250', 'Black', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 07:29:15'),
@@ -956,270 +1167,6 @@ INSERT INTO `vehicles` (`vehicle_id`, `client_id`, `plate_no`, `type`, `model`, 
 (177, 61, 'YOU 679', 'Pickup Truck', 'Ford F-250', 'Navy blue ', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
 (178, 62, 'LKJ 987', 'SUV/AUV', 'Nissan Rogue', 'Brown', 'Lowered vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55'),
 (179, 63, 'FHH 499', 'SUV/AUV', 'Honda CR-V', 'Yellow', '4x4 drive vehicle', '2020-02-05 00:00:00', '2020-02-05 08:01:55');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `brand`
---
-ALTER TABLE `brand`
-  ADD PRIMARY KEY (`brand_id`);
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`category_id`),
-  ADD UNIQUE KEY `category_id` (`category_id`);
-
---
--- Indexes for table `clients`
---
-ALTER TABLE `clients`
-  ADD PRIMARY KEY (`client_id`);
-
---
--- Indexes for table `delivery`
---
-ALTER TABLE `delivery`
-  ADD PRIMARY KEY (`delivery_id`);
-
---
--- Indexes for table `job_order`
---
-ALTER TABLE `job_order`
-  ADD PRIMARY KEY (`jo_id`);
-
---
--- Indexes for table `job_order_details`
---
-ALTER TABLE `job_order_details`
-  ADD PRIMARY KEY (`jodetails_id`);
-
---
--- Indexes for table `mechanic`
---
-ALTER TABLE `mechanic`
-  ADD PRIMARY KEY (`mechanic_id`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `productcheckout_details`
---
-ALTER TABLE `productcheckout_details`
-  ADD PRIMARY KEY (`productcheckout_details_id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`),
-  ADD UNIQUE KEY `product_number` (`product_number`);
-
---
--- Indexes for table `product_checkout`
---
-ALTER TABLE `product_checkout`
-  ADD PRIMARY KEY (`product_checkout_id`);
-
---
--- Indexes for table `product_details`
---
-ALTER TABLE `product_details`
-  ADD PRIMARY KEY (`product_id`),
-  ADD UNIQUE KEY `product_id` (`product_id`),
-  ADD UNIQUE KEY `stocknumber` (`stocknumber`,`category_id`,`brand_id`,`product_number`),
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `brand_id` (`brand_id`),
-  ADD KEY `supplier_id` (`supplier_id`);
-
---
--- Indexes for table `sales`
---
-ALTER TABLE `sales`
-  ADD PRIMARY KEY (`sales_id`);
-
---
--- Indexes for table `service`
---
-ALTER TABLE `service`
-  ADD PRIMARY KEY (`service_id`);
-
---
--- Indexes for table `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`supplier_id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `transaction2`
---
-ALTER TABLE `transaction2`
-  ADD PRIMARY KEY (`transaction2_id`),
-  ADD UNIQUE KEY `transaction2_id` (`transaction2_id`),
-  ADD KEY `client_id` (`client_id`);
-
---
--- Indexes for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`tId`),
-  ADD KEY `transactions_client_id_foreign` (`client_id`),
-  ADD KEY `transactions_product_id_foreign` (`product_id`),
-  ADD KEY `vehicle_id` (`vehicle_id`);
-
---
--- Indexes for table `transaction_walkin`
---
-ALTER TABLE `transaction_walkin`
-  ADD PRIMARY KEY (`twId`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- Indexes for table `vehicles`
---
-ALTER TABLE `vehicles`
-  ADD PRIMARY KEY (`vehicle_id`),
-  ADD UNIQUE KEY `plate_no` (`plate_no`),
-  ADD UNIQUE KEY `vehicle_id` (`vehicle_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `brand`
---
-ALTER TABLE `brand`
-  MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `clients`
---
-ALTER TABLE `clients`
-  MODIFY `client_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1018;
-
---
--- AUTO_INCREMENT for table `delivery`
---
-ALTER TABLE `delivery`
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `job_order`
---
-ALTER TABLE `job_order`
-  MODIFY `jo_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT for table `job_order_details`
---
-ALTER TABLE `job_order_details`
-  MODIFY `jodetails_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `mechanic`
---
-ALTER TABLE `mechanic`
-  MODIFY `mechanic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `productcheckout_details`
---
-ALTER TABLE `productcheckout_details`
-  MODIFY `productcheckout_details_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `product_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
-
---
--- AUTO_INCREMENT for table `product_checkout`
---
-ALTER TABLE `product_checkout`
-  MODIFY `product_checkout_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `sales`
---
-ALTER TABLE `sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `service`
---
-ALTER TABLE `service`
-  MODIFY `service_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `supplier`
---
-ALTER TABLE `supplier`
-  MODIFY `supplier_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `transaction2`
---
-ALTER TABLE `transaction2`
-  MODIFY `transaction2_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `transactions`
---
-ALTER TABLE `transactions`
-  MODIFY `tId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=503;
-
---
--- AUTO_INCREMENT for table `transaction_walkin`
---
-ALTER TABLE `transaction_walkin`
-  MODIFY `twId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `vehicles`
---
-ALTER TABLE `vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- Constraints for dumped tables

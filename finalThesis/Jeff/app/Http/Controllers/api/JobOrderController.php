@@ -56,8 +56,8 @@ class JobOrderController extends Controller
 
     public function findPrice(Request $request)
     {
-        $data = Product::select('price')->where('product_id', $request->id)->first();
-        return response()->json($data);
+        $data = Product::select('retail_price')->where('product_id', $request->id)->first();
+        return $data;
     }
 
     

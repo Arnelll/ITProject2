@@ -7,27 +7,33 @@
 @section('content')
 <body>
 <div class="row">
-  <div class="card" class="float-left" style="top:110px;padding:105px;width: 20rem;height: 18rem; positon:relative; left: 20px;">
+<a href="/new_service">
+  <div class="card" class="float-left" style="padding:105px;width: 20rem;height: 18rem; positon:auto; left: 95%;" onMouseOver="this.style.background='#066DBC'" onMouseOut="this.style.background='#fff'">
               <h5 class="card-title" style="text-align: center;">
                 <div class="now-ui-icons ui-1_simple-add" style=""></div>
                 <br>
-                <a href="/new_service">Add Sales</a>
+                Add Sales
               </h5>
   </div>
-  <div class="card" class="float-left" style="top:110px;padding:105px;margin: 0 0 0 10px; width: 20rem;height: 18rem; positon:relative; left: 20px;">
+  </a>
+  <a href="/accounts">
+  <div class="card" class="float-left" style="top:60px;padding:105px;margin: 0 0 0 10px; width: 20rem;height: 18rem; positon:auto; left: 95%;" onMouseOver="this.style.background='#066DBC'" onMouseOut="this.style.background='#fff'">
               <h5 class="card-title" style="text-align: center;">
                 <div class="now-ui-icons emoticons_satisfied" style=""></div>
                 <br>
-                <a href="/accounts">Client List</a>
+                Client List
               </h5>
   </div>
-  <div class="card" class="float-left" style="top:110px;padding:105px;margin: 0 0 0 10px;width: 20rem;height: 18rem; positon:relative; left: 20px;">
+  </a>
+  <a href="/products">
+  <div class="card" class="float-left" style="top:60px;padding:105px;margin: 0 0 0 10px;width: 20rem;height: 18rem; positon:auto; left: 95%;" onMouseOver="this.style.background='#066DBC'" onMouseOut="this.style.background='#fff'">
               <h5 class="card-title" style="text-align: center;">
                 <div class="now-ui-icons loader_gear" style=""></div>
                 <br>
-                <a href="/products">Inventory</a>
+                Inventory
               </h5>
   </div>
+  </a>
 </div>
 </body>
 @endsection

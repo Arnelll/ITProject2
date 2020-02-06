@@ -22,12 +22,16 @@ class TransactionController extends Controller
         //
         $result = JobOrder::orderBy('job_order.jo_id', 'desc')
         ->join('clients', 'clients.client_id', 'job_order.client_id')
-        ->join('mechanic', 'mechanic.mechanic_id', 'job_order.mechanic_id')
+       
+        /*->join('mechanic', 'mechanic.mechanic_id', 'job_order.mechanic_id')
         ->join('vehicles', 'vehicles.vehicle_id', 'job_order.vehicle_id')
-        ->join('products', 'products.product_id', 'job_order.product_id')
-        ->select('clients.*','mechanic.*','vehicles.*','products.*', 'job_order.*')
+        ->join('job_order_details', 'job_order_details.jo_id', 'job_order.jo_id')
+        ->join('products', 'products.product_id', 'job_order_details.product_id')
+        ->where('job_order.status','=','Rendered')
+        ->select('clients.*','mechanic.*','vehicles.*','products.*', 'job_order.*')*/
         ->paginate(10);
 
+        //return view('dashboard.transactions_services', compact('result'));
         return view('dashboard.transactions_services', compact('result'));
     }
 
@@ -53,13 +57,13 @@ class TransactionController extends Controller
         ->select('clients.*')
         ->paginate(10);
 
-        $products= JobOrder::orderBy('job_order.jo_id', 'asc')
+        /*$products= JobOrder::orderBy('job_order.jo_id', 'asc')
         ->join('products', 'products.product_id', 'job_order.product_id')
         ->where('job_order.product_id', '=', $x)
         ->select('products.*')
-        ->paginate(10);
+        ->paginate(10);*/
         
-        return view('dashboard.view_walkin', compact('result','clients','products'));
+        return view('dashboard.view_walkin', compact('result','clients'));
     }
 
     public function transaction_update(Request $request)

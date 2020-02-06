@@ -4,12 +4,15 @@
     @foreach($name as $n)
         Vehicle profile for Plate No. <strong style="color:red;">{{$n['plate']}}</strong>
     @endforeach
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
 @endsection
 
 @section('content')
+<br>
+<br>
+	<a href="javascript:history.go(-1)" style="margin-left:83%;" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
+<br>
+<br>
+<br>
 <div class="row justify-content-center">
     <div class="col-md-3">
       <div class="card-body">

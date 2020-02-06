@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+<br>
+<br>
+<a href="javascript:history.go(-1)" style="margin-left:83%;" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
     <div class="row justify-content-center">
     <div class="col-md-3">
       <div class="card-body">
@@ -64,8 +67,8 @@
                         <input type="text" class="form-control text-center" id="input2"  aria-describedby="input2Help" placeholder="{{$result->contact_no}}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Age</label>
-                        <input type="text" class="form-control text-center" id="input2"  aria-describedby="input2Help" placeholder="{{$result->age}}" readonly>
+                        <label for="exampleInputPassword1">Address</label>
+                        <input type="text" class="form-control text-center" id="input2"  aria-describedby="input2Help" placeholder="{{$result->address}}" readonly>
                     </div>
                 </form>
   			      </div>

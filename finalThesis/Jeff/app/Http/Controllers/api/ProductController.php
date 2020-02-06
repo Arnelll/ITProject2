@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\ProductDetails;
 use App\Transactions;
+use App\Supplier;
 
 class ProductController extends Controller
 {
@@ -62,8 +63,8 @@ class ProductController extends Controller
 
     public function new_product()
     {
-        return view('dashboard.product_new');
-
+        $result = Supplier::get();
+        return view('dashboard.product_new', compact('result'));
     }
 
     public function edit_product($id)
@@ -82,14 +83,15 @@ class ProductController extends Controller
         $product = new Product;
         $product -> product_name = $request -> productname;
         $product -> quantity = $request -> qty;
-        $product -> price = $request -> price;
-        $product -> supplier_id = '1';
+        $product -> retail_price = $request -> retail_price;
+        $product -> wholesale_price = $request -> whole_price;
+        $product -> distributor_price = $request -> dis_price;
         if ($product -> save()){
             $id = $product -> product_id;
                 $data = array('product_id'=>$id,
-                              'category_id'=>'1',
+                              'category'=>$request->category,
                               'brand'=>$request->brand,
-                              'provider_id'=>'1');
+                              'supplier_id'=>$request->supplier_id);
                 ProductDetails::insert($data);
         }
         return back();

@@ -2,9 +2,6 @@
 
 @section('title')
     + Mechanic
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
 @endsection
 
 @section('content')
@@ -22,29 +19,29 @@
                     <div class="row">
                     <div class="col-lg-6 col-sm-6">
                         <div class="form-group">
-                        <input type="text" name="fn" class="form-control" placeholder="First Name" maxlength="30">
+                        <input type="text" name="fn" class="form-control bg-white" placeholder="First Name" maxlength="30" required>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="form-group">
-                        <input type="text" name="ln" class="form-control" placeholder="Last Name" maxlength="20">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-3">
-                        <div class="form-group">
-                        <input type="text" name="contactno" class="form-control" placeholder="Contact" maxlength="11">
+                        <input type="text" name="ln" class="form-control bg-white" placeholder="Last Name" maxlength="20" required>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-3">
                         <div class="form-group">
-                        <input type="text" name="address" class="form-control" placeholder="Address">
+                        <input type="text" name="contactno" class="form-control bg-white" placeholder="Contact" maxlength="11" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-sm-3">
+                        <div class="form-group">
+                        <input type="text" name="address" class="form-control bg-white" placeholder="Address" required>
                         </div>
                     </div>
                     <br>
                 </div>
-                <div class="col-lg-2 col-sm-2">
+                <div class="col-lg-2 col-sm-2" style="margin-left: 85%;">
                     <div class="form-group">
-                    {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
+                    {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
                     </div>
                 </div>
             </div>

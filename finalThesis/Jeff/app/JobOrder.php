@@ -9,5 +9,5 @@ class JobOrder extends Model
     //
     protected $table = 'job_order';
     protected $primaryKey = 'jo_id';
-    protected $fillable = ['client_id','product_id','quantity','total','status','date_created'];
+    protected $fillable = ['client_id','quantity','total','status','date_created'];
 }

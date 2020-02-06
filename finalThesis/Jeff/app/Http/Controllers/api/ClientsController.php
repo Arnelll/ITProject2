@@ -81,11 +81,11 @@ class ClientsController extends Controller
 
     public function insert(Request $request)
     {
-        //firstname, lastname, contact_no, age, email, created_at, updated_at
+        //firstname, lastname, contact_no, address, email, created_at, updated_at
                 $data = array('firstname'=>$request->fn,
                               'lastname'=>$request->ln,
                               'contact_no'=>$request->phone, 
-                              'age'=>$request->age,
+                              'address'=>$request->address,
                               'email'=>$request->email,
                               'created_at'=>date('Y-m-d H:i:s'));
                 Clients::insert($data);
@@ -97,7 +97,7 @@ class ClientsController extends Controller
         $s=new Clients;
         $data = array('firstname' =>$request->input('fn'),
                       'lastname' =>$request->input('ln'),
-                      'age' =>$request->input('age'),
+                      'address' =>$request->input('address'),
                       'email' =>$request->input('email'),
                       'contact_no' =>$request->input('contactnum'));
         $s->where('client_id', $request->input('clientid'))->update($data);

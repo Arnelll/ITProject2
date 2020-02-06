@@ -56,17 +56,17 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select name="productname[]" class="form-control productname">
+                            <select name="productname[]" class="form-control productname bg-white">
                                 <option value="0" selected="true" disabled="true">Select Product</option>
                                 @foreach($products as $key => $p)
                                 <option value="{!!$key!!}">{!!$p!!}</option>
                                 @endforeach
                             </select>
                         </td>
-                        <td><input type="text" name="qty[]" class="form-control qty"></td>
-                        <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>
-                        <td><input type="text" name="dis[]" class="form-control dis"></td>
-                        <td><input type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white"></td>
+                        <td><input type="text" name="qty[]" class="form-control qty bg-white"></td>
+                        <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right" disabled></td>
+                        <td><input type="text" name="dis[]" class="form-control dis bg-white"></td>
+                        <td><input type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right" disabled></td>
                         <td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>
                     </tr>
                 </tbody>
@@ -76,7 +76,7 @@
                     <td style="border:none"></td>
                     <td style="border:none"></td>
                     <td><b>Total</b></td>
-                    <td><b class="total"></b></td>
+                    <td style="text-align:right;"><b class="total"></b></td>
                     <td></td>
                 </tr>
             </tfoot>   

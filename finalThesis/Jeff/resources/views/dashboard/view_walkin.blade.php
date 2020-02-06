@@ -1,10 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-        Transaction details
-        <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>   
+        Transaction details 
 @endsection
 
 @section('content')
@@ -39,7 +36,7 @@
                     <div class="col-md-2 px-1">
                       <div class="form-group">
                         <label>Price</label>
-                        <input type="text" class="form-control" disabled="" placeholder="price" value="{{$row['price']}}">
+                        <input type="text" class="form-control" disabled="" placeholder="price" style="text-align:right;" value="{{$row['price']}}">
                       </div>
                     </div>
                     <div class="col-md-3 pl-1">
@@ -52,9 +49,9 @@
                       <div class="form-group">
                         <label>Total</label>
                         @if($row['discount']==0 || $row['discount'] == null)
-                        <input type="email" class="form-control" disabled="" placeholder="color" value="&#8369;{{$row['Total']}}.00">
+                        <input type="email" class="form-control" disabled="" placeholder="color" style="text-align:right;" value="&#8369;{{$row['Total']}}.00">
                         @else
-                        <input type="email" class="form-control" disabled="" placeholder="color" value="&#8369;{{$row['Total']}}.00 (Discount: %{{$row['discount']}})">
+                        <input type="email" class="form-control" disabled="" placeholder="color" style="text-align:right;" value="&#8369;{{$row['Total']}}.00 (Discount: %{{$row['discount']}})">
                         @endif
                       </div>
                     @empty
@@ -62,13 +59,6 @@
                     </div>
                   </div>
                   @endforelse
-                  <br>
-                  <br>
-                  <div class="fa-3x row justify-content-center">
-                    <div class="fas fa-sync fa-spin"></div>
-                  </div>
-                  <br>
-                  <br>
                   {!!Form::open(array('route'=>'transaction_update','id'=>'formupdate','method'=>'post'))!!}
                       <div class="row">
                       <div class="col-lg-12 col-sm-12">
@@ -79,13 +69,13 @@
                     <th>Price</th>
                     <th>Discount(%)</th>
                     <th>Amount</th>
-                    <th style="text-align:center"><a href="#" class="addRow ">+<i class="glyphicon glyphicon-plus"></i></a></th>
+                    <th style="text-align:center"><a href="#" class="btn btn-sm btn-primary addRow " style="font-size:20px;">+<i class="glyphicon glyphicon-plus"></i></a></th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
                             <select id="productid" name="productid[]" class="form-control productid">
-                                <option value="0" selected="true" disabled="true">Select Product</option>
+                                <option value="0" selected="true">Select Product</option>
                                 @foreach($products as $key => $p)
                                 <option value="{!!$key!!}">{!!$p!!}</option>
                                 @endforeach
@@ -95,7 +85,7 @@
                         <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>
                         <td><input type="text" name="dis[]" class="form-control dis"></td>
                         <td><input type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white"></td>
-                        <td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>
+                        <td><a href="#" class="remove" style="margin-left:40%;"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
                     </tr>
                 </tbody>
             <tfoot>
@@ -109,9 +99,9 @@
                 </tr>
             </tfoot>   
         </table>
-                      <div class="row">
+                      <div class="row" style="margin-left:80%;">
                         <div class="modal-footer">
-                          {!!Form::submit('Update',array('class'=>'btn btn-primary'))!!}
+                          {!!Form::submit('Update',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
                         </div>
                       </div>
                       
@@ -198,7 +188,7 @@ function addRow()
                 '<td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>'+
                 '<td><input type="text" name="dis[]" class="form-control dis"></td>'+
                 '<td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>'+
-                '<td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>'+
+                '<td><a href="#" class="remove" style="margin-left:40%;"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>'+
                 '</tr>';
     $('tbody').append(tr);
 };

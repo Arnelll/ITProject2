@@ -22,7 +22,7 @@
                             Service
                             </th>
                             <th>
-                            Status
+                            Date
                             </th>
                             <th>
                             Actions
@@ -31,8 +31,8 @@
                         <tbody>
                             @foreach($result as $row)
                                 <tr>
-                                    <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
-                                    <td>{{$row['service']}}</td>
+                                    <td><a href="/view_accounts/{{$row['client_id']}}">{{$row['lastname']}}, {{$row['firstname']}}</a></td>
+                                    <td>{{$row['remarks']}}</td>
                                     <td>{{$row['status']}}</td>
                                     <td><a href="/view_walkin/{{$row['client_id']}}" class="btn-sm"><i class="now-ui-icons files_paper"></i></a></td>
                                 </tr>

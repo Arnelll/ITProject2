@@ -2,9 +2,6 @@
 
 @section('title')
     + Edit Account
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
 @endsection
 
 
@@ -21,14 +18,14 @@
         {!!Form::open(array('route'=>'account_update','id'=>'formupdate','method'=>'post'))!!}
         <div class="row">
         <input type="hidden" value="{{$result->client_id}}" id="clientid" name="clientid">
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-5 col-sm-6">
                 <div class="form-group">
-                <input type="text" id="fn" name="fn" class="form-control" value="{{$result->firstname}}">
+                <input type="text" id="fn" name="fn" class="form-control" value="{{$result->firstname}}" maxlength="11" required>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-5 col-sm-6">
                 <div class="form-group">
-                <input type="text" id="ln" name="ln" class="form-control" value="{{$result->lastname}}">
+                <input type="text" id="ln" name="ln" class="form-control" value="{{$result->lastname}}" maxlength="11" required>
                 </div>
             </div>
             <!--
@@ -41,19 +38,19 @@
                     </select>
                 </div>
             </div> -->
-            <div class="col-lg-2 col-sm-6">
+            <div class="col-lg-5 col-sm-6">
                 <div class="form-group">
-                <input type="text" id="age" name="age" class="form-control" value="{{$result->age}}">
+                <input type="text" id="address" name="address" class="form-control" value="{{$result->address}}" maxlength="50" required>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-4">
                 <div class="form-group">
-                <input type="text" id="email" name="email" class="form-control" value="{{$result->email}}">
+                <input type="text" id="email" name="email" class="form-control" value="{{$result->email}}" maxlength="11" required>
                 </div>
             </div>
             <div class="col-lg-2 col-sm-3">
                 <div class="form-group">
-                <input type="text" id="contactnum" name="contactnum" class="form-control" value="{{$result->contact_no}}">
+                <input type="text" id="contactnum" name="contactnum" class="form-control" value="{{$result->contact_no}}" maxlength="11" required>
                 </div>
             </div>
             <!-- <div class="col-lg-3 col-sm-3">
@@ -61,12 +58,12 @@
                 <input type="text" name="address" class="form-control" placeholder="Address">
                 </div>
             </div> -->
-            <div class="col-lg-2 col-sm-2">
+</div>
+        <div class="col-lg-2 col-sm-2" style="margin-left:70%;">
                 <div class="form-group">
-                {!!Form::submit('Update',array('class'=>'btn btn-primary'))!!}
+                {!!Form::submit('Update',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
                 </div>
             </div>
-</div>
         {!!Form::hidden('_token',csrf_token())!!}
         {!!Form::close()!!}
             </div>

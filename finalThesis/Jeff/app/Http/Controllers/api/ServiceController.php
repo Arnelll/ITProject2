@@ -49,28 +49,26 @@ class ServiceController extends Controller
         $id = $request -> client_id;
         $mid = $request -> mech;
         $vid = $request -> vcle;
+        
             foreach ($request -> productname as $key => $v)
-            $discount = $request->dis [$key];
-            if($discount==null){
-                $discount=0;
-            }
             {
                 if($mid == null){
                     $data = array('client_id'=>$id,
                               'product_id'=>$v,
                               'quantity'=>$request->qty [$key],
                               'discount'=>$request->dis [$key],
-                              'total'=>$request->amount [$key],
+                              'total'=>$request->amount,
                               'date_created'=>date('Y-m-d H:i:s'));
                     WalkIn::insert($data);         
                 }else{
                     $data = array('client_id'=>$id,
                               'mechanic_id'=>$mid,
                               'vehicle_id'=>$vid,
-                              'service'=>$request->svc,
-                              'product_id'=>$v,
-                              'quantity'=>$request->qty [$key],
-                              'discount'=>$discount,
+                              'remarks'=>$request->svc,
+                              //'product_id'=>$v,
+                              //'quantity'=>$request->qty [$key],
+                              //'jo_id'=>
+                              'discount'=>$request->dis [$key],
                               'total'=>$request->amount [$key],
                               'date_created'=>date('Y-m-d H:i:s'));
                     JobOrder::insert($data);

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Accounts
+    Clients
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-            <h4 class="card-link"> @yield('title')<a href="/new_account" class="btn btn-warning btn-sm btn-round">+ Account</a></h4>
+            <h4 class="card-link"> @yield('title') <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left:80%;">+ Client</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -20,6 +20,9 @@
                             </th>
                             <th>
                             Contact
+                            </th>
+                            <th>
+                            Address
                             </th>
                             <th>
                             Email
@@ -33,6 +36,7 @@
                                 <tr>
                                     <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
                                     <td>{{$row['contact_no']}}</td>
+                                    <td>{{$row['address']}}</td>
                                     <td>{{$row['email']}}</td>
                                     <td><a href="/view_accounts/{{$row['client_id']}}" class="btn-sm"><i class="now-ui-icons files_paper"></i></a>
                                         <a href="/edit_account/{{$row['client_id']}}"><i class="fas fa-edit"></i></a></td>

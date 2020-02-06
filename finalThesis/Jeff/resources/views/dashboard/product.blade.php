@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-            <h4 class="card-link"> @yield('title')<a href="/new_product" class="btn btn-warning btn-sm btn-round">+ Product</a></h4>
+            <h4 class="card-link"> @yield('title')<a href="/new_product" class="btn btn-primary btn-md btn-round" style="margin-left:70%;">+ Product</a></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -22,7 +22,13 @@
                             Quantity
                             </th>
                             <th>
-                            Price
+                            Retail Price
+                            </th>
+                            <th>
+                            Wholesale Price
+                            </th>
+                            <th>
+                            Distributor Price
                             </th>
                             <th>
                             Actions
@@ -33,7 +39,9 @@
                                 <tr>
                                     <td>{{$row['product_name']}}</td>
                                     <td>{{$row['quantity']}}</td>
-                                    <td>{{$row['price']}}</td>
+                                    <td>{{$row['retail_price']}}</td>
+                                    <td>{{$row['wholesale_price']}}</td>
+                                    <td>{{$row['distributor_price']}}</td>
                                     <td><a href="/product_profile/{{$row['product_id']}}"><i class="now-ui-icons files_paper"></i></a>
                                         <a href="/edit_product/{{$row['product_id']}}"><i class="fas fa-edit"></i></a></td>
                                 </tr>

@@ -77,6 +77,18 @@
               <p>Product Checkout</p>
             </a>
           </li>
+          <li>
+            <a href="/delivery">
+              <i class="now-ui-icons shopping_delivery-fast"></i>
+              <p>Delivery</p>
+            </a>
+          </li>
+          <li>
+            <a href="/joborders">
+              <i class="now-ui-icons files_paper"></i>
+              <p>Job Orders</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -99,7 +111,7 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
-          <div style="text-align: center;display: block; width: 200px; height: 200px; float: left; margin-left: 320px; position: absolute; top: 18px;">
+          <div style="text-align: center;display: block; width: 250px; height: 250px; float: left; margin-left: 40%; position: absolute; top: 18px;">
                     <img src="../assets/img/CompanyLogo.png" />
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">

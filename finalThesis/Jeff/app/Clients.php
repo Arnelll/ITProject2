@@ -13,5 +13,5 @@ class Clients extends Model
     //
     protected $table = 'clients';
     protected $primaryKey = 'client_id';
-    protected $fillable = ['firstname', 'lastname', 'contact_no','age','email'];
+    protected $fillable = ['firstname', 'lastname', 'contact_no','address','email'];
 }

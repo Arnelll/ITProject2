@@ -68,7 +68,7 @@
           <li>
             <a href="/service">
               <i class="now-ui-icons education_paper"></i>
-              <p>Sales</p>
+              <p>Transactions</p>
             </a>
           </li>
           <li>
@@ -81,12 +81,6 @@
             <a href="/delivery">
               <i class="now-ui-icons shopping_delivery-fast"></i>
               <p>Delivery</p>
-            </a>
-          </li>
-          <li>
-            <a href="/joborders">
-              <i class="now-ui-icons files_paper"></i>
-              <p>Job Orders</p>
             </a>
           </li>
         </ul>

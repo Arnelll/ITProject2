@@ -23,32 +23,32 @@
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="productname" class="form-control bg-white" placeholder="Product Name" required>
+                Product Name<input type="text" name="productname" class="form-control bg-white" maxlength="100" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="qty" class="form-control bg-white" placeholder="Quantity" required>
+                Quantity<input type="text" name="qty" class="form-control bg-white" maxlength="4" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="retail_price" class="form-control bg-white" placeholder="Retail Price" required>
+                Retail Price<input type="text" name="retail_price" class="form-control bg-white" style="text-align:right" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="whole_price" class="form-control bg-white" placeholder="Wholesale Price" required>
+                Wholesale Price<input type="text" name="whole_price" class="form-control bg-white" style="text-align:right" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="dis_price" class="form-control bg-white" placeholder="Distributor Price" required>
+                Distributor Price<input type="text" name="dis_price" class="form-control bg-white" style="text-align:right" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">
-                    <select id="supplier_id" name="supplier_id" class="form-control productname bg-white" required>
+                    Supplier<select id="supplier_id" name="supplier_id" class="form-control productname bg-white" required>
                         <option value="" disabled="true" selected>Select Supplier</option>
                         @foreach($result as $row)
                         <option value="{{$row['supplier_id']}}">{{$row['name']}}</option>
@@ -58,12 +58,12 @@
             </div>
             <div class="col-lg-4 col-sm-4">
                 <div class="form-group">
-                <input type="text" name="category" class="form-control bg-white" placeholder="Category" required>
+                Category<input type="text" name="category" class="form-control bg-white" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-3">
                 <div class="form-group">
-                <input type="text" name="brand" class="form-control bg-white" placeholder="Brand" required>
+                Brand<input type="text" name="brand" class="form-control bg-white" required>
                 </div>
             </div>
 </div>

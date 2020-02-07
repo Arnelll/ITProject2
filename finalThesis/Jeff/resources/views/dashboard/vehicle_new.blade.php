@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">
-                <select name="client_id" class="form-control bg-white" required>
+                Client<select name="client_id" class="form-control bg-white" required>
                         <option value="" selected="true" disabled="true">Select Client</option>
                         @foreach($clients as $key => $c)
                         <option value="{!!$key!!}">{!!$c!!}</option>
@@ -29,27 +29,27 @@
             </div>
             <div class="col-lg-3 col-sm-3">
                 <div class="form-group">
-                <input type="text" name="plateno" class="form-control bg-white" placeholder="Plate No:" required>
+                Plate Number<input type="text" name="plateno" class="form-control bg-white" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-4">
                 <div class="form-group">
-                <input type="text" name="type" class="form-control bg-white" placeholder="Type" required>
+                Type<input type="text" name="type" class="form-control bg-white" required>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-3">
                 <div class="form-group">
-                <input type="text" name="model" class="form-control bg-white" placeholder="Model" required>
+                Model<input type="text" name="model" class="form-control bg-white" required>
                 </div>
             </div>
             <div class="col-lg-2 col-sm-3">
                 <div class="form-group">
-                <input type="text" name="color" class="form-control bg-white" placeholder="Color" required>
+                Color<input type="text" name="color" class="form-control bg-white" required>
                 </div>
             </div>
             <div class="col-lg-5 col-sm-3">
                 <div class="form-group">
-                <input type="text" name="desc" class="form-control bg-white" placeholder="Description" required>
+                Description<input type="text" name="desc" class="form-control bg-white" required>
                 </div>
             </div>
 </div>

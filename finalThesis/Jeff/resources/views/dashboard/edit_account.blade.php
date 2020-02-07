@@ -20,12 +20,12 @@
         <input type="hidden" value="{{$result->client_id}}" id="clientid" name="clientid">
             <div class="col-lg-5 col-sm-6">
                 <div class="form-group">
-                <input type="text" id="fn" name="fn" class="form-control" value="{{$result->firstname}}" maxlength="11" required>
+                <strong>First Name</strong><input type="text" id="fn" name="fn" class="form-control" value="{{$result->firstname}}" maxlength="11" required>
                 </div>
             </div>
             <div class="col-lg-5 col-sm-6">
                 <div class="form-group">
-                <input type="text" id="ln" name="ln" class="form-control" value="{{$result->lastname}}" maxlength="11" required>
+                <strong>Last Name</strong><input type="text" id="ln" name="ln" class="form-control" value="{{$result->lastname}}" maxlength="11" required>
                 </div>
             </div>
             <!--
@@ -40,17 +40,17 @@
             </div> -->
             <div class="col-lg-5 col-sm-6">
                 <div class="form-group">
-                <input type="text" id="address" name="address" class="form-control" value="{{$result->address}}" maxlength="50" required>
+                <strong>Address</strong><input type="text" id="address" name="address" class="form-control" value="{{$result->address}}" maxlength="50" required>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-4">
                 <div class="form-group">
-                <input type="text" id="email" name="email" class="form-control" value="{{$result->email}}" maxlength="11" required>
+                <strong>Email</strong><input type="text" id="email" name="email" class="form-control" value="{{$result->email}}" maxlength="11" required>
                 </div>
             </div>
             <div class="col-lg-2 col-sm-3">
                 <div class="form-group">
-                <input type="text" id="contactnum" name="contactnum" class="form-control" value="{{$result->contact_no}}" maxlength="11" required>
+                <strong>Contact Number</strong><input type="text" id="contactnum" name="contactnum" class="form-control" value="{{$result->contact_no}}" maxlength="11" required>
                 </div>
             </div>
             <!-- <div class="col-lg-3 col-sm-3">

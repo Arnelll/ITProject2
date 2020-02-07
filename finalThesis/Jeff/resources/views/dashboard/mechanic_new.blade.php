@@ -19,22 +19,22 @@
                     <div class="row">
                     <div class="col-lg-6 col-sm-6">
                         <div class="form-group">
-                        <input type="text" name="fn" class="form-control bg-white" placeholder="First Name" maxlength="30" required>
+                        First Name<input type="text" name="fn" class="form-control bg-white" maxlength="30" required>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="form-group">
-                        <input type="text" name="ln" class="form-control bg-white" placeholder="Last Name" maxlength="20" required>
+                        Last Name<input type="text" name="ln" class="form-control bg-white" maxlength="20" required>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-3">
                         <div class="form-group">
-                        <input type="text" name="contactno" class="form-control bg-white" placeholder="Contact" maxlength="11" required>
+                        Contact<input type="text" name="contactno" class="form-control bg-white" maxlength="11" required>
                         </div>
                     </div>
                     <div class="col-lg-5 col-sm-3">
                         <div class="form-group">
-                        <input type="text" name="address" class="form-control bg-white" placeholder="Address" required>
+                        Address<input type="text" name="address" class="form-control bg-white" required>
                         </div>
                     </div>
                     <br>

@@ -45,25 +45,42 @@ class TransactionController extends Controller
         return view('dashboard.transactions_walk-in', compact('result'));
     }
 
-    public function view_walkin($id){
+    public function view_service($id,$jo_id){
         $x['id'] = $id;
+        $z['jo_id'] = $jo_id;
 
         $result = JobOrder::where('jo_id','=',$x)
         ->first();
 
-        $clients = JobOrder::orderBy('job_order.jo_id', 'asc')
-        ->join('clients', 'clients.client_id', 'job_order.client_id')
+        $clients = JobOrder::join('clients', 'clients.client_id', 'job_order.client_id')
         ->where('job_order.client_id', '=', $x)
-        ->select('clients.*')
-        ->paginate(10);
+        ->first();
 
+        $vehicle = JobOrder::join('vehicles','vehicles.vehicle_id','job_order.vehicle_id')
+        ->where('job_order.jo_id', '=', $z)
+        ->first();
+
+        $mechanic = JobOrder::join('mechanic','mechanic.mechanic_id','job_order.mechanic_id')
+        ->where('job_order.jo_id', '=', $z)
+        ->first();
+
+        $jo = JobOrder::select('remarks','status')
+        ->where('jo_id','=',$z)
+        ->first();
         /*$products= JobOrder::orderBy('job_order.jo_id', 'asc')
         ->join('products', 'products.product_id', 'job_order.product_id')
         ->where('job_order.product_id', '=', $x)
         ->select('products.*')
         ->paginate(10);*/
+        // d.quantity, d.retail_price, d.retail_price*d.quantity
+        $products = JobOrder::join('job_order_details','job_order.jo_id','job_order_details.jo_id')
+        ->join('products','job_order_details.product_id','products.product_id')
+        ->where('job_order.jo_id','=',$z)
+        ->select('products.product_name','products.quantity','products.retail_price')
+        ->get();
         
-        return view('dashboard.view_walkin', compact('result','clients'));
+        return view('dashboard.view_service', compact('result','clients','vehicle','mechanic','jo','products'));
+        
     }
 
     public function transaction_update(Request $request)

@@ -34,7 +34,7 @@
                                     <td><a href="/view_accounts/{{$row['client_id']}}">{{$row['lastname']}}, {{$row['firstname']}}</a></td>
                                     <td>{{$row['remarks']}}</td>
                                     <td>{{$row['status']}}</td>
-                                    <td><a href="/view_walkin/{{$row['client_id']}}" class="btn-sm"><i class="now-ui-icons files_paper"></i></a></td>
+                                    <td><a href="/view_service/{{$row['client_id']}}/{{$row['jo_id']}}" class="btn-sm"><i class="now-ui-icons files_paper"></i></a></td>
                                 </tr>
                             @endforeach
                             <nav aria-label="...">

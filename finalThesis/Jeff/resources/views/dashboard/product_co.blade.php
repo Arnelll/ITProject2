@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-lg-12 col-sm-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="joo">
                 <thead>
                     <th>Product Name</th>
                     <th>Quantity</th>
@@ -216,7 +216,7 @@ function addRow()
                 '<td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>'+
                 '<td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>'+
                 '</tr>';
-    $('tbody').append(tr);
+                $('#joo').find('tbody').append(tr);
 };
 
 function findRowNum(input){

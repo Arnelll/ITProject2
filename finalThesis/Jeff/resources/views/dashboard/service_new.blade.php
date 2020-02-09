@@ -1,29 +1,21 @@
 @extends('layouts.master')
 
 @section('title')
-    + Job Order
+    + Service / Job Order
 @endsection
 
 @section('content')
 
-<style>
-.hide {
-    display: none;
-}
-</style>
 
 <body>
         <div class="container">
         <section class="panel">
             <div class="panel panel-footer">
             <header class="panel panel-default">
-                <h3> Job Order Details </h3>
+                <h3> Service / Job Order </h3>
             </header>
             </div>
         <div class="panel panel-footer">
-            
-            <br>
-        <div id="hideJO" class="hide">
         <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left: 90%;">+ Client</a>
             <h3><strong>Job Order</strong></h3>
             {!!Form::open(array('route'=>'service_insert','id'=>'formsave','method'=>'post'))!!}
@@ -67,10 +59,6 @@
                 <br>
             </div>
         </div>
-        <div class="col-lg-12 col-sm-12">
-            <h3 style="margin: 0 0 0 0;"><strong>Sales</strong></h3>
-            
-            <button type="button" id="show-btn" class="btn btn-primary justify-content-end" style="float: right;">Add Job Order</button>
             <table id="product-table" class="table table-bordered"><br>
                 <thead>
                     <th>Product Name</th>

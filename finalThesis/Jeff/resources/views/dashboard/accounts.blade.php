@@ -14,21 +14,21 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
-                        <thead class=" text-primary">
+                        <thead class=" text-info">
                             <th>
-                            Fullname
+                            <strong>Fullname</strong>
                             </th>
                             <th>
-                            Contact
+                            <strong>Contact</strong>
                             </th>
                             <th>
-                            Address
+                            <strong>Address</strong>
                             </th>
                             <th>
-                            Email
+                            <strong>Email</strong>
                             </th>
                             <th>
-                            Actions
+                            <strong>Actions</strong>
                             </th>
                         </thead>
                         <tbody>

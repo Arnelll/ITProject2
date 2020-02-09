@@ -7,7 +7,7 @@
 @section('content')
 <body>
 <div class="row">
-<a href="/new_service">
+<a href="/opt_trans">
   <div class="card" class="float-left" style="padding:105px;width: 20rem;height: 18rem; positon:auto; left: 95%;" onMouseOver="this.style.background='#066DBC'" onMouseOut="this.style.background='#fff'">
               <h5 class="card-title" style="text-align: center;">
                 <div class="now-ui-icons ui-1_simple-add" style=""></div>

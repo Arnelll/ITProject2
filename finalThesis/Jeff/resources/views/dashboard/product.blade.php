@@ -14,24 +14,24 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
-                        <thead class=" text-primary">
+                        <thead class=" text-info">
                             <th>
-                            Product Name
+                            <strong>Product Name</strong>
                             </th>
                             <th>
-                            Quantity
+                            <strong>Quantity</strong>
                             </th>
                             <th>
-                            Retail Price
+                            <strong>Retail Price</strong>
                             </th>
                             <th>
-                            Wholesale Price
+                            <strong>Wholesale Price</strong>
                             </th>
                             <th>
-                            Distributor Price
+                            <strong>Distributor Price</strong>
                             </th>
                             <th>
-                            Actions
+                            <strong>Actions</strong>
                             </th>
                         </thead>
                         <tbody>

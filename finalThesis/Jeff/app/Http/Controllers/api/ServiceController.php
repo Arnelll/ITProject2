@@ -31,7 +31,7 @@ class ServiceController extends Controller
         return view('dashboard.debugger', compact('products'));
     }
 
-    public function new_service()
+    public function new_sales()
     {
         //$clients = Clients::paginate(15);
         $clients = Clients::all()->pluck('full_name', 'client_id');
@@ -39,8 +39,24 @@ class ServiceController extends Controller
         $mechanic = Mechanic::all()->pluck('fullname', 'mechanic_id');
         $vehicle = Vehicle::pluck('plate_no','vehicle_id');
 
-        return view('dashboard.service_new', compact('clients','products','mechanic','vehicle'));
+        return view('dashboard.sales_new', compact('clients','products','mechanic','vehicle'));
 
+    }
+
+    public function new_service()
+    {
+        $clients = Clients::all()->pluck('full_name', 'client_id');
+        $products = Product::pluck('product_name','product_id');
+        $mechanic = Mechanic::all()->pluck('fullname', 'mechanic_id');
+        $vehicle = Vehicle::pluck('plate_no','vehicle_id');
+
+        return view('dashboard.service_new', compact('clients','products','mechanic','vehicle'));
+    }
+
+    public function opt_trans()
+    {
+
+        return view('dashboard.transaction_option');
     }
 
     public function insert(Request $request)

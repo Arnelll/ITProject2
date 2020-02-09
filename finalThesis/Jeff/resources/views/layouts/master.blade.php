@@ -71,18 +71,14 @@
               <p>Mechanics</p>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons shopping_basket"></i>
-              <p>Sales</p>
-            </a>
-          </li>
-          <li>
-            <a href="/service">
-              <i class="now-ui-icons files_paper"></i>
-              <p>Job Orders</p>
-            </a>
-          </li>
+          <button type="button" class="btn btn-md" style="background-color:#005ca5;width:65%;" data-toggle="collapse" data-target="#demo"><i class="now-ui-icons files_paper"></i><p>Transactions</p></button>
+          <div id="demo" class="collapse">
+            <ul style="list-style-type: none;">
+              <li><a href="#"><i class="now-ui-icons files_paper"></i><p>SALES</p></a></li>
+                <li><a href="/service"><i class="now-ui-icons files_paper"></i><p>JOB ORDERS</p></a></li>
+                <li><a href="#"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
+            </ul>
+          </div>
           <li>
             <a href="/product_co">
               <i class="now-ui-icons design_bullet-list-67"></i>

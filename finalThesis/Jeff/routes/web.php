@@ -28,7 +28,7 @@ Route::get('/product_profile/{id}',"api\ProductController@product_profile");
 Route::get('/vehicle',"api\VehicleController@index");
 Route::get('/view_vehicle/{id}',"api\VehicleController@vehicle_profile");
 Route::get('/joborder',"api\JobOrderController@index");
-Route::get('/sales',"api\TransactionController@index");
+Route::get('/service',"api\TransactionController@index");
 Route::get('/mechanic',"api\MechanicController@index");
 Route::get('/walkin',"api\TransactionController@walk_ins");
 Route::post('/insert', array('as' => 'insert', 'uses' => 'api\JobOrderController@insert'));

@@ -1,50 +1,60 @@
 @extends('layouts.master')
 
 @section('title')
-    Transaction
+    Job Orders
 @endsection
 
 @section('content')
+
 <div class="row">
     <div class="col-md-12">
+
         <div class="card">
+
             <div class="card-header">
-            <h4 class="card-link"> @yield('title')</h4>
+                <div class="card-title">
+                    <h3>Job Orders <a href="/new_service" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px;">+ Job Order</a></h3>
+                </div>
             </div>
+
             <div class="card-body">
+
                 <div class="table-responsive">
                     <table class="table">
-                        <thead class=" text-primary">
-                            <th>
-                            Client Name
-                            </th>
-                            <th>
-                            Service
-                            </th>
-                            <th>
-                            Date
-                            </th>
-                            <th>
-                            Actions
-                            </th>
+
+                        <thead class="text-info">
+                            <th style="font-weight: 500;">Client Name</th>
+                            <th style="font-weight: 500;">Service</th>
+                            <th style="font-weight: 500;">Date</th>
+                            <th style="text-align: center; font-weight: 500">Actions</th>
                         </thead>
+
                         <tbody>
+
                             @foreach($result as $row)
                                 <tr>
                                     <td><a href="/view_accounts/{{$row['client_id']}}">{{$row['lastname']}}, {{$row['firstname']}}</a></td>
                                     <td>{{$row['remarks']}}</td>
                                     <td>{{$row['status']}}</td>
-                                    <td><a href="/view_service/{{$row['client_id']}}/{{$row['jo_id']}}" class="btn-sm"><i class="now-ui-icons files_paper"></i></a>
-                                    <a href="/view_checkout/{{$row['jo_id']}}" class="btn-sm"><i class="now-ui-icons files_paper"></i></a></td>
+                                    <td style="text-align: center;">
+                                        <a href="/view_service/{{$row['client_id']}}/{{$row['jo_id']}}" class="btn-xs fas fa-file-alt"></a>
+                                        <a href="/view_checkout/{{$row['jo_id']}}" class="btn-xs fas fa-shopping-cart"></a>
+                                    </td>
                                 </tr>
                             @endforeach
+
                             <nav aria-label="...">
-                        {{$result->links()}}
+                            {{$result->links()}}
+
                         </tbody>
+
                     </table>
                 </div>
+
             </div>
+
         </div>
+
     </div>
 </div>
 @endsection

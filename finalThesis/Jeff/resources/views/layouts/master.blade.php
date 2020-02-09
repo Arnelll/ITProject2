@@ -37,7 +37,7 @@
           <!-- <li class="active"> -->
           <li>
             <a href="/dashboard">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons business_chart-bar-32"></i>
               <p>Dashboard</p>
             </a>
           </li>
@@ -49,8 +49,14 @@
           </li>
           <li>
             <a href="/products">
-              <i class="now-ui-icons files_box"></i>
+              <i class="now-ui-icons shopping_box"></i>
               <p>Products</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="now-ui-icons shopping_delivery-fast"></i>
+              <p>Deliveries</p>
             </a>
           </li>
           <li>
@@ -61,36 +67,26 @@
           </li>
           <li>
             <a href="/mechanic">
-              <i class="now-ui-icons design-2_ruler-pencil"></i>
+              <i class="now-ui-icons business_badge"></i>
               <p>Mechanics</p>
             </a>
           </li>
           <li>
-            <a href="/service">
-              <i class="now-ui-icons education_paper"></i>
-              <p>Transactions</p>
+            <a href="#">
+              <i class="now-ui-icons shopping_basket"></i>
+              <p>Sales</p>
             </a>
           </li>
           <li>
-          <button type="button" class="btn" style="background-color:#005ca5;" data-toggle="collapse" data-target="#demo">TRANSACTIONS</button>
-            <div id="demo" style class="collapse">
-              <ul style="list-style-type: none;">
-                <li><a href="#" style="background-color:#005ca5;">SALES</a></li>
-                <li><a href="/service" style="background-color:#005ca5;">JOB ORDERS</a></li>
-                <li><a href="#" style="background-color:#005ca5;">PRODUCT CHECKOUT</a></li>
-              </ul>
-            </div>
+            <a href="/service">
+              <i class="now-ui-icons files_paper"></i>
+              <p>Job Orders</p>
+            </a>
           </li>
           <li>
             <a href="/product_co">
-              <i class="now-ui-icons shopping_cart-simple"></i>
+              <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Product Checkout</p>
-            </a>
-          </li>
-          <li>
-            <a href="/delivery">
-              <i class="now-ui-icons shopping_delivery-fast"></i>
-              <p>Delivery</p>
             </a>
           </li>
         </ul>

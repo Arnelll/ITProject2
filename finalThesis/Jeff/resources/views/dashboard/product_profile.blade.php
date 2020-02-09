@@ -14,7 +14,7 @@
           <div class="col-md-6">
             <div class="card  card-tasks">
               <div class="card-header ">
-                <h5 class="card-category">Transaction Log</h5>
+                <h5 class="card-category">Transaction Log //TODO Needs to be updated</h5>
                 <h4 class="card-title">Latest Transaction Log</h4>
               </div>
               <div class="card-body">

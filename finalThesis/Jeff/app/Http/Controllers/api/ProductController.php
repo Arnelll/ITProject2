@@ -35,9 +35,7 @@ class ProductController extends Controller
     }
 
     public function products(){
-        $result = Product::orderBy('products.product_id', 'asc')
-        ->join('product_details','product_details.product_id','products.product_id')
-        ->select('product_details.*','products.*')
+        $result = Product::orderBy('product_id','asc')
         ->paginate(10);
 
         return view('dashboard.product', compact('result'));

@@ -59,3 +59,5 @@ Route::get('/delivery', "api\DeliveryController@view_delivery");
 Route::get('/view_checkout/{id}',"api\CheckOutController@view_checkout");
 Route::get('/new_service',"api\ServiceController@new_service");
 Route::get('/opt_trans',"api\ServiceController@opt_trans");
+Route::get('/sales',"api\SalesController@index");
+Route::get('/prod_co',"api\ProductCheckoutController@index");

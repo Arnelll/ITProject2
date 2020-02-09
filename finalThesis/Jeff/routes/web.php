@@ -56,3 +56,4 @@ Route::post('/mechanic_insert', array('as' => 'mechanic_insert', 'uses' => 'api\
 Route::post('/joborder/fetch', 'api\CheckOutController@fetch')->name('joborder.fetch');
 Route::post('/checkout_insert', array('as' => 'checkout_insert', 'uses' => 'api\CheckoutController@insert'));
 Route::get('/delivery', "api\DeliveryController@view_delivery");
+Route::get('/view_checkout/{id}',"api\CheckOutController@view_checkout");

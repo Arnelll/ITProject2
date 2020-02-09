@@ -9,6 +9,7 @@ use App\Product;
 use App\Mechanic;
 use App\JobOrder;
 use App\Checkout;
+use App\CheckoutDetails;
 class CheckOutController extends Controller
 {
     /**
@@ -41,19 +42,33 @@ class CheckOutController extends Controller
     {
         //firstname, lastname, contact_no, age, email, created_at, updated_at
         $id = $request -> joborder;
+        $total = $request -> totals;
+        $checkout = new Checkout;
+        $checkout -> jo_id = $id;
+        $checkout -> total = $total;
+        $checkout -> date_created = date('Y-m-d H:i:s');
+        $checkout -> save();
+        if($checkout->save()){
+            $cId = $checkout-> product_checkout_id;
             foreach ($request -> productname as $key => $v)
             {
-                $data = array('jo_id'=>$id,
-                              'jo_pn'=>$request->jo_pn,
-                              'jo_qty'=>$request->jo_qty,
+                $data = array('productcheckout_id'=>$cId,
                               'product_id'=>$v,
-                              'quantity'=>$request->qty [$key],
-                              'discount'=>$request->dis [$key],
-                              'total'=>$request->amount [$key],
-                              'date_created'=>date('Y-m-d H:i:s'));
-                Checkout::insert($data);
+                              'quantity'=>$request->qty [$key]);
+                CheckoutDetails::insert($data);
             }
+        }
         return back();
+    }
+
+    public function view_checkout($id){
+
+        $result = Checkout::join('productcheckout_details','productcheckout_details.productcheckout_id','product_checkout.product_checkout_id')
+        ->join('products','productcheckout_details.product_id','products.product_id')
+        ->where('product_checkout.jo_id','=',$id)
+        ->select('productcheckout_details.quantity','products.product_name')
+        ->get();
+        return view('dashboard.view_checkout', compact('result'));
     }
 
     /**

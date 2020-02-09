@@ -111,8 +111,8 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
-          <div style="text-align: center;display: block; width: 250px; height: 250px; float: left; margin-left: 40%; position: absolute; top: 18px;">
-                    <img src="{{ asset('assets/img/CompanyLogo.png') }}" />
+          <div style="text-align: center;display: block; width: 250px; height: 250px; float: left; margin-left: 35%; position: absolute; top: 18px;">
+            <img src="{{ asset('assets/img/CompanyLogo.png') }}" />
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form>

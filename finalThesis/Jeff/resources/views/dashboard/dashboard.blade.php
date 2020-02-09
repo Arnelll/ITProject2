@@ -10,9 +10,9 @@
 <div class="card-deck">
 
   <div class="col-sm-4">
-    <a href="/opt_trans">
-      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#066DBC'" onMouseOut="this.style.background='#fff'">
-        <h5 class="card-title" style="text-align: center;">
+    <a href="/opt_trans" style="text-decoration: none;">
+      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#DCDCDC'" onMouseOut="this.style.background='#fff'">
+        <h5 class="card-title" style="text-align: center; color: #005CA5;">
           <div class="fas fa-plus-circle" style=""></div>
           <br>
           Add Sales
@@ -22,9 +22,9 @@
   </div>
 
   <div class="col-sm-4">
-    <a href="/accounts">
-      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#066DBC'" onMouseOut="this.style.background='#fff'">
-        <h5 class="card-title" style="text-align: center;">
+    <a href="/accounts" style="text-decoration: none;">
+      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#DCDCDC'" onMouseOut="this.style.background='#fff'">
+        <h5 class="card-title" style="text-align: center; color: #005CA5;">
           <div class="fas fa-users" style=""></div>
           <br>
           Client List
@@ -34,9 +34,9 @@
   </div>
   
   <div class="col-sm-4">
-    <a href="/products">
-      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#066DBC'" onMouseOut="this.style.background='#fff'">
-        <h5 class="card-title" style="text-align: center;">
+    <a href="/products" style="text-decoration: none;">
+      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#DCDCDC'" onMouseOut="this.style.background='#fff'">
+        <h5 class="card-title" style="text-align: center; color: #005CA5;">
           <div class="fas fa-boxes" style=""></div>
           <br>
           Inventory

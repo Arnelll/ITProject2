@@ -13,7 +13,7 @@
 
             <div class="card-header">
                 <div class="card-title">
-                    <h3>Mechanics <a href="/new_mechanic" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px;">+ Mechanic</a></h3>
+                    <h3>Mechanics <a href="/new_mechanic" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px; background-color: #005CA5;">+ Mechanic</a></h3>
                 </div>
             </div>
 

@@ -13,7 +13,7 @@
 
             <div class="card-header">
                 <div class="card-title">
-                    <h3>Vehicles <a href="/new_vehicle" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px;">+ Vehicle</a></h3>
+                    <h3>Vehicles <a href="/new_vehicle" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px; background-color: #005CA5;">+ Vehicle</a></h3>
                 </div>
             </div>
 

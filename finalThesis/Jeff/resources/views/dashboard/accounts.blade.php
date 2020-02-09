@@ -13,7 +13,7 @@
 
             <div class="card-header">
                 <div class="card-title">
-                    <h3>Clients <a href="/new_account" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px;">+ Client</a></h3>
+                    <h3>Clients <a href="/new_account" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px; background-color: #005CA5;">+ Client</a></h3>
                 </div>
             </div>
 

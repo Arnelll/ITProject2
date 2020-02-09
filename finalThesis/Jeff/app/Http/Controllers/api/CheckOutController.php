@@ -47,7 +47,6 @@ class CheckOutController extends Controller
         $checkout -> jo_id = $id;
         $checkout -> total = $total;
         $checkout -> date_created = date('Y-m-d H:i:s');
-        $checkout -> save();
         if($checkout->save()){
             $cId = $checkout-> product_checkout_id;
             foreach ($request -> productname as $key => $v)

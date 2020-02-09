@@ -11,6 +11,9 @@ use App\Vehicle;
 use App\Product;
 use App\Transactions2;
 use App\WalkIn;
+use App\Sales;
+use App\SaleDetails;
+use App\JobOrderDetails;
 
 class ServiceController extends Controller
 {
@@ -59,37 +62,64 @@ class ServiceController extends Controller
         return view('dashboard.transaction_option');
     }
 
-    public function insert(Request $request)
-    {
-        //firstname, lastname, contact_no, age, email, created_at, updated_at
+    public function insert(Request $request){
+        
+    }
+
+    public function insert_service(Request $request){
+        $jo = new JobOrder;
         $id = $request -> client_id;
         $mid = $request -> mech;
         $vid = $request -> vcle;
-        
-            foreach ($request -> productname as $key => $v)
-            {
-                if($mid == null){
-                    $data = array('client_id'=>$id,
-                              'product_id'=>$v,
-                              'quantity'=>$request->qty [$key],
-                              'discount'=>$request->dis [$key],
-                              'total'=>$request->amount,
-                              'date_created'=>date('Y-m-d H:i:s'));
-                    WalkIn::insert($data);         
-                }else{
-                    $data = array('client_id'=>$id,
-                              'mechanic_id'=>$mid,
-                              'vehicle_id'=>$vid,
-                              'remarks'=>$request->svc,
-                              //'product_id'=>$v,
-                              //'quantity'=>$request->qty [$key],
-                              //'jo_id'=>
-                              'discount'=>$request->dis [$key],
-                              'total'=>$request->amount [$key],
-                              'date_created'=>date('Y-m-d H:i:s'));
-                    JobOrder::insert($data);
+        $jo -> client_id = $id;
+        $jo -> mechanic_id = $mid;
+        $jo -> vehicle_id = $vid;
+        $jo -> remarks = $request -> svc;
+        $jo -> total = $request -> totals;
+        $jo -> date_created = date('Y-m-d H:i:s');
+        if($jo->save()){
+            $jId = $jo -> jo_id;
+                foreach ($request -> productname as $key => $v)
+                {
+                    if($request->dis[$key]==null){
+                        $discount = 0;
+                    }else{
+                        $discount = $request->dis[$key];
+                    }
+                        $data = array('jo_id'=>$jId,
+                                'product_id'=>$v,
+                                'quantity'=>$request->qty [$key],
+                                'discount'=>$discount);
+                        JobOrderDetails::insert($data);       
                 }
-                
+            }
+        return back();
+    }
+
+    public function insert_sales(Request $request){
+        $sales = new Sales;
+        $client = $request -> client_id;
+        if($client == null){
+            $client = 'Anonymous';
+        }
+        $sales -> client = $client;
+        $sales -> total = $request -> totals;
+        $sales -> date_created = date('Y-m-d H:i:s');
+        if($sales->save()){
+            $sId = $sales -> sales_id;
+                foreach ($request -> productname as $key => $v)
+                {
+                    if($request->dis[$key]==null){
+                        $discount = 0;
+                    }else{
+                        $discount = $request->dis[$key];
+                    }
+                        $data = array('sales_id'=>$sId,
+                                'product_id'=>$v,
+                                'quantity'=>$request->qty [$key],
+                                'discount'=>$discount);
+                        SaleDetails::insert($data);       
+                }
             }
         return back();
     }

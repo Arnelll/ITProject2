@@ -78,10 +78,11 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td><input id="product-qty" type="text" onkeyup="this.value = this.value.replace(/[^0-9]/, '')" name="qty[]" class="form-control qty bg-white" maxlength="3" required></td>
-                        <td><input id="product-price" type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>
-                        <td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
-                        <td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>
+                        <td><input type="text" onkeyup="this.value = this.value.replace(/[^0-9]/, '')" name="qty[]" class="form-control qty bg-white" maxlength="3" required></td>
+                        <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>
+                        <td><input type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
+                        <td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white" disabled></td>
+                        <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
                         <td><a href="#" style="margin-left: 40%;" class="remove"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
                     </tr>
                 </tbody>
@@ -91,7 +92,7 @@
                     <td style="border:none"></td>
                     <td style="border:none"></td>
                     <td><b>Total</b></td>
-                    <td style="text-align:right;"><b class="total"></b></td>
+                    <td><input type="text" name="total" class="form-control total" style="background:grey;color:white;text-align:right" disabled></td>
                     <td></td>
                 </tr>
             </tfoot>   
@@ -165,7 +166,8 @@ function total()
         var amount = $(this).val()-0;
         total += amount;
     })
-    $('.total').html(total.formatMoney(2,',','.') + " ₱");
+    $("input[name='total']").val(total.formatMoney(2,',','.') + " ₱")
+    $("input[name='totals']").val(total)
 };
 //-------------------------------Format Number-----------------------------------
 Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator) {

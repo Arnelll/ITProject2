@@ -72,6 +72,16 @@
             </a>
           </li>
           <li>
+          <button type="button" class="btn" style="background-color:#005ca5;" data-toggle="collapse" data-target="#demo">TRANSACTIONS</button>
+            <div id="demo" style class="collapse">
+              <ul style="list-style-type: none;">
+                <li><a href="#" style="background-color:#005ca5;">SALES</a></li>
+                <li><a href="/service" style="background-color:#005ca5;">JOB ORDERS</a></li>
+                <li><a href="#" style="background-color:#005ca5;">PRODUCT CHECKOUT</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
             <a href="/product_co">
               <i class="now-ui-icons shopping_cart-simple"></i>
               <p>Product Checkout</p>

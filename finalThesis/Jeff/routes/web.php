@@ -28,7 +28,7 @@ Route::get('/product_profile/{id}',"api\ProductController@product_profile");
 Route::get('/vehicle',"api\VehicleController@index");
 Route::get('/view_vehicle/{id}',"api\VehicleController@vehicle_profile");
 Route::get('/joborder',"api\JobOrderController@index");
-Route::get('/service',"api\TransactionController@index");
+Route::get('/sales',"api\TransactionController@index");
 Route::get('/mechanic',"api\MechanicController@index");
 Route::get('/walkin',"api\TransactionController@walk_ins");
 Route::post('/insert', array('as' => 'insert', 'uses' => 'api\JobOrderController@insert'));
@@ -36,7 +36,7 @@ Route::get('/findPrice', array('as' => 'findPrice', 'uses' => 'api\JobOrderContr
 Route::get('/new_walkin',"api\JobOrderController@new_walkin");
 Route::get('/view_service/{id}/{jo_id}',"api\TransactionController@view_service");
 Route::get('/profile/{id}',"api\ProfileController@profile");
-Route::get('/new_service',"api\ServiceController@new_service");
+Route::get('/new_sales',"api\ServiceController@new_sales");
 Route::post('/service_insert', array('as' => 'service_insert', 'uses' => 'api\ServiceController@insert'));
 Route::get('/view_accounts/{id}',"api\ClientsController@view_accounts");
 Route::post('/product_insert', array('as' => 'product_insert', 'uses' => 'api\ProductController@insert'));
@@ -57,3 +57,5 @@ Route::post('/joborder/fetch', 'api\CheckOutController@fetch')->name('joborder.f
 Route::post('/checkout_insert', array('as' => 'checkout_insert', 'uses' => 'api\CheckoutController@insert'));
 Route::get('/delivery', "api\DeliveryController@view_delivery");
 Route::get('/view_checkout/{id}',"api\CheckOutController@view_checkout");
+Route::get('/new_service',"api\ServiceController@new_service");
+Route::get('/opt_trans',"api\ServiceController@opt_trans");

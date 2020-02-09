@@ -26,14 +26,13 @@ class CheckOutController extends Controller
 
         return view('dashboard.product_co', compact('clients','products','mechanics','joborder'));
     }
-
+//select c.product_name from job_order a join job_order_details b on a.jo_id = b.jo_id join products c on b.product_id = c.product_id where a.jo_id = 117
     public function fetch(Request $request){
         $value = $request->value;
-        $data = JobOrder::orderBy('job_order.jo_id', 'desc')
-        ->join('clients', 'clients.client_id', 'job_order.client_id')
-        ->join('products', 'products.product_id', 'job_order.product_id')
-        ->where('job_order.jo_id',$value)
-        ->select('job_order.quantity','job_order.jo_id','clients.firstname','clients.lastname','products.product_name')
+        $data = JobOrder::join('job_order_details', 'job_order_details.jo_id', 'job_order.jo_id')
+        ->join('products','job_order_details.product_id','products.product_id')
+        ->where('job_order.jo_id','=',$value)
+        ->select('products.product_name','job_order_details.quantity')
         ->get();
         return $data;
     }

@@ -88,22 +88,20 @@
     </div>
     <br>
     <br>
-    <table class="table">
-        <h3>Job Order Preview for <input type="text" name="jo" class="form-control" style="background:grey;color:white;width:200px" readonly> </h3>
-        <thead>
-            <tr>
-                <th>Product Name</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="text" name="jo_pn" class="form-control jo_pn" readonly></td>
-                <td><input type="text" name="jo_qty" class="form-control jo_qty"></td>
-            </tr>
-        </tbody>
-    </table>
-    
+    <div class="col-lg-12 col-sm-12">
+        <table class="table table-bordered" id="preview">
+            <h3>Job Order Preview</h3>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
     {!!Form::hidden('_token',csrf_token())!!}
         {!!Form::close()!!}
 </body>
@@ -121,9 +119,22 @@ $('.joborder').change(function(){
             data:{value:value, _token:_token},
             success:function(result)
             {
-                $("input[name='jo']").val('no.'+result[0].jo_id);
+                /*$("input[name='jo']").val('no.'+result[0].jo_id);
                 $("input[name='jo_pn']").val(result[0].product_name);
                 $("input[name='jo_qty']").val(result[0].quantity);
+                var tr='<tr>'+
+                                '<td><input type="text" name="jo_pn" class="form-control jo_pn" value="result[i].product_name" readonly ></td>'+
+                                '<td><input type="text" name="jo_qty" class="form-control jo_qty" value="result[i].quantity"></td>'+
+                            '</tr>';
+                    $('#preview').find('tbody').append(tr);*/
+                
+                for (var i = 0; i < result.length; i++) {
+                    var tr='<tr>'+
+                                '<td><input type="text" name="jo_pn" class="form-control jo_pn" value="'+result[i].product_name+'" readonly ></td>'+
+                                '<td><input type="text" name="jo_qty" class="form-control jo_qty" value="'+result[i].quantity+'" readonly></td>'+
+                            '</tr>';
+                    $('#preview').find('tbody').append(tr);
+                }
             }
         })
     }

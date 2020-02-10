@@ -15,7 +15,7 @@
         <h5 class="card-title" style="text-align: center; color: #005CA5;">
           <div class="fas fa-plus-circle" style=""></div>
           <br>
-          Add Sales
+          Add Transaction
         </h5>
       </div>
     </a>

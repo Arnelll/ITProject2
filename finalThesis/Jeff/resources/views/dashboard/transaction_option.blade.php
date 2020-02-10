@@ -10,14 +10,16 @@
     <br>
     <br>
     <h3>Select Transaction</h3>
-    <ul>
+    <div class="row">
+    <ul style="list-style: none;">
         <li>
-        <button type="button" class="btn btn-info btn-md btn-round"><a href="/new_sales">ADD SALES</a></button>
+        <a href="/new_sales"><button type="button" class="btn btn-info btn-md btn-round" style="color:white;">ADD SALES</button></a>
         </li>
         <li>
-        <button type="button" class="btn btn-info btn-md btn-round"><a href="/new_service">ADD SERVICE/JOB ORDER</a></button>
+        <a href="/new_service"><button type="button" class="btn btn-info btn-md btn-round">ADD SERVICE/JOB ORDER</button></a>
         </li>
     </ul>
+    </div>
 </body>
 
 @endsection

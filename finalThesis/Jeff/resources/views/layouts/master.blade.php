@@ -54,7 +54,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/delivery">
               <i class="now-ui-icons shopping_delivery-fast"></i>
               <p>Deliveries</p>
             </a>

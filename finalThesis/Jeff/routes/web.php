@@ -63,3 +63,5 @@ Route::get('/sales',"api\SalesController@index");
 Route::get('/prod_co',"api\ProductCheckoutController@index");
 Route::post('/insert_sales', array('as' => 'insert_sales', 'uses' => 'api\ServiceController@insert_sales'));
 Route::get('/view_prodco',"api\ProductCheckoutController@view_details");
+Route::get('/delivery',"api\DeliveryController@index");
+Route::get('/new_delivery',"api\DeliveryController@new_delivery");

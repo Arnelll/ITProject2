@@ -15,9 +15,12 @@ class DeliveryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add(){
-        return view('dashboard.debugger');
+    public function index(){
+        return view('dashboard.view_delivery');
     }
 
+    public function new_delivery(){
+        return view('dashboard.delivery_new');
+    }
 
 }

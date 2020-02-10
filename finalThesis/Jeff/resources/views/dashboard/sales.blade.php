@@ -27,8 +27,7 @@
                             <th style="font-weight: 500;">Quantity</th>
                             <th style="font-weight: 500;">Client (Optional)</th>
                             <th style="font-weight: 500;">Date</th>
-                            <th style="font-weight: 500;">Total</th>
-                            <th style="text-align: center; font-weight: 500;">Actions</th>
+                            <th style="font-weight: 500;text-align: right;">Total</th>
                         </thead>
 
                         <tbody>
@@ -44,10 +43,6 @@
                                     @endif
                                     <td>{{$row['date_created']}}</td>
                                     <td style="text-align: right;">{{$row['total']}}</td>
-                                    <td style="text-align: center;">
-                                        <a href="#" class="btn-xs fas fa-file-alt"></a>
-                                        <a href="#" class="btn-xs fas fa-edit"></a>
-                                    </td>
                                 </tr>
                             @endforeach
                             {{$result->links()}}

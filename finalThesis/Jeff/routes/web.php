@@ -65,3 +65,5 @@ Route::post('/insert_sales', array('as' => 'insert_sales', 'uses' => 'api\Servic
 Route::get('/view_prodco',"api\ProductCheckoutController@view_details");
 Route::get('/delivery',"api\DeliveryController@index");
 Route::get('/new_delivery',"api\DeliveryController@new_delivery");
+Route::post('/update_checkout', array('as' => 'update_checkout', 'uses' => 'api\CheckOutController@update_checkout'));
+Route::get('/remove_product/{id}/{cId}',"api\CheckOutController@remove_product");

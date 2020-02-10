@@ -140,10 +140,11 @@ class ProductController extends Controller
     {
         $s=new Product;
         $data = array('product_name' =>$request->input('productname'),
-                      'quantity' =>$request->input('qty'),
-                      'price' =>$request->input('price'));
+                      'retail_price' =>$request->input('price'),
+                      'wholesale_price' =>$request->input('whole_price'),
+                      'distributor_price' =>$request->input('dis_price'));
         $s->where('product_id', $request->input('productid'))->update($data);
-        return back();
+        return $this->products();
     }
 
     /**

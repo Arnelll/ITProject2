@@ -65,9 +65,21 @@ class CheckOutController extends Controller
         $result = Checkout::join('productcheckout_details','productcheckout_details.productcheckout_id','product_checkout.product_checkout_id')
         ->join('products','productcheckout_details.product_id','products.product_id')
         ->where('product_checkout.jo_id','=',$id)
-        ->select('productcheckout_details.quantity','products.product_name')
+        ->select('productcheckout_details.quantity','products.product_name','productcheckout_details.product_id','productcheckout_details.productcheckout_details_id')
         ->get();
-        return view('dashboard.view_checkout', compact('result'));
+        $products = Product::all();
+        return view('dashboard.view_checkout', compact('result','products'));
+    }
+
+    public function update_checkout(Request $request){
+        return $request -> product_id;
+    }
+
+    public function remove_product($id,$cId){
+        $rem = CheckoutDetails::where('product_id',$id)
+        ->where('productcheckout_details_id',$cId)
+        ->delete();
+        return back();
     }
 
     /**

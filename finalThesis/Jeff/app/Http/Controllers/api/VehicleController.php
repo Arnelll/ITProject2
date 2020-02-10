@@ -17,7 +17,8 @@ class VehicleController extends Controller
     public function index()
     {
         //
-        $result = Vehicle::all();
+        $result = Vehicle::orderBy('vehicle_id','asc')
+        ->paginate(10);
 
         return view('dashboard.vehicle', compact('result'));
     }

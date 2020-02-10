@@ -41,7 +41,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-
+                            {{$result->links()}}
                         </tbody>
 
                     </table>

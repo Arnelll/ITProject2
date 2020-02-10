@@ -13,7 +13,7 @@
                     <h3> Checkout Details </h3>
                 </header>
             </div>
-            {!!Form::open(array('route'=>'checkout_insert','id'=>'formsave','method'=>'post'))!!}
+            {!!Form::open(array('route'=>'update_checkout','id'=>'formsave','method'=>'post'))!!}
             <div class="col-lg-12 col-sm-12">
                 <table class="table table-bordered" id="preview">
                     <h3>Checkout Details</h3>
@@ -21,22 +21,22 @@
                         <tr>
                             <th>Product Name</th>
                             <th>Quantity</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($result as $row)
                             <tr>
                                 <td>
-                                    <select id="cars">
-                                        <option value="selected product" selected>{{$row['product_name']}}</option>
-                                        <option value="saab">test 2</option>
-                                    </select></td>
+                                    <input value="{{$row['product_name']}}" disabled></td>
                                 <td>{{$row['quantity']}}</td>
+                                <td><a href="/remove_product/{{$row['product_id']}}/{{$row['productcheckout_details_id']}}" class="btn-xs fas fa-user-minus"></a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+            {!!Form::submit('Update',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}
         </section>
         {!!Form::hidden('_token',csrf_token())!!}
         {!!Form::close()!!}

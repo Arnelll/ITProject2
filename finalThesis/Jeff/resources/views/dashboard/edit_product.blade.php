@@ -33,12 +33,12 @@
             </div>
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
-                Wholesale Price<input type="text" id="price" name="price" class="form-control" value="{{$result->wholesale_price}}">
+                Wholesale Price<input type="text" id="price" name="whole_price" class="form-control" value="{{$result->wholesale_price}}">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
-                Distributor Price<input type="text" id="price" name="price" class="form-control" value="{{$result->distributor_price}}">
+                Distributor Price<input type="text" id="price" name="dis_price" class="form-control" value="{{$result->distributor_price}}">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-2" style="margin-left:85%;">

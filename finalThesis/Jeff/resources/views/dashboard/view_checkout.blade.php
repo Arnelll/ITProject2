@@ -26,7 +26,11 @@
                     <tbody>
                         @foreach($result as $row)
                             <tr>
-                                <td>{{$row['product_name']}}</td>
+                                <td>
+                                    <select id="cars">
+                                        <option value="selected product" selected>{{$row['product_name']}}</option>
+                                        <option value="saab">test 2</option>
+                                    </select></td>
                                 <td>{{$row['quantity']}}</td>
                             </tr>
                         @endforeach

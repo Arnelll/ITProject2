@@ -16,10 +16,13 @@ class SalesController extends Controller
     public function index() {
 
         $result = Sales::orderBy('sales.sales_id','asc')
-        ->select('sales.*')
+        ->join('sales_details','sales_details.sales_id','sales.sales_id')
+        ->join('products','products.product_id','sales_details.product_id')
+        ->leftjoin('clients','sales.client','clients.client_id')
+        ->select('products.product_name','sales_details.quantity','clients.firstname','clients.lastname','sales.date_created','sales.total')
         ->paginate(10);
         
-        return view('dashboard.sales');
+        return view('dashboard.sales', compact('result'));
         
     }
 }

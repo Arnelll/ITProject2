@@ -16,7 +16,7 @@
             </header>
             </div>
         <div class="panel panel-footer">
-        <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left: 90%;">+ Client</a>
+        <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left: 90%; background-color: #005CA5;">+ Client</a>
             <h3><strong>Job Order</strong></h3>
             {!!Form::open(array('route'=>'service_insert','id'=>'formsave','method'=>'post'))!!}
         <div class="row">
@@ -66,7 +66,7 @@
                     <th>Price</th>
                     <th>Discount(%)</th>
                     <th>Amount</th>
-                    <th style="text-align:center"><a href="#" class="btn btn-primary addRow ">+<i class="glyphicon glyphicon-plus"></i></a></th>
+                    <th style="text-align:center"><a href="#" class="btn btn-primary addRow" style="background-color: #005CA5;">+<i class="glyphicon glyphicon-plus"></i></a></th>
                 </thead>
                 <tbody>
                     <tr>
@@ -97,9 +97,9 @@
                 </tr>
             </tfoot>   
         </table>
-        <div class="col-lg-13 col-sm-13">
+        <div class="col-lg-2 col-sm-2" style="margin-left:80%">
             <div class="form-group">
-                {!!Form::submit('Save', array('class'=>'btn btn-primary', 'style'=>'float: right;'))!!}
+                {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg', 'style'=>'background-color: #005CA5'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page" style="background-color: #005CA5;">Return</a>
             </div>
         </div>
     </div>

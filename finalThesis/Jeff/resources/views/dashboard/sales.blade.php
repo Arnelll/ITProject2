@@ -33,20 +33,24 @@
 
                         <tbody>
 
-
+                            @foreach($result as $row)
                                 <tr>
-                                    <td>testing</td>
-                                    <td>5</td>
-                                    <td>   </td>
-                                    <td>02-10-2020</td>
-                                    <td style="text-align: right;">100.00</td>
+                                    <td>{{$row['product_name']}}</td>
+                                    <td>{{$row['quantity']}}</td>
+                                    @if($row['lastname'] == null)
+                                    <td>Anonymous</td>
+                                    @else
+                                    <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
+                                    @endif
+                                    <td>{{$row['date_created']}}</td>
+                                    <td style="text-align: right;">{{$row['total']}}</td>
                                     <td style="text-align: center;">
                                         <a href="#" class="btn-xs fas fa-file-alt"></a>
                                         <a href="#" class="btn-xs fas fa-edit"></a>
                                     </td>
                                 </tr>
-
-                            
+                            @endforeach
+                            {{$result->links()}}
                         </tbody>
 
                     </table>

@@ -55,7 +55,7 @@
 </div>
         <div class="col-lg-2 col-sm-2" style="margin-left:80%">
                 <div class="form-group">
-                {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
+                {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg', 'style'=>'background-color: #005CA5'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page" style="background-color: #005CA5;">Return</a>
                 </div>
         </div>
         {!!Form::hidden('_token',csrf_token())!!}

@@ -40,7 +40,7 @@
             </div>
             <div class="col-lg-2 col-sm-2">
                 <div class="form-group">
-                {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
+                {!!Form::submit('Save',array('class'=>'btn btn-primary', 'style'=>'background-color: #005CA5'))!!}
                 </div>
             </div>
             <div class="col-lg-12 col-sm-12">

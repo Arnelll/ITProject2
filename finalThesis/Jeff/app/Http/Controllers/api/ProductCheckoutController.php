@@ -16,4 +16,8 @@ class ProductCheckoutController extends Controller
         return view('dashboard.product_checkout');
         
     }
+
+    public function view_details() {
+        return view('dashboard.view_prodco');
+    }
 }

@@ -15,7 +15,7 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'account_insert','id'=>'formsave','method'=>'post'))!!}
-        <h3 class="d-inline p-2"><strong>Enter Client Details</strong><a href="/new_vehicle" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:65%;">+ Vehicle</a></h3>
+        <h3 class="d-inline p-2"><strong>Enter Client Details</strong><a href="/new_vehicle" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:65%; background-color: #005CA5;">+ Vehicle</a></h3>
         <br>
         <br>
         <div class="row">
@@ -61,7 +61,7 @@
             </div> -->
             <div class="col-lg-2 col-sm-2" style="margin-left:87%;">
                 <div class="form-group">
-                {!!Form::submit('Save',array('class'=>' d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
+                {!!Form::submit('Save',array('class'=>' d-inline p-2 btn btn-primary btn-lg', 'style'=>'background-color: #005CA5'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page" style="background-color: #005CA5;">Return</a>
                 </div>
             </div>
 </div>

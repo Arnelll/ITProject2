@@ -43,7 +43,7 @@
                     <th>Price</th>
                     <th>Discount(%)</th>
                     <th>Amount</th>
-                    <th style="text-align:center"><a href="#" class="btn btn-primary addRow ">+<i class="glyphicon glyphicon-plus"></i></a></th>
+                    <th style="text-align:center"><a href="#" class="btn btn-primary addRow" style="background-color: #005CA5;">+<i class="glyphicon glyphicon-plus"></i></a></th>
                 </thead>
                 <tbody>
                     <tr>
@@ -60,7 +60,7 @@
                         <td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
                         <td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>
                         <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
-                        <td><a href="#" style="margin-left: 40%;" class="remove"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
+                        <td><a href="#" style="margin-left: 40%;" class="remove" style="background-color: #005CA5;"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
                     </tr>
                 </tbody>
             <tfoot>
@@ -74,10 +74,10 @@
                 </tr>
             </tfoot>   
         </table>
-        <div class="col-lg-13 col-sm-13">
-            <div class="form-group">
-                {!!Form::submit('Save', array('class'=>'btn btn-primary', 'style'=>'float: right;'))!!}
-            </div>
+        <div class="col-lg-2 col-sm-2" style="margin-left:80%">
+                <div class="form-group">
+                {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg', 'style'=>'background-color: #005CA5'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-secondary btn-lg" title="Return to the previous page">Return</a>
+                </div>
         </div>
     </div>
 </div>

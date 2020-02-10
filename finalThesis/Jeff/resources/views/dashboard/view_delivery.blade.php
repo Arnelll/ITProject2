@@ -25,17 +25,18 @@
                         <thead class="text-info">
                             <th style="font-weight: 500;">Supplier</th>
                             <th style="font-weight: 500;">Delivery Date</th>
-                            <th style="font-weight: 500;">Product(s)</th>
-                            <th style="font-weight: 500;">Quantity</th>
+                            <th style="font-weight: 500;">Action</th>
                         </thead>
 
                         <tbody>
+                                @foreach($result as $row)
                                 <tr>
-                                    <td>Arnel & Friends</td>
-                                    <td>02-10-2020</td>
-                                    <td>Wheels</td>
-                                    <td>10</td>
+                                    <td>{{$row['name']}}</td>
+                                    <td>{{$row['delivery_date']}}</td>
+                                    <td><a href="/view_delivery" class="btn-xs fas fa-file-alt"></td>
                                 </tr>
+                                @endforeach
+                                {{$result->links()}}
                         </tbody>
 
                     </table>

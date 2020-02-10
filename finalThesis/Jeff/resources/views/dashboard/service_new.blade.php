@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                    <select name="client_id" class="form-control bg-white" required>
+                    <select id="client" name="client_id" class="form-control bg-white" required>
                         <option value="" selected="true" disabled="true">Select Client</option>
                         @foreach($clients as $key => $c)
                         <option value="{!!$key!!}">{!!$c!!}</option>
@@ -40,14 +40,12 @@
                             </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-6 col-sm-6" id="vehicle_list">
                 <div class="form-group">
-                <select name="vcle" class="form-control bg-white" required>
-                                <option value="" selected="true" disabled="true">Select Vehicle</option>
-                                @foreach($vehicle as $key => $v)
-                                <option value="{!!$key!!}">{!!$v!!}</option>
-                                @endforeach
-                            </select>
+                    <select name="vcle" class="form-control bg-white" required>
+                        <option value="" selected="true" disabled="true">Select Vehicle</option>
+                            
+                    </select>
                 </div>
             </div>
             <br>
@@ -111,6 +109,27 @@
     </div>
 </body>
 <script type="text/javascript">
+$('#client').change(function(){
+    var id = $(this).val();
+    var dataId = {'id':id};
+    $.ajax({
+        type     : 'GET',
+        url      : '{!!URL::route('findVehicle')!!}',
+        dataType : 'json',
+        data     : dataId,
+        success:function(data){
+            $('#vehicle_list').find('option').remove().end();
+            var def = '<option value="" selected="true" disabled="true">Select Vehicle</option>';
+            $('#vehicle_list').find('select').append(def);
+            for (var i = 0; i < data.length; i++) {
+                var opt='<option value="'+data[i].vehicle_id+'">'+data[i].plate_no+'</option></td>';
+                $('#vehicle_list').find('select').append(opt);
+            }
+        }
+    });
+    
+})
+
 $('tbody').delegate('.productname', 'change', function(){
     var tr = $(this).parent().parent();
     var id = tr.find('.productname').val();

@@ -8,6 +8,7 @@ use App\Product;
 use App\ProductDetails;
 use App\Transactions;
 use App\Supplier;
+use App\Delivery;
 
 class ProductController extends Controller
 {
@@ -145,6 +146,24 @@ class ProductController extends Controller
                       'distributor_price' =>$request->input('dis_price'));
         $s->where('product_id', $request->input('productid'))->update($data);
         return $this->products();
+    }
+
+    public function product_add(Request $request){
+        $del = new Delivery;
+        $pId = $request -> product;
+        $qty = $request -> quantity;
+        $del -> product_id = $pId;
+        $del -> quantity = $qty;
+        $del -> supplier_id = $request -> supplier;
+        $del -> delivery_date = date('Y-m-d H:i:s');
+        if($del -> save()){
+            $pId = $request -> product;
+            $qty = $request -> quantity;
+            $add = Product::where('product_id',$pId)->first();
+            $add -> quantity += $qty;
+            $add -> save();
+        }
+        return back();
     }
 
     /**

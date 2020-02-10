@@ -13,6 +13,7 @@
           <h3> Job Order Details </h3>
         </header>
     </div>
+    {!!Form::open(array('route'=>'updatejo_status','id'=>'formsave','method'=>'post'))!!}
     <div class="row">
       <table class="table">
         <h5>Job Order Details</h5>
@@ -31,7 +32,8 @@
           <td><input type="text" name="Type" class="form-control jo_qty" value="{{$vehicle->model}} ({{$vehicle->type}})" readonly></td>
           <td><input type="text" name="Plate Number" class="form-control jo_qty" value="{{$vehicle->plate_no}}" readonly></td>
           <td><input type="text" name="Mechanic" class="form-control jo_qty" value="{{$mechanic->last_name}}, {{$mechanic->first_name}}" readonly></td>
-          <td><input type="text" name="Description" class="form-control jo_qty" value="{{$jo->remarks}}" readonly></td>
+          <td><input type="text" name="Description" class="form-control jo_qty" value="{{$jo->remarks}}" readonly>
+          <input type="hidden" name="job_id" class="form-control jo_qty" value="{{$jo->jo_id}}" readonly></td>
         </tr>
       </tbody>
       </table>
@@ -45,12 +47,26 @@
     <div class="row">
     <div class="col-lg-4 col-sm-6">
     <br>
-        <select name="client_id" class="form-control bg-white" required>
+        @if($jo->status!='Rendered')
+        <select name="status" class="form-control bg-white" required>
           <option value="" selected disabled>{{$jo->status}}</option>
-          <option value="">Ongoing</option>
-          <option value="">Rendered</option>
-          <option value="">Cancelled</option>          
+          @if ($jo->status=='Pending')
+          <option value="Ongoing">Ongoing</option>
+          <option value="Cancelled">Cancelled</option>
+          @elseif ($jo->status=='Ongoing')
+          <option value="Rendered">Rendered</option>
+          <option value="Cancelled">Cancelled</option>
+          @else
+          <option value="Ongoing">Ongoing</option>
+          <option value="Rendered">Rendered</option>
+          <option value="Cancelled">Cancelled</option>
+          @endif          
         </select>
+        @else
+        <select name="status" class="form-control bg-white" required>
+          <option value="" selected disabled>{{$jo->status}}</option>
+        </select>
+        @endif
     </div>
     </div>
     <br>
@@ -81,7 +97,11 @@
   </div>
   <div class="col-lg-2 col-sm-2" style="margin-left:75%">
                 <div class="form-group">
+                @if($jo->status!='Rendered' && $jo->status!='Cancelled')
                 {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
+                @else
+                <a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
+                @endif
                 </div>
         </div>
 </body>

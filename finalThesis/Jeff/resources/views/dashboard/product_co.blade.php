@@ -28,6 +28,27 @@
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
+                    <tr>
+                        <td><input type="text" value="Service" name="service" class="form-control" readonly></td>
+                    </tr>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="form-group">
+                    <tr>
+                        <td><input type="text" value="Client Name" name="client_name" class="form-control" readonly></td>
+                    </tr>
+                </div>
+            </div>
+           <div class="col-lg-6 col-sm-6">
+                <div class="form-group">
+                    <tr>
+                        <td><input type="text" value="Vehicle Plate Number" name="vehicle_name" class="form-control" readonly></td>
+                    </tr>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="form-group">
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6">
@@ -92,7 +113,7 @@
     <br>
     <div class="col-lg-12 col-sm-12">
         <table class="table table-bordered" id="preview">
-            <h3>Job Order Preview</h3>
+            <h3>Product Order Preview</h3>
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -121,15 +142,7 @@ $('.joborder').change(function(){
             data:{value:value, _token:_token},
             success:function(result)
             {
-                /*$("input[name='jo']").val('no.'+result[0].jo_id);
-                $("input[name='jo_pn']").val(result[0].product_name);
-                $("input[name='jo_qty']").val(result[0].quantity);
-                var tr='<tr>'+
-                                '<td><input type="text" name="jo_pn" class="form-control jo_pn" value="result[i].product_name" readonly ></td>'+
-                                '<td><input type="text" name="jo_qty" class="form-control jo_qty" value="result[i].quantity"></td>'+
-                            '</tr>';
-                    $('#preview').find('tbody').append(tr);*/
-                
+                $('#preview').find('td').remove().end();
                 for (var i = 0; i < result.length; i++) {
                     var tr='<tr>'+
                                 '<td><input type="text" name="jo_pn" class="form-control jo_pn" value="'+result[i].product_name+'" readonly ></td>'+
@@ -137,10 +150,18 @@ $('.joborder').change(function(){
                             '</tr>';
                     $('#preview').find('tbody').append(tr);
                 }
+                //$("input[name='client_name']").val(result[0].firstname result[0].firstname);
+                var name = result[0].lastname+', '+result[0].firstname;
+                var vehicle = result[0].plate_no;
+                var service = result[0].remarks;
+                $("input[name='client_name']").val(name);
+                $("input[name='vehicle_name']").val(vehicle);
+                $("input[name='service']").val(service);
             }
         })
     }
 });
+
 
 $('tbody').delegate('.productname', 'change', function(){
     var tr = $(this).parent().parent();

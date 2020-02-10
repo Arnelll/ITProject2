@@ -9,6 +9,7 @@ use App\Transactions2;
 use App\JobOrder;
 use App\Product;
 use App\Clients;
+use App\Vehicle;
 
 class TransactionController extends Controller
 {
@@ -22,7 +23,6 @@ class TransactionController extends Controller
         //
         $result = JobOrder::orderBy('job_order.jo_id', 'desc')
         ->join('clients', 'clients.client_id', 'job_order.client_id')
-       
         /*->join('mechanic', 'mechanic.mechanic_id', 'job_order.mechanic_id')
         ->join('vehicles', 'vehicles.vehicle_id', 'job_order.vehicle_id')
         ->join('job_order_details', 'job_order_details.jo_id', 'job_order.jo_id')
@@ -64,7 +64,7 @@ class TransactionController extends Controller
         ->where('job_order.jo_id', '=', $z)
         ->first();
 
-        $jo = JobOrder::select('remarks','status')
+        $jo = JobOrder::select('remarks','status','jo_id')
         ->where('jo_id','=',$z)
         ->first();
         /*$products= JobOrder::orderBy('job_order.jo_id', 'asc')
@@ -100,6 +100,20 @@ class TransactionController extends Controller
     {
         $data = Product::select('price')->where('product_id', $request->id)->first();
         return response()->json($data);
+    }
+
+    public function findVehicle(Request $request){
+        $data = Vehicle::select('plate_no','model','vehicle_id')->where('client_id', $request->id)->get();
+        return response()->json($data);
+    }
+    public function updatejo_status(Request $request){
+        $jId = $request -> job_id;
+        $status = $request -> status;
+        $update = JobOrder::where('jo_id',$jId)
+        ->first();
+        $update -> status = $status;
+        $update -> save();
+        return $this->index();
     }
     /**
      * Show the form for creating a new resource.

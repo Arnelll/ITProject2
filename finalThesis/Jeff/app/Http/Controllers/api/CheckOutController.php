@@ -23,7 +23,8 @@ class CheckOutController extends Controller
         $clients = Clients::all()->pluck('full_name', 'client_id');
         $products = Product::pluck('product_name','product_id');
         $mechanics = Mechanic::all()->pluck('fullname','mechanic_id');
-        $joborder = JobOrder::all();
+        $joborder = JobOrder::where('status','Pending')
+        ->get();
 
         return view('dashboard.product_co', compact('clients','products','mechanics','joborder'));
     }
@@ -32,8 +33,10 @@ class CheckOutController extends Controller
         $value = $request->value;
         $data = JobOrder::join('job_order_details', 'job_order_details.jo_id', 'job_order.jo_id')
         ->join('products','job_order_details.product_id','products.product_id')
+        ->join('vehicles','vehicles.vehicle_id','job_order.vehicle_id')
+        ->join('clients','clients.client_id','job_order.client_id')
         ->where('job_order.jo_id','=',$value)
-        ->select('products.product_name','job_order_details.quantity')
+        ->select('products.product_name','job_order_details.quantity','clients.firstname','clients.lastname','vehicles.plate_no','job_order.remarks')
         ->get();
         return $data;
     }
@@ -56,6 +59,9 @@ class CheckOutController extends Controller
                               'quantity'=>$request->qty [$key]);
                 CheckoutDetails::insert($data);
             }
+            $update_status = JobOrder::where('jo_id',$id)->first();
+            $update_status -> status = 'Ongoing';
+            $update_status -> save();
         }
         return back();
     }

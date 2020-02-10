@@ -7,6 +7,7 @@ use DB;
 use App\Clients;
 use App\Product;
 use App\Transactions2;
+use App\JobOrder;
 
 
 class JobOrderController extends Controller
@@ -58,6 +59,16 @@ class JobOrderController extends Controller
     {
         $data = Product::select('retail_price')->where('product_id', $request->id)->first();
         return $data;
+    }
+
+    public function updatejo_status(Request $request){
+        $jId = $request -> job_id;
+        $status = $request -> status;
+        $update = JobOrder::where('jo_id',$jId)
+        ->first();
+        $update -> status = $status;
+        $update -> save();
+        return back();
     }
 
     

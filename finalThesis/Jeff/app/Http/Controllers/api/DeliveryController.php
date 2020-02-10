@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Delivery;
-use App\Products;
+use App\Product;
+use App\Supplier;
 
 class DeliveryController extends Controller
 {
@@ -16,11 +17,17 @@ class DeliveryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('dashboard.view_delivery');
+        $result = Delivery::orderBy('delivery_id','desc')
+        ->join('supplier','supplier.supplier_id','delivery.supplier_id')
+        ->select('delivery.delivery_date','supplier.name')
+        ->paginate(10);
+        return view('dashboard.view_delivery', compact('result'));
     }
 
     public function new_delivery(){
-        return view('dashboard.delivery_new');
+        $result = Product::all();
+        $supplier = Supplier::all();
+        return view('dashboard.delivery_new', compact('result','supplier'));
     }
 
 }

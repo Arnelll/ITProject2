@@ -87,9 +87,9 @@
                         <td><input type="text" name="qty[]" class="form-control qty bg-white"></td>
                         <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right" disabled></td>
                         <td><input type="text" name="dis[]" class="form-control dis bg-white"></td>
-                        <td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white; text-align:right;"></td>
-                        <td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>
+                        <td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>
                         <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
+                        <td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>
                     </tr>
                 
             <tfoot>
@@ -227,17 +227,17 @@ function addRow()
 {
     var tr='<tr>'+
                 '<td>'+
-                '<select name="productname[]" class="form-control productname bg-white">'+
+                '<select name="productname[]" class="form-control productname">'+
                 '<option value="0" selected="true" disabled="true">Select Product</option>'+
                 '@foreach($products as $key => $p)'+
                 '<option value="{!!$key!!}">{!!$p!!}</option>'+
                 '@endforeach'+
                 '</select>'+
                 '</td>'+
-                '<td><input type="text" name="qty[]" class="form-control qty bg-white"></td>'+
-                '<td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white; text-align:right;"></td>'+
-                '<td><input type="text" name="dis[]" class="form-control dis bg-white"></td>'+
-                '<td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white;text-align:right;"></td>'+
+                '<td><input type="text" name="qty[]" class="form-control qty"></td>'+
+                '<td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>'+
+                '<td><input type="text" name="dis[]" class="form-control dis"></td>'+
+                '<td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>'+
                 '<td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>'+
                 '</tr>';
                 $('#joo').find('tbody').append(tr);

@@ -7,7 +7,7 @@
 @section('content')
 <br>
 <br>
-<a href="javascript:history.go(-1)" style="margin-left:83%; background-color: #005CA5;" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
+<a href="javascript:history.go(-1)" style="margin-left:83%;" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
     <div class="row justify-content-center">
     <div class="col-md-3">
       <div class="card-body">
@@ -16,7 +16,7 @@
           <div class="author">
             <a href="#">
               <img class="avatar border-gray" src="../assets/img/default-avatar.png" alt="...">
-              <h5 class="title text-info">{{$result->lastname}}, {{$result->firstname}}</h5>
+              <h5 class="title">{{$result->lastname}}, {{$result->firstname}}</h5>
             </a>
           </div>
         </div>
@@ -33,22 +33,22 @@
             <div class="card-header">
               <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link text-info" href="#about" role="tab" data-toggle="tab">
+                    <a class="nav-link" href="#about" role="tab" data-toggle="tab">
                       About
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-info" href="#vehicle" role="tab" data-toggle="tab">
+                    <a class="nav-link" href="#vehicle" role="tab" data-toggle="tab">
                       Vehicle
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-info" href="#walk-in" role="tab" data-toggle="tab">
+                    <a class="nav-link" href="#walk-in" role="tab" data-toggle="tab">
                       Walk-in
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-info" href="#services" role="tab" data-toggle="tab">
+                    <a class="nav-link" href="#services" role="tab" data-toggle="tab">
                       Services
                     </a>
                 </li>

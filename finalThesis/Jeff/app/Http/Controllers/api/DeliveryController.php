@@ -18,8 +18,6 @@ class DeliveryController extends Controller
      */
     public function index(){
         $result = Delivery::orderBy('delivery_id','desc')
-        ->join('supplier','supplier.supplier_id','delivery.supplier_id')
-        ->select('delivery.delivery_date','supplier.name')
         ->paginate(10);
         return view('dashboard.view_delivery', compact('result'));
     }

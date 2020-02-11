@@ -9,6 +9,7 @@ use App\ProductDetails;
 use App\Transactions;
 use App\Supplier;
 use App\Delivery;
+use App\DeliveryDetail;
 
 class ProductController extends Controller
 {
@@ -149,7 +150,7 @@ class ProductController extends Controller
     }
 
     public function product_add(Request $request){
-        $del = new Delivery;
+        /*$del = new Delivery;
         $pId = $request -> product;
         $qty = $request -> quantity;
         $del -> product_id = $pId;
@@ -162,6 +163,25 @@ class ProductController extends Controller
             $add = Product::where('product_id',$pId)->first();
             $add -> quantity += $qty;
             $add -> save();
+        }*/
+        $del = new Delivery;
+        $pId = $request -> product;
+        $qty = $request -> quantity;
+        
+        $del -> delivery_date = date('Y-m-d H:i:s');
+        if($del -> save()){
+            
+            $dId = $del -> delivery_id;
+            foreach ($request -> product as $key => $v){
+                $data = array('delivery_id'=>$dId,
+                        'product_id'=>$v,
+                        'quantity'=>$request->quantity [$key],
+                        'supplier_id'=>$request->supplier[$key]);
+                DeliveryDetail::insert($data);
+                $add = Product::where('product_id',$v)->first();
+                $add -> quantity += $request->quantity [$key];
+                $add -> save();
+            }
         }
         return back();
     }

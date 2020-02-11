@@ -23,7 +23,6 @@
                     <table class="table">
 
                         <thead class="text-info">
-                            <th style="font-weight: 500;">Job Order No.</th>
                             <th style="font-weight: 500;">Client Name</th>
                             <th style="font-weight: 500;">Service</th>
                             <th style="font-weight: 500;">Date</th>
@@ -34,7 +33,6 @@
 
                             @foreach($result as $row)
                                 <tr>
-                                    <td>{{$row['jo_id']}}</td>
                                     <td><a href="/view_accounts/{{$row['client_id']}}">{{$row['lastname']}}, {{$row['firstname']}}</a></td>
                                     <td>{{$row['remarks']}}</td>
                                     <td>{{$row['status']}}</td>

@@ -80,8 +80,8 @@
                         <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>
                         <td><input type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
                         <td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white" disabled></td>
-                        <td><a href="#" style="margin-left: 40%;" class="remove"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
                         <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
+                        <td><a href="#" style="margin-left: 40%;" class="remove"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
                     </tr>
                 </tbody>
             <tfoot>

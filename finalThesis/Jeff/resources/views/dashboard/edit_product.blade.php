@@ -2,9 +2,6 @@
 
 @section('title')
     + Edit Product
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
 @endsection
 
 
@@ -28,22 +25,22 @@
             </div>
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
-                Retail Price<input type="text" id="price" name="price" class="form-control" value="{{$result->retail_price}}">
+                Retail Price<input type="text" id="price" name="price" class="form-control" style="text-align:right;" value="{{$result->retail_price}}">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
-                Wholesale Price<input type="text" id="price" name="whole_price" class="form-control" value="{{$result->wholesale_price}}">
+                Wholesale Price<input type="text" id="price" name="whole_price" class="form-control" style="text-align:right;" value="{{$result->wholesale_price}}">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-6">
                 <div class="form-group">
-                Distributor Price<input type="text" id="price" name="dis_price" class="form-control" value="{{$result->distributor_price}}">
+                Distributor Price<input type="text" id="price" name="dis_price" class="form-control" style="text-align:right;" value="{{$result->distributor_price}}">
                 </div>
             </div>
             <div class="col-lg-2 col-sm-2" style="margin-left:85%;">
                 <div class="form-group">
-                {!!Form::submit('Update',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
+                {!!Form::submit('Update',array('class'=>'d-inline p-2 btn btn-primary btn-lg', 'style'=>'background-color: #005CA5'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page" style="background-color: #005CA5;">Return</a>
                 </div>
             </div>
 </div>

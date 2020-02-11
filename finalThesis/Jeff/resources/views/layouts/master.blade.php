@@ -38,7 +38,7 @@
           <li>
             <a href="/dashboard">
               <i class="now-ui-icons business_chart-bar-32"></i>
-              <p>Dashboard</p>
+              <p>Home</p>
             </a>
           </li>
           <li>
@@ -71,14 +71,38 @@
               <p>Mechanics</p>
             </a>
           </li>
-          <button type="button" class="btn btn-md" style="background-color:#005ca5;width:65%;" data-toggle="collapse" data-target="#demo"><i class="now-ui-icons files_paper"></i><p>TRANSACTIONS</p></button>
-          <div id="demo" class="collapse">
-            <ul style="list-style-type: none;">
-              <li><a href="/sales"><i class="now-ui-icons files_paper"></i><p>SALES</p></a></li>
-                <li><a href="/service"><i class="now-ui-icons files_paper"></i><p>JOB ORDERS</p></a></li>
-                <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
+
+          <li>
+
+            <a href="#" data-toggle="collapse" data-target="#demo">
+              <i class="now-ui-icons shopping_basket"></i>
+              <p>Transactions</p>
+            </a>
+
+            <ul id="demo" class="collapse" style="list-style-type: none;">
+
+              <li style="margin-top: 15px;">
+                <a href="/sales">
+                  <i class="now-ui-icons shopping_bag-16"></i>
+                  <p>Sales</p>
+                </a>
+              </li>
+              <li>
+                <a href="/service">
+                  <i class="now-ui-icons files_single-copy-04"></i>
+                  <p>Job Orders</p>
+                </a>
+              </li>
+              <li>
+                <a href="/prod_co">
+                  <i class="now-ui-icons shopping_cart-simple"></i>
+                  <p>Product Checkout</p>
+                </a>
+              </li>
             </ul>
-          </div>
+
+          </li>
+
           <li>
             <a href="/product_co">
               <i class="now-ui-icons design_bullet-list-67"></i>

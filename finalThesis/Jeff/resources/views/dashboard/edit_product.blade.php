@@ -2,9 +2,6 @@
 
 @section('title')
     + Edit Product
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
 @endsection
 
 

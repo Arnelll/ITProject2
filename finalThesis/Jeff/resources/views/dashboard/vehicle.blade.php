@@ -38,6 +38,7 @@
                                     <td>{{$row['color']}}</td>
                                     <td style="text-align: center;">
                                         <a href="/view_vehicle/{{$row['vehicle_id']}}" class="btn-xs fas fa-file-alt"></a>
+                                        <a href="/edit_vehicle/{{$row['vehicle_id']}}" class="btn-xs fas fa-edit"></a>
                                     </td>
                                 </tr>
                             @endforeach

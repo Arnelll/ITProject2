@@ -36,7 +36,7 @@
                     </tbody>
                 </table>
             </div>
-            {!!Form::submit('Update',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}
+            {!!Form::submit('Update',array('class'=>'d-inline p-2 btn btn-primary btn-lg'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-secondary btn-lg" title="Return to the previous page">Return</a>
         </section>
         {!!Form::hidden('_token',csrf_token())!!}
         {!!Form::close()!!}

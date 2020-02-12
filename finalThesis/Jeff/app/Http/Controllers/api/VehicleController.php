@@ -49,6 +49,16 @@ class VehicleController extends Controller
         return view('dashboard.vehicle_new', compact('clients'));
     }
 
+    public function edit_vehicle($id)
+    {
+        $x['id'] = $id;
+
+        $result = Vehicle::where('vehicle_id','=',$x)
+        ->first();
+
+        return view('dashboard.edit_vehicle', compact('result'));
+    }
+
     public function insert(Request $request)
     {
         //firstname, lastname, contact_no, age, email, created_at, updated_at
@@ -114,9 +124,16 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function vehicle_update(Request $request)
     {
-        //
+        $s=new Vehicle;
+        $data = array('plate_no' =>$request->input('plateno'),
+                      'type' =>$request->input('type'),
+                      'model' =>$request->input('model'),
+                      'color' =>$request->input('color'),
+                      'description' =>$request->input('desc'));
+        $s->where('vehicle_id', $request->input('vehicleid'))->update($data);
+        return Redirect('/vehicle');
     }
 
     /**

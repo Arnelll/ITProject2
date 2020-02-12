@@ -146,7 +146,7 @@ class ProductController extends Controller
                       'wholesale_price' =>$request->input('whole_price'),
                       'distributor_price' =>$request->input('dis_price'));
         $s->where('product_id', $request->input('productid'))->update($data);
-        return $this->products();
+        return Redirect('/products');
     }
 
     public function product_add(Request $request){

@@ -38,7 +38,7 @@
                                     <td>{{$row['contact_no']}}</td>
                                     <td>{{$row['address']}}</td>
                                     <td style="text-align: center;">
-                                        <a href="#" class="btn-xs fas fa-user-minus" onClick="alert('Mechanic Removed');"></a>
+                                    <a href="/remove_mechanic/{{$row['mechanic_id']}}" class="btn-xs fas fa-user-minus"></a>
                                     </td>
                                 </tr>
 

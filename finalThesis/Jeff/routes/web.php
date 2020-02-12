@@ -70,3 +70,7 @@ Route::post('/update_checkout', array('as' => 'update_checkout', 'uses' => 'api\
 Route::get('/remove_product/{id}/{cId}',"api\CheckOutController@remove_product");
 Route::post('/product_add', array('as' => 'product_add', 'uses' => 'api\ProductController@product_add'));
 Route::post('/updatejo_status', array('as' => 'updatejo_status', 'uses' => 'api\TransactionController@updatejo_status'));
+Route::post('/update_checkout', array('as' => 'update_checkout', 'uses' => 'api\CheckOutController@update_checkout'));
+Route::get('/edit_vehicle/{id}',"api\VehicleController@edit_vehicle");
+Route::post('/vehicle_update', array('as' => 'vehicle_update', 'uses' => 'api\VehicleController@vehicle_update'));
+Route::get('/remove_mechanic/{id}',"api\MechanicController@remove_mechanic");

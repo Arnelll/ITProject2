@@ -53,12 +53,11 @@ class ClientsController extends Controller
         ->paginate(10);
 
         $service = Clients::orderBy('clients.client_id', 'asc')
-        ->join('transactions', 'transactions.client_id', 'clients.client_id')
-        ->join('products', 'products.product_id', 'transactions.product_id')
-        ->join('vehicles', 'vehicles.vehicle_id', 'transactions.vehicle_id')
-        ->where('clients.client_id', '=', $x)
-        ->select('transactions.*', 'products.product_name', 'vehicles.*')
-        ->paginate(10);
+        ->join('job_order','job_order.client_id','clients.client_id')
+        ->join('vehicles','vehicles.vehicle_id','job_order.vehicle_id')
+        ->where('job_order.client_id','=',$x)
+        ->select('job_order.remarks','job_order.date_created','vehicles.plate_no','vehicles.type','job_order.status')
+        ->get();
         
         return view('dashboard.view_accounts', compact('result','transaction','service','vehicle'));
     }

@@ -30,7 +30,6 @@
                         </thead>
 
                         <tbody>
-
                             @foreach($result as $row)
                                 <tr>
                                     <td>{{$row['plate_no']}}</td>
@@ -41,9 +40,8 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            {{$result->links()}}
+                            
                         </tbody>
-
                     </table>
                 </div>
 

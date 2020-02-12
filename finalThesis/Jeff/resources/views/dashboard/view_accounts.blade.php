@@ -92,7 +92,6 @@
                     @endforelse
                   </form>
   			      </div>
-              <!---->
               <div class="tab-pane text-center gallery" id="walk-in">
                 <form>
                 <div class="table-full-width table-responsive">
@@ -122,11 +121,10 @@
                 </div>
                 </form>
   			      </div>
-              <div class="tab-pane text-center gallery" id="services">
+              <div class="tab-pane text-center gallery justify-content-center" id="services">
                 <form>
-                <div class="table-full-width table-responsive">
-                  
-                  <table class="table">
+                <div class="table-full-width table-responsive justify-content-center">
+                  <table class="table justify-content-center">
                   <br>
                     <tbody>
                     @forelse($service as $row)
@@ -137,14 +135,28 @@
                               <i style="color:green;" class="now-ui-icons ui-1_check"></i>
                           </div>
                         </td>
-                        <td class="text-left"><strong>{{$row['service']}}</strong> has been rendered to the vehicle <strong>{{$row['type']}}</strong> with the use of <strong>{{$row['quantity']}} {{$row['product_name']}}.</td>
+                        <td class="text-left">Rendered</td>
+                        @elseif($row['status']=='Ongoing')
+                        <td>
+                          <div class="form-check" style="color:red;">
+                              O
+                          </div>
+                        </td>
+                        <td class="text-left">Ongoing</td>
                         @elseif($row['status']=='Cancelled')
                         <td>
                           <div class="form-check" style="color:red;">
                               X
                           </div>
                         </td>
-                        <td class="text-left">A service for <strong>{{$row['service']}}</strong> for the vehicle <strong>{{$row['type']}}</strong> is cancelled.</td>
+                        <td class="text-left">Cancelled</td>
+                        @elseif($row['status']=='Pending')
+                        <td>
+                          <div class="form-check" style="color:red;">
+                              O
+                          </div>
+                        </td>
+                        <td class="text-left">Pending</td>
                         @endif
                       </tr>
                       @empty
@@ -153,7 +165,7 @@
                           <div class="form-check">
                           </div>
                         </td>
-                        <td class="text-left">No service(s) has been rendered to this client.</td>
+                        <td class="text-left">No record of service(s) to this client is found.</td>
                       </tr>
                       @endforelse
                     </tbody>

@@ -2,6 +2,7 @@
 
 @section('title')
     New Transaction
+    <a href="javascript:history.go(-1)" class="d-inline p-2" title="Return to the previous page" style="background-color: #005CA5;"><- Return</a>
 @endsection
 
 @section('content')

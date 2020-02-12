@@ -79,6 +79,12 @@ class MechanicController extends Controller
         return view('dashboard.edit_account', compact('result'));
     }
 
+    public function remove_mechanic($id){
+        $rem = Mechanic::where('mechanic_id',$id)
+        ->delete();
+        return back();
+    }
+
     public function insert(Request $request)
     {
         //firstname, lastname, contact_no, age, email, created_at, updated_at

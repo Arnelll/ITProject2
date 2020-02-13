@@ -24,25 +24,20 @@
 
                         <thead class="text-info">
                             <th style="font-weight: 500;">Job Order No.</th>
-                            <th style="font-weight: 500;">Client</th>
-                            <th style="font-weight: 500;">Service</th>
-                            <th style="font-weight: 500;">Quantity</th>
-                            <th style="font-weight: 500;text-align: right;">Total</th>
+                            <th style="font-weight: 500;">Client Name</th>
                             <th style="text-align: center; font-weight: 500;">Actions</th>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>117</td>
-                                <td>Arnel Arnel</td>
-                                <td>Testing</td>
-                                <td>69</td>
-                                <td style="text-align: right;">100.00</td>
-                                <td style="text-align: center;">
-                                    <a href="/view_prodco" class="btn-xs fas fa-file-alt"></a>
-                                    <a href="#" class="btn-xs fas fa-edit"></a>
-                                </td>
-                            </tr>
+                        @foreach($result as $row)
+                                <tr>
+                                    <td>{{$row['jo_id']}}</td>
+                                    <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
+                                    <td style="text-align: center;">
+                                    <a href="/view_prodco/{{$row['jo_id']}}/{{$row['product_checkout_id']}}" class="btn-xs fas fa-file-alt"></a>
+                                    </td>
+                                </tr>
+                        @endforeach
                         </tbody>
 
                     </table>

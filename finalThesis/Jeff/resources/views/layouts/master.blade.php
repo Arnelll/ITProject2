@@ -79,12 +79,6 @@
                 <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
             </ul>
           </div>
-          <li>
-            <a href="/product_co">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Product Checkout</p>
-            </a>
-          </li>
         </ul>
       </div>
     </div>

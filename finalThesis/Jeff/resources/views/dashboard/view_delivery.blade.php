@@ -23,7 +23,7 @@
                     <table class="table">
 
                         <thead class="text-info">
-                            <th style="font-weight: 500;">Supplier</th>
+                            <th style="font-weight: 500;">Delivery Id</th>
                             <th style="font-weight: 500;">Delivery Date</th>
                             <th style="font-weight: 500;">Action</th>
                         </thead>
@@ -31,9 +31,9 @@
                         <tbody>
                                 @foreach($result as $row)
                                 <tr>
-                                    <td>{{$row['name']}}</td>
+                                    <td>{{$row['delivery_id']}}</td>
                                     <td>{{$row['delivery_date']}}</td>
-                                    <td><a href="/view_delivery" class="btn-xs fas fa-file-alt"></td>
+                                    <td><a href="/delivery_profile/{{$row['delivery_id']}}" class="btn-xs fas fa-file-alt"></a></td>
                                 </tr>
                                 @endforeach
                                 {{$result->links()}}

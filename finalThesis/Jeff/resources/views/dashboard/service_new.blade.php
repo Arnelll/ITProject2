@@ -32,25 +32,24 @@
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <select name="mech" class="form-control bg-white" required>
-                                <option value="" selected="true" disabled="true">Select Mechanic</option>
-                                @foreach($mechanic as $key => $m)
-                                <option value="{!!$key!!}">{!!$m!!}</option>
-                                @endforeach
-                            </select>
+                    <select name="mech" class="form-control bg-white" required>
+                        <option value="" selected="true" disabled="true">Select Mechanic</option>
+                        @foreach($mechanic as $key => $m)
+                        <option value="{!!$key!!}">{!!$m!!}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6" id="vehicle_list">
                 <div class="form-group">
                     <select name="vcle" class="form-control bg-white" required>
                         <option value="" selected="true" disabled="true">Select Vehicle</option>
-                            
                     </select>
                 </div>
             </div>
             <br>
         </div>
-        <br>
+            <br>
             <div class="form-group">
                 <label for="comment">Service Details:</label>
                 <textarea class="form-control bg-white" rows="5" id="comment" name="svc" required></textarea>
@@ -127,7 +126,6 @@ $('#client').change(function(){
             }
         }
     });
-    
 })
 
 $('tbody').delegate('.productname', 'change', function(){

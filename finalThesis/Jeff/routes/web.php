@@ -74,3 +74,5 @@ Route::post('/update_checkout', array('as' => 'update_checkout', 'uses' => 'api\
 Route::get('/edit_vehicle/{id}',"api\VehicleController@edit_vehicle");
 Route::post('/vehicle_update', array('as' => 'vehicle_update', 'uses' => 'api\VehicleController@vehicle_update'));
 Route::get('/remove_mechanic/{id}',"api\MechanicController@remove_mechanic");
+Route::get('/new_jooo',"api\JobController@index");
+Route::post('/insert_jooo', array('as' => 'insert_jooo', 'uses' => 'api\JobController@insert_jooo'));

@@ -13,7 +13,7 @@
 
             <div class="card-header">
                 <div class="card-title">
-                    <h3>Job Orders <a href="/new_service" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px; background-color: #005CA5;">+ Job Order</a></h3>
+                    <h3>Job Orders <a href="/new_jooo" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px; background-color: #005CA5;">+ Job Order</a></h3>
                 </div>
             </div>
 

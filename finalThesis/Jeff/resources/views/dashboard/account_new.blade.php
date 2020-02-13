@@ -15,7 +15,7 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'account_insert','id'=>'formsave','method'=>'post'))!!}
-        <h3 class="d-inline p-2"><strong>Enter Client Details</strong><a href="/new_vehicle" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:65%; background-color: #005CA5;">+ Vehicle</a></h3>
+        <h3 class="d-inline p-2"><strong>Enter Client Details</strong><a href="/new_sales" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:50%; background-color: #005CA5;">+ Sales</a><a href="/new_vehicle" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:1%; background-color: #005CA5;">+ Vehicle</a></h3>
         <br>
         <br>
         <div class="row">

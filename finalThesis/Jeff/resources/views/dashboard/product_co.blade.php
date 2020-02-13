@@ -15,6 +15,7 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'checkout_insert','id'=>'formsave','method'=>'post'))!!}
+        <h4><strong>Enter Checkout Details</strong><a href="/service" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:50%; background-color: #005CA5;">Job Order List</a></h4>
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
@@ -61,10 +62,28 @@
             </div>
             <div class="col-lg-2 col-sm-2">
                 <div class="form-group">
-                {!!Form::submit('Save',array('class'=>'btn btn-primary', 'style'=>'background-color: #005CA5'))!!}
                 </div>
             </div>
-            <div class="col-lg-12 col-sm-12">
+            <br>
+    <br>
+    <div class="col-lg-12 col-sm-12">
+        <table class="table table-bordered" id="preview">
+            <h4>Product Order Preview</h4>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+        <div class="col-lg-12 col-sm-12">
+          <h4>Parts & Materials</h4>
             <table class="table table-bordered" id="joo">
                 <thead>
                     <th>Product Name</th>
@@ -88,8 +107,8 @@
                         <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right" disabled></td>
                         <td><input type="text" name="dis[]" class="form-control dis bg-white"></td>
                         <td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>
-                        <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
                         <td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>
+                        <input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white">
                     </tr>
                 
             <tfoot>
@@ -104,26 +123,16 @@
             </tfoot>  
             </tbody> 
         </table>
+        <div class="col-lg-2 col-sm-2" style="margin-left:80%">
+                <div class="form-group">
+                {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg', 'style'=>'background-color: #005CA5'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-secondary btn-lg" title="Return to the previous page">Return</a>
+                </div>
+        </div>
+        
     </div>
 </div>
             </div>
         </section>
-    </div>
-    <br>
-    <br>
-    <div class="col-lg-12 col-sm-12">
-        <table class="table table-bordered" id="preview">
-            <h3>Product Order Preview</h3>
-            <thead>
-                <tr>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
     </div>
     {!!Form::hidden('_token',csrf_token())!!}
         {!!Form::close()!!}

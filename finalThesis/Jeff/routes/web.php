@@ -24,7 +24,7 @@ Route::get('/test',"api\JobOrderController@index");
 Route::get('/accounts',"api\ClientsController@index");
 Route::get('/dashboard',"api\ProductController@index");
 Route::get('/products',"api\ProductController@products");
-Route::get('/delivery_profile/{id}/{delivery_id}',"api\DeliveryController@delivery_profile");
+Route::get('/delivery_profile/{id}',"api\DeliveryController@delivery_profile");
 Route::get('/product_profile/{id}',"api\ProductController@product_profile");
 Route::get('/vehicle',"api\VehicleController@index");
 Route::get('/view_vehicle/{id}',"api\VehicleController@vehicle_profile");

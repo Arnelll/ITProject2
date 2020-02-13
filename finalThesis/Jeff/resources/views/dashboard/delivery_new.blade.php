@@ -19,9 +19,9 @@
         </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'product_add','id'=>'formsave','method'=>'post'))!!}
-        <h4><strong>Enter Delivery Details</strong></h4><a href="#" class="addRow ">+<i class="glyphicon glyphicon-plus"></a>
+        <h4><strong>Enter Delivery Details</strong></h4><a href="#" class="btn btn-primary addRow" style="background-color: #005CA5;">+<i class="glyphicon glyphicon-plus"></i></a>
         <div class="row">
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-4 col-sm-4">
                 <div class="form-group">
                 Product<select id="product" name="product[]" class="form-control productname bg-white" required>
                         <option value="" disabled="true" selected>Select Product</option>
@@ -31,7 +31,7 @@
                      </select>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6">
+            <div class="col-lg-3 col-sm-3">
                 <div class="form-group">
                     Supplier<select id="supplier" name="supplier[]" class="form-control productname bg-white" required>
                         <option value="" disabled="true" selected>Select Supplier</option>
@@ -41,7 +41,7 @@
                      </select>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-4">
+            <div class="col-lg-2 col-sm-2">
                 <div class="form-group">
                 Quantity<input type="text" name="quantity[]" class="form-control bg-white" required>
                 </div>
@@ -68,7 +68,8 @@ $('.addRow').on('click',function(){
 
 function addRow()
 {
-    var tr='<br><div class="row"><div class="col-lg-6 col-sm-6">'+
+    var tr='<br><div class="row">'+
+                '<div class="col-lg-5 col-sm-5">'+
                 '<div class="form-group">'+
                 'Product<select id="product" name="product[]" class="form-control productname bg-white" required>'+
                         '<option value="" disabled="true" selected>Select Product</option>'+
@@ -78,7 +79,7 @@ function addRow()
                      '</select>'+
                 '</div>'+
             '</div>'+
-            '<div class="col-lg-4 col-sm-6">'+
+            '<div class="col-lg-4 col-sm-4">'+
                 '<div class="form-group">'+
                     'Supplier<select id="supplier" name="supplier[]" class="form-control productname bg-white" required>'+
                         '<option value="" disabled="true" selected>Select Supplier</option>'+
@@ -88,7 +89,7 @@ function addRow()
                      '</select>'+
                 '</div>'+
             '</div>'+
-            '<div class="col-lg-4 col-sm-4">'+
+            '<div class="col-lg-2 col-sm-2">'+
                 '<div class="form-group">'+
                 'Quantity<input type="text" name="quantity[]" class="form-control bg-white" required>'+
                 '</div>'+

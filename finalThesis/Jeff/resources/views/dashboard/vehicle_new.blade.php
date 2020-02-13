@@ -15,7 +15,7 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'vehicle_insert','id'=>'formsave','method'=>'post'))!!}
-        <h4><strong>Enter Vehicle Details</strong></h4>
+        <h4><strong>Enter Vehicle Details</strong><a href="/new_jooo" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:50%; background-color: #005CA5;">+ Job Order</a></h4>
         <div class="row">
             <div class="col-lg-4 col-sm-6">
                 <div class="form-group">

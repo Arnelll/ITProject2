@@ -16,7 +16,7 @@
             {!!Form::open(array('route'=>'update_checkout','id'=>'formsave','method'=>'post'))!!}
             <div class="col-lg-12 col-sm-12">
                 <table class="table table-bordered" id="preview">
-                    <h3>Checkout Details</h3>
+                    <h4>Change Product<a href="/prod_co" class="btn btn-primary btn-sm btn-round d-inline p-2" style="margin-left:50%; background-color: #005CA5;">Checkout List</a></h4>
                     <thead>
                         <tr>
                             <th>Product Name</th>

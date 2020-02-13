@@ -59,8 +59,8 @@
                         <td><input id="product-price" type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>
                         <td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
                         <td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>
-                        <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
                         <td><a href="#" style="margin-left: 40%;" class="remove" style="background-color: #005CA5;"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
+                        <input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white">
                     </tr>
                 </tbody>
             <tfoot>

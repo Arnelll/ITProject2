@@ -21,13 +21,15 @@
             </header>
             </div>
         <div class="panel panel-footer">
-        <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left: 90%; background-color: #005CA5;">+ Client</a>
         {!!Form::open(array('route'=>'insert_jooo','id'=>'formsave','method'=>'post'))!!}
         <div class="col-lg-12 col-sm-12">
-            <h3 style="margin: 0 0 0 0;"><strong>Job Order</strong></h3>
+            <h4 style="margin: 0 0 0 0;"><strong>Job Order</strong>
+            <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left: 30%; background-color: #005CA5;">+ Client</a>
+        <a href="/new_vehicle" class="btn btn-primary btn-md btn-round" style="margin-left: 1%; background-color: #005CA5;">+ Vehicle</a>
+        <a href="/product_co" class="btn btn-primary btn-md btn-round" style="margin-left: 1%; background-color: #005CA5;">+ Checkout</a></h4>
             <br>
             <!--<button type="button" id="show-btn" class="btn btn-primary justify-content-end" style="float: right;">Add Job Order</button>-->
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-5 col-sm-5">
                 <div class="form-group">
                     <select name="client_id" id="client" class="form-control bg-white">
                         <option value="" selected="true" disabled="true">Select Client</option>
@@ -37,7 +39,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-5 col-sm-5">
                 <div class="form-group">
                     <select name="mech" class="form-control bg-white" required>
                         <option value="" selected="true" disabled="true">Select Mechanic</option>
@@ -47,7 +49,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6" id="vehicle_list">
+            <div class="col-lg-5 col-sm-5" id="vehicle_list">
                 <div class="form-group">
                     <select name="vcle" class="form-control bg-white" required>
                         
@@ -82,8 +84,8 @@
                         <td><input id="product-price" type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>
                         <td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
                         <td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>
-                        <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
                         <td><a href="#" style="margin-left: 40%;" class="remove" style="background-color: #005CA5;"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
+                        <input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white">
                     </tr>
                 </tbody>
             <tfoot>

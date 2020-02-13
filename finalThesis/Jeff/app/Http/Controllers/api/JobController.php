@@ -38,11 +38,16 @@ class JobController extends Controller
         if($jo -> save()){
             $jId = $jo -> jo_id;
             for ($i = 0; $i<$products;$i++){
+                if($request->dis[$i]==null){
+                    $dis = 0;
+                }else{
+                    $dis = $request->dis[$i];
+                }
                 $data = [
                     'jo_id' => $jId,
                     'product_id' => $request->productname[$i],
                     'quantity' => $request->qty[$i],
-                    'discount' => $request->dis[$i]
+                    'discount' => $dis
                 ];
                 JobOrderDetails::insert($data);
             }

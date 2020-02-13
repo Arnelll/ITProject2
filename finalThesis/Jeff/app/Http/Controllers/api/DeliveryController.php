@@ -23,25 +23,18 @@ class DeliveryController extends Controller
         return view('dashboard.view_delivery', compact('result'));
     }
 
-    public function delivery_profile($id,$delivery_id){
+    public function delivery_profile($id){
+        
         $x['id'] = $id;
-        $z['delivery_id'] = $delivery_id;
 
-        $result = Delivery::where('delivery_id','=',$x)
-        ->first();
+        $result = Delivery::join('delivery_details', 'delivery_details.delivery_id', 'delivery.delivery_id')
+        ->join('supplier','supplier.supplier_id','delivery_details.supplier_id')
+        ->join('products','products.product_id','delivery_details.product_id')
+        ->where('delivery.delivery_id', '=' , $x)
+        ->select('delivery.*', 'delivery_details.*', 'supplier.*', 'products.product_name')
+        ->paginate(10);
 
-        $clients = DeliveryDetail::join('supplier', 'supplier.supplier_id', 'delivery_details.supplier_id')
-        ->where('delivery_details.supplier_id', '=', $x)
-        ->first();
-
-        $products = Delivery::join('delivery_details','delivery.delivery_id','delivery_details.delivery_id')
-        ->join('products','delivery_details.product_id','products.product_id')
-        ->where('delivery.delivery_id','=',$z)
-        ->select('products.product_name','products.quantity')
-        ->get();
-        
-        return view('dashboard.delivery_profile', compact('result', 'supplier', 'products'));
-        
+        return view('dashboard.delivery_profile', compact('result'));
     }
 
     public function new_delivery(){

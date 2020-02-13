@@ -52,14 +52,22 @@ class ClientsController extends Controller
         ->select('transaction2.*', 'products.*')
         ->paginate(10);
 
-        $service = Clients::orderBy('clients.client_id', 'asc')
+        $sales = Clients::orderBy('clients.client_id', 'desc')
+        ->join('sales', 'sales.client', 'clients.client_id')
+        ->join('sales_details', 'sales_details.sales_id', 'sales.sales_id')
+        ->join('products', 'products.product_id', 'sales_details.product_id')
+        ->where('sales.client', '=', $x)
+        ->select('clients.*', 'sales.*', 'sales_details.*', 'products.product_name')
+        ->get();
+
+        $service = Clients::orderBy('clients.client_id', 'desc')
         ->join('job_order','job_order.client_id','clients.client_id')
         ->join('vehicles','vehicles.vehicle_id','job_order.vehicle_id')
         ->where('job_order.client_id','=',$x)
-        ->select('job_order.remarks','job_order.date_created','vehicles.plate_no','vehicles.type','job_order.status')
+        ->select('job_order.remarks','job_order.date_created','vehicles.plate_no','vehicles.type','job_order.status', 'job_order.jo_id')
         ->get();
         
-        return view('dashboard.view_accounts', compact('result','transaction','service','vehicle'));
+        return view('dashboard.view_accounts', compact('result','transaction','service','vehicle', 'sales'));
     }
 
     public function new_account()

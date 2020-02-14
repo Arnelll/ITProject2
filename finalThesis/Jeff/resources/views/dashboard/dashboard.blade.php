@@ -44,6 +44,17 @@
       </div>
     </a>
   </div>
+  <div class="col-sm-4">
+    <a href="/generate_pProfile/4/171" style="text-decoration: none;">
+      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#DCDCDC'" onMouseOut="this.style.background='#fff'">
+        <h5 class="card-title" style="text-align: center; color: #005CA5;">
+          <div class="fas fa-boxes" style=""></div>
+          <br>
+          Report Generation Testing
+        </h5>
+      </div>
+    </a>
+  </div>
 
 </div>
 </body>

@@ -46,19 +46,27 @@ class ProductController extends Controller
     public function product_profile($id){
         $x['id'] = $id;
 
-        $result = Product::orderBy('products.product_id', 'desc')
-        ->join('product_details','product_details.product_id','products.product_id')
-        ->join('transactions','products.product_id','transactions.product_id')
-        ->where('products.product_id', '=', $x)
-        ->select('product_details.*','products.*','transactions.quantity as tQty', 'transactions.status')
-        ->paginate(10);
+        $sales = Product::orderBy('products.product_id', 'desc')
+        ->join('sales_details', 'sales_details.product_id', 'products.product_id')
+        ->join('sales', 'sales.sales_id', 'sales_details.sales_id')
+        ->join('clients', 'clients.client_id', 'sales.client')
+        ->where('sales_details.product_id', '=', $x)
+        ->select('products.product_name', 'sales_details.*', 'sales.*', 'clients.*')
+        ->get();
+
+        $service = Product::orderBy('products.product_id', 'desc')
+        ->join('job_order_details','job_order_details.product_id','products.product_id')
+        ->join('job_order', 'job_order.jo_id', 'job_order_details.jo_id')
+        ->where('job_order_details.product_id','=',$x)
+        ->select('job_order.*', 'job_order_details.*', 'products.product_name')
+        ->get();
 
         $name = Product::orderBy('products.product_id', 'desc')
         ->where('products.product_id', '=', $x)
         ->select('products.*')
         ->paginate(10);
 
-        return view('dashboard.product_profile', compact('result', 'name'));
+        return view('dashboard.product_profile', compact('sales', 'service', 'name'));
     }
 
     public function new_product()

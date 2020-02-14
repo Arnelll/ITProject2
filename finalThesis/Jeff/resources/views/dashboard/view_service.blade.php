@@ -34,6 +34,7 @@
           <td><input type="text" name="Mechanic" class="form-control jo_qty" value="{{$mechanic->last_name}}, {{$mechanic->first_name}}" readonly></td>
           <td><input type="text" name="Description" class="form-control jo_qty" value="{{$jo->remarks}}" readonly>
           <input type="hidden" name="job_id" class="form-control jo_qty" value="{{$jo->jo_id}}" readonly></td>
+          <input type="hidden" name="client_id" class="form-control jo_qty" value="{{$clients->client_id}}" readonly></td>
         </tr>
       </tbody>
       </table>
@@ -103,6 +104,7 @@
                 <a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-primary btn-lg" title="Return to the previous page">Return</a>
                 @endif
                 </div>
+                <a href="/generate_pProfile/{{$clients->client_id}}/{{$jo->jo_id}}" class="d-inline p-2 btn btn-primary btn-lg" title="Generate Report">Generate Report</a>
         </div>
 </body>
 @endsection

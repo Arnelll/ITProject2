@@ -15,7 +15,9 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
   <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/js/select2.js') }}"></script>
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/css/select2.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/now-ui-dashboard.css?v=1.3.0') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
@@ -79,12 +81,6 @@
                 <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
             </ul>
           </div>
-          <li>
-            <a href="/product_co">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Product Checkout</p>
-            </a>
-          </li>
         </ul>
       </div>
     </div>

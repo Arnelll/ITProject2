@@ -98,7 +98,7 @@
                   <br>
                   <table class="table">
                     <tbody>
-                    @forelse($transaction as $row)
+                    @forelse($sales as $row)
                       <tr>
                         <td>
                           <div class="form-check">
@@ -126,37 +126,42 @@
                 <div class="table-full-width table-responsive justify-content-center">
                   <table class="table justify-content-center">
                   <br>
+                  <thead class="text-info">
+                            <th style="font-weight: 500;">Job Order No.</th>
+                            <th class="text-left" style="font-weight: 500;">Status</th>
+                        </thead>
                     <tbody>
                     @forelse($service as $row)
                       <tr>
+                      <td>{{$row['jo_id']}}</td>
                         @if($row['status']=='Rendered')
+                        <td class="text-left">Rendered</td>
                         <td>
-                          <div class="form-check">
+                          <div class="form-check text-left">
                               <i style="color:green;" class="now-ui-icons ui-1_check"></i>
                           </div>
                         </td>
-                        <td class="text-left">Rendered</td>
                         @elseif($row['status']=='Ongoing')
+                        <td class="text-left">Ongoing</td>
                         <td>
-                          <div class="form-check" style="color:red;">
+                          <div class="form-check text-left" style="color:blue;">
                               O
                           </div>
                         </td>
-                        <td class="text-left">Ongoing</td>
                         @elseif($row['status']=='Cancelled')
+                        <td class="text-left">Cancelled</td>
                         <td>
-                          <div class="form-check" style="color:red;">
+                          <div class="form-check text-left" style="color:red;">
                               X
                           </div>
                         </td>
-                        <td class="text-left">Cancelled</td>
                         @elseif($row['status']=='Pending')
+                        <td class="text-left">Pending</td>
                         <td>
-                          <div class="form-check" style="color:red;">
+                          <div class="form-check text-left" style="color:black;">
                               O
                           </div>
                         </td>
-                        <td class="text-left">Pending</td>
                         @endif
                       </tr>
                       @empty

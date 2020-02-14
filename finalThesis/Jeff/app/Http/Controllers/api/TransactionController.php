@@ -52,6 +52,10 @@ class TransactionController extends Controller
         $result = JobOrder::where('jo_id','=',$x)
         ->first();
 
+        $date = JobOrder::where('jo_id','=',$z)
+        ->first();
+        $araw = date('F j Y', strtotime($date->date_created));
+
         $clients = JobOrder::join('clients', 'clients.client_id', 'job_order.client_id')
         ->where('job_order.client_id', '=', $x)
         ->first();
@@ -76,10 +80,10 @@ class TransactionController extends Controller
         $products = JobOrder::join('job_order_details','job_order.jo_id','job_order_details.jo_id')
         ->join('products','job_order_details.product_id','products.product_id')
         ->where('job_order.jo_id','=',$z)
-        ->select('products.product_name','products.quantity','products.retail_price')
+        ->select('products.product_name','job_order_details.*','products.retail_price')
         ->get();
         
-        return view('dashboard.view_service', compact('result','clients','vehicle','mechanic','jo','products'));
+        return view('dashboard.view_service', compact('result','clients','vehicle','mechanic','jo','products','araw'));
         
     }
 

@@ -21,15 +21,17 @@
             </header>
             </div>
         <div class="panel panel-footer">
-        <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left: 90%; background-color: #005CA5;">+ Client</a>
         {!!Form::open(array('route'=>'insert_jooo','id'=>'formsave','method'=>'post'))!!}
         <div class="col-lg-12 col-sm-12">
-            <h3 style="margin: 0 0 0 0;"><strong>Job Order</strong></h3>
+            <h4 style="margin: 0 0 0 0;"><strong>Job Order</strong>
+            <a href="/new_account" class="btn btn-primary btn-md btn-round" style="margin-left: 30%; background-color: #005CA5;">+ Client</a>
+        <a href="/new_vehicle" class="btn btn-primary btn-md btn-round" style="margin-left: 1%; background-color: #005CA5;">+ Vehicle</a>
+        <a href="/product_co" class="btn btn-primary btn-md btn-round" style="margin-left: 1%; background-color: #005CA5;">+ Checkout</a></h4>
             <br>
             <!--<button type="button" id="show-btn" class="btn btn-primary justify-content-end" style="float: right;">Add Job Order</button>-->
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-5 col-sm-5">
                 <div class="form-group">
-                    <select name="client_id" id="client" class="form-control bg-white">
+                    <select name="client_id" id="client" class="form-control bg-white searchable">
                         <option value="" selected="true" disabled="true">Select Client</option>
                         @foreach($clients as $key => $c)
                         <option value="{!!$key!!}">{!!$c!!}</option>
@@ -37,7 +39,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-5 col-sm-5">
                 <div class="form-group">
                     <select name="mech" class="form-control bg-white" required>
                         <option value="" selected="true" disabled="true">Select Mechanic</option>
@@ -47,7 +49,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6" id="vehicle_list">
+            <div class="col-lg-5 col-sm-5" id="vehicle_list">
                 <div class="form-group">
                     <select name="vcle" class="form-control bg-white" required>
                         
@@ -71,7 +73,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <select id="productname" name="productname[]" class="form-control productname bg-white" required>
+                            <select id="productname" name="productname[]" class="form-control productname searchable" required>
                                 <option value="" disabled="true" selected>Select Product</option>
                                 @foreach($products as $key => $p)
                                 <option value="{!!$key!!}">{!!$p!!}</option>
@@ -82,8 +84,8 @@
                         <td><input id="product-price" type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>
                         <td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
                         <td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>
-                        <td><input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white"></td>
                         <td><a href="#" style="margin-left: 40%;" class="remove" style="background-color: #005CA5;"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
+                        <input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white">
                     </tr>
                 </tbody>
             <tfoot>
@@ -111,6 +113,10 @@
     </div>
 </body>
 <script type="text/javascript">
+$(document).ready(function() {
+    $('.searchable').select2();
+});
+
 $('#client').change(function(){
     var id = $(this).val();
     var dataId = {'id':id};
@@ -206,20 +212,21 @@ function addRow()
 {
     var tr='<tr>'+
                 '<td>'+
-                    '<select id="product-name" name="productname[]" class="form-control productname bg-white">'+
-                        '<option value="0" selected="true" disabled="true">Select Product</option>'+
-                        '@foreach($products as $key => $p)'+
-                        '<option value="{!!$key!!}">{!!$p!!}</option>'+
-                        '@endforeach'+
-                    '</select>'+
+                '<select name="productname[]" class="form-control productname searchable">'+
+                '<option value="0" selected="true" disabled="true">Select Product</option>'+
+                '@foreach($products as $key => $p)'+
+                '<option value="{!!$key!!}">{!!$p!!}</option>'+
+                '@endforeach'+
+                '</select>'+
                 '</td>'+
-                '<td><input id="product-qty" type="text" name="qty[]" class="form-control qty bg-white"></td>'+
-                '<td><input id="product-price" type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>'+
-                '<td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white"></td>'+
-                '<td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>'+
-                '<td><a href="#" style="margin-left: 40%;" class="remove"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>'+
-            '</tr>';
-    $('tbody').append(tr);
+                '<td><input type="text" name="qty[]" class="form-control qty"></td>'+
+                '<td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>'+
+                '<td><input type="text" name="dis[]" class="form-control dis"></td>'+
+                '<td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>'+
+                '<td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>'+
+                '</tr>';
+                $('#product-table').find('tbody').append(tr);
+                $('.searchable').select2();
 };
 
 function findRowNum(input){

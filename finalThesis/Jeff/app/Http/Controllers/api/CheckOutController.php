@@ -78,7 +78,7 @@ class CheckOutController extends Controller
     }
 
     public function update_checkout(Request $request){
-        return $request -> product_id;
+        return back();
     }
 
     public function remove_product($id,$cId){
@@ -87,6 +87,7 @@ class CheckOutController extends Controller
         ->delete();
         return back();
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -10,13 +10,13 @@
     <section class="panel">
       <div class="panel panel-footer">
         <header class="panel panel-default">
-          <h3> Job Order Details </h3>
+          <h3> Job Order Details  </h3>
         </header>
     </div>
     {!!Form::open(array('route'=>'updatejo_status','id'=>'formsave','method'=>'post'))!!}
     <div class="row">
       <table class="table">
-        <h5>Job Order Details</h5>
+        <h5><strong>Job Order Details (Date Created: {{$araw}})</strong></h5>
         <thead>
           <tr>
             <th>Client Name</th>

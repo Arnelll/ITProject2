@@ -15,7 +15,7 @@ class SalesController extends Controller
      */
     public function index() {
 
-        $result = Sales::orderBy('sales.sales_id','asc')
+        $result = Sales::orderBy('sales.sales_id','desc')
         ->join('sales_details','sales_details.sales_id','sales.sales_id')
         ->join('products','products.product_id','sales_details.product_id')
         ->leftjoin('clients','sales.client','clients.client_id')

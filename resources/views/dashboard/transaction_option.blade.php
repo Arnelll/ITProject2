@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('title')
-    Dashboard
+    New Transaction
+    <a href="javascript:history.go(-1)" class="d-inline p-2" title="Return to the previous page" style="background-color: #005CA5;"><- Return</a>
 @endsection
 
 @section('content')
@@ -10,43 +11,31 @@
 <div class="card-deck">
 
   <div class="col-sm-4">
-    <a href="/opt_trans" style="text-decoration: none;">
+    <a href="/new_sales" style="text-decoration: none;">
       <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#DCDCDC'" onMouseOut="this.style.background='#fff'">
         <h5 class="card-title" style="text-align: center; color: #005CA5;">
           <div class="fas fa-plus-circle" style=""></div>
           <br>
-          Add Transaction
+          Add New Sales
         </h5>
       </div>
     </a>
   </div>
 
   <div class="col-sm-4">
-    <a href="/accounts" style="text-decoration: none;">
+    <a href="/new_jooo" style="text-decoration: none;">
       <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#DCDCDC'" onMouseOut="this.style.background='#fff'">
         <h5 class="card-title" style="text-align: center; color: #005CA5;">
-          <div class="fas fa-users" style=""></div>
+          <div class="fas fa-plus-circle" style=""></div>
           <br>
-          Client List
+          Add New Service/Job Order
         </h5>
       </div>
     </a>
   </div>
-  
-  <div class="col-sm-4">
-    <a href="/products" style="text-decoration: none;">
-      <div class="card" style="padding: 100px; width: 100%;" onMouseOver="this.style.background='#DCDCDC'" onMouseOut="this.style.background='#fff'">
-        <h5 class="card-title" style="text-align: center; color: #005CA5;">
-          <div class="fas fa-boxes" style=""></div>
-          <br>
-          Inventory
-        </h5>
-      </div>
-    </a>
-  </div>
-
 </div>
 </body>
+
 @endsection
     
 @section('scripts')

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Product List
+    Sales List
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
         
             <div class="card-header">
                 <div class="card-title">
-                    <h3>Products <a href="/new_product" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px; background-color: #005CA5;">+ Product</a></h3>
+                    <h3>Sales <a href="/new_sales" class="btn btn-primary btn-md btn-round" style="float: right; margin: 0px; background-color: #005CA5;">+ Sales</a></h3>
                 </div>
             </div>
 
@@ -25,10 +25,9 @@
                         <thead class="text-info">
                             <th style="font-weight: 500;">Product Name</th>
                             <th style="font-weight: 500;">Quantity</th>
-                            <th style="font-weight: 500;">Retail Price</th>
-                            <th style="font-weight: 500;">Wholesale Price</th>
-                            <th style="font-weight: 500;">Distributor Price</th>
-                            <th style="text-align: center; font-weight: 500;">Actions</th>
+                            <th style="font-weight: 500;">Client (Optional)</th>
+                            <th style="font-weight: 500;">Date</th>
+                            <th style="font-weight: 500;text-align: right;">Total</th>
                         </thead>
 
                         <tbody>
@@ -37,18 +36,16 @@
                                 <tr>
                                     <td>{{$row['product_name']}}</td>
                                     <td>{{$row['quantity']}}</td>
-                                    <td>{{$row['retail_price']}}</td>
-                                    <td>{{$row['wholesale_price']}}</td>
-                                    <td>{{$row['distributor_price']}}</td>
-                                    <td style="text-align: center;">
-                                        <a href="/product_profile/{{$row['product_id']}}" class="btn-xs fas fa-file-alt"></a>
-                                        <a href="/edit_product/{{$row['product_id']}}" class="btn-xs fas fa-edit"></a>
-                                    </td>
+                                    @if($row['lastname'] == null)
+                                    <td>Anonymous</td>
+                                    @else
+                                    <td>{{$row['lastname']}}, {{$row['firstname']}}</td>
+                                    @endif
+                                    <td>{{$row['date_created']}}</td>
+                                    <td style="text-align: right;">{{$row['total']}}</td>
                                 </tr>
                             @endforeach
-
                             {{$result->links()}}
-                            
                         </tbody>
 
                     </table>

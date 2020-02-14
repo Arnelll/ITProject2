@@ -1,71 +1,66 @@
 @extends('layouts.master')
 
 @section('title')
-    + Walk-in
-    <p>
-	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
-    </p>
+    + Sales
 @endsection
 
 @section('content')
+
+<style>
+.hide {
+    display: none;
+}
+</style>
+
 <body>
         <div class="container">
         <section class="panel">
             <div class="panel panel-footer">
             <header class="panel panel-default">
-                <h3> Job Order Details </h3>
+                <h3> Sales </h3>
             </header>
             </div>
         <div class="panel panel-footer">
-        {!!Form::open(array('route'=>'insert','id'=>'formsave','method'=>'post'))!!}
-        <h7 class="card-link"><a href="/new_service" class="btn btn-danger justify-content-end">ADD JOB ORDER</a></h7>
-        <h7 class="card-link"><a href="/new_account" class="btn btn-danger justify-content-end">ADD NEW CLIENT</a></h7>
-        <div class="row">
+        {!!Form::open(array('route'=>'insert_sales','id'=>'formsave','method'=>'post'))!!}
+        <div class="col-lg-12 col-sm-12">
+            <h3 style="margin: 0 0 0 0;"><strong>Sales</strong></h3>
+            <br>
+            <!--<button type="button" id="show-btn" class="btn btn-primary justify-content-end" style="float: right;">Add Job Order</button>-->
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                    <select name="client_id" class="form-control">
-                        <option value="0" selected="true" disabled="true">Select Client</option>
+                    <select name="client_id" class="form-control bg-white">
+                        <option value="" selected="true" disabled="true">Select Client</option>
                         @foreach($clients as $key => $c)
                         <option value="{!!$key!!}">{!!$c!!}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <!-- <div class="col-lg-3 col-sm-3">
-                <div class="form-group">
-                <input type="text" name="address" class="form-control" placeholder="Address">
-                </div>
-            </div> -->
-            <div class="col-lg-2 col-sm-2">
-                <div class="form-group">
-                {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
-                </div>
-            </div>
-        <div class="col-lg-12 col-sm-12">
-            <table class="table table-bordered">
+            <table id="product-table" class="table table-bordered"><br>
                 <thead>
                     <th>Product Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Discount(%)</th>
                     <th>Amount</th>
-                    <th style="text-align:center"><a href="#" class="addRow ">+<i class="glyphicon glyphicon-plus"></i></a></th>
+                    <th style="text-align:center"><a href="#" class="btn btn-primary addRow" style="background-color: #005CA5;">+<i class="glyphicon glyphicon-plus"></i></a></th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
-                            <select name="productname[]" class="form-control productname">
-                                <option value="0" selected="true" disabled="true">Select Product</option>
+                            <select id="productname" name="productname[]" class="form-control productname bg-white" required>
+                                <option value="" disabled="true" selected>Select Product</option>
                                 @foreach($products as $key => $p)
                                 <option value="{!!$key!!}">{!!$p!!}</option>
                                 @endforeach
                             </select>
                         </td>
-                        <td><input type="text" name="qty[]" class="form-control qty"></td>
-                        <td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>
-                        <td><input type="text" name="dis[]" class="form-control dis"></td>
-                        <td><input type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white"></td>
-                        <td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>
+                        <td><input id="product-qty" type="text" onkeyup="this.value = this.value.replace(/[^0-9]/, '')" name="qty[]" class="form-control qty bg-white" maxlength="3" required></td>
+                        <td><input id="product-price" type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>
+                        <td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white" maxlength="3"></td>
+                        <td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>
+                        <td><a href="#" style="margin-left: 40%;" class="remove" style="background-color: #005CA5;"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>
+                        <input type="hidden" name="totals" class="form-control totals" style="background:grey;color:white">
                     </tr>
                 </tbody>
             <tfoot>
@@ -74,11 +69,16 @@
                     <td style="border:none"></td>
                     <td style="border:none"></td>
                     <td><b>Total</b></td>
-                    <td><b class="total"></b></td>
+                    <td><input type="text" name="total" class="form-control total" style="background:grey;color:white;text-align:right" disabled></td>
                     <td></td>
                 </tr>
             </tfoot>   
         </table>
+        <div class="col-lg-2 col-sm-2" style="margin-left:80%">
+                <div class="form-group">
+                {!!Form::submit('Save',array('class'=>'d-inline p-2 btn btn-primary btn-lg', 'style'=>'background-color: #005CA5'))!!}<a href="javascript:history.go(-1)" class="d-inline p-2 btn btn-secondary btn-lg" title="Return to the previous page">Return</a>
+                </div>
+        </div>
     </div>
 </div>
         {!!Form::hidden('_token',csrf_token())!!}
@@ -98,7 +98,7 @@ $('tbody').delegate('.productname', 'change', function(){
         dataType : 'json',
         data     : dataId,
         success:function(data){
-            tr.find('.price').val(data.price);
+            tr.find('.price').val(data.retail_price);
         }
     });
 });
@@ -124,6 +124,18 @@ findRowNum('.price');
 findRowNumOnly('.dis');
 numberOnly('.phone');
 
+$('#product-name').change(function() {
+    $('#product-qty').val('');
+    $('#product-price').val('');
+    $('#product-dsct').val('');
+    $('#product-amt').val('');
+    var qty = 0;
+    var price = 0;
+    var dis = 0;
+    var amount = 0;
+    total(); 
+});
+
 function total()
 {
     var total = 0;
@@ -131,7 +143,8 @@ function total()
         var amount = $(this).val()-0;
         total += amount;
     })
-    $('.total').html(total.formatMoney(2,',','.') + " ₱");
+    $("input[name='total']").val(total.formatMoney(2,',','.') + " ₱")
+    $("input[name='totals']").val(total)
 };
 //-------------------------------Format Number-----------------------------------
 Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator) {
@@ -151,19 +164,19 @@ function addRow()
 {
     var tr='<tr>'+
                 '<td>'+
-                '<select name="productname[]" class="form-control productname">'+
-                '<option value="0" selected="true" disabled="true">Select Product</option>'+
-                '@foreach($products as $key => $p)'+
-                '<option value="{!!$key!!}">{!!$p!!}</option>'+
-                '@endforeach'+
-                '</select>'+
+                    '<select id="product-name" name="productname[]" class="form-control productname bg-white">'+
+                        '<option value="0" selected="true" disabled="true">Select Product</option>'+
+                        '@foreach($products as $key => $p)'+
+                        '<option value="{!!$key!!}">{!!$p!!}</option>'+
+                        '@endforeach'+
+                    '</select>'+
                 '</td>'+
-                '<td><input type="text" name="qty[]" class="form-control qty"></td>'+
-                '<td><input type="text" name="price[]" class="form-control price" style="background:grey;color:white"></td>'+
-                '<td><input type="text" name="dis[]" class="form-control dis"></td>'+
-                '<td><input type="text" name="amount[]" class="form-control amount" style="background:grey;color:white"></td>'+
-                '<td><a href="#" class="btn btn-danger remove">X<i class="glyphicon glyphicon-remove"></i></a></td>'+
-                '</tr>';
+                '<td><input id="product-qty" type="text" name="qty[]" class="form-control qty bg-white"></td>'+
+                '<td><input id="product-price" type="text" name="price[]" class="form-control price" style="background:grey;color:white;text-align:right;" disabled></td>'+
+                '<td><input id="product-dsct" type="text" name="dis[]" class="form-control dis bg-white"></td>'+
+                '<td><input id="product-amt" type="text" name="amount[]" class="form-control amount" readonly="true" style="background:grey;color:white;text-align:right;" disabled></td>'+
+                '<td><a href="#" style="margin-left: 40%;" class="remove"><strong>X</strong><i class="glyphicon glyphicon-remove"></i></a></td>'+
+            '</tr>';
     $('tbody').append(tr);
 };
 
@@ -211,12 +224,24 @@ $('.remove').on('click', function(){
     var l = $('tbody tr').length;
     if(l=1)
     {
-        alert('You cannot remove last item')
+        alert('You cannot remove last item');
     }else{
         $(this).parent().parent().remove();
         total();
     }
 });
+
+const showButton = document.getElementById('show-btn');
+const hider = document.getElementById('hideJO');
+
+showButton.addEventListener('click', showJO)
+
+function showJO() {
+    console.log('Started')
+    showButton.classList.add('hide');
+    hider.classList.remove('hide');
+}
+
 </script> 
 @endsection
     

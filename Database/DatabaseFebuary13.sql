@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2020 at 04:29 PM
+-- Generation Time: Feb 13, 2020 at 06:45 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jeffoffsroad`
+-- Database: `jeffoffsroad1`
 --
 
 -- --------------------------------------------------------
@@ -312,7 +312,7 @@ INSERT INTO `job_order` (`jo_id`, `client_id`, `mechanic_id`, `vehicle_id`, `tot
 (167, 3, 2, 1, '1668.96', 'Pending', '2020-02-13 07:18:43', 'dasdasdas'),
 (168, 3, 5, 1, '1132.65', 'Pending', '2020-02-13 07:20:14', 'test'),
 (169, 5, 1, 1, '93432.19', 'Pending', '2020-02-13 07:26:46', 'qewqewqew'),
-(170, 5, 1, 1, '93432.19', 'Pending', '2020-02-13 07:27:16', 'qewqewqew');
+(170, 5, 1, 1, '93432.19', 'Ongoing', '2020-02-13 07:27:16', 'qewqewqew');
 
 -- --------------------------------------------------------
 
@@ -498,7 +498,12 @@ INSERT INTO `productcheckout_details` (`productcheckout_details_id`, `productche
 (7, 50, 1, 1),
 (8, 51, 1, 1),
 (9, 52, 11, 1),
-(10, 53, 1, 1);
+(10, 53, 1, 1),
+(11, 54, 39, 2),
+(12, 54, 1, 5),
+(13, 54, 12, 3),
+(14, 54, 10, 1),
+(15, 54, 4, 20);
 
 -- --------------------------------------------------------
 
@@ -586,7 +591,8 @@ INSERT INTO `product_checkout` (`product_checkout_id`, `jo_id`, `total`, `date_c
 (50, 150, '12.00', '2020-02-10 10:40:20'),
 (51, 149, '12.00', '2020-02-10 10:44:19'),
 (52, 148, '835.00', '2020-02-10 10:44:29'),
-(53, 149, '12.00', '2020-02-10 11:02:39');
+(53, 149, '12.00', '2020-02-10 11:02:39'),
+(54, 170, '23071.00', '2020-02-13 09:35:47');
 
 -- --------------------------------------------------------
 
@@ -857,15 +863,15 @@ CREATE TABLE `vehicles` (
   `color` varchar(30) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL,
-  `date_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vehicles`
 --
 
-INSERT INTO `vehicles` (`vehicle_id`, `client_id`, `plate_no`, `type`, `model`, `color`, `description`, `date_created`, `date_updated`) VALUES
-(1, 3, 'ZXC 987', 'SUV/AUV', 'Ford Raptor', 'Red', '4 wheels', '2019-12-15 00:00:00', '2020-02-06 03:58:39'),
+INSERT INTO `vehicles` (`vehicle_id`, `client_id`, `plate_no`, `type`, `model`, `color`, `description`, `date_created`, `updated_at`) VALUES
+(1, 3, 'ZXC 987', 'SUV/AUV', 'Ford Raptor', 'Red', '4 wheels', '2019-12-15 00:00:00', '2020-02-13 09:36:55'),
 (2, 3, 'ZXC 999', 'SUV/AUV', '2015', 'Black', '4 wheels', '2020-02-05 04:26:14', '2020-02-05 06:34:46'),
 (4, 34, 'ABC 123', 'Pickup Truck', 'Raptor', 'Yellow ', 'outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:34:46'),
 (5, 21, 'DFT 490', 'SUV/AUV', 'Elf', 'Pink', 'outdoor vehicle', '2020-02-05 00:00:00', '2020-02-05 06:34:46'),
@@ -1112,7 +1118,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `productcheckout_details`
 --
 ALTER TABLE `productcheckout_details`
-  MODIFY `productcheckout_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `productcheckout_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -1124,7 +1130,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_checkout`
 --
 ALTER TABLE `product_checkout`
-  MODIFY `product_checkout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `product_checkout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `sales`

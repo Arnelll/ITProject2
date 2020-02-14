@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     @yield('title')
@@ -14,16 +14,16 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
+  <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
+  <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/css/now-ui-dashboard.css?v=1.3.0') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
 </head>
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="yellow">
+    <div class="sidebar" data-color="blue">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -37,69 +37,48 @@
           <!-- <li class="active"> -->
           <li>
             <a href="/dashboard">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons business_chart-bar-32"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
             <a href="/accounts">
-              <i class="now-ui-icons education_atom"></i>
-              <p>User Accounts</p>
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Clients</p>
             </a>
           </li>
           <li>
             <a href="/products">
-              <i class="now-ui-icons location_map-big"></i>
+              <i class="now-ui-icons shopping_box"></i>
               <p>Products</p>
             </a>
           </li>
           <li>
+            <a href="/delivery">
+              <i class="now-ui-icons shopping_delivery-fast"></i>
+              <p>Deliveries</p>
+            </a>
+          </li>
+          <li>
             <a href="/vehicle">
-              <i class="now-ui-icons location_map-big"></i>
+              <i class="now-ui-icons transportation_bus-front-12"></i>
               <p>Vehicles</p>
             </a>
           </li>
           <li>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Transactions(Fix this UI blyat)
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/service">Service</a>
-                <a class="dropdown-item" href="/walkin">Walk-in</a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <a href="/joborder">
-              <i class="now-ui-icons location_map-big"></i>
-              <p>Job Order</p>
+            <a href="/mechanic">
+              <i class="now-ui-icons business_badge"></i>
+              <p>Mechanics</p>
             </a>
           </li>
-          <li>
-            <a href="/test">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Debugger</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>#</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>#</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>#</p>
-            </a>
-          </li>
+          <button type="button" class="btn btn-md" style="background-color:#005ca5;width:65%;" data-toggle="collapse" data-target="#demo"><i class="now-ui-icons files_paper"></i><p>TRANSACTIONS</p></button>
+          <div id="demo" class="collapse">
+            <ul style="list-style-type: none;">
+              <li><a href="/sales"><i class="now-ui-icons files_paper"></i><p>SALES</p></a></li>
+                <li><a href="/service"><i class="now-ui-icons files_paper"></i><p>JOB ORDERS</p></a></li>
+                <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
@@ -115,13 +94,16 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">@yield('title')</a>
+            <a style="top:-10px;" class="navbar-brand" href="#">@yield('title')</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
+          <div style="text-align: center;display: block; width: 250px; height: 250px; float: left; margin-left: 35%; position: absolute; top: 18px;">
+            <img src="{{ asset('assets/img/CompanyLogo.png') }}" />
+          </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form>
               <div class="input-group no-border">
@@ -133,15 +115,13 @@
                 </div>
               </div>
             </form>
+            
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons users_single-02"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}">
-                    Profile
-                  </a>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
@@ -158,7 +138,6 @@
         </div>
       </nav>
       <!-- End Navbar -->
-
       <div class="panel-header panel-header-sm">
       </div>
       <div class="content">
@@ -200,19 +179,17 @@
   </div>
   <!--   Core JS Files   -->
   
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
   <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
+  <script src="{{ asset('assets/js/now-ui-dashboard.min.js?v=1.3.0') }}" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="{{ asset('assets/demo/demo.js') }}"></script>
 
   @yield('scripts')
 </body>

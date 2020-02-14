@@ -2,6 +2,9 @@
 
 @section('title')
     + Walk-in
+    <p>
+	<a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a>
+    </p>
 @endsection
 
 @section('content')
@@ -15,40 +18,17 @@
             </div>
         <div class="panel panel-footer">
         {!!Form::open(array('route'=>'insert','id'=>'formsave','method'=>'post'))!!}
+        <h7 class="card-link"><a href="/new_service" class="btn btn-danger justify-content-end">ADD JOB ORDER</a></h7>
+        <h7 class="card-link"><a href="/new_account" class="btn btn-danger justify-content-end">ADD NEW CLIENT</a></h7>
         <div class="row">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                <input type="text" name="fn" class="form-control" placeholder="First Name">
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-                <div class="form-group">
-                <input type="text" name="ln" class="form-control" placeholder="Last Name">
-                </div>
-            </div>
-            <!--
-            <div class="col-lg-2 col-sm-2">
-                <div class="form-group">
-                <select name="sex" class="form-control">
-                    <option value="0" selected="true" disabled="true">Gender</option>
-                    <option value="1">Male</option>  
-                    <option value="2">Female</option>
+                    <select name="client_id" class="form-control">
+                        <option value="0" selected="true" disabled="true">Select Client</option>
+                        @foreach($clients as $key => $c)
+                        <option value="{!!$key!!}">{!!$c!!}</option>
+                        @endforeach
                     </select>
-                </div>
-            </div> -->
-            <div class="col-lg-2 col-sm-6">
-                <div class="form-group">
-                <input type="text" name="age" class="form-control" placeholder="Age">
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4">
-                <div class="form-group">
-                <input type="text" name="email" class="form-control" placeholder="Email">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-                <div class="form-group">
-                <input type="text" name="phone" class="form-control" placeholder="Phone">
                 </div>
             </div>
             <!-- <div class="col-lg-3 col-sm-3">

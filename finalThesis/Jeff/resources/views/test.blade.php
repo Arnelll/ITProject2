@@ -12,7 +12,11 @@
         <strong>Client:</strong> {{$clients->lastname}},{{$clients->firstname}} <br>
         <strong>Vehicle:</strong> {{$vehicle->model}} ({{$vehicle->type}}) | <strong>Plate No:</strong> <strong style="color:#FF5F5F;">{{$vehicle->plate_no}}</strong> <br>
         <strong>Mechanic:</strong> {{$mechanic->last_name}}, {{$mechanic->first_name}} <br>
-        <strong>Service Rendered:</strong> {{$jo->remarks}} <br>
+        @if($jo->status=='Pending' || 'Ongoing')
+        <strong>Service to be rendered:</strong> {{$jo->remarks}} <br>
+        @else
+        <strong>Service rendered:</strong> {{$jo->remarks}} <br>
+        @endif
         <strong>Job Order Status:</strong> {{$jo->status}} <br>
         <br><br>
         @if($jo->status=='Pending' || 'Ongoing')

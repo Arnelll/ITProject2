@@ -60,7 +60,7 @@ class GenerateController extends Controller
         $products = JobOrder::join('job_order_details','job_order.jo_id','job_order_details.jo_id')
         ->join('products','job_order_details.product_id','products.product_id')
         ->where('job_order.jo_id','=',$z)
-        ->select('products.product_name','job_order_details.*','products.retail_price')
+        ->select('products.product_name','job_order_details.quantity','products.retail_price')
         ->get();
         /*$x['id'] = $id;
 
@@ -85,8 +85,10 @@ class GenerateController extends Controller
         ->paginate(10);
 
         $pdf = PDF::loadView('dashboard.product_profile',['service' => $service, 'name' => $name, 'sales' => $sales]);*/
-        $pdf = PDF::loadView('test', compact('result','clients','vehicle','mechanic','jo','products','araw'));
-        return $pdf->download(); 
+
+        $data = ['title' => 'Laravel 5.8 HTML to PDF'];
+        $pdf = PDF::loadView('report.jo',compact('result','clients','vehicle','mechanic','jo','products','araw'));
+        return $pdf->download('jo.pdf');
         
 
     }

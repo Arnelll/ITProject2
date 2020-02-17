@@ -43,6 +43,14 @@
               <p>Dashboard</p>
             </a>
           </li>
+          <button type="button" class="btn btn-md" style="background-color:#005ca5;width:65%;" data-toggle="collapse" data-target="#demo"><i class="now-ui-icons files_paper"></i><p>TRANSACTIONS</p></button>
+          <div id="demo" class="collapse">
+            <ul style="list-style-type: none;">
+              <li><a href="/new_sales"><i class="now-ui-icons files_paper"></i><p>SALES</p></a></li>
+                <li><a href="/new_jooo"><i class="now-ui-icons files_paper"></i><p>JOB ORDERS</p></a></li>
+                <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
+            </ul>
+          </div>
           <li>
             <a href="/accounts">
               <i class="now-ui-icons users_single-02"></i>
@@ -73,12 +81,12 @@
               <p>Mechanics</p>
             </a>
           </li>
-          <button type="button" class="btn btn-md" style="background-color:#005ca5;width:65%;" data-toggle="collapse" data-target="#demo"><i class="now-ui-icons files_paper"></i><p>TRANSACTIONS</p></button>
-          <div id="demo" class="collapse">
+          <button type="button" class="btn btn-md" style="background-color:#005ca5;width:65%;" data-toggle="collapse" data-target="#demo1"><i class="now-ui-icons files_paper"></i><p>Transaction List</p></button>
+          <div id="demo1" class="collapse">
             <ul style="list-style-type: none;">
-              <li><a href="/sales"><i class="now-ui-icons files_paper"></i><p>SALES</p></a></li>
-                <li><a href="/service"><i class="now-ui-icons files_paper"></i><p>JOB ORDERS</p></a></li>
-                <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
+              <li><a href="/sales"><i class="now-ui-icons files_paper"></i><p>SALES LIST</p></a></li>
+                <li><a href="/service"><i class="now-ui-icons files_paper"></i><p>JOB ORDERS LIST</p></a></li>
+                <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT LIST</p></a></li>
             </ul>
           </div>
         </ul>

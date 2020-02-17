@@ -78,3 +78,6 @@ Route::get('/remove_mechanic/{id}',"api\MechanicController@remove_mechanic");
 Route::get('/new_jooo',"api\JobController@index");
 Route::post('/insert_jooo', array('as' => 'insert_jooo', 'uses' => 'api\JobController@insert_jooo'));
 Route::get('/generate_pProfile/{id}/{jo_id}', 'api\GenerateController@generate');
+Route::get('/change_owner/{id}', 'api\VehicleController@change_owner');
+Route::post('/change_own', array('as' => 'change_own', 'uses' => 'api\VehicleController@change_own'));
+Route::post('/change_own2', array('as' => 'change_own2', 'uses' => 'api\VehicleController@change_own2'));

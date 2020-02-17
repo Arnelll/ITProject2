@@ -43,7 +43,9 @@
             <div class="col-lg-6 col-sm-6" id="vehicle_list">
                 <div class="form-group">
                     <select name="vcle" class="form-control bg-white" required>
-                        <option value="" selected="true" disabled="true">Select Vehicle</option>
+                        <div id="owned">
+                            <option value="" selected="true" disabled="true">--Owned Vehicles--</option>
+                        </div>
                     </select>
                 </div>
             </div>

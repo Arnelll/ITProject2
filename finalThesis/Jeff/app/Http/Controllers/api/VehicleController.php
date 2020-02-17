@@ -38,7 +38,69 @@ class VehicleController extends Controller
         ->select('vehicles.plate_no as plate')
         ->paginate(10);
 
-        return view('dashboard.vehicle_profile', compact('result', 'name'));
+        $id = Vehicle::where('vehicles.vehicle_id','=', $x)
+        ->first();
+
+        $clients = Clients::orderBy('client_id','asc')
+        ->get();
+
+        return view('dashboard.vehicle_profile', compact('result', 'name','id','clients'));
+    }
+
+    public function change_owner($id){
+        $x['id'] = $id;
+
+        $result = Vehicle::orderBy('vehicles.vehicle_id', 'desc')
+        ->join('clients','clients.client_id','vehicles.client_id')
+        ->where('vehicles.vehicle_id', '=' , $x)
+        ->select('vehicles.*', 'clients.*')
+        ->paginate(10);
+
+        $name = Vehicle::orderBy('vehicles.vehicle_id', 'desc')
+        ->where('vehicles.vehicle_id', '=', $x)
+        ->select('vehicles.plate_no as plate')
+        ->paginate(10);
+
+        $id = Vehicle::where('vehicles.vehicle_id','=', $x)
+        ->join('clients','clients.client_id','vehicles.client_id')
+        ->first();
+        
+        return view('dashboard.change_owner', compact('result','name','id'));
+    }
+
+    public function change_own(Request $request){
+        $fn = $request->fn;
+        $ln = $request->ln;
+        $address = $request->address;
+        $email = $request->email;
+        $phone = $request->phone;
+        $vId = $request->vId;
+
+        $client = new Clients;
+        $client -> firstname=$fn;
+        $client -> lastname=$ln;
+        $client -> address=$address;
+        $client -> email=$email;
+        $client -> contact_no=$phone;
+        if($client->save()){
+            $vehicle = new Vehicle;
+            $cId = $client->client_id;
+            $vehicle=Vehicle::where('vehicle_id',$vId)->first();
+            $vehicle -> client_id =$cId;
+            $vehicle->save();
+        }
+
+        return $this->index();
+    }
+
+    public function change_own2(Request $request){
+        $vId = $request->vId;
+        $cId = $request->cId;
+        $vehicle = Vehicle::where('vehicle_id',$vId)
+        ->first();
+        $vehicle->client_id = $cId;
+        $vehicle->save();
+        return $this->index();
     }
 
     public function new_vehicle()

@@ -20,11 +20,6 @@
         <input type="hidden" value="{{$result->vehicle_id}}" id="vehicleid" name="vehicleid">
             <div class="col-lg-6 col-sm-6">
                 <div class="form-group">
-                Owner<input type="text" id="plateno" name="plateno" class="form-control" value="{{$result->firstname}}">
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-                <div class="form-group">
                 Plate No.<input type="text" id="plateno" name="plateno" class="form-control" value="{{$result->plate_no}}">
                 </div>
             </div>

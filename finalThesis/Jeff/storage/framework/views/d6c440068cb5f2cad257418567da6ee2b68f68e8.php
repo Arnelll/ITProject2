@@ -93,7 +93,7 @@
 
       <div class="modal-body">
         <input type="hidden" name="vId" value="<?php echo e($id['vehicle_id']); ?>"></input>
-        <select name="cId">
+        <select name="cId" class="form-control bg-white">
         <?php $__currentLoopData = $clients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <option value="<?php echo e($client['client_id']); ?>"><?php echo e($client['lastname']); ?>, <?php echo e($client['firstname']); ?></option>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

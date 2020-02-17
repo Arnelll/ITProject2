@@ -41,7 +41,9 @@ class VehicleController extends Controller
         $id = Vehicle::where('vehicles.vehicle_id','=', $x)
         ->first();
 
+        $cId = $id->client_id;
         $clients = Clients::orderBy('client_id','asc')
+        ->where('client_id','!=',$cId)
         ->get();
 
         return view('dashboard.vehicle_profile', compact('result', 'name','id','clients'));

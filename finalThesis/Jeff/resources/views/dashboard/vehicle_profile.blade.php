@@ -94,7 +94,7 @@
       {!!Form::open(array('route'=>'change_own2','id'=>'formsave','method'=>'post'))!!}
       <div class="modal-body">
         <input type="hidden" name="vId" value="{{$id['vehicle_id']}}"></input>
-        <select name="cId">
+        <select name="cId" class="form-control bg-white">
         @foreach($clients as $client)
           <option value="{{$client['client_id']}}">{{$client['lastname']}}, {{$client['firstname']}}</option>
         @endforeach

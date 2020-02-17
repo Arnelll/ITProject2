@@ -22,10 +22,7 @@
 
                         <thead class="text-info">
                             <th style="font-weight: 500;">Product Name</th>
-                            <th style="font-weight: 500;">Quantity</th>
-                            <th style="font-weight: 500;">Retail Price</th>
-                            <th style="font-weight: 500;">Wholesale Price</th>
-                            <th style="font-weight: 500;">Distributor Price</th>
+                            <th style="font-weight: 500;">Status</th>
                             <th style="text-align: center; font-weight: 500;">Actions</th>
                         </thead>
 
@@ -34,10 +31,7 @@
                             <?php $__currentLoopData = $result; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <td><?php echo e($row['product_name']); ?></td>
-                                    <td><?php echo e($row['quantity']); ?></td>
-                                    <td><?php echo e($row['retail_price']); ?></td>
-                                    <td><?php echo e($row['wholesale_price']); ?></td>
-                                    <td><?php echo e($row['distributor_price']); ?></td>
+                                    <td><?php echo e($row['status']); ?></td>
                                     <td style="text-align: center;">
                                         <a href="/product_profile/<?php echo e($row['product_id']); ?>" class="btn-xs fas fa-file-alt"></a>
                                         <a href="/edit_product/<?php echo e($row['product_id']); ?>" class="btn-xs fas fa-edit"></a>

@@ -35,7 +35,7 @@
                                     <td><?php echo e($row['jo_id']); ?></td>
                                     <td><a href="/view_accounts/<?php echo e($row['client_id']); ?>"><?php echo e($row['lastname']); ?>, <?php echo e($row['firstname']); ?></a></td>
                                     <td><?php echo e($row['remarks']); ?></td>
-                                    <td><?php echo e($row['status']); ?></td>
+                                    <td><?php echo e($row['date_created']); ?></td>
                                     <td style="text-align: center;">
                                         <a href="/view_service/<?php echo e($row['client_id']); ?>/<?php echo e($row['jo_id']); ?>" class="btn-xs fas fa-file-alt"></a>
                                         <a href="/view_checkout/<?php echo e($row['jo_id']); ?>" class="btn-xs fas fa-shopping-cart"></a>

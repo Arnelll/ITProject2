@@ -46,6 +46,12 @@
                         <div id="owned">
                             <option value="" selected="true" disabled="true">--Owned Vehicles--</option>
                         </div>
+                        <div id="unowned">
+                            <option value="" selected="true" disabled="true">--Other Vehicles--</option>
+                            @foreach($vehicle $vc)
+                            <option value="" selected="true" disabled="true">{{$vc['type']}}</option>
+                            @endforeach
+                        </div>
                     </select>
                 </div>
             </div>
@@ -119,12 +125,12 @@ $('#client').change(function(){
         dataType : 'json',
         data     : dataId,
         success:function(data){
-            $('#vehicle_list').find('option').remove().end();
-            var def = '<option value="" selected="true" disabled="true">Select Vehicle</option>';
+            $('#owned').find('option').remove().end();
+            var def = '<option value="" selected="true" disabled="true">--Owned Vehicles--</option>';
             $('#vehicle_list').find('select').append(def);
             for (var i = 0; i < data.length; i++) {
                 var opt='<option value="'+data[i].vehicle_id+'">'+data[i].plate_no+'</option></td>';
-                $('#vehicle_list').find('select').append(opt);
+                $('#owned').find('select').append(opt);
             }
         }
     });

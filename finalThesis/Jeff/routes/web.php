@@ -81,3 +81,4 @@ Route::get('/generate_pProfile/{id}/{jo_id}', 'api\GenerateController@generate')
 Route::get('/change_owner/{id}', 'api\VehicleController@change_owner');
 Route::post('/change_own', array('as' => 'change_own', 'uses' => 'api\VehicleController@change_own'));
 Route::post('/change_own2', array('as' => 'change_own2', 'uses' => 'api\VehicleController@change_own2'));
+Route::get('//prod_co_all',"api\ProductCheckoutController@all");

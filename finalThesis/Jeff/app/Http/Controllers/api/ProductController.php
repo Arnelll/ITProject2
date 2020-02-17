@@ -10,6 +10,7 @@ use App\Transactions;
 use App\Supplier;
 use App\Delivery;
 use App\DeliveryDetail;
+use App\ProductHistory;
 
 class ProductController extends Controller
 {
@@ -37,7 +38,7 @@ class ProductController extends Controller
     }
 
     public function products(){
-        $result = Product::orderBy('product_id','asc')
+        $result = Product::orderBy('product_name','asc')
         ->paginate(10);
 
         return view('dashboard.product', compact('result'));
@@ -148,13 +149,31 @@ class ProductController extends Controller
      */
     public function product_update(Request $request)
     {
-        $s=new Product;
-        $data = array('product_name' =>$request->input('productname'),
-                      'retail_price' =>$request->input('price'),
-                      'wholesale_price' =>$request->input('whole_price'),
-                      'distributor_price' =>$request->input('dis_price'));
-        $s->where('product_id', $request->input('productid'))->update($data);
-        return Redirect('/products');
+
+        $pId = $request -> productid;
+        $pName = $request-> productname;
+        $rPrice = $request -> price;
+        $wPrice = $request -> whole_price;
+        $dPrice = $request -> dis_price;
+        $ss = Product::where('product_id',$pId)
+        ->select('product_name','retail_price','wholesale_price','distributor_price')
+        ->first();
+        $data = array('product_name'=>$pName,
+                        'retail_price'=>$rPrice,
+                        'wholesale_price'=>$wPrice,
+                        'distributor_price'=>$dPrice);
+        $data2 = array('product_name'=>$ss->product_name,
+        'retail_price'=>$ss->retail_price,
+        'wholesale_price'=>$ss->wholesale_price,
+        'distributor_price'=>$ss->distributor_price);
+        $result = array_diff($data,$data2);
+        $name = array_keys($result);
+        $name_values = array_values($result);
+        for($i = 0; $i < count($name); $i++){
+            $ss -> $name[$i] = $name_values[$i];
+            $ss -> save();
+        }
+        return var_dump($data2);
     }
 
     public function product_add(Request $request){

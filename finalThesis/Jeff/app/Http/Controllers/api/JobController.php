@@ -9,6 +9,7 @@ use App\Product;
 use App\JobOrder;
 use App\Mechanic;
 use App\JobOrderDetails;
+use App\Vehicle;
 
 class JobController extends Controller
 {
@@ -23,7 +24,9 @@ class JobController extends Controller
         $clients = Clients::all()->pluck('full_name', 'client_id');
         $mechanic = Mechanic::all()->pluck('fullname', 'mechanic_id');
         $products = Product::all()->pluck('product_name', 'product_id');
-        return view('dashboard.new_joborder', compact('clients','products','mechanic'));
+        $vehicle = Vehicle::orderBy('vehicle_id','asc')
+        ->get();
+        return view('dashboard.new_joborder', compact('clients','products','mechanic','vehicle'));
     }
 
     public function insert_jooo(Request $request){

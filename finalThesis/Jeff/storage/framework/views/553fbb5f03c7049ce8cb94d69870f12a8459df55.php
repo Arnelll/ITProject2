@@ -65,7 +65,73 @@
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
                     </tbody>
                   </table>
-                  <a href="/generate_pProfile/1">Generate</a>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card  card-tasks">
+              <div class="card-header ">
+                <h5 class="card-category">Job Order Transaction Log</h5>
+                <h4 class="card-title">Latest Job Order Transaction Log</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-full-width table-responsive">
+                  <table class="table">
+                  <thead class="text-info">
+                            <th style="font-weight: 500;">Jo no.</th>
+                            <th style="font-weight: 500;">Status</th>
+                        </thead>
+                    <tbody>
+                    <?php $__currentLoopData = $service; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <tr>
+                      <td><?php echo e($row['jo_id']); ?></td>
+                        <?php if($row['status']=='Rendered'): ?>
+                        <td class="text-left"><h5>Product <strong><?php echo e($row['product_name']); ?></strong> with a quantity of <strong style="color:red;"><?php echo e($row['quantity']); ?></strong> has been used.</h5></td>
+                        <td>
+                          <div class="form-check">
+                              <i style="color:green;" class="now-ui-icons ui-1_check"></i>
+                          </div>
+                        </td>
+                        <?php elseif($row['status']=='Ongoing'): ?>
+                        <td class="text-left"><h5>This transaction is still ongoing.</h5></td>
+                        <td>
+                          <div class="form-check text-left" style="color:blue;">
+                              O
+                          </div>
+                        </td>
+                        <?php elseif($row['status']=='Pending'): ?>
+                        <td class="text-left"><h5>This transaction is pending.</h5></td>
+                        <td>
+                          <div class="form-check text-left" style="color:black;">
+                              O
+                          </div>
+                        </td>
+                        <?php elseif($row['status']=='Cancelled'): ?>
+                        <td class="text-left"><h5>This transaction is cancelled.</h5></td>
+                        <td>
+                          <div class="form-check text-left" style="color:red;">
+                              X
+                          </div>
+                        </td>
+                        <?php endif; ?>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                            <i class="now-ui-icons ui-1_simple-check"></i>
+                          </button>
+                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                            <i class="now-ui-icons ui-1_simple-check"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div class="card-footer ">
@@ -78,8 +144,8 @@
           <div class="col-md-6">
             <div class="card  card-tasks">
             <div class="card-header ">
-                <h5 class="card-category">Walk-in Transaction Log</h5>
-                <h4 class="card-title">Latest Walk-in Transaction Log</h4>
+                <h5 class="card-category">Price Log</h5>
+                <h4 class="card-title">Changes in product price history</h4>
               </div>
               <div class="card-body">
               <div class="table-full-width table-responsive">

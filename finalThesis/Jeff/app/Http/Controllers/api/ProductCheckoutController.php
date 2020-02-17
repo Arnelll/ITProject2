@@ -18,6 +18,17 @@ class ProductCheckoutController extends Controller
          $result = Checkout::orderBy('product_checkout.product_checkout_id', 'desc')
          ->join('job_order', 'job_order.jo_id', 'product_checkout.jo_id')
          ->join('clients', 'clients.client_id', 'job_order.client_id')
+         ->where('job_order.status','=','Pending')
+         ->paginate(10);
+ 
+         return view('dashboard.product_checkout', compact('result'));
+     }
+
+     public function all()
+     {
+         $result = Checkout::orderBy('product_checkout.product_checkout_id', 'desc')
+         ->join('job_order', 'job_order.jo_id', 'product_checkout.jo_id')
+         ->join('clients', 'clients.client_id', 'job_order.client_id')
          ->paginate(10);
  
          return view('dashboard.product_checkout', compact('result'));

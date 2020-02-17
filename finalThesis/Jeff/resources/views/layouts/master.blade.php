@@ -48,7 +48,7 @@
             <ul style="list-style-type: none;">
               <li><a href="/new_sales"><i class="now-ui-icons files_paper"></i><p>SALES</p></a></li>
                 <li><a href="/new_jooo"><i class="now-ui-icons files_paper"></i><p>JOB ORDERS</p></a></li>
-                <li><a href="/prod_co"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
+                <li><a href="/prod_co_all"><i class="now-ui-icons files_paper"></i><p>PRODUCT CHECKOUT</p></a></li>
             </ul>
           </div>
           <li>

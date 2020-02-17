@@ -37,7 +37,7 @@
                                     <td>{{$row['jo_id']}}</td>
                                     <td><a href="/view_accounts/{{$row['client_id']}}">{{$row['lastname']}}, {{$row['firstname']}}</a></td>
                                     <td>{{$row['remarks']}}</td>
-                                    <td>{{$row['status']}}</td>
+                                    <td>{{$row['date_created']}}</td>
                                     <td style="text-align: center;">
                                         <a href="/view_service/{{$row['client_id']}}/{{$row['jo_id']}}" class="btn-xs fas fa-file-alt"></a>
                                         <a href="/view_checkout/{{$row['jo_id']}}" class="btn-xs fas fa-shopping-cart"></a>

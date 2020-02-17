@@ -22,8 +22,7 @@
 
                         <thead class="text-info">
                             <th style="font-weight: 500;">Fullname</th>
-                            <th style="font-weight: 500;">Contact</th>
-                            <th style="font-weight: 500;">Address</th>
+                            <th style="font-weight: 500;">Status</th>
                             <th style="text-align: center; font-weight: 500;">Action</th>
                         </thead>
 
@@ -33,8 +32,7 @@
 
                                 <tr>
                                     <td><?php echo e($row['last_name']); ?>, <?php echo e($row['first_name']); ?></td>
-                                    <td><?php echo e($row['contact_no']); ?></td>
-                                    <td><?php echo e($row['address']); ?></td>
+                                    <td><?php echo e($row['status']); ?></td>
                                     <td style="text-align: center;">
                                     <a href="/remove_mechanic/<?php echo e($row['mechanic_id']); ?>" class="btn-xs fas fa-user-minus"></a>
                                     </td>

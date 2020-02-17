@@ -13,5 +13,5 @@ class Mechanic extends Model
     //
     protected $table = 'mechanic';
     protected $primaryKey = 'mechanic_id';
-    protected $fillable = ['first_name', 'last_name', 'contact_no','address'];
+    protected $fillable = ['first_name', 'last_name', 'contact_no', 'address', 'status'];
 }

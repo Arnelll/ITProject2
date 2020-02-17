@@ -24,8 +24,7 @@
 
                         <thead class="text-info">
                             <th style="font-weight: 500;">Fullname</th>
-                            <th style="font-weight: 500;">Contact</th>
-                            <th style="font-weight: 500;">Address</th>
+                            <th style="font-weight: 500;">Status</th>
                             <th style="text-align: center; font-weight: 500;">Action</th>
                         </thead>
 
@@ -35,8 +34,7 @@
 
                                 <tr>
                                     <td>{{$row['last_name']}}, {{$row['first_name']}}</td>
-                                    <td>{{$row['contact_no']}}</td>
-                                    <td>{{$row['address']}}</td>
+                                    <td>{{$row['status']}}</td>
                                     <td style="text-align: center;">
                                     <a href="/remove_mechanic/{{$row['mechanic_id']}}" class="btn-xs fas fa-user-minus"></a>
                                     </td>

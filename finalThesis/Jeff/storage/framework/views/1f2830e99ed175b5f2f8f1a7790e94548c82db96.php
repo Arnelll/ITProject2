@@ -127,13 +127,19 @@ $('#client').change(function(){
         dataType : 'json',
         data     : dataId,
         success:function(data){
-            $('#vehicle_list').find('option').remove().end();
-            var def = '<option value="" selected="true" disabled="true">Select Vehicle</option>';
-            $('#vehicle_list').find('select').append(def);
-            for (var i = 0; i < data.length; i++) {
-                var opt='<option value="'+data[i].vehicle_id+'">'+data[i].plate_no+'</option></td>';
+            if(!$.trim(data)){
+                var opt='<option value="No available vehicle."</option></td>';
                 $('#vehicle_list').find('select').append(opt);
+            }else{
+                $('#vehicle_list').find('option').remove().end();
+                var def = '<option value="" selected="true" disabled="true">Select Vehicle</option>';
+                $('#vehicle_list').find('select').append(def);
+                for (var i = 0; i < data.length; i++) {
+                    var opt='<option value="'+data[i].vehicle_id+'">'+data[i].plate_no+'</option></td>';
+                    $('#vehicle_list').find('select').append(opt);
+                }
             }
+            
         }
     });
 })

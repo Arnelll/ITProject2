@@ -16,7 +16,7 @@ class MechanicController extends Controller
      */
     public function index()
     {
-        $result = Mechanic::orderBy('mechanic.mechanic_id', 'asc')
+        $result = Mechanic::orderBy('mechanic.last_name', 'asc')
         ->paginate(10);
 
         return view('dashboard.mechanic', compact('result'));

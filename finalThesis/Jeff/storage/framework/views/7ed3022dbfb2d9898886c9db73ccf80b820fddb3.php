@@ -27,13 +27,13 @@
         </thead>
         <tbody>
         <tr>
-          <td><input type="text" name="Client Name" class="form-control jo_pn" value="<?php echo e($clients->lastname); ?>,<?php echo e($clients->firstname); ?>" readonly></td>
-          <td><input type="text" name="Type" class="form-control jo_qty" value="<?php echo e($vehicle->model); ?> (<?php echo e($vehicle->type); ?>)" readonly></td>
-          <td><input type="text" name="Plate Number" class="form-control jo_qty" value="<?php echo e($vehicle->plate_no); ?>" readonly></td>
-          <td><input type="text" name="Mechanic" class="form-control jo_qty" value="<?php echo e($mechanic->last_name); ?>, <?php echo e($mechanic->first_name); ?>" readonly></td>
-          <td><input type="text" name="Description" class="form-control jo_qty" value="<?php echo e($jo->remarks); ?>" readonly>
-          <input type="hidden" name="job_id" class="form-control jo_qty" value="<?php echo e($jo->jo_id); ?>" readonly></td>
-          <input type="hidden" name="client_id" class="form-control jo_qty" value="<?php echo e($clients->client_id); ?>" readonly></td>
+          <td><input type="text" name="Client Name" class="form-control jo_pn bg-white" value="<?php echo e($clients->lastname); ?>,<?php echo e($clients->firstname); ?>" readonly></td>
+          <td><input type="text" name="Type" class="form-control jo_qty bg-white" value="<?php echo e($vehicle->model); ?> (<?php echo e($vehicle->type); ?>)" readonly></td>
+          <td><input type="text" name="Plate Number" class="form-control jo_qty bg-white" value="<?php echo e($vehicle->plate_no); ?>" readonly></td>
+          <td><input type="text" name="Mechanic" class="form-control jo_qty bg-white" value="<?php echo e($mechanic->last_name); ?>, <?php echo e($mechanic->first_name); ?>" readonly></td>
+          <td><input type="text" name="Description" class="form-control jo_qty bg-white" value="<?php echo e($jo->remarks); ?>" readonly>
+          <input type="hidden" name="job_id" class="form-control jo_qty bg-white" value="<?php echo e($jo->jo_id); ?>" readonly></td>
+          <input type="hidden" name="client_id" class="form-control jo_qty bg-white" value="<?php echo e($clients->client_id); ?>" readonly></td>
         </tr>
       </tbody>
       </table>
@@ -85,10 +85,10 @@
       <tbody>
         <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
-          <td><input type="text" name="jo_pn" class="form-control jo_pn" value="<?php echo e($row['product_name']); ?>" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="<?php echo e($row['quantity']); ?>" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="<?php echo e($row['retail_price']); ?>" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="<?php echo e($row['quantity']*$row['retail_price']); ?>" readonly></td>
+          <td><input type="text" name="jo_pn" class="form-control jo_pn bg-white" value="<?php echo e($row['product_name']); ?>" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="<?php echo e($row['quantity']); ?>" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="<?php echo e($row['retail_price']); ?>" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="<?php echo e($row['quantity']*$row['retail_price']); ?>" readonly></td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tbody>

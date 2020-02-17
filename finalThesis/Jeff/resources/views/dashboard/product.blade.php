@@ -25,9 +25,9 @@
                         <thead class="text-info">
                             <th style="font-weight: 500;">Product Name</th>
                             <th style="font-weight: 500;">Quantity</th>
-                            <th style="font-weight: 500;">Retail Price</th>
-                            <th style="font-weight: 500;">Wholesale Price</th>
-                            <th style="font-weight: 500;">Distributor Price</th>
+                            <th style="font-weight: 500; text-align: right;">Retail Price</th>
+                            <th style="font-weight: 500; text-align: right;">Wholesale Price</th>
+                            <th style="font-weight: 500; text-align: right;">Distributor Price</th>
                             <th style="text-align: center; font-weight: 500;">Actions</th>
                         </thead>
 
@@ -37,9 +37,9 @@
                                 <tr>
                                     <td>{{$row['product_name']}}</td>
                                     <td>{{$row['quantity']}}</td>
-                                    <td>{{$row['retail_price']}}</td>
-                                    <td>{{$row['wholesale_price']}}</td>
-                                    <td>{{$row['distributor_price']}}</td>
+                                    <td style="text-align: right;">{{$row['retail_price']}}</td>
+                                    <td style="text-align: right;">{{$row['wholesale_price']}}</td>
+                                    <td style="text-align: right;">{{$row['distributor_price']}}</td>
                                     <td style="text-align: center;">
                                         <a href="/product_profile/{{$row['product_id']}}" class="btn-xs fas fa-file-alt"></a>
                                         <a href="/edit_product/{{$row['product_id']}}" class="btn-xs fas fa-edit"></a>

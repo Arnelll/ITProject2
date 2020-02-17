@@ -28,10 +28,10 @@
       <tbody>
       @foreach($result as $row)
         <tr>
-          <td><input type="text" name="jo_pn" class="form-control jo_pn" value="{{$row['name']}}" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="{{$row['product_name']}}" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="{{$row['quantity']}}" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="{{$row['delivery_date']}}" readonly></td>
+          <td><input type="text" name="jo_pn" class="form-control jo_pn bg-white" value="{{$row['name']}}" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="{{$row['product_name']}}" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="{{$row['quantity']}}" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="{{$row['delivery_date']}}" readonly></td>
         </tr>
         @endforeach
       </tbody>

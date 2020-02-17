@@ -3,24 +3,24 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo e(asset('assets/img/apple-icon.png')); ?>">
+  <link rel="icon" type="image/png" href="<?php echo e(asset('assets/img/favicon.png')); ?>">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    @yield('title')
+    <?php echo $__env->yieldContent('title'); ?>
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
-  <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/js/select2.js') }}"></script>
-  <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
-  <link href="{{ asset('assets/css/select2.css') }}" rel="stylesheet" />
-  <link href="{{ asset('assets/css/now-ui-dashboard.css?v=1.3.0') }}" rel="stylesheet" />
+  <script src="<?php echo e(asset('assets/js/core/jquery.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('assets/js/select2.js')); ?>"></script>
+  <link href="<?php echo e(asset('assets/css/bootstrap.min.css')); ?>" rel="stylesheet" />
+  <link href="<?php echo e(asset('assets/css/select2.css')); ?>" rel="stylesheet" />
+  <link href="<?php echo e(asset('assets/css/now-ui-dashboard.css?v=1.3.0')); ?>" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
+  <link href="<?php echo e(asset('assets/demo/demo.css')); ?>" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -31,7 +31,7 @@
     -->
       <div class="logo">
         <a href="/dashboard" class="simple-text">
-          <hp>Welcome, {{ Auth::user()->name }}</hp>
+          <hp>Welcome, <?php echo e(Auth::user()->name); ?></hp>
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -104,7 +104,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a style="top:-10px;" class="navbar-brand" href="#">@yield('title')</a>
+            <a style="top:-10px;" class="navbar-brand" href="#"><?php echo $__env->yieldContent('title'); ?></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -112,7 +112,7 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div style="text-align: center;display: block; width: 250px; height: 250px; float: left; margin-left: 35%; position: absolute; top: 18px;">
-            <img src="{{ asset('assets/img/CompanyLogo.png') }}" />
+            <img src="<?php echo e(asset('assets/img/CompanyLogo.png')); ?>" />
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form>
@@ -132,14 +132,15 @@
                   <i class="now-ui-icons users_single-02"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    <?php echo e(__('Logout')); ?>
+
                   </a>
 
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      @csrf
+                  <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                      <?php echo csrf_field(); ?>
                   </form>
                 </div>
               </li>
@@ -151,7 +152,7 @@
       <div class="panel-header panel-header-sm">
       </div>
       <div class="content">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
       </div>
 
       <footer class="footer">
@@ -189,19 +190,19 @@
   </div>
   <!--   Core JS Files   -->
   
-  <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-  <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+  <script src="<?php echo e(asset('assets/js/core/popper.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('assets/js/core/bootstrap.min.js')); ?>"></script>
+  <script src="<?php echo e(asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')); ?>"></script>
   <!-- Chart JS -->
-  <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
+  <script src="<?php echo e(asset('assets/js/plugins/chartjs.min.js')); ?>"></script>
   <!--  Notifications Plugin    -->
-  <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
+  <script src="<?php echo e(asset('assets/js/plugins/bootstrap-notify.js')); ?>"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{ asset('assets/js/now-ui-dashboard.min.js?v=1.3.0') }}" type="text/javascript"></script>
+  <script src="<?php echo e(asset('assets/js/now-ui-dashboard.min.js?v=1.3.0')); ?>" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="{{ asset('assets/demo/demo.js') }}"></script>
+  <script src="<?php echo e(asset('assets/demo/demo.js')); ?>"></script>
 
-  @yield('scripts')
+  <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
-</html>
+</html><?php /**PATH C:\Users\Joebemark\Desktop\ITProject2\finalThesis\Jeff\resources\views/layouts/master.blade.php ENDPATH**/ ?>

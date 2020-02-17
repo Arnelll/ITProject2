@@ -28,13 +28,13 @@
         </thead>
         <tbody>
         <tr>
-          <td><input type="text" name="Client Name" class="form-control jo_pn" value="{{$clients->lastname}},{{$clients->firstname}}" readonly></td>
-          <td><input type="text" name="Type" class="form-control jo_qty" value="{{$vehicle->model}} ({{$vehicle->type}})" readonly></td>
-          <td><input type="text" name="Plate Number" class="form-control jo_qty" value="{{$vehicle->plate_no}}" readonly></td>
-          <td><input type="text" name="Mechanic" class="form-control jo_qty" value="{{$mechanic->last_name}}, {{$mechanic->first_name}}" readonly></td>
-          <td><input type="text" name="Description" class="form-control jo_qty" value="{{$jo->remarks}}" readonly>
-          <input type="hidden" name="job_id" class="form-control jo_qty" value="{{$jo->jo_id}}" readonly></td>
-          <input type="hidden" name="client_id" class="form-control jo_qty" value="{{$clients->client_id}}" readonly></td>
+          <td><input type="text" name="Client Name" class="form-control jo_pn bg-white" value="{{$clients->lastname}},{{$clients->firstname}}" readonly></td>
+          <td><input type="text" name="Type" class="form-control jo_qty bg-white" value="{{$vehicle->model}} ({{$vehicle->type}})" readonly></td>
+          <td><input type="text" name="Plate Number" class="form-control jo_qty bg-white" value="{{$vehicle->plate_no}}" readonly></td>
+          <td><input type="text" name="Mechanic" class="form-control jo_qty bg-white" value="{{$mechanic->last_name}}, {{$mechanic->first_name}}" readonly></td>
+          <td><input type="text" name="Description" class="form-control jo_qty bg-white" value="{{$jo->remarks}}" readonly>
+          <input type="hidden" name="job_id" class="form-control jo_qty bg-white" value="{{$jo->jo_id}}" readonly></td>
+          <input type="hidden" name="client_id" class="form-control jo_qty bg-white" value="{{$clients->client_id}}" readonly></td>
         </tr>
       </tbody>
       </table>
@@ -86,10 +86,10 @@
       <tbody>
         @foreach($products as $row)
         <tr>
-          <td><input type="text" name="jo_pn" class="form-control jo_pn" value="{{$row['product_name']}}" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="{{$row['quantity']}}" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="{{$row['retail_price']}}" readonly></td>
-          <td><input type="text" name="jo_qty" class="form-control jo_qty" value="{{$row['quantity']*$row['retail_price']}}" readonly></td>
+          <td><input type="text" name="jo_pn" class="form-control jo_pn bg-white" value="{{$row['product_name']}}" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="{{$row['quantity']}}" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="{{$row['retail_price']}}" readonly></td>
+          <td><input type="text" name="jo_qty" class="form-control jo_qty bg-white" value="{{$row['quantity']*$row['retail_price']}}" readonly></td>
         </tr>
         @endforeach
       </tbody>
